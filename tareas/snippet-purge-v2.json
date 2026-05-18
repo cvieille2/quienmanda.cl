@@ -1,0 +1,7 @@
+{
+  "name": "PURGE cache - temp",
+  "desc": "Purge LiteSpeed cache via ?purge_ficha=1",
+  "code": "add_action('init', function () {\n    if (isset($_GET['purge_ficha'])) {\n        if (defined('LSCWP_V') && class_exists('LiteSpeed\\Purge')) {\n            LiteSpeed\\Purge::purge_all();\n        }\n        status_header(200);\n        header('Content-Type: text/plain');\n        echo 'Cache purged';\n        exit;\n    }\n});\n",
+  "scope": "global",
+  "active": true
+}

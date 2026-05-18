@@ -1,0 +1,7 @@
+{
+  "name": "PURGE LiteSpeed cache - temporal",
+  "desc": "Limpia todo el cache de LiteSpeed",
+  "code": "if (!get_option('ficha_purge_done') && defined('LSCWP_V') && class_exists('LiteSpeed\\Purge')) {\n    \\LiteSpeed\\Purge::purge_all();\n    update_option('ficha_purge_done', time(), false);\n}",
+  "scope": "global",
+  "active": true
+}

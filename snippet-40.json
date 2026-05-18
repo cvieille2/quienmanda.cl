@@ -1,0 +1,15 @@
+{
+  "id": 40,
+  "name": "Ficha Motel - CSS h1 fix",
+  "desc": "",
+  "code": "\nadd_action(\"wp_head\", function () {\n    if (is_singular(\"ficha_motel\")) {\n        echo \"<style>\n.single-ficha_motel .default-header,\n.single-ficha_motel .entry-title,\n.single-ficha_motel .entry-meta,\n.single-ficha_motel .post-thumbnail,\n.single-ficha_motel .comments-area,\n.single-ficha_motel .entry-footer { display: none !important; }\n.single-ficha_motel .entry-content { max-width: 100% !important; padding: 0 !important; }\n.single-ficha_motel .site-main { padding-top: 0 !important; }\n</style>\";\n    }\n});\n",
+  "tags": [],
+  "scope": "front-end",
+  "condition_id": 0,
+  "active": true,
+  "priority": 10,
+  "network": false,
+  "shared_network": false,
+  "modified": "2026-05-17 02:35:40",
+  "code_error": null
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": {
+    "paths": [".opencode/skills"]
+  },
+  "command": {
+    "mejorar-prompt": {
+      "description": "Mejora un prompt para que sea mas claro, especifico y utilizable.",
+      "template": "Usa la skill local mejorar-prompt. Reescribe el prompt del usuario para que sea mas claro, especifico, accionable y robusto. Devuelve: 1) version mejorada, 2) supuestos si faltan datos, 3) una version corta opcional, 4) preguntas criticas solo si son necesarias. Evita relleno y conserva el objetivo original."
+    }
+  }
+}

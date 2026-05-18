@@ -1,0 +1,37 @@
+{
+  "agente": "agente-disenador-ui-web",
+  "tarea_principal": "T-006",
+  "subtareas": [
+    {
+      "id": "T-006-ST-01",
+      "titulo": "Disenar bloque de planes en HTML responsive (Basico, Premium, Setup)",
+      "estado": "completada",
+      "entregable": "HTML + CSS: 3 tarjetas de plan con jerarquia visual"
+    },
+    {
+      "id": "T-006-ST-02",
+      "titulo": "Crear seccion de beneficios con iconos",
+      "estado": "completada",
+      "entregable": "6 beneficios en grid responsive"
+    },
+    {
+      "id": "T-006-ST-03",
+      "titulo": "Disenar seccion de prueba social",
+      "estado": "completada",
+      "entregable": "Bloque con placeholder para numero de moteles destacados"
+    },
+    {
+      "id": "T-006-ST-04",
+      "titulo": "Asegurar compatibilidad WordPress y mobile-first",
+      "estado": "completada",
+      "entregable": "Media queries + colores del sitio existente (#e74c3c, #2c3e50)"
+    },
+    {
+      "id": "T-006-ST-05",
+      "titulo": "Disenar variante monocromatica para prueba A/B",
+      "estado": "pendiente",
+      "prioridad": "baja",
+      "nota": "Version alternativa en escala de grises para probar cual convierte mejor"
+    }
+  ]
+}

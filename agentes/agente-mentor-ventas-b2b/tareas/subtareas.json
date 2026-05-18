@@ -1,0 +1,50 @@
+{
+  "agente": "agente-mentor-ventas-b2b",
+  "tarea_principal": "T-003",
+  "subtareas": [
+    {
+      "id": "T-003-ST-01",
+      "titulo": "Definir perfil del decisor (dueno de motel chileno)",
+      "estado": "completada",
+      "entregable": "Perfil: 35-60 anos, tradicional, dueño/admin, dolor en dias bajos"
+    },
+    {
+      "id": "T-003-ST-02",
+      "titulo": "Crear mensaje WhatsApp version A (directa) y B (resultados)",
+      "estado": "completada",
+      "entregable": "2 versiones de mensaje inicial listas para usar"
+    },
+    {
+      "id": "T-003-ST-03",
+      "titulo": "Disenar secuencia de 3 seguimientos",
+      "estado": "completada",
+      "entregable": "Dia +2, +5, +10 con enfoque creciente en urgencia"
+    },
+    {
+      "id": "T-003-ST-04",
+      "titulo": "Preparar respuestas a 5 objeciones tipicas",
+      "estado": "completada",
+      "entregable": "Objeciones: presupuesto, web propia, referencias, gratis, lo-pienso"
+    },
+    {
+      "id": "T-003-ST-05",
+      "titulo": "Escribir guion de llamada de 5 minutos",
+      "estado": "completada",
+      "entregable": "Guion estructurado por segmentos de tiempo"
+    },
+    {
+      "id": "T-003-ST-06",
+      "titulo": "Preparar hoja de calculo CRM",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Crear Google Sheets con columnas: Nombre, Ciudad, Telefono, Contactado, Respondio, Interesado, Cerrado, Fecha, Notas"
+    },
+    {
+      "id": "T-003-ST-07",
+      "titulo": "Crear pagina de ejemplo/ficha demo para ensenar a moteleros",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Una ficha de ejemplo que sirva como demostracion durante la venta"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": 67,
+  "name": "orbital-menu-restore-inline",
+  "desc": "",
+  "code": "add_action(\"wp_enqueue_scripts\", function () {\n    $css = <<<CSS\n.site-header {\n  background:#fff;\n  border-bottom:1px solid #e5e7eb;\n  position:relative;\n  z-index:1000;\n}\n.site-header .header-inner,\n.site-header .container.header-inner {\n  max-width:100%;\n  margin:0 auto;\n  padding:18px 20px;\n  display:flex;\n  align-items:center;\n  justify-content:space-between;\n  gap:24px;\n}\n.site-logo a {\n  color:#111827;\n  font-size:24px;\n  font-weight:700;\n  text-decoration:none;\n}\n.header-navigation-wrapper {\n  flex:1;\n}\n.primary-menu-wrapper {\n  display:block;\n}\n.primary-menu {\n  list-style:none;\n  margin:0;\n  padding:0;\n  display:flex;\n  align-items:center;\n  gap:28px;\n  flex-wrap:wrap;\n}\n.primary-menu > li {\n  position:relative;\n  margin:0;\n  padding:0;\n}\n.primary-menu a {\n  color:#111827;\n  text-decoration:none;\n  font-weight:600;\n  display:block;\n  padding:12px 0;\n}\n.primary-menu a:hover {\n  color:#e94560;\n}\n.primary-menu .sub-menu {\n  list-style:none;\n  margin:0;\n  padding:10px 0;\n  position:absolute;\n  top:100%;\n  left:0;\n  min-width:260px;\n  background:#fff;\n  border:1px solid #e5e7eb;\n  box-shadow:0 12px 32px rgba(15,23,42,.14);\n  display:none;\n  z-index:1001;\n}\n.primary-menu li:hover > .sub-menu,\n.primary-menu li.focus > .sub-menu,\n.primary-menu li.menu-item-has-children:focus-within > .sub-menu {\n  display:block;\n}\n.primary-menu .sub-menu li {\n  margin:0;\n}\n.primary-menu .sub-menu a {\n  padding:10px 16px;\n  white-space:nowrap;\n}\n.mobile-nav-toggle {\n  display:none;\n}\n.menu-modal {\n  display:none;\n}\n@media (max-width: 900px) {\n  .header-navigation-wrapper {\n    display:none;\n  }\n  .mobile-nav-toggle {\n    display:inline-flex;\n  }\n  .menu-modal {\n    position:fixed;\n    inset:0;\n    background:#fff;\n    overflow:auto;\n  }\n  body.showing-menu-modal .menu-modal {\n    display:block;\n  }\n  .menu-modal .primary-menu {\n    display:block;\n  }\n  .menu-modal .primary-menu > li {\n    position:static;\n    border-bottom:1px solid #e5e7eb;\n  }\n  .menu-modal .primary-menu a {\n    padding:14px 0;\n  }\n  .menu-modal .sub-menu {\n    position:static;\n    display:block;\n    min-width:0;\n    border:0;\n    box-shadow:none;\n    padding:0 0 8px 16px;\n  }\n}\nCSS;\n    wp_add_inline_style(\"orbital-child-style\", $css);\n}, 20);",
+  "tags": [],
+  "scope": "global",
+  "condition_id": 0,
+  "active": false,
+  "priority": 10,
+  "network": false,
+  "shared_network": false,
+  "modified": "2026-05-17 04:56:18",
+  "code_error": null
+}

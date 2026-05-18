@@ -1,0 +1,51 @@
+{
+  "agente": "agente-asesor-estrategico-financiero",
+  "persona_referencia": "Roberto Gamboa Aguilar",
+  "tarea_principal": "T-009",
+  "subtareas": [
+    {
+      "id": "T-009-ST-01",
+      "titulo": "Definir estructura de ingresos y precios por plan",
+      "estado": "completada",
+      "entregable": "4 fuentes de ingreso: Basico, Premium, Setup, SEO Local"
+    },
+    {
+      "id": "T-009-ST-02",
+      "titulo": "Proyectar flujo de caja a 45 dias",
+      "estado": "completada",
+      "entregable": "Semana a semana con retencion 15.25% y gastos"
+    },
+    {
+      "id": "T-009-ST-03",
+      "titulo": "Calcular punto de equilibrio",
+      "estado": "completada",
+      "entregable": "2 clientes/mes para break-even"
+    },
+    {
+      "id": "T-009-ST-04",
+      "titulo": "Analizar precios vs competencia",
+      "estado": "completada",
+      "entregable": "Precios actuales son competitivos, no bajar"
+    },
+    {
+      "id": "T-009-ST-05",
+      "titulo": "Modelar 3 escenarios (optimista, realista, minimo)",
+      "estado": "completada",
+      "entregable": "Escenarios: 35%, 20%, 10% conversion"
+    },
+    {
+      "id": "T-009-ST-06",
+      "titulo": "Calcular impuesto y retencion de boleta de honorarios",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Simular retencion real con montos exactos y frecuencia semanal de emision"
+    },
+    {
+      "id": "T-009-ST-07",
+      "titulo": "Definir estructura de costos operativos fijos y variables",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Desglosar hosting, dominios, herramientas, internet, llamadas, etc."
+    }
+  ]
+}

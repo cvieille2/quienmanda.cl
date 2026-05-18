@@ -1,0 +1,62 @@
+{
+  "agente": "agente-tecnico-wordpress-automatizacion",
+  "tarea_principal": "T-007",
+  "subtareas": [
+    {
+      "id": "T-007-ST-01",
+      "titulo": "Hacer backup completo de WordPress (archivos + BD)",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "nota": "Usar UpdraftPlus o cPanel. Verificar que el backup sea descargable."
+    },
+    {
+      "id": "T-007-ST-02",
+      "titulo": "Crear pagina /para-moteles/ con bloque de planes",
+      "estado": "en_curso",
+      "prioridad": "critica",
+      "nota": "Insertar HTML de T-006 con copy de T-004"
+    },
+    {
+      "id": "T-007-ST-03",
+      "titulo": "Implementar CTA flotante 'Duenno de motel'",
+      "estado": "en_curso",
+      "prioridad": "critica",
+      "nota": "Codigo fixed, esquinero inferior derecho"
+    },
+    {
+      "id": "T-007-ST-04",
+      "titulo": "Instalar/verificar Google Analytics 4",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Usar Site Kit by Google"
+    },
+    {
+      "id": "T-007-ST-05",
+      "titulo": "Instalar/verificar Search Console",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Verificar con Site Kit"
+    },
+    {
+      "id": "T-007-ST-06",
+      "titulo": "Instalar Meta Pixel",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Solo si ya hay ventas o se activa pauta"
+    },
+    {
+      "id": "T-007-ST-07",
+      "titulo": "Optimizar velocidad de carga (< 3s)",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Plugin de cache si es necesario"
+    },
+    {
+      "id": "T-007-ST-08",
+      "titulo": "Pruebas responsive y funcionales",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Probar en 3 dispositivos: escritorio, tablet, movil"
+    }
+  ]
+}

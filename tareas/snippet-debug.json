@@ -1,0 +1,7 @@
+{
+  "name": "DEBUG ficha output buffer",
+  "desc": "Debug temporal para verificar si el output buffer se activa en fichas de motel",
+  "code": "<?php\nadd_action('template_redirect', function() {\n    if (is_singular('ficha_motel')) {\n        update_option('ficha_motel_ob_debug', 'template_redirect_ok at ' . time(), false);\n        ob_start(function($html) {\n            update_option('ficha_motel_ob_called', 'callback_called at ' . time(), false);\n            $html = preg_replace('/\\$(\\d+),(\\d{3})/', '\"$1.$2', $html);\n            return $html;\n        });\n    }\n});",
+  "scope": "front-end",
+  "active": true
+}

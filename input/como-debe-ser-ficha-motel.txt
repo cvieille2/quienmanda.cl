@@ -1,0 +1,172 @@
+MODELO DE FICHA DE MOTEL - INFOMOTELES.CL
+
+Objetivo
+Completar cada ficha como una landing local premium, clara, verificable y lista para convertir.
+
+Regla base
+No escribir texto generico. Cada ficha debe usar datos reales del motel y de la ciudad/comuna.
+
+Flujo de creacion
+1. Investigacion web: antes de escribir cualquier contenido, buscar informacion del motel en internet (sitio propio, Google Maps, redes sociales, directorios). Si el motel tiene pagina web, revisar todas sus URLs relevantes para extraer informacion de servicios, habitaciones, jacuzzis, tematica, tarifas, contacto y cualquier seccion importante. Si existe alguna estadistica o dato cuantitativo (ej: "a 5 minutos de la plaza", "50 habitaciones"), debe incluirse.
+2. Si el motel esta a menos de 20 kilometros de una ciudad distinta a su categoria principal, colocar en el primer parrafo un enlace interno a esa ciudad y mencionar que no solo las parejas de [categoria] lo visitan, sino tambien desde [otra-ciudad].
+3. Rellenar datos reales: el escritor de la ficha completa los campos con informacion verificada. Si un dato no se encuentra, se deja como pendiente. NO inventar ni poner datos por poner.
+4. Entregar al agente SEO Local: la ficha completa se entrega al agente SEO Local para que revise el sitio en internet, verifique la consistencia de los datos y proponga mejoras de optimizacion local.
+5. Revision SEO: el agente SEO Local revisa la ficha contra el sitio real del motel, corrige discrepancias y sugiere ajustes de contenido o estructura.
+6. Publicacion: solo despues de la revision SEO se sube la informacion al sitio web correspondiente.
+
+Orden de la ficha
+1. Hero con foto principal
+2. Descripcion
+3. Datos de ubicacion y contacto
+4. Precios y tarifas
+5. Servicios y amenidades
+6. Opiniones reales y mi opinion
+7. Preguntas frecuentes
+
+Nota de estructura
+- Estas secciones son obligatorias y siempre van en ese orden.
+- Si la investigacion aporta informacion extra, se pueden agregar secciones nuevas sin alterar el orden de las obligatorias.
+- La FAQ siempre debe ser la ultima seccion.
+- No crear una seccion aparte llamada `Datos rapidos`.
+- Los datos iniciales deben ir en el hero, los badges y los botones de contacto.
+
+Bloques obligatorios dentro de la ficha
+- Hero con foto principal, H1, resumen y CTAs.
+- Descripcion.
+- Datos de ubicacion y contacto.
+- Precios y tarifas.
+- Servicios y amenidades.
+- Opiniones reales y mi opinion.
+- Preguntas frecuentes.
+
+Opiniones y EEAT
+- La seccion de opiniones debe incluir una tarjeta visual de opiniones de clientes, un texto breve con valoracion publica aproximada si existe, y una opinion editorial propia del sitio.
+- La opinion editorial propia debe ayudar al usuario a decidir y dejar claro el criterio del sitio.
+- No inventar rating ni cantidades de reseñas.
+- Debajo de la opinion editorial debe existir una tabla corta de pros/contras o servicios fundamentales y especiales, indicando claramente cuales tiene y cuales no.
+- La tabla debe ayudar a decidir rapido si el motel sirve para una visita en pareja.
+
+Regla de anclajes
+- Toda ficha debe incluir `#tarifas` y `#mapa` como secciones visibles y enlazables.
+- No publicar una ficha sin ambas secciones.
+
+Rich snippets / schema obligatorios
+1. WebPage
+2. BreadcrumbList
+3. Motel o LocalBusiness
+4. PostalAddress
+5. GeoCoordinates
+6. OpeningHoursSpecification
+7. ImageObject para la imagen principal
+8. Offer solo si hay tarifas reales visibles
+9. FAQPage solo si las preguntas y respuestas son reales
+10. AggregateRating y Review solo si existen reseñas reales y verificables
+
+Reglas de uso del schema
+- El schema debe reflejar solo datos reales de la ficha.
+- No inventar calificaciones, reseñas, horarios, coordenadas ni precios.
+- Si no hay un dato verificable, omitirlo del JSON-LD.
+- BreadcrumbList siempre debe existir.
+- WebPage y Motel/LocalBusiness siempre deben existir.
+- FAQPage ya no se usa por relleno: solo si las preguntas aparecen visibles en la ficha y las respuestas son verificables.
+
+Campos obligatorios a completar
+- Nombre del motel
+- Ciudad
+- Comuna
+- Direccion exacta
+- Telefono
+- WhatsApp
+- Horario
+- Precio desde
+- Fecha de verificacion
+- Servicios principales
+- Tarifas por habitacion
+- Coordenadas GPS
+- Foto principal
+- 3 a 12 fotos secundarias
+- Rich snippets activos y validados
+
+Formato recomendado por campo
+- Nombre: nombre comercial exacto
+- Ciudad: ciudad principal
+- Comuna: comuna real si aplica
+- Direccion: calle + numero
+- Telefono: numero con prefijo pais
+- WhatsApp: numero limpio, solo digitos
+- Horario: ejemplo `24 horas` o `Lun a Dom 18:00 a 06:00`
+- Precio desde: valor minimo real
+- Fecha de verificacion: fecha actualizada de control
+- Servicios: lista corta con los 5 mas importantes
+- Tarifas: habitacion, tiempo, precio, incluye
+- Coordenadas: latitud y longitud reales
+
+Texto base para rellenar la ficha
+
+H1
+Motel [NOMBRE] en [CIUDAD]
+
+Resumen corto
+Motel en [CIUDAD] con [SERVICIO PRINCIPAL], [SEGUNDO SERVICIO] y atencion [HORARIO].
+Tarifas desde $[PRECIO] y datos verificados para ayudarte a decidir rapido.
+
+Descripcion
+Si buscas un motel en [CIUDAD] con [DIFERENCIAL_REAL], este lugar destaca por [VENTAJA 1], [VENTAJA 2] y acceso comodo desde [REFERENCIA LOCAL].
+
+Servicios y amenidades
+- [SERVICIO 1]
+- [SERVICIO 2]
+- [SERVICIO 3]
+- [SERVICIO 4]
+- [SERVICIO 5]
+
+Tarifas y habitaciones
+| Habitacion | Tiempo | Precio | Incluye |
+|---|---|---|---|
+| [TIPO 1] | [TIEMPO 1] | $[PRECIO 1] | [INCLUYE 1] |
+| [TIPO 2] | [TIEMPO 2] | $[PRECIO 2] | [INCLUYE 2] |
+| [TIPO 3] | [TIEMPO 3] | $[PRECIO 3] | [INCLUYE 3] |
+
+Ubicacion
+[DIRECCION COMPLETA], [COMUNA], [CIUDAD], Chile.
+
+Preguntas frecuentes
+- Las preguntas deben salir de datos reales de Search Console para la ficha y para la categoria padre.
+- No usar preguntas genericas si no aparecen en consultas reales o si compiten con la intencion principal de la ficha.
+- Evitar canibalizacion: la FAQ de la ficha debe reforzar la consulta especifica de esa URL, no la categoria entera.
+- Incluir 3 a 5 preguntas utiles para el visitante que va con su pareja, basadas en busquedas reales.
+- Ejemplos validos segun datos reales: precio, horario, jacuzzi, estacionamiento, forma de reserva, acceso, pago.
+- Cada pregunta debe responder una duda concreta y breve.
+
+Boton WhatsApp
+El boton debe abrir con este mensaje:
+`Te estoy contactando desde infomoteles.cl y quisiera mas informacion`
+
+Publicidad / AdSense
+- Usar el bloque de anuncios solo en espacios de baja friccion: despues de la descripcion inicial y despues de la seccion de ubicacion.
+- No poner anuncios junto al hero, junto a los botones de contacto, ni entre el CTA principal y la informacion clave.
+- No saturar la ficha: maximo 2 bloques por ficha.
+- Mantener los anuncios separados del contenido editorial para evitar confusiones o clics accidentales.
+
+Checklist de calidad
+- Titulo no generico
+- H1 coincide con la ficha
+- Direccion real y consistente
+- Precio desde visible arriba
+- CTA visibles en primer pantallazo
+- Tabla de tarifas clara
+- Fotos reales y optimizadas
+- FAQ breve y util
+- FAQ basada en Search Console y sin canibalizar la categoria
+- Sin texto relleno ni datos inventados
+- Anuncios en ubicaciones seguras, sin competir con CTA
+- Sin columna lateral obligatoria
+- JSON-LD sin campos inventados
+- BreadcrumbList presente
+- Schema de Motel o LocalBusiness presente
+
+Notas
+- Si no hay dato real, dejarlo pendiente y no inventarlo.
+- Priorizar una ficha por entidad con datos unicos.
+- Reutilizar el mismo estilo visual del modelo premium ya implementado.
+- El control de ancho debe afectar toda la ficha, no solo un bloque blanco interior.

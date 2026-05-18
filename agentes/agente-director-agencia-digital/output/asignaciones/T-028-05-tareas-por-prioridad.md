@@ -1,0 +1,377 @@
+# Tareas por prioridad
+
+Ejecucion ordenada por potencial comercial.
+
+## Prioridad alta
+- Total: 233
+
+- `T-028-001` `antofagasta` motel serrano antofagasta | `https://infomoteles.cl/antofagasta/motel-serrano-antofagasta/`
+- `T-028-004` `calama` motel euro calama | `https://infomoteles.cl/calama/motel-euro-calama/`
+- `T-028-006` `quinta-normal` motel y hotel abismo de pasion quinta normal | `https://infomoteles.cl/quinta-normal/motel-y-hotel-abismo-de-pasion-quinta-normal/`
+- `T-028-010` `concepcion` motel liguria | `https://infomoteles.cl/concepcion/motel-liguria/`
+- `T-028-011` `concepcion` motel la cascada concepcion | `https://infomoteles.cl/concepcion/motel-la-cascada-concepcion/`
+- `T-028-016` `vina-del-mar` hostal o pension motel la gata vina del mar | `https://infomoteles.cl/vina-del-mar/hostal-o-pension-motel-la-gata-vina-del-mar/`
+- `T-028-017` `calama` motel las cavernas calama | `https://infomoteles.cl/calama/motel-las-cavernas-calama/`
+- `T-028-021` `puerto-montt` motel yugos | `https://infomoteles.cl/puerto-montt/motel-yugos/`
+- `T-028-023` `recoleta` motel azzo recoleta | `https://infomoteles.cl/recoleta/motel-azzo-recoleta/`
+- `T-028-025` `arica` motel la fuente arica | `https://infomoteles.cl/arica/motel-la-fuente-arica/`
+- `T-028-026` `la-cisterna` motel veracruz la cisterna | `https://infomoteles.cl/la-cisterna/motel-veracruz-la-cisterna/`
+- `T-028-027` `la-florida` motel la giralda florida | `https://infomoteles.cl/la-florida/motel-la-giralda-florida/`
+- `T-028-028` `valparaiso` motel bristol valparaiso | `https://infomoteles.cl/valparaiso/motel-bristol-valparaiso/`
+- `T-028-029` `talca` motel mediterraneo talca | `https://infomoteles.cl/talca/motel-mediterraneo-talca/`
+- `T-028-032` `concepcion` motel cisne concepcion | `https://infomoteles.cl/concepcion/motel-cisne-concepcion/`
+- `T-028-033` `vina-del-mar` motel kiss marbella | `https://infomoteles.cl/vina-del-mar/motel-kiss-marbella/`
+- `T-028-036` `calama` motel elegance | `https://infomoteles.cl/calama/motel-elegance/`
+- `T-028-037` `recoleta` motel magus | `https://infomoteles.cl/recoleta/motel-magus/`
+- `T-028-040` `arica` motel los olivos arica | `https://infomoteles.cl/arica/motel-los-olivos-arica/`
+- `T-028-041` `la-cisterna` motel el amor en lila la cisterna | `https://infomoteles.cl/la-cisterna/motel-el-amor-en-lila-la-cisterna/`
+- `T-028-043` `arica` motel la favorita | `https://infomoteles.cl/arica/motel-la-favorita/`
+- `T-028-045` `puerto-montt` motel la vara | `https://infomoteles.cl/puerto-montt/motel-la-vara/`
+- `T-028-046` `temuco` motel camy temuco | `https://infomoteles.cl/temuco/motel-camy-temuco/`
+- `T-028-047` `valparaiso` motel madox valparaiso | `https://infomoteles.cl/valparaiso/motel-madox-valparaiso/`
+- `T-028-048` `san-miguel` motel palmera real san miguel | `https://infomoteles.cl/san-miguel/motel-palmera-real-san-miguel/`
+- `T-028-049` `santiago` motel ricardo cumming 224 santiago | `https://infomoteles.cl/santiago/motel-ricardo-cumming-224-santiago/`
+- `T-028-050` `antofagasta` motel mediterraneo inn | `https://infomoteles.cl/antofagasta/motel-mediterraneo-inn/`
+- `T-028-051` `la-cisterna` moteles en americo vespucio con gran avenida explorando opciones | `https://infomoteles.cl/la-cisterna/moteles-en-americo-vespucio-con-gran-avenida-explorando-opciones/`
+- `T-028-053` `concepcion` capricho | `https://infomoteles.cl/concepcion/capricho/`
+- `T-028-054` `vina-del-mar` motel md vina del mar | `https://infomoteles.cl/vina-del-mar/motel-md-vina-del-mar/`
+- `T-028-055` `la-cisterna` motel pilares del amor la cisterna | `https://infomoteles.cl/la-cisterna/motel-pilares-del-amor-la-cisterna/`
+- `T-028-056` `santiago` motel 10 de julio santiago | `https://infomoteles.cl/santiago/motel-10-de-julio-santiago/`
+- `T-028-057` `san-miguel` motel montavord | `https://infomoteles.cl/san-miguel/motel-montavord/`
+- `T-028-058` `coquimbo` motel entre rocas coquimbo | `https://infomoteles.cl/coquimbo/motel-entre-rocas-coquimbo/`
+- `T-028-062` `antofagasta` motel corazones antofagasta | `https://infomoteles.cl/antofagasta/motel-corazones-antofagasta/`
+- `T-028-066` `concepcion` motel el conquistador | `https://infomoteles.cl/concepcion/motel-el-conquistador/`
+- `T-028-067` `calama` motel kalu calama | `https://infomoteles.cl/calama/motel-kalu-calama/`
+- `T-028-068` `concepcion` motel venezia concepcion | `https://infomoteles.cl/concepcion/motel-venezia-concepcion/`
+- `T-028-069` `vina-del-mar` motel diplomate vina del mar | `https://infomoteles.cl/vina-del-mar/motel-diplomate-vina-del-mar/`
+- `T-028-070` `santiago` motel los acacios santiago | `https://infomoteles.cl/santiago/motel-los-acacios-santiago/`
+- `T-028-072` `arica` status motel arica | `https://infomoteles.cl/arica/status-motel-arica/`
+- `T-028-074` `coquimbo` motel y hotel fantasia la serena coquimbo | `https://infomoteles.cl/coquimbo/motel-y-hotel-fantasia-la-serena-coquimbo/`
+- `T-028-076` `vina-del-mar` alojamiento y motel okoa | `https://infomoteles.cl/vina-del-mar/alojamiento-y-motel-okoa/`
+- `T-028-077` `punta-arenas` motel secretos punta arenas | `https://infomoteles.cl/punta-arenas/motel-secretos-punta-arenas/`
+- `T-028-078` `providencia` motel huelen providencia | `https://infomoteles.cl/providencia/motel-huelen-providencia/`
+- `T-028-080` `talca` liberty motel talca | `https://infomoteles.cl/talca/liberty-motel-talca/`
+- `T-028-081` `concepcion` motel caudal talcahuano | `https://infomoteles.cl/concepcion/motel-caudal-talcahuano/`
+- `T-028-083` `talca` bahamas motel talca maule | `https://infomoteles.cl/talca/bahamas-motel-talca-maule/`
+- `T-028-084` `puerto-montt` motel el tepual puerto montt | `https://infomoteles.cl/puerto-montt/motel-el-tepual-puerto-montt/`
+- `T-028-085` `concepcion` motel cruz 656 | `https://infomoteles.cl/concepcion/motel-cruz-656/`
+- `T-028-086` `vina-del-mar` motel bahia | `https://infomoteles.cl/vina-del-mar/motel-bahia/`
+- `T-028-087` `pudahuel` motel aeropuerto pudahuel | `https://infomoteles.cl/pudahuel/motel-aeropuerto-pudahuel/`
+- `T-028-091` `antofagasta` motel romances suites antofagasta | `https://infomoteles.cl/antofagasta/motel-romances-suites-antofagasta/`
+- `T-028-092` `punta-arenas` motel platinium punta arenas | `https://infomoteles.cl/punta-arenas/motel-platinium-punta-arenas/`
+- `T-028-093` `san-bernardo` motel luna y miel san bernardo | `https://infomoteles.cl/san-bernardo/motel-luna-y-miel-san-bernardo/`
+- `T-028-096` `santiago` motel galaxia santiago | `https://infomoteles.cl/santiago/motel-galaxia-santiago/`
+- `T-028-097` `puente-alto` motel el trauco puente alto | `https://infomoteles.cl/puente-alto/motel-el-trauco-puente-alto/`
+- `T-028-098` `valparaiso` motel arbolitos valparaiso | `https://infomoteles.cl/valparaiso/motel-arbolitos-valparaiso/`
+- `T-028-099` `arica` love palace motel arica | `https://infomoteles.cl/arica/love-palace-motel-arica/`
+- `T-028-100` `arica` motel babilonia | `https://infomoteles.cl/arica/motel-babilonia/`
+- `T-028-102` `quinta-normal` motel el refugio de alsino quinta normal | `https://infomoteles.cl/quinta-normal/motel-el-refugio-de-alsino-quinta-normal/`
+- `T-028-103` `santiago` motel primavera santiago | `https://infomoteles.cl/santiago/motel-primavera-santiago/`
+- `T-028-105` `antofagasta` motel jg antofagasta | `https://infomoteles.cl/antofagasta/motel-jg-antofagasta/`
+- `T-028-106` `coquimbo` motel no se coquimbo moteles chili | `https://infomoteles.cl/coquimbo/motel-no-se-coquimbo-moteles-chili/`
+- `T-028-110` `maipu` motel sexcity santiago | `https://infomoteles.cl/maipu/motel-sexcity-santiago/`
+- `T-028-111` `santiago` motel pedro montt santiago | `https://infomoteles.cl/santiago/motel-pedro-montt-santiago/`
+- `T-028-113` `santiago` motel 720 santiago | `https://infomoteles.cl/santiago/motel-720-santiago/`
+- `T-028-116` `punta-arenas` motel el canelo punta arenas | `https://infomoteles.cl/punta-arenas/motel-el-canelo-punta-arenas/`
+- `T-028-117` `recoleta` motel el buda recoleta | `https://infomoteles.cl/recoleta/motel-el-buda-recoleta/`
+- `T-028-120` `concepcion` motel marques de sade | `https://infomoteles.cl/concepcion/motel-marques-de-sade/`
+- `T-028-121` `providencia` motel gala providencia | `https://infomoteles.cl/providencia/motel-gala-providencia/`
+- `T-028-122` `maipu` motel paso nevado maipu | `https://infomoteles.cl/maipu/motel-paso-nevado-maipu/`
+- `T-028-123` `santiago` asturiano motel santiago | `https://infomoteles.cl/santiago/asturiano-motel-santiago/`
+- `T-028-125` `quinta-normal` motel complices quinta normal | `https://infomoteles.cl/quinta-normal/motel-complices-quinta-normal/`
+- `T-028-126` `calama` residencia capri calama | `https://infomoteles.cl/calama/residencia-capri-calama/`
+- `T-028-127` `la-florida` motel niagara la florida | `https://infomoteles.cl/la-florida/motel-niagara-la-florida/`
+- `T-028-130` `coquimbo` motel cupido coquimbo | `https://infomoteles.cl/coquimbo/motel-cupido-coquimbo/`
+- `T-028-131` `la-cisterna` motel vespucio la cisterna | `https://infomoteles.cl/la-cisterna/motel-vespucio-la-cisterna/`
+- `T-028-133` `la-cisterna` motel lavien rose la cisterna | `https://infomoteles.cl/la-cisterna/motel-lavien-rose-la-cisterna/`
+- `T-028-134` `talca` motel caribe talca | `https://infomoteles.cl/talca/motel-caribe-talca/`
+- `T-028-137` `temuco` motel new tekena | `https://infomoteles.cl/temuco/motel-new-tekena/`
+- `T-028-138` `providencia` motel marin providencia | `https://infomoteles.cl/providencia/motel-marin-providencia/`
+- `T-028-139` `san-miguel` motel 777 | `https://infomoteles.cl/san-miguel/motel-777/`
+- `T-028-140` `arica` motel cabanas paraiso arica | `https://infomoteles.cl/arica/motel-cabanas-paraiso-arica/`
+- `T-028-141` `coquimbo` motel momentos coquimbo | `https://infomoteles.cl/coquimbo/motel-momentos-coquimbo/`
+- `T-028-142` `la-florida` motel trinidad la florida | `https://infomoteles.cl/la-florida/motel-trinidad-la-florida/`
+- `T-028-148` `pudahuel` motel paso nevado revision y opiniones | `https://infomoteles.cl/pudahuel/motel-paso-nevado-revision-y-opiniones/`
+- `T-028-150` `concepcion` motel nevada san pedro de la paz | `https://infomoteles.cl/concepcion/motel-nevada-san-pedro-de-la-paz/`
+- `T-028-151` `pudahuel` motel el secreto pudahuel | `https://infomoteles.cl/pudahuel/motel-el-secreto-pudahuel/`
+- `T-028-152` `arica` motel colcas arica | `https://infomoteles.cl/arica/motel-colcas-arica/`
+- `T-028-153` `calama` motel paraiso calama | `https://infomoteles.cl/calama/motel-paraiso-calama/`
+- `T-028-154` `antofagasta` delirius motel express | `https://infomoteles.cl/antofagasta/delirius-motel-express/`
+- `T-028-155` `temuco` san valentin temuco | `https://infomoteles.cl/temuco/san-valentin-temuco/`
+- `T-028-156` `temuco` motel geminis temuco | `https://infomoteles.cl/temuco/motel-geminis-temuco/`
+- `T-028-158` `punta-arenas` motel las mil y una noches punta arenas | `https://infomoteles.cl/punta-arenas/motel-las-mil-y-una-noches-punta-arenas/`
+- `T-028-159` `maipu` aerotel express | `https://infomoteles.cl/maipu/aerotel-express/`
+- `T-028-160` `la-cisterna` i love love motel la cisterna | `https://infomoteles.cl/la-cisterna/i-love-love-motel-la-cisterna/`
+- `T-028-162` `vina-del-mar` motel marina vina del mar | `https://infomoteles.cl/vina-del-mar/motel-marina-vina-del-mar/`
+- `T-028-163` `concepcion` cerca del aeropuerto de concepcion | `https://infomoteles.cl/concepcion/cerca-del-aeropuerto-de-concepcion/`
+- `T-028-164` `vina-del-mar` motel encuentro vina | `https://infomoteles.cl/vina-del-mar/motel-encuentro-vina/`
+- `T-028-166` `santiago` motel sol y luna santiago | `https://infomoteles.cl/santiago/motel-sol-y-luna-santiago/`
+- `T-028-167` `concepcion` bulnes | `https://infomoteles.cl/concepcion/bulnes/`
+- `T-028-168` `coquimbo` motel corazon coquimbo | `https://infomoteles.cl/coquimbo/motel-corazon-coquimbo/`
+- `T-028-170` `providencia` motel holley providencia | `https://infomoteles.cl/providencia/motel-holley-providencia/`
+- `T-028-171` `maipu` motel aerotel express maipu | `https://infomoteles.cl/maipu/motel-aerotel-express-maipu/`
+- `T-028-173` `punta-arenas` bed breakfast motel los pinos | `https://infomoteles.cl/punta-arenas/bed-breakfast-motel-los-pinos/`
+- `T-028-174` `la-florida` motel luciernagas la florida | `https://infomoteles.cl/la-florida/motel-luciernagas-la-florida/`
+- `T-028-175` `valparaiso` motel puerto principal valparaiso | `https://infomoteles.cl/valparaiso/motel-puerto-principal-valparaiso/`
+- `T-028-176` `providencia` motel marin 014 providencia | `https://infomoteles.cl/providencia/motel-marin-014-providencia/`
+- `T-028-177` `antofagasta` motel el cairo | `https://infomoteles.cl/antofagasta/motel-el-cairo/`
+- `T-028-178` `arica` motel cabanas del rio | `https://infomoteles.cl/arica/motel-cabanas-del-rio/`
+- `T-028-180` `santiago` motel kalipso santiago | `https://infomoteles.cl/santiago/motel-kalipso-santiago/`
+- `T-028-181` `santiago` motel san francisco 22 santiago | `https://infomoteles.cl/santiago/motel-san-francisco-22-santiago/`
+- `T-028-182` `vina-del-mar` motel malibu vina del mar | `https://infomoteles.cl/vina-del-mar/motel-malibu-vina-del-mar/`
+- `T-028-183` `la-cisterna` motel los troncos la cisterna | `https://infomoteles.cl/la-cisterna/motel-los-troncos-la-cisterna/`
+- `T-028-186` `valparaiso` motel pasion portena valparaiso | `https://infomoteles.cl/valparaiso/motel-pasion-portena-valparaiso/`
+- `T-028-187` `la-cisterna` motel ensueno la cisterna | `https://infomoteles.cl/la-cisterna/motel-ensueno-la-cisterna/`
+- `T-028-188` `pudahuel` aerotel | `https://infomoteles.cl/pudahuel/aerotel/`
+- `T-028-189` `providencia` motel apolo providencia | `https://infomoteles.cl/providencia/motel-apolo-providencia/`
+- `T-028-192` `pudahuel` motel aerotel tradition pudahuel | `https://infomoteles.cl/pudahuel/motel-aerotel-tradition-pudahuel/`
+- `T-028-194` `concepcion` motel las torres coronel | `https://infomoteles.cl/concepcion/motel-las-torres-coronel/`
+- `T-028-195` `concepcion` motel el parque concepcion | `https://infomoteles.cl/concepcion/motel-el-parque-concepcion/`
+- `T-028-196` `san-bernardo` motel los naranjos san bernardo | `https://infomoteles.cl/san-bernardo/motel-los-naranjos-san-bernardo/`
+- `T-028-197` `san-bernardo` motel la piramide san bernardo | `https://infomoteles.cl/san-bernardo/motel-la-piramide-san-bernardo/`
+- `T-028-204` `santiago` motel miraflores santiago | `https://infomoteles.cl/santiago/motel-miraflores-santiago/`
+- `T-028-205` `vina-del-mar` hostal o pension motel adeux | `https://infomoteles.cl/vina-del-mar/hostal-o-pension-motel-adeux/`
+- `T-028-206` `talca` pacifico motel talca | `https://infomoteles.cl/talca/pacifico-motel-talca/`
+- `T-028-208` `concepcion` artis | `https://infomoteles.cl/concepcion/artis/`
+- `T-028-209` `punta-arenas` motel eros punta arenas | `https://infomoteles.cl/punta-arenas/motel-eros-punta-arenas/`
+- `T-028-210` `concepcion` motel fish concepcion | `https://infomoteles.cl/concepcion/motel-fish-concepcion/`
+- `T-028-212` `arica` motel eclipse de luna arica | `https://infomoteles.cl/arica/motel-eclipse-de-luna-arica/`
+- `T-028-213` `santiago` motel la cascada santiago | `https://infomoteles.cl/santiago/motel-la-cascada-santiago/`
+- `T-028-214` `la-florida` motel ipanema la florida | `https://infomoteles.cl/la-florida/motel-ipanema-la-florida/`
+- `T-028-215` `punta-arenas` motel borde rio punta arenas | `https://infomoteles.cl/punta-arenas/motel-borde-rio-punta-arenas/`
+- `T-028-216` `santiago` motel rosas 2222 santiago | `https://infomoteles.cl/santiago/motel-rosas-2222-santiago/`
+- `T-028-218` `coquimbo` motel los lagos coquimbo | `https://infomoteles.cl/coquimbo/motel-los-lagos-coquimbo/`
+- `T-028-219` `puerto-montt` motel cabanas kineco puerto montt | `https://infomoteles.cl/puerto-montt/motel-cabanas-kineco-puerto-montt/`
+- `T-028-220` `concepcion` bella luna | `https://infomoteles.cl/concepcion/bella-luna/`
+- `T-028-222` `santiago` hotel mediterraneo classic santiago | `https://infomoteles.cl/santiago/hotel-mediterraneo-classic-santiago/`
+- `T-028-223` `concepcion` caracol | `https://infomoteles.cl/concepcion/caracol/`
+- `T-028-226` `talca` motel luna y estrellas talca | `https://infomoteles.cl/talca/motel-luna-y-estrellas-talca/`
+- `T-028-228` `la-florida` motel los grillos la florida | `https://infomoteles.cl/la-florida/motel-los-grillos-la-florida/`
+- `T-028-229` `recoleta` motel kankun recoleta | `https://infomoteles.cl/recoleta/motel-kankun-recoleta/`
+- `T-028-230` `santiago` motel kaoma santiago | `https://infomoteles.cl/santiago/motel-kaoma-santiago/`
+- `T-028-231` `punta-arenas` bed and breakfast motel el dorado bed and breakfast | `https://infomoteles.cl/punta-arenas/bed-and-breakfast-motel-el-dorado-bed-and-breakfast/`
+- `T-028-233` `concepcion` motel vitara concepcion | `https://infomoteles.cl/concepcion/motel-vitara-concepcion/`
+- `T-028-234` `providencia` motel ah express providencia | `https://infomoteles.cl/providencia/motel-ah-express-providencia/`
+- `T-028-235` `concepcion` motel paradiso concepcion | `https://infomoteles.cl/concepcion/motel-paradiso-concepcion/`
+- `T-028-237` `la-florida` motel florida la florida | `https://infomoteles.cl/la-florida/motel-florida-la-florida/`
+- `T-028-238` `concepcion` sillon del amor en concepcion | `https://infomoteles.cl/concepcion/sillon-del-amor-en-concepcion/`
+- `T-028-239` `santiago` motel oasis santiago | `https://infomoteles.cl/santiago/motel-oasis-santiago/`
+- `T-028-240` `providencia` motel vertigo providencia | `https://infomoteles.cl/providencia/motel-vertigo-providencia/`
+- `T-028-241` `concepcion` moteles cerca del terminal collao | `https://infomoteles.cl/concepcion/moteles-cerca-del-terminal-collao/`
+- `T-028-242` `concepcion` motel manquimavida | `https://infomoteles.cl/concepcion/motel-manquimavida/`
+- `T-028-243` `quinta-normal` motel la casa blanca herrera quinta normal | `https://infomoteles.cl/quinta-normal/motel-la-casa-blanca-herrera-quinta-normal/`
+- `T-028-245` `valparaiso` motel los robles valparaiso | `https://infomoteles.cl/valparaiso/motel-los-robles-valparaiso/`
+- `T-028-246` `arica` motel cabanas yotahu arica | `https://infomoteles.cl/arica/motel-cabanas-yotahu-arica/`
+- `T-028-250` `santiago` motel luis xvi santiago | `https://infomoteles.cl/santiago/motel-luis-xvi-santiago/`
+- `T-028-251` `santiago` motel el marquez santiago | `https://infomoteles.cl/santiago/motel-el-marquez-santiago/`
+- `T-028-252` `punta-arenas` motel teja punta arenas moteles chile | `https://infomoteles.cl/punta-arenas/motel-teja-punta-arenas-moteles-chile/`
+- `T-028-254` `santiago` motel catedral santiago | `https://infomoteles.cl/santiago/motel-catedral-santiago/`
+- `T-028-255` `recoleta` motel mirage recoleta | `https://infomoteles.cl/recoleta/motel-mirage-recoleta/`
+- `T-028-256` `santiago` motel blue santiago | `https://infomoteles.cl/santiago/motel-blue-santiago/`
+- `T-028-257` `arica` motel status arica | `https://infomoteles.cl/arica/motel-status-arica/`
+- `T-028-258` `providencia` motel jardin providencia | `https://infomoteles.cl/providencia/motel-jardin-providencia/`
+- `T-028-259` `san-bernardo` motel la boheme san bernardo | `https://infomoteles.cl/san-bernardo/motel-la-boheme-san-bernardo/`
+- `T-028-261` `providencia` motel 10 de julio providencia | `https://infomoteles.cl/providencia/motel-10-de-julio-providencia/`
+- `T-028-262` `vina-del-mar` hostal o pension motel el sol vina del mar | `https://infomoteles.cl/vina-del-mar/hostal-o-pension-motel-el-sol-vina-del-mar/`
+- `T-028-265` `santiago` motel juntos santiago | `https://infomoteles.cl/santiago/motel-juntos-santiago/`
+- `T-028-266` `san-miguel` motel buzios san miguel | `https://infomoteles.cl/san-miguel/motel-buzios-san-miguel/`
+- `T-028-267` `quinta-normal` motel tu jardin secreto quinta normal | `https://infomoteles.cl/quinta-normal/motel-tu-jardin-secreto-quinta-normal/`
+- `T-028-268` `quinta-normal` motel la casa blanca carrascal quinta normal | `https://infomoteles.cl/quinta-normal/motel-la-casa-blanca-carrascal-quinta-normal/`
+- `T-028-270` `valparaiso` motel bleu nuit valparaiso | `https://infomoteles.cl/valparaiso/motel-bleu-nuit-valparaiso/`
+- `T-028-273` `santiago` motel echaurren santiago | `https://infomoteles.cl/santiago/motel-echaurren-santiago/`
+- `T-028-275` `providencia` motel le chateau providencia | `https://infomoteles.cl/providencia/motel-le-chateau-providencia/`
+- `T-028-276` `vina-del-mar` sunset motel vina del mar | `https://infomoteles.cl/vina-del-mar/sunset-motel-vina-del-mar/`
+- `T-028-278` `san-miguel` motel montavord san miguel | `https://infomoteles.cl/san-miguel/motel-montavord-san-miguel/`
+- `T-028-279` `santiago` motel love downtown santiago | `https://infomoteles.cl/santiago/motel-love-downtown-santiago/`
+- `T-028-282` `temuco` de drive motel temuco | `https://infomoteles.cl/temuco/de-drive-motel-temuco/`
+- `T-028-283` `santiago` motel mosqueto santiago | `https://infomoteles.cl/santiago/motel-mosqueto-santiago/`
+- `T-028-285` `santiago` motel la cle santiago | `https://infomoteles.cl/santiago/motel-la-cle-santiago/`
+- `T-028-287` `valparaiso` motel y hotel alhambra valparaiso | `https://infomoteles.cl/valparaiso/motel-y-hotel-alhambra-valparaiso/`
+- `T-028-288` `la-cisterna` motel continental la cisterna | `https://infomoteles.cl/la-cisterna/motel-continental-la-cisterna/`
+- `T-028-289` `santiago` motel sky santiago | `https://infomoteles.cl/santiago/motel-sky-santiago/`
+- `T-028-290` `santiago` motel tropical park santiago | `https://infomoteles.cl/santiago/motel-tropical-park-santiago/`
+- `T-028-291` `santiago` motel principe i santiago | `https://infomoteles.cl/santiago/motel-principe-i-santiago/`
+- `T-028-292` `providencia` motel cielo azul providencia | `https://infomoteles.cl/providencia/motel-cielo-azul-providencia/`
+- `T-028-293` `providencia` motel amor amor providencia | `https://infomoteles.cl/providencia/motel-amor-amor-providencia/`
+- `T-028-294` `santiago` motel mediterraneo classic santiago | `https://infomoteles.cl/santiago/motel-mediterraneo-classic-santiago/`
+- `T-028-295` `santiago` motel maravilla santiago | `https://infomoteles.cl/santiago/motel-maravilla-santiago/`
+- `T-028-296` `puerto-montt` bendito placer motel puerto montt | `https://infomoteles.cl/puerto-montt/bendito-placer-motel-puerto-montt/`
+- `T-028-298` `santiago` motel brasil 56 santiago | `https://infomoteles.cl/santiago/motel-brasil-56-santiago/`
+- `T-028-300` `quinta-normal` motel fiesta inn quinta normal | `https://infomoteles.cl/quinta-normal/motel-fiesta-inn-quinta-normal/`
+- `T-028-301` `vina-del-mar` bed breakfast motel agua santa vina del mar | `https://infomoteles.cl/vina-del-mar/bed-breakfast-motel-agua-santa-vina-del-mar/`
+- `T-028-302` `temuco` moteles lautaro temuco | `https://infomoteles.cl/temuco/moteles-lautaro-temuco/`
+- `T-028-303` `santiago` hotel motel centro santiago | `https://infomoteles.cl/santiago/hotel-motel-centro-santiago/`
+- `T-028-305` `santiago` motel las estrellas santiago | `https://infomoteles.cl/santiago/motel-las-estrellas-santiago/`
+- `T-028-306` `santiago` motel stgo city santiago | `https://infomoteles.cl/santiago/motel-stgo-city-santiago/`
+- `T-028-307` `recoleta` motel ocho art | `https://infomoteles.cl/recoleta/motel-ocho-art/`
+- `T-028-308` `santiago` hotel cumming santiago | `https://infomoteles.cl/santiago/hotel-cumming-santiago/`
+- `T-028-309` `valparaiso` motel boston valparaiso | `https://infomoteles.cl/valparaiso/motel-boston-valparaiso/`
+- `T-028-310` `santiago` paraiso azul santiago | `https://infomoteles.cl/santiago/paraiso-azul-santiago/`
+- `T-028-311` `punta-arenas` motel entre nos punta arenas | `https://infomoteles.cl/punta-arenas/motel-entre-nos-punta-arenas/`
+- `T-028-313` `concepcion` motel gold diseno | `https://infomoteles.cl/concepcion/motel-gold-diseno/`
+- `T-028-316` `temuco` motel inn temuco | `https://infomoteles.cl/temuco/motel-inn-temuco/`
+- `T-028-317` `temuco` motel del centro temuco temuco | `https://infomoteles.cl/temuco/motel-del-centro-temuco-temuco/`
+- `T-028-319` `santiago` hotel primavera santiago | `https://infomoteles.cl/santiago/hotel-primavera-santiago/`
+- `T-028-320` `santiago` motel molina santiago | `https://infomoteles.cl/santiago/motel-molina-santiago/`
+- `T-028-323` `temuco` motel mirage temuco | `https://infomoteles.cl/temuco/motel-mirage-temuco/`
+- `T-028-325` `santiago` motel moon santiago | `https://infomoteles.cl/santiago/motel-moon-santiago/`
+- `T-028-326` `puerto-montt` cabanas bosque verde puerto montt | `https://infomoteles.cl/puerto-montt/cabanas-bosque-verde-puerto-montt/`
+- `T-028-327` `santiago` motel maury santiago | `https://infomoteles.cl/santiago/motel-maury-santiago/`
+- `T-028-328` `santiago` motel colmena santiago | `https://infomoteles.cl/santiago/motel-colmena-santiago/`
+- `T-028-329` `santiago` motel callahan santiago | `https://infomoteles.cl/santiago/motel-callahan-santiago/`
+- `T-028-330` `santiago` motel forever santiago | `https://infomoteles.cl/santiago/motel-forever-santiago/`
+- `T-028-331` `santiago` motel tarapaca 1037 santiago | `https://infomoteles.cl/santiago/motel-tarapaca-1037-santiago/`
+- `T-028-332` `santiago` bellas artes palace | `https://infomoteles.cl/santiago/bellas-artes-palace/`
+- `T-028-333` `punta-arenas` motel la luna punta arenas | `https://infomoteles.cl/punta-arenas/motel-la-luna-punta-arenas/`
+- `T-028-336` `temuco` motel real norte temuco | `https://infomoteles.cl/temuco/motel-real-norte-temuco/`
+- `T-028-337` `vina-del-mar` lux suites | `https://infomoteles.cl/vina-del-mar/lux-suites/`
+- `T-028-338` `santiago` hotel di maurier santiago | `https://infomoteles.cl/santiago/hotel-di-maurier-santiago/`
+- `T-028-343` `san-miguel` motel camping san miguel | `https://infomoteles.cl/san-miguel/motel-camping-san-miguel/`
+- `T-028-347` `san-bernardo` motel toi et moi san bernardo | `https://infomoteles.cl/san-bernardo/motel-toi-et-moi-san-bernardo/`
+- `T-028-351` `santiago` motel pedregal azul santiago | `https://infomoteles.cl/santiago/motel-pedregal-azul-santiago/`
+- `T-028-352` `santiago` motel carmen santiago | `https://infomoteles.cl/santiago/motel-carmen-santiago/`
+- `T-028-353` `santiago` motel epsilon santiago | `https://infomoteles.cl/santiago/motel-epsilon-santiago/`
+- `T-028-354` `santiago` moteles para parejas en santiago de chile | `https://infomoteles.cl/santiago/moteles-para-parejas-en-santiago-de-chile/`
+- `T-028-355` `temuco` motel t temuco | `https://infomoteles.cl/temuco/motel-t-temuco/`
+- `T-028-357` `santiago` motel decameron suite santiago | `https://infomoteles.cl/santiago/motel-decameron-suite-santiago/`
+- `T-028-358` `santiago` motel orquidea santiago | `https://infomoteles.cl/santiago/motel-orquidea-santiago/`
+- `T-028-359` `santiago` hotel y motel toesca santiago | `https://infomoteles.cl/santiago/hotel-y-motel-toesca-santiago/`
+- `T-028-361` `santiago` hotel ah san pablo santiago | `https://infomoteles.cl/santiago/hotel-ah-san-pablo-santiago/`
+- `T-028-362` `santiago` motel toesca santiago | `https://infomoteles.cl/santiago/motel-toesca-santiago/`
+
+## Prioridad media
+- Total: 70
+
+- `T-028-007` `copiapo` motel los sauces | `https://infomoteles.cl/copiapo/motel-los-sauces`
+- `T-028-012` `los-angeles` motel cerro colorado | `https://infomoteles.cl/los-angeles/motel-cerro-colorado/`
+- `T-028-014` `copiapo` motel deja vu copiapo | `https://infomoteles.cl/copiapo/motel-deja-vu-copiapo/`
+- `T-028-018` `copiapo` motel los sauces | `https://infomoteles.cl/copiapo/motel-los-sauces/`
+- `T-028-019` `valdivia` motel arenal valdivia | `https://infomoteles.cl/valdivia/motel-arenal-valdivia/`
+- `T-028-022` `copiapo` motel san fernando copiapo | `https://infomoteles.cl/copiapo/motel-san-fernando-copiapo/`
+- `T-028-024` `osorno` motel tematico las quemas osorno | `https://infomoteles.cl/osorno/motel-tematico-las-quemas-osorno/`
+- `T-028-030` `san-vicente` motel 7 lunas san vicente de tagua tagua | `https://infomoteles.cl/san-vicente/motel-7-lunas-san-vicente-de-tagua-tagua/`
+- `T-028-031` `coronel` motel el prado coronel | `https://infomoteles.cl/coronel/motel-el-prado-coronel/`
+- `T-028-035` `san-antonio` motel piedradura san antonio | `https://infomoteles.cl/san-antonio/motel-piedradura-san-antonio/`
+- `T-028-038` `padre-hurtado` motel mi sol padre hurtado | `https://infomoteles.cl/padre-hurtado/motel-mi-sol-padre-hurtado/`
+- `T-028-044` `linares` motel 102 linares | `https://infomoteles.cl/linares/motel-102-linares/`
+- `T-028-052` `melipilla` motel la fuente del desire | `https://infomoteles.cl/melipilla/motel-la-fuente-del-desire/`
+- `T-028-060` `iquique` motel turqueza iquique | `https://infomoteles.cl/iquique/motel-turqueza-iquique/`
+- `T-028-061` `copiapo` motel el cielo | `https://infomoteles.cl/copiapo/motel-el-cielo/`
+- `T-028-063` `copiapo` motel la escala copiapo | `https://infomoteles.cl/copiapo/motel-la-escala-copiapo`
+- `T-028-064` `buin` motel inside buin | `https://infomoteles.cl/buin/motel-inside-buin/`
+- `T-028-065` `quilicura` motel jardin de eros quilicura | `https://infomoteles.cl/quilicura/motel-jardin-de-eros-quilicura/`
+- `T-028-071` `chillan` motel santorini | `https://infomoteles.cl/chillan/motel-santorini/`
+- `T-028-073` `san-vicente` motel rio secreto san vicente | `https://infomoteles.cl/san-vicente/motel-rio-secreto-san-vicente/`
+- `T-028-075` `melipilla` motel rouge | `https://infomoteles.cl/melipilla/motel-rouge/`
+- `T-028-079` `san-fernando` motel las arboledas san fernando | `https://infomoteles.cl/san-fernando/motel-las-arboledas-san-fernando/`
+- `T-028-082` `valdivia` motel habana valdivia | `https://infomoteles.cl/valdivia/motel-habana-valdivia/`
+- `T-028-088` `coronel` motel iguazu coronel | `https://infomoteles.cl/coronel/motel-iguazu-coronel/`
+- `T-028-089` `la-reina` motel villa alpina la reina | `https://infomoteles.cl/la-reina/motel-villa-alpina-la-reina/`
+- `T-028-090` `san-joaquin` motel monte bello san joaquin | `https://infomoteles.cl/san-joaquin/motel-monte-bello-san-joaquin/`
+- `T-028-094` `valdivia` motel los leones valdivia | `https://infomoteles.cl/valdivia/motel-los-leones-valdivia/`
+- `T-028-095` `quintero` motel aguas magicas quintero | `https://infomoteles.cl/quintero/motel-aguas-magicas-quintero/`
+- `T-028-101` `san-vicente` motel los naranjos san vicente | `https://infomoteles.cl/san-vicente/motel-los-naranjos-san-vicente/`
+- `T-028-104` `melipilla` motel jardin secreto melipilla | `https://infomoteles.cl/melipilla/motel-jardin-secreto-melipilla/`
+- `T-028-108` `osorno` motel luna de pilauco osorno | `https://infomoteles.cl/osorno/motel-luna-de-pilauco-osorno/`
+- `T-028-114` `san-joaquin` motel tikal san joaquin | `https://infomoteles.cl/san-joaquin/motel-tikal-san-joaquin/`
+- `T-028-118` `valdivia` motel los maitenes valdivia | `https://infomoteles.cl/valdivia/motel-los-maitenes-valdivia/`
+- `T-028-124` `san-fernando` motel via veneto san fernando | `https://infomoteles.cl/san-fernando/motel-via-veneto-san-fernando/`
+- `T-028-135` `padre-hurtado` motel las burgas padre hurtado | `https://infomoteles.cl/padre-hurtado/motel-las-burgas-padre-hurtado/`
+- `T-028-136` `los-angeles` motel las palmeras los angeles | `https://infomoteles.cl/los-angeles/motel-las-palmeras-los-angeles/`
+- `T-028-144` `melipilla` motel paso nevado melipilla | `https://infomoteles.cl/melipilla/motel-paso-nevado-melipilla/`
+- `T-028-146` `iquique` motel geicha iquique | `https://infomoteles.cl/iquique/motel-geicha-iquique/`
+- `T-028-147` `los-angeles` motel new dunas los angeles | `https://infomoteles.cl/los-angeles/motel-new-dunas-los-angeles/`
+- `T-028-149` `osorno` motel paraiso osorno | `https://infomoteles.cl/osorno/motel-paraiso-osorno/`
+- `T-028-157` `san-joaquin` motel cozumel san joaquin | `https://infomoteles.cl/san-joaquin/motel-cozumel-san-joaquin/`
+- `T-028-165` `san-antonio` motel moave san antonio | `https://infomoteles.cl/san-antonio/motel-moave-san-antonio/`
+- `T-028-184` `santa-cruz` motel luna nueva santa cruz | `https://infomoteles.cl/santa-cruz/motel-luna-nueva-santa-cruz/`
+- `T-028-185` `los-angeles` cabana suiza motel los angeles | `https://infomoteles.cl/los-angeles/cabana-suiza-motel-los-angeles/`
+- `T-028-191` `valdivia` moteles y cabanas arica valdivia | `https://infomoteles.cl/valdivia/moteles-y-cabanas-arica-valdivia/`
+- `T-028-193` `la-reina` motel internacional la reina | `https://infomoteles.cl/la-reina/motel-internacional-la-reina/`
+- `T-028-199` `rancagua` motel boutique | `https://infomoteles.cl/rancagua/motel-boutique/`
+- `T-028-201` `iquique` motel eclipse iquique | `https://infomoteles.cl/iquique/motel-eclipse-iquique/`
+- `T-028-202` `los-angeles` motel cantarrana los angeles | `https://infomoteles.cl/los-angeles/motel-cantarrana-los-angeles/`
+- `T-028-221` `san-joaquin` motel campanella san joaquin | `https://infomoteles.cl/san-joaquin/motel-campanella-san-joaquin/`
+- `T-028-225` `la-reina` motel los arbolitos la reina | `https://infomoteles.cl/la-reina/motel-los-arbolitos-la-reina/`
+- `T-028-227` `valdivia` motel las brujas valdivia | `https://infomoteles.cl/valdivia/motel-las-brujas-valdivia/`
+- `T-028-244` `la-reina` motel hosteria continental la reina | `https://infomoteles.cl/la-reina/motel-hosteria-continental-la-reina/`
+- `T-028-249` `la-reina` motel triangulo 3 la reina | `https://infomoteles.cl/la-reina/motel-triangulo-3-la-reina/`
+- `T-028-260` `osorno` motel cuore osorno | `https://infomoteles.cl/osorno/motel-cuore-osorno/`
+- `T-028-263` `coronel` motel arcoiris | `https://infomoteles.cl/coronel/motel-arcoiris/`
+- `T-028-264` `linares` motel valle luna linares | `https://infomoteles.cl/linares/motel-valle-luna-linares/`
+- `T-028-269` `copiapo` motel la escala copiapo | `https://infomoteles.cl/copiapo/motel-la-escala-copiapo/`
+- `T-028-271` `padre-hurtado` motel amapola padre hurtado | `https://infomoteles.cl/padre-hurtado/motel-amapola-padre-hurtado/`
+- `T-028-281` `linares` motel terranova linares | `https://infomoteles.cl/linares/motel-terranova-linares/`
+- `T-028-286` `independencia` motel inglaterra independencia | `https://infomoteles.cl/independencia/motel-inglaterra-independencia/`
+- `T-028-299` `los-angeles` motel cabana suiza los angeles | `https://infomoteles.cl/los-angeles/motel-cabana-suiza-los-angeles/`
+- `T-028-321` `iquique` motel cupido iquique motels chili | `https://infomoteles.cl/iquique/motel-cupido-iquique-motels-chili/`
+- `T-028-335` `osorno` motel cabanas los yaganes osorno | `https://infomoteles.cl/osorno/motel-cabanas-los-yaganes-osorno/`
+- `T-028-342` `estacion-central` tropical motel estacion central | `https://infomoteles.cl/estacion-central/tropical-motel-estacion-central/`
+- `T-028-344` `los-angeles` motel el amanecer los angeles | `https://infomoteles.cl/los-angeles/motel-el-amanecer-los-angeles/`
+- `T-028-345` `linares` motel eclipse de luna linares | `https://infomoteles.cl/linares/motel-eclipse-de-luna-linares/`
+- `T-028-348` `osorno` motel cupido osorno | `https://infomoteles.cl/osorno/motel-cupido-osorno/`
+- `T-028-356` `linares` motel de luxe linares linares | `https://infomoteles.cl/linares/motel-de-luxe-linares-linares/`
+- `T-028-360` `iquique` motel extasis iquique | `https://infomoteles.cl/iquique/motel-extasis-iquique/`
+
+## Prioridad baja
+- Total: 59
+
+- `T-028-002` `curico` motel y cabanas melosas rauco | `https://infomoteles.cl/curico/motel-y-cabanas-melosas-rauco/`
+- `T-028-003` `talcahuano` motel caudal talcahuano | `https://infomoteles.cl/talcahuano/motel-caudal-talcahuano/`
+- `T-028-005` `curico` motel el oasis de los niches | `https://infomoteles.cl/curico/motel-el-oasis-de-los-niches/`
+- `T-028-008` `curico` motel 84 | `https://infomoteles.cl/curico/motel-84/`
+- `T-028-009` `lampa` motel la montana lampa | `https://infomoteles.cl/lampa/motel-la-montana-lampa/`
+- `T-028-013` `curico` 725 motel curico | `https://infomoteles.cl/curico/725-motel-curico/`
+- `T-028-015` `curico` cabanas rauquen | `https://infomoteles.cl/curico/cabanas-rauquen/`
+- `T-028-020` `maule` motel lujuria maule | `https://infomoteles.cl/maule/motel-lujuria-maule/`
+- `T-028-034` `macul` motel los gatitos macul | `https://infomoteles.cl/macul/motel-los-gatitos-macul/`
+- `T-028-039` `tome` motel santo pecado tome | `https://infomoteles.cl/tome/motel-santo-pecado-tome/`
+- `T-028-042` `villa-alemana` motel lobo villa alemana | `https://infomoteles.cl/villa-alemana/motel-lobo-villa-alemana/`
+- `T-028-059` `zapallar` motel diamante | `https://infomoteles.cl/zapallar/motel-diamante/`
+- `T-028-107` `graneros` motel cabanas de turismo la compania graneros | `https://infomoteles.cl/graneros/motel-cabanas-de-turismo-la-compania-graneros/`
+- `T-028-109` `padre-las-casas` motel afrodita padre las casas | `https://infomoteles.cl/padre-las-casas/motel-afrodita-padre-las-casas/`
+- `T-028-112` `galvarino` moteles y cabanas don luis galvarino | `https://infomoteles.cl/galvarino/moteles-y-cabanas-don-luis-galvarino/`
+- `T-028-115` `curico` la merced suites | `https://infomoteles.cl/curico/la-merced-suites/`
+- `T-028-119` `limache` m motel limache limache | `https://infomoteles.cl/limache/m-motel-limache-limache/`
+- `T-028-128` `rengo` motel marga marga rengo | `https://infomoteles.cl/rengo/motel-marga-marga-rengo/`
+- `T-028-129` `la-serena` hotel premium la serena | `https://infomoteles.cl/la-serena/hotel-premium-la-serena/`
+- `T-028-132` `concon` motel ensueno concon | `https://infomoteles.cl/concon/motel-ensueno-concon/`
+- `T-028-143` `el-monte` motel quellon el monte | `https://infomoteles.cl/el-monte/motel-quellon-el-monte/`
+- `T-028-145` `chillan-viejo` motel nevada 3 | `https://infomoteles.cl/chillan-viejo/motel-nevada-3/`
+- `T-028-161` `san-felipe` residencial y motel palermo san felipe | `https://infomoteles.cl/san-felipe/residencial-y-motel-palermo-san-felipe/`
+- `T-028-169` `quilpue` motel la cuncuna quilpue | `https://infomoteles.cl/quilpue/motel-la-cuncuna-quilpue/`
+- `T-028-172` `la-granja` motel okoa la granja | `https://infomoteles.cl/la-granja/motel-okoa-la-granja/`
+- `T-028-179` `macul` motel cozumel vicuna macul | `https://infomoteles.cl/macul/motel-cozumel-vicuna-macul/`
+- `T-028-190` `quilpue` motel 2000 quilpue | `https://infomoteles.cl/quilpue/motel-2000-quilpue/`
+- `T-028-198` `victoria` motel belen victoria | `https://infomoteles.cl/victoria/motel-belen-victoria/`
+- `T-028-200` `la-pintana` motel maromas la pintana | `https://infomoteles.cl/la-pintana/motel-maromas-la-pintana/`
+- `T-028-203` `la-granja` motel el trauco the farm the farm | `https://infomoteles.cl/la-granja/motel-el-trauco-the-farm-the-farm/`
+- `T-028-207` `angol` motel nahuen angol | `https://infomoteles.cl/angol/motel-nahuen-angol/`
+- `T-028-211` `villa-alemana` motel tantra villa alemana | `https://infomoteles.cl/villa-alemana/motel-tantra-villa-alemana/`
+- `T-028-217` `quilpue` motel torreon quilpue | `https://infomoteles.cl/quilpue/motel-torreon-quilpue/`
+- `T-028-224` `los-andes` motel cau cau los andes | `https://infomoteles.cl/los-andes/motel-cau-cau-los-andes/`
+- `T-028-232` `molina` motel laguna verde | `https://infomoteles.cl/molina/motel-laguna-verde/`
+- `T-028-236` `chillan-viejo` motel danicalqui | `https://infomoteles.cl/chillan-viejo/motel-danicalqui/`
+- `T-028-247` `padre-las-casas` motel del sol pere las casas | `https://infomoteles.cl/padre-las-casas/motel-del-sol-pere-las-casas/`
+- `T-028-248` `penaflor` motel amapola penaflor | `https://infomoteles.cl/penaflor/motel-amapola-penaflor/`
+- `T-028-253` `la-pintana` motel las higueras | `https://infomoteles.cl/la-pintana/motel-las-higueras/`
+- `T-028-272` `curico` motel blu suites | `https://infomoteles.cl/curico/motel-blu-suites/`
+- `T-028-274` `chillan-viejo` motel venecia chillan viejo moteles chile | `https://infomoteles.cl/chillan-viejo/motel-venecia-chillan-viejo-moteles-chile/`
+- `T-028-277` `quilpue` motel los jardines quilpue | `https://infomoteles.cl/quilpue/motel-los-jardines-quilpue/`
+- `T-028-280` `padre-las-casas` motel mirage padre las casas | `https://infomoteles.cl/padre-las-casas/motel-mirage-padre-las-casas/`
+- `T-028-284` `calera-de-tango` motel la boheme calera de tango | `https://infomoteles.cl/calera-de-tango/motel-la-boheme-calera-de-tango/`
+- `T-028-297` `chimbarongo` motel los alamos chimbarongo | `https://infomoteles.cl/chimbarongo/motel-los-alamos-chimbarongo/`
+- `T-028-304` `angol` motel bellavista angol | `https://infomoteles.cl/angol/motel-bellavista-angol/`
+- `T-028-312` `longavi` motel la vie en rose longavi | `https://infomoteles.cl/longavi/motel-la-vie-en-rose-longavi/`
+- `T-028-314` `san-carlos` motel mediterraneo san carlos | `https://infomoteles.cl/san-carlos/motel-mediterraneo-san-carlos/`
+- `T-028-315` `preguntas-frecuentes` cuanto cuesta un motel en chile | `https://infomoteles.cl/preguntas-frecuentes/cuanto-cuesta-un-motel-en-chile/`
+- `T-028-318` `victoria` hosteria y moteles el bosque victoria | `https://infomoteles.cl/victoria/hosteria-y-moteles-el-bosque-victoria/`
+- `T-028-322` `quilpue` motel kinabowa quilpue | `https://infomoteles.cl/quilpue/motel-kinabowa-quilpue/`
+- `T-028-324` `concon` el duende de mantagua | `https://infomoteles.cl/concon/el-duende-de-mantagua/`
+- `T-028-334` `los-vilos` motel cabanas el marino los vilos | `https://infomoteles.cl/los-vilos/motel-cabanas-el-marino-los-vilos/`
+- `T-028-339` `mostazal` motel entre cerros mostazal | `https://infomoteles.cl/mostazal/motel-entre-cerros-mostazal/`
+- `T-028-340` `putaendo` motel tahai putaendo | `https://infomoteles.cl/putaendo/motel-tahai-putaendo/`
+- `T-028-341` `coyhaique` motel coyhaique coyhaique | `https://infomoteles.cl/coyhaique/motel-coyhaique-coyhaique/`
+- `T-028-346` `rengo` motel valle verde rengo | `https://infomoteles.cl/rengo/motel-valle-verde-rengo/`
+- `T-028-349` `rengo` motel las araucarias rengo | `https://infomoteles.cl/rengo/motel-las-araucarias-rengo/`
+- `T-028-350` `los-andes` motel zava los andes | `https://infomoteles.cl/los-andes/motel-zava-los-andes/`

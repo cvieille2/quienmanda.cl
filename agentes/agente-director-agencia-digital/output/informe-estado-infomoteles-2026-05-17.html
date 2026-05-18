@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe estado infomoteles.cl - 2026-05-17</title>
+  <style>
+    :root { --bg:#0b1220; --panel:#11192b; --muted:#94a3b8; --text:#e5e7eb; --line:#243047; --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444; --info:#60a5fa; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#0f172a; color:var(--text); line-height:1.5; }
+    .wrap { max-width:1200px; margin:0 auto; padding:32px 20px 56px; }
+    .hero { background:linear-gradient(135deg, #111827 0%, #0f172a 55%, #172554 100%); border:1px solid var(--line); border-radius:20px; padding:28px; margin-bottom:18px; }
+    h1 { margin:0 0 10px; font-size:30px; }
+    h2 { margin:0 0 12px; font-size:20px; }
+    h3 { margin:0 0 10px; font-size:16px; }
+    p { margin:0 0 12px; color:#dbe3f0; }
+    .meta { color:var(--muted); font-size:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin:16px 0 22px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    .kpi { font-size:28px; font-weight:700; margin:0; }
+    .label { color:var(--muted); font-size:13px; margin-top:4px; }
+    .section { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:18px; margin-bottom:16px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { padding:10px 8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#cbd5e1; font-weight:700; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+    .ok { background:rgba(34,197,94,.15); color:#86efac; }
+    .warn { background:rgba(245,158,11,.15); color:#fcd34d; }
+    .bad { background:rgba(239,68,68,.15); color:#fca5a5; }
+    .info { background:rgba(96,165,250,.15); color:#bfdbfe; }
+    ul { margin:0; padding-left:18px; }
+    li { margin:0 0 8px; }
+    code { background:#0b1220; border:1px solid #243047; padding:2px 6px; border-radius:6px; color:#dbeafe; }
+    .small { font-size:13px; color:var(--muted); }
+    .note { background:#0b1220; border-left:4px solid var(--info); padding:12px 14px; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Informe de estado de <code>infomoteles.cl</code></h1>
+      <p>Comparacion entre el estado actual del sitio, el backlog abierto y las tareas cerradas.</p>
+      <p class="meta">Fuentes: export de Search Console, <code>tareas/completadas.json</code>, <code>tareas/pendientes.json</code>, snippets PHP del repositorio y documentos de los agentes.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <p class="kpi">664</p>
+        <div class="label">clics totales visibles por dispositivo</div>
+      </div>
+      <div class="card">
+        <p class="kpi">95.6%</p>
+        <div class="label">de los clics vienen desde mobile</div>
+      </div>
+      <div class="card">
+        <p class="kpi">40.41</p>
+        <div class="label">posicion promedio de la home</div>
+      </div>
+      <div class="card">
+        <p class="kpi">9 / 24</p>
+        <div class="label">tareas base cerradas segun el registro historico</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Resumen ejecutivo</h2>
+      <ul>
+        <li>El sitio ya capta demanda real en fichas de motel y ciudades concretas, pero la ruta comercial central sigue debil.</li>
+        <li>La home casi no aporta: 1 clic, 34 impresiones y posicion media 40.41.</li>
+        <li>Hay piezas tecnicas y de contenido creadas en el repo, pero no aparece una implementacion viva de <code>/para-moteles/</code> ni tracking publico verificable en el codigo activo.</li>
+        <li>El backlog actual confirma que lo critico sigue siendo conversion, enlazado interno, tracking y venta, no mas documentos.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Estado actual del sitio</h2>
+      <table>
+        <tr>
+          <th>Area</th>
+          <th>Lectura</th>
+          <th>Estado</th>
+        </tr>
+        <tr>
+          <td>SEO / traccion</td>
+          <td>Las URLs de fichas ganan la mayor parte de los clics. Ejemplos: <code>/motel-diamante-curico/</code> (67 clics, pos. 1.89), <code>/antofagasta/motel-serrano-antofagasta/</code> (52 clics, pos. 3.31) y <code>/calama/motel-euro-calama/</code> (34 clics, pos. 3.95).</td>
+          <td><span class="badge ok">Fuerte en long tail</span></td>
+        </tr>
+        <tr>
+          <td>Home</td>
+          <td>La portada no esta funcionando como entrada comercial: 1 clic, CTR 2.94%, posicion 40.41.</td>
+          <td><span class="badge bad">Debil</span></td>
+        </tr>
+        <tr>
+          <td>Movil vs desktop</td>
+          <td>Mobile concentra 635 clics y 20,709 impresiones; desktop apenas 29 clics. El sitio ya es mobile-first en trafico, no necesariamente en conversion.</td>
+          <td><span class="badge info">Dependencia mobile</span></td>
+        </tr>
+        <tr>
+          <td>Ruta comercial</td>
+          <td>No se encontro una implementacion viva de <code>/para-moteles/</code> en el arbol activo, aunque el copy y el plan existen en documentos.</td>
+          <td><span class="badge warn">Pendiente</span></td>
+        </tr>
+        <tr>
+          <td>Base tecnica</td>
+          <td>Existen snippets para <code>ficha_motel</code>, JSON-LD, shortcode y render de template, pero el tema activo solo muestra ajustes menores en <code>orbital-child/functions.php</code>.</td>
+          <td><span class="badge warn">Parcial</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Señales de Search Console</h2>
+      <table>
+        <tr>
+          <th>Hallazgo</th>
+          <th>Dato</th>
+          <th>Interpretacion</th>
+        </tr>
+        <tr>
+          <td>Mejor pagina por clics</td>
+          <td><code>/motel-diamante-curico/</code> con 67 clics y 958 impresiones.</td>
+          <td>Las fichas transaccionales ya atraen trafico util.</td>
+        </tr>
+        <tr>
+          <td>Pares con mucho potencial</td>
+          <td><code>/copiapo/motel-los-sauces</code> tiene 1263 impresiones y CTR 1.5%; <code>/la-florida/motel-la-giralda</code> 519 impresiones y CTR 0.58%.</td>
+          <td>Hay espacio claro para reescritura de titles/meta y mejor CTA.</td>
+        </tr>
+        <tr>
+          <td>Queries comerciales</td>
+          <td>Se repiten consultas como <code>motel euro calama</code>, <code>hotel serrano antofagasta</code>, <code>motel diamante</code> y variantes locales.</td>
+          <td>La demanda existe por marca + ciudad + precio.</td>
+        </tr>
+        <tr>
+          <td>Desbalance de dispositivo</td>
+          <td>95.6% del clic se origina en mobile.</td>
+          <td>La conversion debe priorizar pantallas chicas y velocidad real.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Comparacion con tareas abiertas y cerradas</h2>
+      <table>
+        <tr>
+          <th>Tarea</th>
+          <th>Registro cerrado</th>
+          <th>Registro actual</th>
+          <th>Lectura</th>
+        </tr>
+        <tr>
+          <td>T-001</td>
+          <td>Cerrada en <code>completadas.json</code></td>
+          <td>En curso en <code>pendientes.json</code></td>
+          <td><span class="badge warn">Inconsistente</span> Ya hay data de prospectos en Search Console, pero el backlog no lo da por terminado.</td>
+        </tr>
+        <tr>
+          <td>T-002</td>
+          <td>Cerrada</td>
+          <td>Completada</td>
+          <td><span class="badge ok">Cerrada</span> La estrategia prioriza caja y foco comercial.</td>
+        </tr>
+        <tr>
+          <td>T-003</td>
+          <td>Cerrada</td>
+          <td>Completada</td>
+          <td><span class="badge ok">Cerrada</span> Kit de ventas disponible.</td>
+        </tr>
+        <tr>
+          <td>T-004</td>
+          <td>Cerrada</td>
+          <td>Completada</td>
+          <td><span class="badge ok">Cerrada</span> Copy comercial definido, pero aun no se ve publicado como pagina viva.</td>
+        </tr>
+        <tr>
+          <td>T-005</td>
+          <td>Cerrada en el registro historico</td>
+          <td>En curso</td>
+          <td><span class="badge warn">Abierta / inconsistente</span> El CRO sigue pendiente de materializarse en la ruta comercial.</td>
+        </tr>
+        <tr>
+          <td>T-006</td>
+          <td>Cerrada</td>
+          <td>Completada</td>
+          <td><span class="badge ok">Cerrada</span> El bloque visual existe en documentos y templates.</td>
+        </tr>
+        <tr>
+          <td>T-007</td>
+          <td>Cerrada</td>
+          <td>Completada</td>
+          <td><span class="badge ok">Cerrada</span> Hay base tecnica para CPT, templates y JSON-LD.</td>
+        </tr>
+        <tr>
+          <td>T-008</td>
+          <td>Cerrada</td>
+          <td>Completada</td>
+          <td><span class="badge ok">Cerrada</span> El plan de 7 dias ya esta consolidado.</td>
+        </tr>
+        <tr>
+          <td>T-009</td>
+          <td>Cerrada en el registro historico</td>
+          <td>En curso</td>
+          <td><span class="badge warn">Abierta / inconsistente</span> Falta validar el modelo financiero con caja real.</td>
+        </tr>
+      </table>
+      <p class="small">Nota: <code>completadas.json</code> y <code>pendientes.json</code> se pisan en T-001 a T-009. El sistema de estado necesita reconciliacion.</p>
+    </div>
+
+    <div class="section">
+      <h2>Backlog que sigue impactando el sitio</h2>
+      <ul>
+        <li><code>T-018</code> cerrar <code>/para-moteles/</code> con copy, prueba social y CTA.</li>
+        <li><code>T-019</code> publicar tracking, redirecciones 301 y validacion mobile.</li>
+        <li><code>T-020</code> auditar hubs, huérfanas y 301 para empujar autoridad a paginas comerciales.</li>
+        <li><code>T-021</code> cerrar primera tanda vendible y primer cobro.</li>
+        <li><code>T-022</code> revalidar la ruta a $1M con escenarios de caja reales.</li>
+        <li><code>T-023</code> recortar ruido y priorizar caja sobre documentos.</li>
+        <li><code>T-024</code> cerrar pipeline de primeras 20 conversaciones con moteles.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Conclusión</h2>
+      <div class="note">
+        El sitio ya tiene traccion SEO real en fichas concretas, pero el frente comercial principal aun no esta cerrado. La prioridad inmediata no es crear mas contenido: es publicar <code>/para-moteles/</code>, medir conversion, conectar enlazado interno y convertir el trafico existente en ventas.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

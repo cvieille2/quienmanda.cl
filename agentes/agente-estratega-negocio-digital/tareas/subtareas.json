@@ -1,0 +1,43 @@
+{
+  "agente": "agente-estratega-negocio-digital",
+  "tarea_principal": "T-002",
+  "subtareas": [
+    {
+      "id": "T-002-ST-01",
+      "titulo": "Evaluar modelo de ingresos: fichas basicas vs premium vs setup",
+      "estado": "completada",
+      "entregable": "Modelo priorizado: Premium primero, Basico segundo, Setup tercero"
+    },
+    {
+      "id": "T-002-ST-02",
+      "titulo": "Calcular metas de contacto para alcanzar $1.000.000/mes",
+      "estado": "completada",
+      "entregable": "92 contactos necesarios, 23 clientes activos"
+    },
+    {
+      "id": "T-002-ST-03",
+      "titulo": "Rankear primeros 10 moteles a contactar con orden y tono de venta",
+      "estado": "completada",
+      "entregable": "Ranking: La Cascada #1, Miraflores #2, Deja Vu #3, etc."
+    },
+    {
+      "id": "T-002-ST-04",
+      "titulo": "Definir ciudades a atacar primero y orden de expansion",
+      "estado": "completada",
+      "entregable": "6 grupos de ciudades priorizadas"
+    },
+    {
+      "id": "T-002-ST-05",
+      "titulo": "Documentar que NO hacer (anti-prioridades)",
+      "estado": "completada",
+      "entregable": "6 antiprioridades: no pautar, no crear paginas, no contratar"
+    },
+    {
+      "id": "T-002-ST-06",
+      "titulo": "Hacer analisis de competencia directa (otros directorios de moteles)",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Identificar si hay otros directorios de moteles en Chile compitiendo, que precios tienen"
+    }
+  ]
+}

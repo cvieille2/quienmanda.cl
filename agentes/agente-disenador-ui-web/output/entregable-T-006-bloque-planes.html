@@ -1,0 +1,349 @@
+<!-- 
+  Entregable T-006: Bloque de Planes HTML — infomoteles.cl
+  Diseñador: agente-disenador-ui-web
+  Fecha: 2026-05-16
+  Compatible con: WordPress (insertar vía HTML widget o bloque personalizado)
+  Colores: #e74c3c (rojo primary), #2c3e50 (dark), #ecf0f1 (bg light)
+-->
+
+<style>
+  /* móvil primero */
+  .im-planes {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+
+  .im-planes-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .im-planes-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+
+  .im-planes-header p {
+    font-size: 1rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .im-planes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .im-plan-card {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .im-plan-card:hover {
+    border-color: #e74c3c;
+    box-shadow: 0 4px 20px rgba(231, 76, 60, 0.12);
+  }
+
+  .im-plan-card.featured {
+    border-color: #e74c3c;
+    border-width: 2px;
+    background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+  }
+
+  .im-plan-card.featured .im-plan-badge {
+    background: #e74c3c;
+    color: #fff;
+  }
+
+  .im-plan-badge {
+    display: inline-block;
+    background: #ecf0f1;
+    color: #2c3e50;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+  }
+
+  .im-plan-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+  }
+
+  .im-plan-sub {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 1rem;
+  }
+
+  .im-plan-price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+  }
+
+  .im-plan-price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #777;
+  }
+
+  .im-plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0;
+  }
+
+  .im-plan-features li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .im-plan-features li::before {
+    content: "✓";
+    color: #27ae60;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .im-plan-features li.na::before {
+    content: "✗";
+    color: #ccc;
+  }
+
+  .im-plan-features li.na {
+    color: #bbb;
+  }
+
+  .im-plan-cta {
+    display: block;
+    width: 100%;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .im-plan-cta.primary {
+    background: #e74c3c;
+    color: #fff;
+  }
+
+  .im-plan-cta.primary:hover {
+    background: #c0392b;
+  }
+
+  .im-plan-cta.secondary {
+    background: #2c3e50;
+    color: #fff;
+  }
+
+  .im-plan-cta.secondary:hover {
+    background: #1a252f;
+  }
+
+  .im-plan-cta.outline {
+    background: transparent;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+  }
+
+  .im-plan-cta.outline:hover {
+    background: #e74c3c;
+    color: #fff;
+  }
+
+  .im-plan-cta-small {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.4rem;
+    text-decoration: none;
+  }
+
+  .im-sec-social {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+    background: #ecf0f1;
+    border-radius: 12px;
+  }
+
+  .im-sec-social p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+
+  .im-sec-social strong {
+    color: #e74c3c;
+    font-size: 1.5rem;
+  }
+
+  /* --- beneficicos con iconos --- */
+  .im-beneficios {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0;
+  }
+
+  .im-beneficio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .im-beneficio-icon {
+    width: 40px;
+    height: 40px;
+    background: #fff5f5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  /* --- escritorio ( > 768px) --- */
+  @media (min-width: 768px) {
+    .im-planes-grid {
+      flex-direction: row;
+    }
+
+    .im-plan-card {
+      flex: 1;
+    }
+
+    .im-beneficios {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+
+<div class="im-planes">
+  <div class="im-planes-header">
+    <h2>Tres formas de hacer que más parejas te encuentren</h2>
+    <p>InfoMoteles.cl recibe miles de visitas al mes. Elige cómo quieres aparecer.</p>
+  </div>
+
+  <!-- bloque de planes -->
+  <div class="im-planes-grid">
+
+    <!-- Básico -->
+    <div class="im-plan-card">
+      <div class="im-plan-badge">Básico</div>
+      <div class="im-plan-name">Plan Básico</div>
+      <div class="im-plan-sub">Perfecto para empezar</div>
+      <div class="im-plan-price">$29.990 <span>/mes</span></div>
+      <ul class="im-plan-features">
+        <li>Ficha destacada en tu ciudad</li>
+        <li>Teléfono y dirección visibles</li>
+        <li>Enlace directo a tu WhatsApp</li>
+        <li>Sin permanencia mínima</li>
+        <li class="na">Fotos profesionales</li>
+        <li class="na">Enlace a tu web</li>
+        <li class="na">Badge "Destacado"</li>
+      </ul>
+      <a href="#" class="im-plan-cta primary">Empezar por $29.990</a>
+      <a href="#" class="im-plan-cta-small">Cancela cuando quieras</a>
+    </div>
+
+    <!-- Premium (destacado) -->
+    <div class="im-plan-card featured">
+      <div class="im-plan-badge">Más popular</div>
+      <div class="im-plan-name">Plan Premium</div>
+      <div class="im-plan-sub">La mejor vitrina para tu motel</div>
+      <div class="im-plan-price">$59.990 <span>/mes</span></div>
+      <ul class="im-plan-features">
+        <li>Ficha destacada en tu ciudad</li>
+        <li>Teléfono y dirección visibles</li>
+        <li>Enlace directo a tu WhatsApp</li>
+        <li>5 fotos profesionales</li>
+        <li>Enlace directo a tu web</li>
+        <li>Badge "DESTACADO"</li>
+        <li>Prioridad en búsquedas</li>
+      </ul>
+      <a href="#" class="im-plan-cta secondary">Quiero ser Destacado</a>
+      <a href="#" class="im-plan-cta-small">Sin permanencia mínima</a>
+    </div>
+
+    <!-- Setup -->
+    <div class="im-plan-card">
+      <div class="im-plan-badge">Extra</div>
+      <div class="im-plan-name">Setup Profesional</div>
+      <div class="im-plan-sub">Agrega a cualquier plan</div>
+      <div class="im-plan-price">$120.000 <span>único</span></div>
+      <ul class="im-plan-features">
+        <li>Sesión de fotos profesional</li>
+        <li>Redacción de reseña descriptiva</li>
+        <li>Optimización de tu ficha</li>
+        <li>Se paga una vez</li>
+      </ul>
+      <a href="#" class="im-plan-cta outline">Agregar Setup</a>
+    </div>
+  </div>
+
+  <!-- sección de beneficios con iconos -->
+  <div class="im-beneficios">
+    <div class="im-beneficio-item">
+      <div class="im-beneficio-icon">📱</div>
+      <div>Las parejas te contactan directo por WhatsApp</div>
+    </div>
+    <div class="im-beneficio-item">
+      <div class="im-beneficio-icon">📸</div>
+      <div>Muestras tus habitaciones con fotos reales</div>
+    </div>
+    <div class="im-beneficio-item">
+      <div class="im-beneficio-icon">📊</div>
+      <div>Sabes cuántas personas ven tu ficha cada mes</div>
+    </div>
+    <div class="im-beneficio-item">
+      <div class="im-beneficio-icon">⏱️</div>
+      <div>Tu ficha está activa en menos de 24 horas</div>
+    </div>
+    <div class="im-beneficio-item">
+      <div class="im-beneficio-icon">🔝</div>
+      <div>Apareces primero en tu ciudad</div>
+    </div>
+    <div class="im-beneficio-item">
+      <div class="im-beneficio-icon">🚫</div>
+      <div>Sin permanencia. Cancela cuando quieras</div>
+    </div>
+  </div>
+
+  <!-- sección de prueba social -->
+  <div class="im-sec-social">
+    <p>Actualmente tenemos <strong>X</strong> moteles destacados en todo Chile</p>
+    <p>Nuestros moteleros reportan en promedio nuevas consultas desde la primera semana.</p>
+  </div>
+</div>

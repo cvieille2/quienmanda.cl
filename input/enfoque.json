@@ -1,0 +1,698 @@
+{
+  "staff_skills": {
+    "agente_director_agencia_digital": [
+      {
+        "skill": "brainstorming",
+        "repo": "obra/superpowers",
+        "skills_sh_url": "https://www.skills.sh/obra/superpowers/brainstorming",
+        "install": "npx skills add https://github.com/obra/superpowers --skill brainstorming"
+      },
+      {
+        "skill": "writing-plans",
+        "repo": "obra/superpowers",
+        "skills_sh_url": "https://www.skills.sh/obra/superpowers/writing-plans",
+        "install": "npx skills add https://github.com/obra/superpowers --skill writing-plans"
+      },
+      {
+        "skill": "executing-plans",
+        "repo": "obra/superpowers",
+        "skills_sh_url": "https://www.skills.sh/obra/superpowers/executing-plans",
+        "install": "npx skills add https://github.com/obra/superpowers --skill executing-plans"
+      },
+      {
+        "skill": "verification-before-completion",
+        "repo": "obra/superpowers",
+        "skills_sh_url": "https://www.skills.sh/obra/superpowers/verification-before-completion",
+        "install": "npx skills add https://github.com/obra/superpowers --skill verification-before-completion"
+      },
+      {
+        "skill": "dispatching-parallel-agents",
+        "repo": "obra/superpowers",
+        "skills_sh_url": "https://www.skills.sh/obra/superpowers/dispatching-parallel-agents",
+        "install": "npx skills add https://github.com/obra/superpowers --skill dispatching-parallel-agents"
+      },
+      {
+        "skill": "subagent-driven-development",
+        "repo": "obra/superpowers",
+        "skills_sh_url": "https://www.skills.sh/obra/superpowers/subagent-driven-development",
+        "install": "npx skills add https://github.com/obra/superpowers --skill subagent-driven-development"
+      },
+      {
+        "skill": "pricing-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/pricing-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill pricing-strategy"
+      },
+      {
+        "skill": "revops",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/revops",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill revops"
+      },
+      {
+        "skill": "product-marketing-context",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/product-marketing-context",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill product-marketing-context"
+      },
+      {
+        "skill": "sales-enablement",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/sales-enablement",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill sales-enablement"
+      }
+    ],
+    "agente_consultor_seo_monetizacion": [
+      {
+        "skill": "seo-audit",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/seo-audit",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill seo-audit"
+      },
+      {
+        "skill": "programmatic-seo",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/programmatic-seo",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill programmatic-seo"
+      },
+      {
+        "skill": "ai-seo",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/ai-seo",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ai-seo"
+      },
+      {
+        "skill": "content-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/content-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill content-strategy"
+      },
+      {
+        "skill": "analytics-tracking",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/analytics-tracking",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill analytics-tracking"
+      },
+      {
+        "skill": "competitor-alternatives",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/competitor-alternatives",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill competitor-alternatives"
+      },
+      {
+        "skill": "free-tool-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/free-tool-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill free-tool-strategy"
+      },
+      {
+        "skill": "site-architecture",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/site-architecture",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill site-architecture"
+      },
+      {
+        "skill": "audit-website",
+        "repo": "squirrelscan/skills",
+        "skills_sh_url": "https://www.skills.sh/squirrelscan/skills/audit-website",
+        "install": "npx skills add https://github.com/squirrelscan/skills --skill audit-website"
+      }
+    ],
+    "agente_mentor_ventas_b2b": [
+      {
+        "skill": "cold-email",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/cold-email",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill cold-email"
+      },
+      {
+        "skill": "email-sequence",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/email-sequence",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill email-sequence"
+      },
+      {
+        "skill": "sales-enablement",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/sales-enablement",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill sales-enablement"
+      },
+      {
+        "skill": "pricing-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/pricing-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill pricing-strategy"
+      },
+      {
+        "skill": "product-marketing-context",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/product-marketing-context",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill product-marketing-context"
+      },
+      {
+        "skill": "marketing-psychology",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/marketing-psychology",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill marketing-psychology"
+      },
+      {
+        "skill": "lead-magnets",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/lead-magnets",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill lead-magnets"
+      },
+      {
+        "skill": "revops",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/revops",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill revops"
+      },
+      {
+        "skill": "ad-creative",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/ad-creative",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ad-creative"
+      }
+    ],
+    "agente_copywriter_conversion": [
+      {
+        "skill": "copywriting",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/copywriting",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill copywriting"
+      },
+      {
+        "skill": "copy-editing",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/copy-editing",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill copy-editing"
+      },
+      {
+        "skill": "marketing-psychology",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/marketing-psychology",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill marketing-psychology"
+      },
+      {
+        "skill": "content-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/content-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill content-strategy"
+      },
+      {
+        "skill": "social-content",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/social-content",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill social-content"
+      },
+      {
+        "skill": "ad-creative",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/ad-creative",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ad-creative"
+      },
+      {
+        "skill": "lead-magnets",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/lead-magnets",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill lead-magnets"
+      },
+      {
+        "skill": "form-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/form-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill form-cro"
+      },
+      {
+        "skill": "popup-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/popup-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill popup-cro"
+      }
+    ],
+    "agente_analista_web_cro": [
+      {
+        "skill": "audit-website",
+        "repo": "squirrelscan/skills",
+        "skills_sh_url": "https://www.skills.sh/squirrelscan/skills/audit-website",
+        "install": "npx skills add https://github.com/squirrelscan/skills --skill audit-website"
+      },
+      {
+        "skill": "analytics-tracking",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/analytics-tracking",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill analytics-tracking"
+      },
+      {
+        "skill": "form-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/form-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill form-cro"
+      },
+      {
+        "skill": "onboarding-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/onboarding-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill onboarding-cro"
+      },
+      {
+        "skill": "popup-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/popup-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill popup-cro"
+      },
+      {
+        "skill": "paywall-upgrade-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/paywall-upgrade-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill paywall-upgrade-cro"
+      },
+      {
+        "skill": "webapp-testing",
+        "repo": "anthropics/skills",
+        "skills_sh_url": "https://www.skills.sh/anthropics/skills/webapp-testing",
+        "install": "npx skills add https://github.com/anthropics/skills --skill webapp-testing"
+      },
+      {
+        "skill": "browser-use",
+        "repo": "browser-use/browser-use",
+        "skills_sh_url": "https://www.skills.sh/browser-use/browser-use/browser-use",
+        "install": "npx skills add https://github.com/browser-use/browser-use --skill browser-use"
+      }
+    ],
+    "agente_disenador_ui_web": [
+      {
+        "skill": "frontend-design",
+        "repo": "anthropics/skills",
+        "skills_sh_url": "https://www.skills.sh/anthropics/skills/frontend-design",
+        "install": "npx skills add https://github.com/anthropics/skills --skill frontend-design"
+      },
+      {
+        "skill": "web-design-guidelines",
+        "repo": "vercel-labs/agent-skills",
+        "skills_sh_url": "https://www.skills.sh/vercel-labs/agent-skills/web-design-guidelines",
+        "install": "npx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines"
+      },
+      {
+        "skill": "ui-ux-pro-max",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+        "skills_sh_url": "https://www.skills.sh/nextlevelbuilder/ui-ux-pro-max-skill/ui-ux-pro-max",
+        "install": "npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max"
+      },
+      {
+        "skill": "high-end-visual-design",
+        "repo": "leonxlnx/taste-skill",
+        "skills_sh_url": "https://www.skills.sh/leonxlnx/taste-skill/high-end-visual-design",
+        "install": "npx skills add https://github.com/leonxlnx/taste-skill --skill high-end-visual-design"
+      },
+      {
+        "skill": "design-taste-frontend",
+        "repo": "leonxlnx/taste-skill",
+        "skills_sh_url": "https://www.skills.sh/leonxlnx/taste-skill/design-taste-frontend",
+        "install": "npx skills add https://github.com/leonxlnx/taste-skill --skill design-taste-frontend"
+      },
+      {
+        "skill": "redesign-existing-projects",
+        "repo": "leonxlnx/taste-skill",
+        "skills_sh_url": "https://www.skills.sh/leonxlnx/taste-skill/redesign-existing-projects",
+        "install": "npx skills add https://github.com/leonxlnx/taste-skill --skill redesign-existing-projects"
+      },
+      {
+        "skill": "brand-guidelines",
+        "repo": "anthropics/skills",
+        "skills_sh_url": "https://www.skills.sh/anthropics/skills/brand-guidelines",
+        "install": "npx skills add https://github.com/anthropics/skills --skill brand-guidelines"
+      },
+      {
+        "skill": "canvas-design",
+        "repo": "anthropics/skills",
+        "skills_sh_url": "https://www.skills.sh/anthropics/skills/canvas-design",
+        "install": "npx skills add https://github.com/anthropics/skills --skill canvas-design"
+      },
+      {
+        "skill": "minimalist-ui",
+        "repo": "leonxlnx/taste-skill",
+        "skills_sh_url": "https://www.skills.sh/leonxlnx/taste-skill/minimalist-ui",
+        "install": "npx skills add https://github.com/leonxlnx/taste-skill --skill minimalist-ui"
+      }
+    ],
+    "agente_tecnico_wordpress_automatizacion": [
+      {
+        "skill": "develop-userscripts",
+        "repo": "xixu-me/skills",
+        "skills_sh_url": "https://www.skills.sh/xixu-me/skills/develop-userscripts",
+        "install": "npx skills add https://github.com/xixu-me/skills --skill develop-userscripts"
+      },
+      {
+        "skill": "github-actions-docs",
+        "repo": "xixu-me/skills",
+        "skills_sh_url": "https://www.skills.sh/xixu-me/skills/github-actions-docs",
+        "install": "npx skills add https://github.com/xixu-me/skills --skill github-actions-docs"
+      },
+      {
+        "skill": "systematic-debugging",
+        "repo": "obra/superpowers",
+        "skills_sh_url": "https://www.skills.sh/obra/superpowers/systematic-debugging",
+        "install": "npx skills add https://github.com/obra/superpowers --skill systematic-debugging"
+      },
+      {
+        "skill": "diagnose",
+        "repo": "mattpocock/skills",
+        "skills_sh_url": "https://www.skills.sh/mattpocock/skills/diagnose",
+        "install": "npx skills add https://github.com/mattpocock/skills --skill diagnose"
+      },
+      {
+        "skill": "improve-codebase-architecture",
+        "repo": "mattpocock/skills",
+        "skills_sh_url": "https://www.skills.sh/mattpocock/skills/improve-codebase-architecture",
+        "install": "npx skills add https://github.com/mattpocock/skills --skill improve-codebase-architecture"
+      },
+      {
+        "skill": "webapp-testing",
+        "repo": "anthropics/skills",
+        "skills_sh_url": "https://www.skills.sh/anthropics/skills/webapp-testing",
+        "install": "npx skills add https://github.com/anthropics/skills --skill webapp-testing"
+      },
+      {
+        "skill": "browser-use",
+        "repo": "browser-use/browser-use",
+        "skills_sh_url": "https://www.skills.sh/browser-use/browser-use/browser-use",
+        "install": "npx skills add https://github.com/browser-use/browser-use --skill browser-use"
+      },
+      {
+        "skill": "firecrawl",
+        "repo": "firecrawl/cli",
+        "skills_sh_url": "https://www.skills.sh/firecrawl/cli/firecrawl",
+        "install": "npx skills add https://github.com/firecrawl/cli --skill firecrawl"
+      },
+      {
+        "skill": "firecrawl-scrape",
+        "repo": "firecrawl/cli",
+        "skills_sh_url": "https://www.skills.sh/firecrawl/cli/firecrawl-scrape",
+        "install": "npx skills add https://github.com/firecrawl/cli --skill firecrawl-scrape"
+      },
+      {
+        "skill": "firecrawl-search",
+        "repo": "firecrawl/cli",
+        "skills_sh_url": "https://www.skills.sh/firecrawl/cli/firecrawl-search",
+        "install": "npx skills add https://github.com/firecrawl/cli --skill firecrawl-search"
+      },
+      {
+        "skill": "firecrawl-crawl",
+        "repo": "firecrawl/cli",
+        "skills_sh_url": "https://www.skills.sh/firecrawl/cli/firecrawl-crawl",
+        "install": "npx skills add https://github.com/firecrawl/cli --skill firecrawl-crawl"
+      },
+      {
+        "skill": "firecrawl-map",
+        "repo": "firecrawl/cli",
+        "skills_sh_url": "https://www.skills.sh/firecrawl/cli/firecrawl-map",
+        "install": "npx skills add https://github.com/firecrawl/cli --skill firecrawl-map"
+      },
+      {
+        "skill": "playwright-best-practices",
+        "repo": "currents-dev/playwright-best-practices-skill",
+        "skills_sh_url": "https://www.skills.sh/currents-dev/playwright-best-practices-skill/playwright-best-practices",
+        "install": "npx skills add https://github.com/currents-dev/playwright-best-practices-skill --skill playwright-best-practices"
+      }
+    ],
+    "agente_media_buyer": [
+      {
+        "skill": "paid-ads",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/paid-ads",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill paid-ads"
+      },
+      {
+        "skill": "ad-creative",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/ad-creative",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ad-creative"
+      },
+      {
+        "skill": "marketing-psychology",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/marketing-psychology",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill marketing-psychology"
+      },
+      {
+        "skill": "copywriting",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/copywriting",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill copywriting"
+      },
+      {
+        "skill": "analytics-tracking",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/analytics-tracking",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill analytics-tracking"
+      },
+      {
+        "skill": "pricing-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/pricing-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill pricing-strategy"
+      },
+      {
+        "skill": "lead-magnets",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/lead-magnets",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill lead-magnets"
+      },
+      {
+        "skill": "email-sequence",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/email-sequence",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill email-sequence"
+      },
+      {
+        "skill": "product-marketing-context",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/product-marketing-context",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill product-marketing-context"
+      }
+    ],
+    "agente_infoproductos_automatizaciones": [
+      {
+        "skill": "product-marketing-context",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/product-marketing-context",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill product-marketing-context"
+      },
+      {
+        "skill": "pricing-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/pricing-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill pricing-strategy"
+      },
+      {
+        "skill": "lead-magnets",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/lead-magnets",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill lead-magnets"
+      },
+      {
+        "skill": "copywriting",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/copywriting",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill copywriting"
+      },
+      {
+        "skill": "email-sequence",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/email-sequence",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill email-sequence"
+      },
+      {
+        "skill": "content-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/content-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill content-strategy"
+      },
+      {
+        "skill": "paid-ads",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/paid-ads",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill paid-ads"
+      },
+      {
+        "skill": "ad-creative",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/ad-creative",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ad-creative"
+      },
+      {
+        "skill": "onboarding-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/onboarding-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill onboarding-cro"
+      },
+      {
+        "skill": "paywall-upgrade-cro",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/paywall-upgrade-cro",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill paywall-upgrade-cro"
+      }
+    ],
+    "agente_contenido_social": [
+      {
+        "skill": "social-content",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/social-content",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill social-content"
+      },
+      {
+        "skill": "copywriting",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/copywriting",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill copywriting"
+      },
+      {
+        "skill": "marketing-psychology",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/marketing-psychology",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill marketing-psychology"
+      },
+      {
+        "skill": "ad-creative",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/ad-creative",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ad-creative"
+      },
+      {
+        "skill": "content-strategy",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/content-strategy",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill content-strategy"
+      },
+      {
+        "skill": "lead-magnets",
+        "repo": "coreyhaines31/marketingskills",
+        "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/lead-magnets",
+        "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill lead-magnets"
+      }
+    ]
+  },
+  "skills_prioritarias_para_instalar_primero": [
+    {
+      "skill": "brainstorming",
+      "repo": "obra/superpowers",
+      "skills_sh_url": "https://www.skills.sh/obra/superpowers/brainstorming",
+      "install": "npx skills add https://github.com/obra/superpowers --skill brainstorming"
+    },
+    {
+      "skill": "writing-plans",
+      "repo": "obra/superpowers",
+      "skills_sh_url": "https://www.skills.sh/obra/superpowers/writing-plans",
+      "install": "npx skills add https://github.com/obra/superpowers --skill writing-plans"
+    },
+    {
+      "skill": "executing-plans",
+      "repo": "obra/superpowers",
+      "skills_sh_url": "https://www.skills.sh/obra/superpowers/executing-plans",
+      "install": "npx skills add https://github.com/obra/superpowers --skill executing-plans"
+    },
+    {
+      "skill": "verification-before-completion",
+      "repo": "obra/superpowers",
+      "skills_sh_url": "https://www.skills.sh/obra/superpowers/verification-before-completion",
+      "install": "npx skills add https://github.com/obra/superpowers --skill verification-before-completion"
+    },
+    {
+      "skill": "dispatching-parallel-agents",
+      "repo": "obra/superpowers",
+      "skills_sh_url": "https://www.skills.sh/obra/superpowers/dispatching-parallel-agents",
+      "install": "npx skills add https://github.com/obra/superpowers --skill dispatching-parallel-agents"
+    },
+    {
+      "skill": "seo-audit",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/seo-audit",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill seo-audit"
+    },
+    {
+      "skill": "programmatic-seo",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/programmatic-seo",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill programmatic-seo"
+    },
+    {
+      "skill": "ai-seo",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/ai-seo",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill ai-seo"
+    },
+    {
+      "skill": "content-strategy",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/content-strategy",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill content-strategy"
+    },
+    {
+      "skill": "analytics-tracking",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/analytics-tracking",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill analytics-tracking"
+    },
+    {
+      "skill": "copywriting",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/copywriting",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill copywriting"
+    },
+    {
+      "skill": "marketing-psychology",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/marketing-psychology",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill marketing-psychology"
+    },
+    {
+      "skill": "cold-email",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/cold-email",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill cold-email"
+    },
+    {
+      "skill": "email-sequence",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/email-sequence",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill email-sequence"
+    },
+    {
+      "skill": "pricing-strategy",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/pricing-strategy",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill pricing-strategy"
+    },
+    {
+      "skill": "sales-enablement",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/sales-enablement",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill sales-enablement"
+    },
+    {
+      "skill": "audit-website",
+      "repo": "squirrelscan/skills",
+      "skills_sh_url": "https://www.skills.sh/squirrelscan/skills/audit-website",
+      "install": "npx skills add https://github.com/squirrelscan/skills --skill audit-website"
+    },
+    {
+      "skill": "form-cro",
+      "repo": "coreyhaines31/marketingskills",
+      "skills_sh_url": "https://www.skills.sh/coreyhaines31/marketingskills/form-cro",
+      "install": "npx skills add https://github.com/coreyhaines31/marketingskills --skill form-cro"
+    },
+    {
+      "skill": "frontend-design",
+      "repo": "anthropics/skills",
+      "skills_sh_url": "https://www.skills.sh/anthropics/skills/frontend-design",
+      "install": "npx skills add https://github.com/anthropics/skills --skill frontend-design"
+    },
+    {
+      "skill": "systematic-debugging",
+      "repo": "obra/superpowers",
+      "skills_sh_url": "https://www.skills.sh/obra/superpowers/systematic-debugging",
+      "install": "npx skills add https://github.com/obra/superpowers --skill systematic-debugging"
+    }
+  ]
+}

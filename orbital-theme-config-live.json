@@ -1,0 +1,1473 @@
+{
+  "active": {
+    "stylesheet": "orbital-child",
+    "template": "orbital",
+    "name": "Orbital Child",
+    "version": "1.0.0"
+  },
+  "parent": {
+    "stylesheet": "orbital",
+    "template": "orbital",
+    "name": "Orbital",
+    "version": "2.6.5"
+  },
+  "width_mods": {
+    "orbital_layout_menu_orbital": true
+  },
+  "files": [
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/style.css",
+      "hits": []
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/functions.php",
+      "hits": [
+        {
+          "line": 121,
+          "text": "if (orbital_customize_option('orbital_layout_container')) {"
+        },
+        {
+          "line": 122,
+          "text": "$container = orbital_customize_option('orbital_layout_container') * 16;"
+        },
+        {
+          "line": 124,
+          "text": "$container = 768;"
+        },
+        {
+          "line": 127,
+          "text": "$GLOBALS['content_width'] = apply_filters('orbital_content_width', $container);"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/style.css",
+      "hits": []
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/functions.php",
+      "hits": []
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/single-ficha_motel.php",
+      "hits": [
+        {
+          "line": 26,
+          "text": "$primary = get_theme_mod('im_ficha_primary', '#2563eb');"
+        },
+        {
+          "line": 27,
+          "text": "$accent = get_theme_mod('im_ficha_accent', '#ff8a00');"
+        },
+        {
+          "line": 28,
+          "text": "$hero_bg = get_theme_mod('im_ficha_hero_bg', '#0f172a');"
+        },
+        {
+          "line": 29,
+          "text": "$surface = get_theme_mod('im_ficha_surface', '#ffffff');"
+        },
+        {
+          "line": 30,
+          "text": "$text = get_theme_mod('im_ficha_text', '#111827');"
+        },
+        {
+          "line": 41,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 123,
+          "text": "@media (max-width: 1060px) {"
+        },
+        {
+          "line": 128,
+          "text": "@media (max-width: 680px) {"
+        }
+      ]
+    }
+  ],
+  "scan_hits": [
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/vendor/path-converter/src/Converter.php",
+      "hits": [
+        {
+          "line": 84,
+          "text": "*     /home/forkcms/frontend/cache/compiled_templates/../../core/layout/css/../images/img.gif"
+        },
+        {
+          "line": 86,
+          "text": "*     /home/forkcms/frontend/core/layout/images/img.gif"
+        },
+        {
+          "line": 99,
+          "text": "*     /home/forkcms/frontend/core/layout/images/img.gif"
+        },
+        {
+          "line": 136,
+          "text": "*     ../images/img.gif relative to /home/forkcms/frontend/core/layout/css"
+        },
+        {
+          "line": 138,
+          "text": "*     ../../core/layout/images/img.gif relative to"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/search.php",
+      "hits": [
+        {
+          "line": 19,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/footer.php",
+      "hits": [
+        {
+          "line": 20,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/index.php",
+      "hits": [
+        {
+          "line": 16,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/home.php",
+      "hits": [
+        {
+          "line": 16,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/assets/css/woocommerce.css",
+      "hits": [
+        {
+          "line": 92,
+          "text": ".select2-container {"
+        },
+        {
+          "line": 100,
+          "text": ".select2-container .select2-selection--single {"
+        },
+        {
+          "line": 109,
+          "text": ".select2-container .select2-selection--single .select2-selection__rendered {"
+        },
+        {
+          "line": 118,
+          "text": ".select2-container .select2-selection--single .select2-selection__clear {"
+        },
+        {
+          "line": 122,
+          "text": ".select2-container[dir=rtl] .select2-selection--single .select2-selection__rendered {"
+        },
+        {
+          "line": 127,
+          "text": ".select2-container .select2-selection--multiple {"
+        },
+        {
+          "line": 136,
+          "text": ".select2-container .select2-selection--multiple .select2-selection__rendered {"
+        },
+        {
+          "line": 144,
+          "text": ".select2-container .select2-search--inline {"
+        },
+        {
+          "line": 149,
+          "text": ".select2-container .select2-search--inline .select2-search__field {"
+        },
+        {
+          "line": 157,
+          "text": ".select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button {"
+        },
+        {
+          "line": 193,
+          "text": ".select2-container--open .select2-dropdown {"
+        },
+        {
+          "line": 197,
+          "text": ".select2-container--open .select2-dropdown--above {"
+        },
+        {
+          "line": 203,
+          "text": ".select2-container--open .select2-dropdown--below {"
+        },
+        {
+          "line": 257,
+          "text": ".select2-container--default .select2-selection--single {"
+        },
+        {
+          "line": 264,
+          "text": ".select2-container--default .select2-selection--single .select2-selection__rendered {"
+        },
+        {
+          "line": 270,
+          "text": ".select2-container--default .select2-selection--single .select2-selection__clear {"
+        },
+        {
+          "line": 276,
+          "text": ".select2-container--default .select2-selection--single .select2-selection__placeholder {"
+        },
+        {
+          "line": 280,
+          "text": ".select2-container--default .select2-selection--single .select2-selection__arrow {"
+        },
+        {
+          "line": 288,
+          "text": ".select2-container--default .select2-selection--single .select2-selection__arrow b {"
+        },
+        {
+          "line": 301,
+          "text": ".select2-container--default[dir=rtl] .select2-selection--single .select2-selection__clear {"
+        },
+        {
+          "line": 305,
+          "text": ".select2-container--default[dir=rtl] .select2-selection--single .select2-selection__arrow {"
+        },
+        {
+          "line": 310,
+          "text": ".select2-container--default.select2-container--disabled .select2-selection--single {"
+        },
+        {
+          "line": 315,
+          "text": ".select2-container--default.select2-container--disabled .select2-selection--single .select2-selection__clear {"
+        },
+        {
+          "line": 319,
+          "text": ".select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {"
+        },
+        {
+          "line": 324,
+          "text": ".select2-container--default .select2-selection--multiple {"
+        },
+        {
+          "line": 331,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__rendered {"
+        },
+        {
+          "line": 339,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__rendered li {"
+        },
+        {
+          "line": 343,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__rendered li:before {"
+        },
+        {
+          "line": 348,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__placeholder {"
+        },
+        {
+          "line": 354,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__clear {"
+        },
+        {
+          "line": 362,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__choice {"
+        },
+        {
+          "line": 373,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__choice__remove {"
+        },
+        {
+          "line": 381,
+          "text": ".select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {"
+        },
+        {
+          "line": 385,
+          "text": ".select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice,"
+        },
+        {
+          "line": 386,
+          "text": ".select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__placeholder,"
+        },
+        {
+          "line": 387,
+          "text": ".select2-container--default[dir=rtl] .select2-selection--multiple .select2-search--inline {"
+        },
+        {
+          "line": 391,
+          "text": ".select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {"
+        },
+        {
+          "line": 396,
+          "text": ".select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice__remove {"
+        },
+        {
+          "line": 401,
+          "text": ".select2-container--default.select2-container--focus .select2-selection--multiple {"
+        },
+        {
+          "line": 406,
+          "text": ".select2-container--default.select2-container--disabled .select2-selection--multiple {"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/assets/css/main.css",
+      "hits": [
+        {
+          "line": 28,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 328,
+          "text": ".container {"
+        },
+        {
+          "line": 329,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 335,
+          "text": ".container-fluid {"
+        },
+        {
+          "line": 337,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 368,
+          "text": ".site-header .container, .site-header .container-fluid {"
+        },
+        {
+          "line": 389,
+          "text": "max-width: 150px;"
+        },
+        {
+          "line": 476,
+          "text": "@media (max-width: 1040px) {"
+        },
+        {
+          "line": 574,
+          "text": "@media (max-width: 1040px) {"
+        },
+        {
+          "line": 639,
+          "text": "@media (max-width: 1040px) {"
+        },
+        {
+          "line": 696,
+          "text": "max-width: 120rem;"
+        },
+        {
+          "line": 1084,
+          "text": "@media (max-width: 782px) {"
+        },
+        {
+          "line": 1541,
+          "text": ".layout-menu-orbital .menu-modal {"
+        },
+        {
+          "line": 1546,
+          "text": ".layout-menu-orbital .menu-modal.active {"
+        },
+        {
+          "line": 1552,
+          "text": "max-width: 250px;"
+        },
+        {
+          "line": 1558,
+          "text": ".layout-menu-orbital .section-inner {"
+        },
+        {
+          "line": 1559,
+          "text": "max-width: unset !important;"
+        },
+        {
+          "line": 1563,
+          "text": ".layout-menu-orbital .modal-menu {"
+        },
+        {
+          "line": 1568,
+          "text": ".layout-menu-orbital .close-nav-toggle {"
+        },
+        {
+          "line": 1572,
+          "text": ".layout-menu-orbital .modal-menu a {"
+        },
+        {
+          "line": 1579,
+          "text": ".layout-menu-orbital .menu-wrapper .menu-item {"
+        },
+        {
+          "line": 1584,
+          "text": ".layout-menu-orbital .menu-wrapper.is-toggling .menu-item {"
+        },
+        {
+          "line": 1588,
+          "text": ".layout-menu-orbital .menu-wrapper.is-toggling .toggling-target {"
+        },
+        {
+          "line": 1617,
+          "text": ".jumbotron .container {"
+        },
+        {
+          "line": 1650,
+          "text": ".default-header .container {"
+        },
+        {
+          "line": 1682,
+          "text": "@media (max-width: 48rem) {"
+        },
+        {
+          "line": 1731,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 1785,
+          "text": "max-width: 50%;"
+        },
+        {
+          "line": 1790,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 1796,
+          "text": "max-width: 50%;"
+        },
+        {
+          "line": 1801,
+          "text": "max-width: 25%;"
+        },
+        {
+          "line": 1806,
+          "text": "max-width: 33.33333333%;"
+        },
+        {
+          "line": 1811,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 1816,
+          "text": "max-width: 50%;"
+        },
+        {
+          "line": 1821,
+          "text": "max-width: 33.33333333%;"
+        },
+        {
+          "line": 1826,
+          "text": "max-width: 25%;"
+        },
+        {
+          "line": 1831,
+          "text": "max-width: 20%;"
+        },
+        {
+          "line": 1836,
+          "text": "max-width: 16.6666666666%;"
+        },
+        {
+          "line": 1841,
+          "text": "max-width: 14.28%;"
+        },
+        {
+          "line": 1877,
+          "text": "max-width: 100%;"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/assets/css/editor-style.css",
+      "hits": [
+        {
+          "line": 206,
+          "text": "max-width: 25.875rem;"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/assets/css/default-skin/default-skin.css",
+      "hits": [
+        {
+          "line": 277,
+          "text": "max-width: 420px;"
+        },
+        {
+          "line": 366,
+          "text": "@media screen and (max-width: 1024px) {"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/archive.php",
+      "hits": [
+        {
+          "line": 18,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/woocommerce/global/wrapper-start.php",
+      "hits": [
+        {
+          "line": 26,
+          "text": "<div id=\"content-wrapper\" class=\"woocommerce-content container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/header.php",
+      "hits": [
+        {
+          "line": 47,
+          "text": "if (orbital_customize_option('orbital_layout_search_navbar')) {"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/functions.php",
+      "hits": [
+        {
+          "line": 121,
+          "text": "if (orbital_customize_option('orbital_layout_container')) {"
+        },
+        {
+          "line": 122,
+          "text": "$container = orbital_customize_option('orbital_layout_container') * 16;"
+        },
+        {
+          "line": 124,
+          "text": "$container = 768;"
+        },
+        {
+          "line": 127,
+          "text": "$GLOBALS['content_width'] = apply_filters('orbital_content_width', $container);"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/actions.php",
+      "hits": [
+        {
+          "line": 66,
+          "text": "add_filter('body_class', 'orbital_layout_menu_class');"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/amp.php",
+      "hits": [
+        {
+          "line": 78,
+          "text": "$this->html = preg_replace('/<iframe(.*)(src=\\\"\\/\\/www\\.youtube\\.com\\/embed)(.*)\"(.*)><\\/iframe>/', '<amp-youtube data-videoid=\"$3\"  layout=\"responsive\"></amp-youtube>', $this->html);"
+        },
+        {
+          "line": 84,
+          "text": "$this->html = preg_replace('/<amp-img(.*?)\\/?>/', '<amp-img height=\"500\" width=\"281\" layout=\"responsive\"$1></amp-img>', $this->html);"
+        },
+        {
+          "line": 134,
+          "text": "$amp_output = sprintf('<amp-video controls width=\"%1$d\" height=\"%2$d\" layout=\"responsive\"><source src=\"%3$s\" /></amp-video>', absint($width), absint($height), esc_url($video_url));"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/shortcodes.php",
+      "hits": [
+        {
+          "line": 61,
+          "text": "max-width: 100%;"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/customizer-parts/customizer-options.php",
+      "hits": [
+        {
+          "line": 59,
+          "text": "$container = orbital_customize_option('orbital_layout_container') ? orbital_customize_option('orbital_layout_container') : 'inherit';"
+        },
+        {
+          "line": 60,
+          "text": "$relation = orbital_customize_option('orbital_layout_relation') ? orbital_customize_option('orbital_layout_relation') : 0;"
+        },
+        {
+          "line": 61,
+          "text": "$order = orbital_customize_option('orbital_layout_sidebar_order') ? orbital_customize_option('orbital_layout_sidebar_order') : 0;"
+        },
+        {
+          "line": 66,
+          "text": ".container {"
+        },
+        {
+          "line": 67,
+          "text": "width: <?php print $container; ?>rem;"
+        },
+        {
+          "line": 71,
+          "text": "max-width: <?php print 100 - $relation; ?>%;"
+        },
+        {
+          "line": 76,
+          "text": "max-width: <?php print $relation; ?>%;"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/customizer-parts/customizer-export-import.php",
+      "hits": [
+        {
+          "line": 281,
+          "text": "add_action('customize_register', 'Orbital_Export_Import_Core::init', 999999);"
+        },
+        {
+          "line": 282,
+          "text": "add_action('customize_register', 'Orbital_Export_Import_Core::register');"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/customizer-parts/customizer-control.php",
+      "hits": [
+        {
+          "line": 7,
+          "text": "'orbital_layout_container' => 52,"
+        },
+        {
+          "line": 8,
+          "text": "'orbital_layout_relation' => 30,"
+        },
+        {
+          "line": 9,
+          "text": "'orbital_layout_sidebar_order' => 0,"
+        },
+        {
+          "line": 10,
+          "text": "'orbital_layout_sidebar_sticky' => false,"
+        },
+        {
+          "line": 11,
+          "text": "'orbital_layout_menu_orbital' => false,"
+        },
+        {
+          "line": 12,
+          "text": "'orbital_layout_search_navbar' => false,"
+        },
+        {
+          "line": 86,
+          "text": "'name' => 'orbital_layout',"
+        },
+        {
+          "line": 87,
+          "text": "'title' => __('Layout Settings', 'orbital'),"
+        },
+        {
+          "line": 152,
+          "text": "//  LAYOUT SETTINGS"
+        },
+        {
+          "line": 155,
+          "text": "'name' => 'orbital_layout_container',"
+        },
+        {
+          "line": 156,
+          "text": "'default' => $orbital_customizer_defaults['orbital_layout_container'],"
+        },
+        {
+          "line": 161,
+          "text": "'name' => 'orbital_layout_relation',"
+        },
+        {
+          "line": 162,
+          "text": "'default' => $orbital_customizer_defaults['orbital_layout_relation'],"
+        },
+        {
+          "line": 167,
+          "text": "'name' => 'orbital_layout_sidebar_order',"
+        },
+        {
+          "line": 168,
+          "text": "'default' => $orbital_customizer_defaults['orbital_layout_sidebar_order'],"
+        },
+        {
+          "line": 173,
+          "text": "'name' => 'orbital_layout_sidebar_sticky',"
+        },
+        {
+          "line": 174,
+          "text": "'default' => $orbital_customizer_defaults['orbital_layout_sidebar_sticky'],"
+        },
+        {
+          "line": 179,
+          "text": "'name' => 'orbital_layout_search_navbar',"
+        },
+        {
+          "line": 180,
+          "text": "'default' => $orbital_customizer_defaults['orbital_layout_search_navbar'],"
+        },
+        {
+          "line": 185,
+          "text": "'name' => 'orbital_layout_menu_orbital',"
+        },
+        {
+          "line": 186,
+          "text": "'default' => $orbital_customizer_defaults['orbital_layout_menu_orbital'],"
+        },
+        {
+          "line": 357,
+          "text": "//  LAYOUT CONTROLS"
+        },
+        {
+          "line": 360,
+          "text": "'setting' => 'orbital_layout_container',"
+        },
+        {
+          "line": 362,
+          "text": "'label' => __('Container Width', 'orbital'),"
+        },
+        {
+          "line": 363,
+          "text": "'section' => 'orbital_layout',"
+        },
+        {
+          "line": 364,
+          "text": "'settings' => 'orbital_layout_container',"
+        },
+        {
+          "line": 374,
+          "text": "'setting' => 'orbital_layout_relation',"
+        },
+        {
+          "line": 377,
+          "text": "'section' => 'orbital_layout',"
+        },
+        {
+          "line": 378,
+          "text": "'settings' => 'orbital_layout_relation',"
+        },
+        {
+          "line": 388,
+          "text": "'setting' => 'orbital_layout_sidebar_order',"
+        },
+        {
+          "line": 391,
+          "text": "'section' => 'orbital_layout',"
+        },
+        {
+          "line": 393,
+          "text": "'settings' => 'orbital_layout_sidebar_order',"
+        },
+        {
+          "line": 400,
+          "text": "'setting' => 'orbital_layout_sidebar_sticky',"
+        },
+        {
+          "line": 403,
+          "text": "'section' => 'orbital_layout',"
+        },
+        {
+          "line": 404,
+          "text": "'settings' => 'orbital_layout_sidebar_sticky',"
+        },
+        {
+          "line": 409,
+          "text": "'setting' => 'orbital_layout_search_navbar',"
+        },
+        {
+          "line": 412,
+          "text": "'section' => 'orbital_layout',"
+        },
+        {
+          "line": 413,
+          "text": "'settings' => 'orbital_layout_search_navbar',"
+        },
+        {
+          "line": 418,
+          "text": "'setting' => 'orbital_layout_menu_orbital',"
+        },
+        {
+          "line": 421,
+          "text": "'section' => 'orbital_layout',"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/customizer-parts/customizer-gdpr.php",
+      "hits": [
+        {
+          "line": 387,
+          "text": "add_action('customize_register', 'orbital_gdpr_custom_button');"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/meta-box.php",
+      "hits": [
+        {
+          "line": 67,
+          "text": "'id' => 'custom-layout',"
+        },
+        {
+          "line": 68,
+          "text": "'label' => __('Activate / Deactivate layout', 'orbital'),"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/customizer.php",
+      "hits": [
+        {
+          "line": 33,
+          "text": "add_action('customize_register', 'orbital_customizer');"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/gutenberg/assets/css/gutenberg-clusters-block.css",
+      "hits": [
+        {
+          "line": 10,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 202,
+          "text": "max-width: 80%;"
+        },
+        {
+          "line": 284,
+          "text": "max-width: 60%;"
+        },
+        {
+          "line": 293,
+          "text": "max-width: none;"
+        },
+        {
+          "line": 786,
+          "text": "max-width: 480px;"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/jetpack.php",
+      "hits": [
+        {
+          "line": 15,
+          "text": "'container' => 'main',"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/inc/extras.php",
+      "hits": [
+        {
+          "line": 64,
+          "text": "if (!function_exists('orbital_page_layout')) :"
+        },
+        {
+          "line": 66,
+          "text": "function orbital_page_layout($default = \"\") {"
+        },
+        {
+          "line": 68,
+          "text": "if (orbital_get_option_page('layout')) {"
+        },
+        {
+          "line": 69,
+          "text": "return orbital_get_option_page('layout');"
+        },
+        {
+          "line": 115,
+          "text": "if (!function_exists('orbital_layout_menu_class')) :"
+        },
+        {
+          "line": 117,
+          "text": "function orbital_layout_menu_class($classes) {"
+        },
+        {
+          "line": 118,
+          "text": "if (orbital_customize_option('orbital_layout_menu_orbital')) {"
+        },
+        {
+          "line": 119,
+          "text": "$classes[] = 'layout-menu-orbital';"
+        },
+        {
+          "line": 323,
+          "text": "if (!orbital_customize_option('orbital_layout_search_navbar')) {"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/header/header-jumbotron.php",
+      "hits": [
+        {
+          "line": 2,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/header/header-image.php",
+      "hits": [
+        {
+          "line": 2,
+          "text": "<?php $custom_header_sizes = apply_filters('custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'); ?>"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/header/header-default.php",
+      "hits": [
+        {
+          "line": 2,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/amp/amp-home.php",
+      "hits": [
+        {
+          "line": 7,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/other/content-gdpr.php",
+      "hits": [
+        {
+          "line": 243,
+          "text": "const mediaQuery = window.matchMedia('(max-width: 768px)')"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/widgets/widget-page-home.php",
+      "hits": [
+        {
+          "line": 12,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/widgets/widget-archives.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/widgets/widget-pilar.php",
+      "hits": [
+        {
+          "line": 6,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/widgets/widget-pages.php",
+      "hits": [
+        {
+          "line": 12,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/widgets/widget-shop.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/widgets/widget-posts.php",
+      "hits": [
+        {
+          "line": 12,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/none/content-none.php",
+      "hits": [
+        {
+          "line": 3,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/errors/error-404.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/page/content-pilar.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/page/content-page.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/page/content-no-sidebar.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container flex no-sidebar\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/page/content-no-ads.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/single/content-single.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/single/content-image.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/single/content-no-sidebar.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex no-sidebar\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/single/content-no-ads.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/navbar/modal-menu.php",
+      "hits": [
+        {
+          "line": 43,
+          "text": "'container'      => '',"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/navbar/navbar-top.php",
+      "hits": [
+        {
+          "line": 4,
+          "text": "<header class=\"site-header<?php if (orbital_customize_option('orbital_layout_menu_orbital')) {"
+        },
+        {
+          "line": 9,
+          "text": "<div class=\"container header-inner\">"
+        },
+        {
+          "line": 23,
+          "text": "<button class=\"toggle nav-toggle mobile-nav-toggle <?php if (orbital_customize_option('orbital_layout_menu_orbital')) {"
+        },
+        {
+          "line": 47,
+          "text": "'container'  => '',"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital/template-parts/search/content-search-navbar.php",
+      "hits": [
+        {
+          "line": 33,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/header.php",
+      "hits": [
+        {
+          "line": 47,
+          "text": "if (orbital_customize_option('orbital_layout_search_navbar')) {"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/footer.php",
+      "hits": [
+        {
+          "line": 20,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/index.php",
+      "hits": [
+        {
+          "line": 16,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/single.php",
+      "hits": [
+        {
+          "line": 51,
+          "text": "max-width:1240px;"
+        },
+        {
+          "line": 106,
+          "text": "@media (max-width:1060px){.motel-grid{grid-template-columns:1fr;}.motel-side{position:static;}}"
+        },
+        {
+          "line": 107,
+          "text": "@media (max-width:680px){.motel-shell{padding-inline:14px;}.motel-card,.motel-section,.motel-sidecard{padding:18px;border-radius:16px;}.motel-ctas{grid-template-columns:1fr;}}"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/archive.php",
+      "hits": [
+        {
+          "line": 18,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/search.php",
+      "hits": [
+        {
+          "line": 19,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/header/header-jumbotron.php",
+      "hits": [
+        {
+          "line": 2,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/header/header-image.php",
+      "hits": [
+        {
+          "line": 2,
+          "text": "<?php $custom_header_sizes = apply_filters('custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'); ?>"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/header/header-default.php",
+      "hits": [
+        {
+          "line": 2,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/amp/amp-home.php",
+      "hits": [
+        {
+          "line": 7,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/other/content-gdpr.php",
+      "hits": [
+        {
+          "line": 243,
+          "text": "const mediaQuery = window.matchMedia('(max-width: 768px)')"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/widgets/widget-page-home.php",
+      "hits": [
+        {
+          "line": 12,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/widgets/widget-archives.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/widgets/widget-pilar.php",
+      "hits": [
+        {
+          "line": 6,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/widgets/widget-pages.php",
+      "hits": [
+        {
+          "line": 12,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/widgets/widget-shop.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/widgets/widget-posts.php",
+      "hits": [
+        {
+          "line": 12,
+          "text": "$sticky = orbital_customize_option('orbital_layout_sidebar_sticky') ? 'sticky' : '';"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/none/content-none.php",
+      "hits": [
+        {
+          "line": 3,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/errors/error-404.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/page/content-pilar.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/page/content-page.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/page/content-no-sidebar.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container flex no-sidebar\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/page/content-no-ads.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/single/content-single.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/single/content-image.php",
+      "hits": [
+        {
+          "line": 5,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/single/content-no-sidebar.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex no-sidebar\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/single/content-no-ads.php",
+      "hits": [
+        {
+          "line": 9,
+          "text": "<div id=\"content-wrapper\" class=\"container flex\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/navbar/modal-menu.php",
+      "hits": [
+        {
+          "line": 43,
+          "text": "'container'      => '',"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/navbar/navbar-top.php",
+      "hits": [
+        {
+          "line": 4,
+          "text": "<header class=\"site-header<?php if (orbital_customize_option('orbital_layout_menu_orbital')) {"
+        },
+        {
+          "line": 9,
+          "text": "<div class=\"container header-inner\">"
+        },
+        {
+          "line": 23,
+          "text": "<button class=\"toggle nav-toggle mobile-nav-toggle <?php if (orbital_customize_option('orbital_layout_menu_orbital')) {"
+        },
+        {
+          "line": 47,
+          "text": "'container'  => '',"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/template-parts/search/content-search-navbar.php",
+      "hits": [
+        {
+          "line": 33,
+          "text": "<div class=\"container\">"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/single-ficha_motel.php",
+      "hits": [
+        {
+          "line": 41,
+          "text": "max-width: 100%;"
+        },
+        {
+          "line": 123,
+          "text": "@media (max-width: 1060px) {"
+        },
+        {
+          "line": 128,
+          "text": "@media (max-width: 680px) {"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/single-2101.php",
+      "hits": [
+        {
+          "line": 51,
+          "text": "max-width:1240px;"
+        },
+        {
+          "line": 106,
+          "text": "@media (max-width:1060px){.motel-grid{grid-template-columns:1fr;}.motel-side{position:static;}}"
+        },
+        {
+          "line": 107,
+          "text": "@media (max-width:680px){.motel-shell{padding-inline:14px;}.motel-card,.motel-section,.motel-sidecard{padding:18px;border-radius:16px;}.motel-ctas{grid-template-columns:1fr;}}"
+        }
+      ]
+    },
+    {
+      "path": "/home/fjzsgwep/infomoteles.cl/wp-content/themes/orbital-child/single-2469.php",
+      "hits": [
+        {
+          "line": 14,
+          "text": ".single-post-2469 .entry-content { max-width: 100% !important; padding: 0 !important; }"
+        },
+        {
+          "line": 23,
+          "text": ".ficha-resumen { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.75); max-width: 700px; margin: 0 0 20px; }"
+        },
+        {
+          "line": 50,
+          "text": "@media (max-width: 600px) {"
+        }
+      ]
+    }
+  ]
+}

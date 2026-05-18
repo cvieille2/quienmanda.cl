@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "objetivo_principal": "Convertir $100.000 CLP en $1.000.000 CLP mensual recurrente",
+    "total_completadas": 9,
+    "ultima_actualizacion": "2026-05-16",
+    "frente_activo": "infomoteles.cl"
+  },
+  "tareas": [
+    {
+      "id": "T-001",
+      "titulo": "Macro: Identificar moteles prospectables con datos de trafico real",
+      "agente": "agente-consultor-seo-monetizacion",
+      "entregable": "output/entregable-T-001-lista-prospectos.md"
+    },
+    {
+      "id": "T-002",
+      "titulo": "Macro: Priorizar frente comercial y definir modelo de ingresos",
+      "agente": "agente-estratega-negocio-digital",
+      "entregable": "output/entregable-T-002-priorizacion-estrategica.md"
+    },
+    {
+      "id": "T-003",
+      "titulo": "Macro: Crear maquina de prospeccion para moteles",
+      "agente": "agente-mentor-ventas-b2b",
+      "entregable": "output/entregable-T-003-kit-prospeccion.md"
+    },
+    {
+      "id": "T-004",
+      "titulo": "Macro: Escribir todo el copy comercial de infomoteles",
+      "agente": "agente-copywriter-conversion",
+      "entregable": "output/entregable-T-004-copy-comercial.md"
+    },
+    {
+      "id": "T-005",
+      "titulo": "Macro: Diagnosticar y optimizar conversion de infomoteles",
+      "agente": "agente-analista-web-cro",
+      "entregable": "output/entregable-T-005-diagnostico-cro.md"
+    },
+    {
+      "id": "T-006",
+      "titulo": "Macro: Disenar bloque visual de planes y pagina de servicios",
+      "agente": "agente-disenador-ui-web",
+      "entregable": "output/entregable-T-006-bloque-planes.html"
+    },
+    {
+      "id": "T-007",
+      "titulo": "Macro: Implementar cambios tecnicos en infomoteles y validar",
+      "agente": "agente-tecnico-wordpress-automatizacion",
+      "entregable": "output/entregable-T-007-implementacion-tecnica.md"
+    },
+    {
+      "id": "T-008",
+      "titulo": "Macro: Consolidar plan de accion 7 dias para primera oleada",
+      "agente": "agente-director-agencia-digital",
+      "entregable": "output/plan/T-008-plan-7-dias.md"
+    },
+    {
+      "id": "T-009",
+      "titulo": "Macro: Validar modelo financiero y estructura de precios",
+      "agente": "agente-asesor-estrategico-financiero",
+      "persona_referencia": "Roberto Gamboa Aguilar",
+      "entregable": "output/entregable-T-009-modelo-financiero.md"
+    }
+  ]
+}

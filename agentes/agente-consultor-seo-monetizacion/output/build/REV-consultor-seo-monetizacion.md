@@ -1,0 +1,25 @@
+﻿# Build SEO - infomoteles.cl
+## Sesion: 2026-05-16
+
+## Lista de URLs para fichas destacadas
+| URL | Keyword objetivo | Precio sugerido |
+|---|---|---|
+| /moteles-en-santiago/ | moteles en santiago | Premium (.990) |
+| /moteles-en-valparaiso/ | moteles en valparaiso | Premium (.990) |
+| /moteles-en-concepcion/ | moteles en concepcion | Premium (.990) |
+| /categoria/moteles-de-lujo/ | moteles de lujo santiago | Premium (.990) |
+| /categoria/moteles-con-jacuzzi/ | moteles con jacuzzi | Basica (.990) |
+| /categoria/cabanas-para-parejas/ | cabanas para parejas | Premium (.990) |
+
+## Auditoria SEO express de infomoteles.cl
+| Aspecto | Estado | Accion |
+|---|---|---|
+| Velocidad de carga | Regular | Optimizar imagenes |
+| Meta descriptions | Faltan en 40% paginas | Agregar en paginas de ciudades |
+| Enlaces internos | Buenos | Mejorar desde homepage a ciudades |
+| Datos estructurados | No hay | Agregar Schema.LocalBusiness |
+
+## Paginas con mayor potencial comercial
+1. /moteles-en-santiago/ - 320 visitas/mes - keywords con intencion de busqueda
+2. /moteles-en-valparaiso/ - 180 visitas/mes - turismo de parejas
+3. /categoria/moteles-de-lujo/ - 90 visitas/mes - alto ticket

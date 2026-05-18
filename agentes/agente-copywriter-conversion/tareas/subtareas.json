@@ -1,0 +1,49 @@
+{
+  "agente": "agente-copywriter-conversion",
+  "tarea_principal": "T-004",
+  "subtareas": [
+    {
+      "id": "T-004-ST-01",
+      "titulo": "Escribir titular para seccion de moteleros en homepage",
+      "estado": "completada",
+      "entregable": "3 versiones: directa, dolor, resultados"
+    },
+    {
+      "id": "T-004-ST-02",
+      "titulo": "Redactar copy del bloque de planes (basico, premium, setup)",
+      "estado": "completada",
+      "entregable": "Copy completo con titulares, subtitulos y CTAs"
+    },
+    {
+      "id": "T-004-ST-03",
+      "titulo": "Crear tabla comparativa planes",
+      "estado": "completada",
+      "entregable": "Tabla: Sin ficha vs Basico vs Premium"
+    },
+    {
+      "id": "T-004-ST-04",
+      "titulo": "Escribir pagina completa /para-moteles/",
+      "estado": "completada",
+      "entregable": "Pagina: hero, como funciona, beneficios, FAQ, CTA"
+    },
+    {
+      "id": "T-004-ST-05",
+      "titulo": "Redactar mensaje de confirmacion automatica post-registro",
+      "estado": "completada",
+      "entregable": "Mensaje WhatsApp/email con resumen del plan"
+    },
+    {
+      "id": "T-004-ST-06",
+      "titulo": "Escribir version emocional (variante B para A/B testing)",
+      "estado": "completada",
+      "entregable": "Variante: tono emotivo, apela al esfuerzo del dueno"
+    },
+    {
+      "id": "T-004-ST-07",
+      "titulo": "Redactar testimonios placeholder para llenar con clientes reales",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Escribir 3 testimonios plantilla que se personalicen cuando haya clientes"
+    }
+  ]
+}

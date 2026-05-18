@@ -1,0 +1,482 @@
+﻿{
+    "meta":  {
+                 "objetivo_principal":  "Convertir $100.000 CLP en $1.000.000 CLP mensual recurrente",
+                 "horizonte":  "30-45 dias",
+                 "proxima_revision":  "2026-05-17",
+                 "sesion_actual":  "2026-05-16",
+                 "frente_activo":  "infomoteles.cl",
+                 "total_agentes":  18,
+                 "director":  "agente-director-agencia-digital",
+                 "staff":  {
+                               "project_managers":  6,
+                               "especialistas":  11
+                           }
+             },
+    "tareas":  [
+                   {
+                       "id":  "T-001",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-consultor-seo-monetizacion",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Identificar moteles prospectables con datos de trafico real",
+                       "descripcion":  "Extraer del Search Console todos los moteles que ya aparecen en posiciones 1-10, tengan o no ficha. Entregar lista priorizada de 20+ prospectos con: nombre del motel, consulta, clics, impresiones, posicion promedio, URL actual en infomoteles (si existe), telefono disponible. Ademas, detectar ciudades sin cobertura donde haya busquedas de moteles.",
+                       "entregable":  "Lista priorizada de 20+ moteles y analisis de ciudades sin cobertura",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-002",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "critica",
+                       "estado":  "completada",
+                       "agente":  "agente-estratega-negocio-digital",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Priorizar frente comercial y definir modelo de ingresos",
+                       "descripcion":  "Con los datos del SEO, evaluar: cual es el modelo que genera mas rapido ($29.990 basico vs $59.990 premium vs $120.000 setup), cuantos moteles contactar para alcanzar la meta, que ciudades atacar primero (Santiago, Valparaiso, Region Metropolitana), que NO hacer todavia. Definir orden de los primeros 10 moteles a contactar.",
+                       "entregable":  "Modelo de ingresos priorizado, meta de contactos, ranking de 10 moteles",
+                       "depende_de":  "T-001"
+                   },
+                   {
+                       "id":  "T-003",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "critica",
+                       "estado":  "completada",
+                       "agente":  "agente-mentor-ventas-b2b",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Crear maquina de prospeccion para moteles",
+                       "descripcion":  "Dueno de motel = perfil especifico. Crear: dolor principal (clientes no llegan, reservas bajas), oferta exacta para cada tipo (basico vs premium), mensaje de WhatsApp inicial, secuencia de 3 seguimientos, objeciones tipicas de moteleros (no tengo presupuesto, ya tengo pagina, etc) y respuestas, guion de llamada de 5 min, cierre y urgencia.",
+                       "entregable":  "Kit completo de ventas: mensajes, secuencia, objeciones, guion de llamada, cierre",
+                       "depende_de":  "T-002"
+                   },
+                   {
+                       "id":  "T-004",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "alta",
+                       "estado":  "completada",
+                       "agente":  "agente-copywriter-conversion",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Escribir todo el copy comercial de infomoteles",
+                       "descripcion":  "El sitio necesita textos que vendan. Crear: titular de la pagina de inicio que explique el valor para el motelero, copy del bloque de planes (basico vs premium) con tabla comparativa, CTA para cada plan, mensaje de confirmacion automatica cuando un motel se registre, variante directa (logica) y emocional (competencia). Tono: sin rodeos, dueno de motel habla con dueno de motel.",
+                       "entregable":  "Copy completo: inicio, planes, CTAs, confirmacion, variante emocional",
+                       "depende_de":  "T-003"
+                   },
+                   {
+                       "id":  "T-005",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-analista-web-cro",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Diagnosticar y optimizar conversion de infomoteles",
+                       "descripcion":  "Revisar a fondo el sitio: la pagina de inicio explica claramente el servicio?, el formulario de contacto es visible y simple?, hay prueba social (testimonios, numero de fichas activas)?, los CTAs son claros?. Proponer 3 cambios rapidos (\u003c 1 hora) y 3 cambios de alto impacto. Definir metricas a medir.",
+                       "entregable":  "Diagnostico CRO con 6 cambios y metricas a monitorear",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-006",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "alta",
+                       "estado":  "completada",
+                       "agente":  "agente-disenador-ui-web",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Disenar bloque visual de planes y pagina de servicios",
+                       "descripcion":  "Disenar en HTML simple compatible con WordPress: bloque de planes (basico vs premium) con jerarquia visual clara, CTA destacado en cada plan, seccion de beneficios con iconos, seccion de prueba social, version mobile primero. Usar colores existentes del sitio.",
+                       "entregable":  "HTML completo del bloque de planes + pagina de servicios",
+                       "depende_de":  "T-004"
+                   },
+                   {
+                       "id":  "T-007",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "alta",
+                       "estado":  "completada",
+                       "agente":  "agente-tecnico-wordpress-automatizacion",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Implementar cambios tecnicos en infomoteles y validar",
+                       "descripcion":  "Implementar el bloque de planes HTML en WordPress. Verificar carga correcta en desktop y mobile, formulario de contacto funcional, enlaces funcionando, velocidad de carga aceptable (\u003c 3s). Instalar/verificar Google Analytics, Search Console, pixel de Meta.",
+                       "entregable":  "Sitio actualizado con plan validado + tracking funcionando + informe",
+                       "depende_de":  "T-006"
+                   },
+                   {
+                       "id":  "T-008",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "critica",
+                       "estado":  "completada",
+                       "agente":  "agente-director-agencia-digital",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Consolidar plan de accion 7 dias para primera oleada",
+                       "descripcion":  "Una vez recibidos todos los entregables, consolidar el plan: dia 1 (preparar materiales), dia 2 (probar mensajes), dias 3-5 (contactar primeros 20 moteles), dia 6 (dar seguimiento), dia 7 (medir y ajustar). Definir metrica de exito: 20 contactos enviados, 4 respuestas, 1 venta.",
+                       "entregable":  "Plan de accion de 7 dias consolidado con metrica de exito",
+                       "depende_de":  [
+                                          "T-003",
+                                          "T-007"
+                                      ]
+                   },
+                   {
+                       "id":  "T-009",
+                       "macro":  true,
+                       "tipo":  "sistema",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-asesor-estrategico-financiero",
+                       "persona_referencia":  "Roberto Gamboa Aguilar",
+                       "proyecto":  "sistema",
+                       "titulo":  "Macro: Validar modelo financiero y estructura de precios",
+                       "descripcion":  "Evaluar la estructura completa de ingresos: precios actuales vs mercado vs margen, impacto de retencion de boletas (15.25%), proyeccion de ingresos para cada combinacion del plan 30-45 dias, punto de equilibrio, flujo de caja con $100.000 de capital.",
+                       "entregable":  "Modelo financiero con precios validados y proyeccion a 45 dias",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-010",
+                       "macro":  true,
+                       "tipo":  "operacion",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-infomoteles",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Gestionar operacion diaria de infomoteles",
+                       "descripcion":  "Una vez que arranque la prospeccion: llevar registro de moteles contactados, respuestas recibidas, fichas vendidas, renovaciones. Reportar semanalmente al Director.",
+                       "entregable":  "Reporte semanal de operacion con metricas y estado",
+                       "depende_de":  [
+                                          "T-007",
+                                          "T-008"
+                                      ]
+                   },
+                   {
+                       "id":  "T-011",
+                       "macro":  true,
+                       "tipo":  "preparatoria",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "media",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-visitandopuntaarenas",
+                       "proyecto":  "visitandopuntaarenas.cl",
+                       "titulo":  "Macro: Preparar inventario comercial de Punta Arenas",
+                       "descripcion":  "Hacer inventario de negocios turisticos en Punta Arenas que podrian comprar articulos patrocinados o fichas. Preparar lista de 30+ prospectos con datos de contacto.",
+                       "entregable":  "Inventario de 30+ negocios turisticos categorizados con contacto",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-012",
+                       "macro":  true,
+                       "tipo":  "preparatoria",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "media",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-turismoencajondelmaipo",
+                       "proyecto":  "turismoencajondelmaipo.cl",
+                       "titulo":  "Macro: Investigar modelo replicable de VPA en Cajon del Maipo",
+                       "descripcion":  "Identificar negocios en Cajon del Maipo con potencial de articulos patrocinados. Preparar lista de 15+ prospectos.",
+                       "entregable":  "Lista de 15+ prospectos en Cajon del Maipo con analisis de aplicabilidad del modelo",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-013",
+                       "macro":  true,
+                       "tipo":  "preparatoria",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "baja",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-avesnativaschilenas",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Mejorar CTR y plan de contenido informacional",
+                       "descripcion":  "El CTR de avesnativas es 0.26% (muy bajo). Proponer mejoras de titulos y meta descriptions. Plan de contenido mensual para crecer autoridad.",
+                       "entregable":  "Plan de optimizacion de CTR + calendario editorial mensual",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-014",
+                       "macro":  true,
+                       "tipo":  "preparatoria",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "baja",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-aventurasenelagua",
+                       "proyecto":  "aventurasenelagua.cl",
+                       "titulo":  "Macro: Plan de contenido afiliado para Outdoor",
+                       "descripcion":  "Identificar 5 productos con buena comision de Amazon que se puedan promocionar con guias de compra. Crear plan de contenido: guias, reviews, comparativas.",
+                       "entregable":  "Plan de 5 guias de compra afiliadas con palabras clave objetivo",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-015",
+                       "macro":  true,
+                       "tipo":  "preparatoria",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "media",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-seo-local",
+                       "proyecto":  "servicio-seo-local",
+                       "titulo":  "Macro: Disenar la oferta y delivery del servicio SEO Local",
+                       "descripcion":  "El servicio SEO Local ($250K-$500K/mes) es el motor recurrente. Disenar: que incluye cada mes, como se entrega, que resultados esperar, cuantos clientes se pueden atender.",
+                       "entregable":  "Documento de servicio SEO Local: alcance, entregables, resultados, capacidad",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-016",
+                       "macro":  true,
+                       "tipo":  "estrategia",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "media",
+                       "estado":  "en_curso",
+                       "agente":  "agente-pauta-digital",
+                       "personas_referencia":  [
+                                                   "Vilma Núñez",
+                                                   "Ana Ivars",
+                                                   "Patrick Wind"
+                                               ],
+                       "proyecto":  "sistema",
+                       "titulo":  "Macro: Disenar sistema de pauta digital para cuando la oferta este validada",
+                       "descripcion":  "NO pautar aun. Disenar el sistema integrado de pauta. Entregar un unico plan listo para ejecutar cuando haya oferta validada.",
+                       "entregable":  "Plan integrado de pauta: estrategia, campanas, tracking y escalado",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-017",
+                       "macro":  true,
+                       "tipo":  "estrategia",
+                       "fecha":  "2026-05-16",
+                       "prioridad":  "media",
+                       "estado":  "en_curso",
+                       "agente":  "agente-lanzamientos-alex-izquierdo",
+                       "persona_referencia":  "Álex Izquierdo",
+                       "proyecto":  "sistema",
+                       "titulo":  "Macro: Disenar estrategia de lanzamiento para servicios digitales",
+                       "descripcion":  "Una vez validado el modelo de fichas, disenar lead magnet, embudo, cronograma de lanzamiento. NO ejecutar hasta tener ingresos recurrentes.",
+                       "entregable":  "Estrategia de lanzamiento lista para cuando toque escalar",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-018",
+                       "macro":  true,
+                       "tipo":  "mejorar_landing",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-copywriter-conversion",
+                       "agente_principal":  "agente-copywriter-conversion",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Cerrar /para-moteles/ con copy, prueba social y CTA de conversion",
+                       "descripcion":  "Reescribir la pagina /para-moteles/ con enfoque directo a dueños de motel: copy final, prueba social realista, CTAs claros, objeciones, bloque de precios y mensaje de accion inmediato. Debe ayudar a vender la primera tanda de fichas y setups.",
+                       "entregable":  "Copy final de /para-moteles/ listo para convertir",
+                       "depende_de":  [
+                                          "T-004",
+                                          "T-005",
+                                          "T-007"
+                                      ]
+                   },
+                   {
+                       "id":  "T-019",
+                       "macro":  true,
+                       "tipo":  "automatizar_proceso",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-tecnico-wordpress-automatizacion",
+                       "agente_principal":  "agente-tecnico-wordpress-automatizacion",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Publicar tracking, 301 y validacion mobile de la ruta comercial",
+                       "descripcion":  "Asegurar que la ruta comercial funcione de punta a punta: CTA flotante, eventos de conversion, Google Analytics/Search Console, redirecciones 301 necesarias y revision mobile visual. Debe quedar medible y estable.",
+                       "entregable":  "Implementacion tecnica validada con evidencias",
+                       "depende_de":  [
+                                          "T-007"
+                                      ]
+                   },
+                   {
+                       "id":  "T-020",
+                       "macro":  true,
+                       "tipo":  "auditar_enlazado_interno",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-especialista-enlazado-interno",
+                       "agente_principal":  "agente-especialista-enlazado-interno",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Auditoria ejecutable de hubs, huérfanas y 301",
+                       "descripcion":  "Pasar de la teoria a una lista ejecutable por URL: hubs prioritarios, fichas huérfanas, enlaces contextuales concretos y redirecciones 301 desde URLs planas o rotas. Todo con estado y evidencia.",
+                       "entregable":  "Matriz de enlazado interno con acciones y criterio de cierre",
+                       "depende_de":  [
+                                          "T-001",
+                                          "T-008"
+                                      ]
+                   },
+                   {
+                       "id":  "T-021",
+                       "macro":  true,
+                       "tipo":  "reportar_estado",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-infomoteles",
+                       "agente_principal":  "agente-proyecto-infomoteles",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Cerrar primera tanda vendible y primer cobro",
+                       "descripcion":  "Pasar de preparación a caja: seleccionar la primera tanda corta de moteles, validar datos, publicar fichas listas y registrar primer cobro o primer setup. El reporte debe mostrar avance comercial real, no inventario.",
+                       "entregable":  "Reporte operativo con fichas listas, prospectos y cierre",
+                       "depende_de":  [
+                                          "T-007",
+                                          "T-008"
+                                      ]
+                   },
+                   {
+                       "id":  "T-022",
+                       "macro":  true,
+                       "tipo":  "evaluar_rentabilidad",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-asesor-estrategico-financiero",
+                       "agente_principal":  "agente-asesor-estrategico-financiero",
+                       "proyecto":  "sistema",
+                       "titulo":  "Macro: Revalidar la ruta a $1M con escenarios de caja reales",
+                       "descripcion":  "Revisar la ruta a $1M CLP/mes con nuevos escenarios: fichas, setups, SEO local y artículos patrocinados. Debe decir qué combinación es viable, qué no y qué se descarta.",
+                       "entregable":  "Modelo financiero revalidado con foco en caja",
+                       "depende_de":  [
+                                          "T-008",
+                                          "T-009"
+                                      ]
+                   },
+                   {
+                       "id":  "T-023",
+                       "macro":  true,
+                       "tipo":  "priorizar_ideas",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-estratega-negocio-digital",
+                       "agente_principal":  "agente-estratega-negocio-digital",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Reordenar el foco para llegar a caja y no a documentos",
+                       "descripcion":  "Volver a priorizar lo que genera dinero primero: fichas vendibles, setup, prospeccion y cierre. Cortar o posponer lo que no empuje caja en 7-14 dias.",
+                       "entregable":  "Nueva priorizacion con exclusiones explicitas",
+                       "depende_de":  [
+                                          "T-008",
+                                          "T-009"
+                                      ]
+                   },
+                   {
+                       "id":  "T-024",
+                       "macro":  true,
+                       "tipo":  "crear_oferta_comercial",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-mentor-ventas-b2b",
+                       "agente_principal":  "agente-mentor-ventas-b2b",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Cerrar pipeline de primeras 20 conversaciones con moteles",
+                       "descripcion":  "Tomar la lista corta de prospectos y convertirla en pipeline real: contacto, seguimiento, objeciones, cierre y próxima accion. Debe apoyar la primera tanda vendible, no un volumen infinito.",
+                       "entregable":  "Pipeline con 20 prospectos, estado y siguiente accion",
+                       "depende_de":  [
+                                          "T-003",
+                                          "T-008"
+                                      ]
+                   },
+                   {
+                       "id":  "T-025",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-consultor-seo-monetizacion",
+                       "agente_principal":  "agente-consultor-seo-monetizacion",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Potenciar fichas con trafico real",
+                       "descripcion":  "Tomar las fichas que ya concentran clics e impresiones reales y convertirlas en un lote de mejora rapida. La tarea debe cerrar con diagnostico por URL, reescritura de copy, ajuste visual, revision CRO, enlazado interno, validacion tecnica y reporte comparativo.",
+                       "entregable":  "Paquete de mejoras por ficha foco con criterio de cierre",
+                       "depende_de":  [
+                                          "T-001",
+                                          "T-005",
+                                          "T-007",
+                                          "T-020"
+                                      ]
+                   },
+                   {
+                       "id":  "T-026",
+                       "macro":  true,
+                       "tipo":  "mejorar_landing",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-estratega-negocio-digital",
+                       "agente_principal":  "agente-estratega-negocio-digital",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Portada como entrada comercial",
+                       "descripcion":  "Convertir la portada en una entrada comercial real: mensaje unico, hero claro, CTA visible, ruta hacia para-moteles y enlaces internos a fichas y landings. La salida debe quedar lista para publicar y medir.",
+                       "entregable":  "Home comercial lista para implementar y medir",
+                       "depende_de":  [
+                                          "T-005",
+                                          "T-018",
+                                          "T-019",
+                                          "T-020"
+                                      ]
+                   },
+                   {
+                       "id":  "T-027",
+                       "macro":  true,
+                       "tipo":  "priorizar_ideas",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-estratega-negocio-digital",
+                       "agente_principal":  "agente-estratega-negocio-digital",
+                       "proyecto":  "infomoteles.cl",
+                       "titulo":  "Macro: Arquitectura limpia para llegar a 10k/dia",
+                       "descripcion":  "Ordenar el sitio para escalar sin canibalizacion: home fuerte, landings por ciudad/zona, fichas de motel bien resueltas y posts viejos fusionados sin duplicados. Debe terminar con mapa de URLs, intencion y criterio de cierre por bloque.",
+                       "entregable":  "Arquitectura limpia documentada y priorizada",
+                       "depende_de":  [
+                                          "T-001",
+                                          "T-005",
+                                          "T-020",
+                                          "T-026"
+                                      ]
+                   },
+                   {
+                       "id":  "T-028",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-17",
+                       "prioridad":  "critica",
+                       "estado":  "en_curso",
+                       "agente":  "agente-proyecto-infomoteles",
+                       "agente_principal":  "agente-proyecto-infomoteles",
+                       "proyecto":  "infomoteles.cl",
+                       "zonas_objetivo":  [
+                                              "arica",
+                                              "iquique",
+                                              "antofagasta",
+                                              "calama",
+                                              "copiapo",
+                                              "la-serena",
+                                              "coquimbo"
+                                          ],
+                       "titulo":  "Macro: Actualizar fichas de todo el norte de Chile",
+                       "descripcion":  "Actualizar en bloque solo las fichas del norte de Chile. Incluir unicamente Arica, Iquique, Antofagasta, Calama, Copiapo, La Serena y Coquimbo. Excluir cualquier otra zona aunque aparezca en la base. Cada ficha debe quedar con copy limpio, CTA visible, comentarios activos si aplica, enlazado interno y estructura lista para vender o convertir trafico real.",
+                       "entregable":  "Lote de fichas del norte actualizadas con criterio de conversion",
+                       "depende_de":  [
+                                          "T-025",
+                                          "T-026",
+                                          "T-027"
+                                      ]
+                   }
+               ]
+}

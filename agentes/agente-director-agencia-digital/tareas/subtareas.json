@@ -1,0 +1,234 @@
+{
+  "agente": "agente-director-agencia-digital",
+  "tarea_principal": "T-008",
+  "subtareas": [
+    {
+      "id": "T-008-ST-01",
+      "titulo": "Recibir y revisar entregables de T-001 a T-007 y T-009",
+      "estado": "completada",
+      "entregable": "9 entregables revisados"
+    },
+    {
+      "id": "T-008-ST-02",
+      "titulo": "Consolidar plan de accion 7 dias",
+      "estado": "completada",
+      "entregable": "Plan dia a dia con metricas de exito"
+    },
+    {
+      "id": "T-008-ST-03",
+      "titulo": "Definir trigger para activar pauta digital (T-016)",
+      "estado": "completada",
+      "entregable": "Regla: 5+ fichas vendidas organicamente"
+    },
+    {
+      "id": "T-008-ST-04",
+      "titulo": "Coordinar feedback cruzado entre especialistas",
+      "estado": "completada",
+      "prioridad": "alta",
+      "nota": "Segunda vuelta de feedback entre todos los agentes"
+    },
+    {
+      "id": "T-008-ST-05",
+      "titulo": "Hacer que todos los agentes lean feedback consolidado antes de trabajar",
+      "estado": "en_curso",
+      "prioridad": "critica",
+      "nota": "Bloqueante: revisar output/feedback-consolidado-director.md y output/oficio-incorporacion-enlazado-interno.md antes de ejecutar"
+    },
+    {
+      "id": "T-008-ST-06",
+      "titulo": "Definir nuevas tareas monetizacion infomoteles.cl",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "nota": "Objetivo: captar nuevos ingresos con fichas destacadas, CTA comercial, CRM y oferta de venta"
+    },
+    {
+      "id": "T-008-ST-07",
+      "titulo": "SEO: priorizar posts viejos con trafico para captar nuevo organico",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Usar Search Console para reescritura de posts con >2 años y alto potencial de clicks"
+    },
+    {
+      "id": "T-008-ST-08",
+      "titulo": "Ventas: crear CRM Google Sheets y secuencia de contacto",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Pipeline con prospecto, contacto, respuesta, diagnostico, cierre y seguimiento"
+    },
+    {
+      "id": "T-008-ST-09",
+      "titulo": "Copywriter: escribir oferta comercial para para-moteles",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Landing /para-moteles/, planes, FAQs, objeciones y CTA orientado a conversion"
+    },
+    {
+      "id": "T-008-ST-10",
+      "titulo": "Tecnico: dejar tracking y CTA listos",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "CTA flotante, GA4, Search Console, Pixel solo cuando haya traccion"
+    },
+    {
+      "id": "T-008-ST-11",
+      "titulo": "Enlazado interno: auditar hubs y fichas comerciales",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Conectar fichas, hubs de ciudad y paginas comerciales"
+    },
+    {
+      "id": "T-008-ST-12",
+      "titulo": "PM Infomoteles: coordinar publicacion y verificacion de datos",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Validar datos de fichas, precios, telefonos y fechas de verificacion"
+    },
+    {
+      "id": "T-008-ST-13",
+      "titulo": "Supervisar Dia 1 del plan: subir /para-moteles/ + contactar top 3 moteles",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "nota": "Asegurar que el Tecnico suba los cambios y Ventas haga los primeros contactos"
+    },
+    {
+      "id": "T-008-ST-14",
+      "titulo": "Compilar metricas de la semana y reportar resultado",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Reporte al cierre del dia 7"
+    },
+    {
+      "id": "T-008-ST-15",
+      "titulo": "SEO/PM Infomoteles: definir lista final de URLs a seguir reescribiendo",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Usar Search Console + edad de posts + potencial de clicks para priorizar"
+    },
+    {
+      "id": "T-008-ST-16",
+      "titulo": "SEO: actualizar metadatos y titles con intencion de busqueda",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Alinear titles con consultas reales: [motel] [ciudad], precios, telefono, direccion"
+    },
+    {
+      "id": "T-008-ST-17",
+      "titulo": "CRO: revisar la pagina comercial /para-moteles/ y el CTA flotante",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Medir claridad de oferta, formularios, prueba social y conversion"
+    },
+    {
+      "id": "T-008-ST-18",
+      "titulo": "Ventas: construir pipeline de prospeccion con moteles en ciudades de mayor demanda",
+      "estado": "en_curso",
+      "prioridad": "critica",
+      "nota": "Lista top 20, mensaje inicial, seguimiento, objeciones y cierre"
+    },
+    {
+      "id": "T-008-ST-19",
+      "titulo": "Copywriter: preparar el paquete de mensajes de venta para WhatsApp y email",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Debe incluir gancho, problema, prueba, propuesta y llamada a accion"
+    },
+    {
+      "id": "T-008-ST-20",
+      "titulo": "Tecnico: priorizar estabilidad, cache y tracking de conversion",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Purga de cache, validacion de snippets, formularios y analytics"
+    },
+    {
+      "id": "T-008-ST-21",
+      "titulo": "Enlazado Interno: definir hubs de ciudad y enlaces desde posts antiguos",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Redistribuir autoridad hacia fichas y pagina comercial principal"
+    },
+    {
+      "id": "T-008-ST-22",
+      "titulo": "PM SEO Local: empaquetar oferta mensual y capacidad operativa",
+      "estado": "en_curso",
+      "prioridad": "media",
+      "nota": "Definir alcance, entregables, precio y capacidad por mes"
+    },
+    {
+      "id": "T-008-ST-23",
+      "titulo": "PM Punta Arenas: preparar segunda ola para modelo replicable",
+      "estado": "pendiente",
+      "prioridad": "baja",
+      "nota": "No competir ahora con infomoteles; dejar lista la replicacion futura"
+    },
+    {
+      "id": "T-008-ST-24",
+      "titulo": "SEO: mapa final de keywords comerciales para infomoteles.cl",
+      "estado": "en_curso",
+      "prioridad": "critica",
+      "nota": "Agrupar por ciudad, marca, precio y servicio para detectar nuevas oportunidades de clics"
+    },
+    {
+      "id": "T-008-ST-25",
+      "titulo": "SEO/PM Infomoteles: definir 10 posts viejos a seguir reescribiendo",
+      "estado": "en_curso",
+      "prioridad": "alta",
+      "nota": "Priorizar por clics actuales, impresiones, posicion y potencial de mejora"
+    },
+    {
+      "id": "T-008-ST-26",
+      "titulo": "Ventas: crear lista de 20 moteles para contactar esta semana",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "nota": "Incluir nombre, ciudad, telefono, email, estado web y motivo de contacto"
+    },
+    {
+      "id": "T-008-ST-27",
+      "titulo": "Copywriter: redactar secuencia de WhatsApp de 4 mensajes",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Mensaje inicial, seguimiento 1, seguimiento 2 y cierre con llamada a accion"
+    },
+    {
+      "id": "T-008-ST-28",
+      "titulo": "Tecnico: validar formulario, CTA flotante y eventos de conversion",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Comprobar que cada CTA dispare tracking y que no haya errores en mobile"
+    },
+    {
+      "id": "T-008-ST-29",
+      "titulo": "CRO: evaluar la primera pagina comercial con 5 preguntas de conversion",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Claridad, urgencia, prueba social, friccion y CTA principal"
+    },
+    {
+      "id": "T-008-ST-30",
+      "titulo": "Enlazado Interno: proponer 15 enlaces contextuales hacia fichas premium",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Usar anchor text descriptivo y distribuir autoridad desde posts con trafico"
+    },
+    {
+      "id": "T-008-ST-31",
+      "titulo": "PM SEO Local: definir capacidad operativa de 4 clientes activos",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Cuanto tiempo por cliente, entregables mensuales y limite de carga"
+    },
+    {
+      "id": "T-008-ST-32",
+      "titulo": "Director: consolidar brief operativo para primera venta",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "nota": "Debe juntar SEO, ventas, copy y tecnico en una sola ruta de ejecucion"
+    },
+    {
+      "id": "T-008-ST-33",
+      "titulo": "Director: asignar validacion visual directa en el sitio web tras convertir imagenes a WebP",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "nota": "Asignar a alguien que revise el sitio web en produccion y confirme que las imagenes cargan en WebP, sin romper contenido ni layout"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "list child theme",
+  "desc": "temp",
+  "code": "add_action(\"template_redirect\",function(){if(isset($_GET[\"lc\"])){header(\"Content-Type:text/plain\");echo \"STYLESHEET_DIR: \" . get_stylesheet_directory() . \"\n\";echo \"TEMPLATE_DIR: \" . get_template_directory() . \"\n\";echo \"STYLESHEET: \" . get_stylesheet() . \"\n\";echo \"TEMPLATE: \" . get_template() . \"\n\n\";$dir=get_stylesheet_directory();$files=glob($dir.\"/*\");foreach($files as $f){echo basename($f).\" | \".(is_dir($f)?\"DIR\":\"FILE\").\"\n\";}$subs=glob($dir.\"/**/*\");foreach($subs as $f){echo str_replace($dir.\"/\",\"\",$f).\"\n\";}exit;}});",
+  "scope": "front-end",
+  "active": true
+}

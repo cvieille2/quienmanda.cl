@@ -1,0 +1,40 @@
+{
+  "agente": "agente-consultor-seo-monetizacion",
+  "tarea_principal": "T-001",
+  "subtareas": [
+    {
+      "id": "T-001-ST-01",
+      "titulo": "Extraer queries de Search Console con posiciones 1-10 para infomoteles.cl",
+      "estado": "completada",
+      "entregable": "Lista de 20+ moteles con consulta, clics, impresiones, posicion"
+    },
+    {
+      "id": "T-001-ST-02",
+      "titulo": "Identificar moteles con busqueda de marca propia (alta intencion)",
+      "estado": "completada",
+      "entregable": "10 moteles con busqueda de marca detectada"
+    },
+    {
+      "id": "T-001-ST-03",
+      "titulo": "Mapear ciudades con demanda pero sin cobertura en infomoteles.cl",
+      "estado": "completada",
+      "entregable": "Lista de ciudades sin cobertura con potencial"
+    },
+    {
+      "id": "T-001-ST-04",
+      "titulo": "Validar telefonos de moteles prospectados via web/publicaciones",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "depende_de": null,
+      "nota": "Verificar que los telefonos de los 20 moteles listados sean correctos antes de pasar T-002"
+    },
+    {
+      "id": "T-001-ST-05",
+      "titulo": "Refinar lista con datos exactos de GSC (acceso directo)",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "depende_de": null,
+      "nota": "Cuando se tenga acceso a GSC, refinar cifras exactas"
+    }
+  ]
+}

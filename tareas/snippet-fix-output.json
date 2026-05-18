@@ -1,0 +1,7 @@
+{
+  "name": "FIX ficha template - numero formato CL",
+  "desc": "Corrige formato numero de US (15,000) a CL (15.000) via output buffering en fichas de motel",
+  "code": "<?php\nadd_action('wp', function() {\n    if (is_singular('ficha_motel')) {\n        ob_start(function($html) {\n            $html = preg_replace('/\\$(\\d+),(\\d{3})(?=<)/', '\\1.\\2', $html);\n            return $html;\n        });\n    }\n});",
+  "scope": "front-end",
+  "active": true
+}

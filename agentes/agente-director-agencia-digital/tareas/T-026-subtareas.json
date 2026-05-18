@@ -1,0 +1,71 @@
+{
+  "agente": "agente-director-agencia-digital",
+  "tarea_principal": "T-026",
+  "proyecto": "infomoteles.cl",
+  "objetivo": "Convertir la portada en una entrada comercial que empuje a la ruta monetizable principal",
+  "subtareas": [
+    {
+      "id": "T-026-ST-01",
+      "titulo": "Definir el mensaje comercial principal de la portada",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "agente": "agente-estratega-negocio-digital",
+      "entregable": "Propuesta de posicionamiento de home y foco comercial",
+      "criterio_cierre": "La portada tiene una sola promesa principal y una accion prioritaria"
+    },
+    {
+      "id": "T-026-ST-02",
+      "titulo": "Reescribir hero, titular, subtitular y CTA principal",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "agente": "agente-copywriter-conversion",
+      "entregable": "Pack de copy para home",
+      "criterio_cierre": "El mensaje explica valor, audiencia y accion sin ambiguedad"
+    },
+    {
+      "id": "T-026-ST-03",
+      "titulo": "Redisenar el primer pantallazo para convertir mejor",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "agente": "agente-disenador-ui-web",
+      "entregable": "Layout mobile-first del hero y bloques de apoyo",
+      "criterio_cierre": "El CTA principal queda visible y la jerarquia visual es clara"
+    },
+    {
+      "id": "T-026-ST-04",
+      "titulo": "Revisar conversion de la home y detectar friccion",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "agente": "agente-analista-web-cro",
+      "entregable": "Diagnostico CRO de la portada",
+      "criterio_cierre": "Se identifican puntos de fuga y mejoras concretas por bloque"
+    },
+    {
+      "id": "T-026-ST-05",
+      "titulo": "Implementar cambios tecnicos y verificar mobile",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "agente": "agente-tecnico-wordpress-automatizacion",
+      "entregable": "Home actualizada con validacion tecnica",
+      "criterio_cierre": "La portada carga bien, se ve bien en mobile y no rompe tracking"
+    },
+    {
+      "id": "T-026-ST-06",
+      "titulo": "Conectar home con rutas comerciales internas",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "agente": "agente-especialista-enlazado-interno",
+      "entregable": "Mapa de enlaces hacia fichas y para-moteles",
+      "criterio_cierre": "La home distribuye autoridad y empuja a las URLs de negocio"
+    },
+    {
+      "id": "T-026-ST-07",
+      "titulo": "Coordinar publicacion y medicion de resultados",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "agente": "agente-proyecto-infomoteles",
+      "entregable": "Reporte de publicacion y comparacion antes/despues",
+      "criterio_cierre": "Queda confirmada la version publicada y el plan de medicion"
+    }
+  ]
+}

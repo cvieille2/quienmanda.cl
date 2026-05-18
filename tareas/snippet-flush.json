@@ -1,0 +1,7 @@
+{
+  "name": "FLUSH REWRITE RULES - temporal",
+  "desc": "Flushes rewrite rules so CPT URLs work. Desactivar despues de ejecutar.",
+  "code": "<?php\nadd_action('init', function() {\n    if (!get_option('ficha_motel_rules_flushed')) {\n        flush_rewrite_rules(false);\n        update_option('ficha_motel_rules_flushed', true, false);\n    }\n}, 99);\n",
+  "scope": "global",
+  "active": true
+}

@@ -1,0 +1,43 @@
+{
+  "agente": "agente-analista-web-cro",
+  "tarea_principal": "T-005",
+  "subtareas": [
+    {
+      "id": "T-005-ST-01",
+      "titulo": "Diagnosticar problemas de conversion en infomoteles.cl",
+      "estado": "completada",
+      "entregable": "8 problemas detectados: 3 criticos, 3 altos, 2 medios"
+    },
+    {
+      "id": "T-005-ST-02",
+      "titulo": "Proponer 3 cambios rapidos (< 1 hora)",
+      "estado": "completada",
+      "entregable": "CTA flotante, meta description, WhatsApp en header"
+    },
+    {
+      "id": "T-005-ST-03",
+      "titulo": "Proponer 3 cambios de alto impacto",
+      "estado": "completada",
+      "entregable": "Pagina /para-moteles/, bloques destacados, lead gen formulario"
+    },
+    {
+      "id": "T-005-ST-04",
+      "titulo": "Definir metricas a monitorear",
+      "estado": "completada",
+      "entregable": "6 metricas con linea base y target 30d"
+    },
+    {
+      "id": "T-005-ST-05",
+      "titulo": "Planificar tracking (GA4, Pixel, eventos)",
+      "estado": "completada",
+      "entregable": "Lista de herramientas a instalar y eventos a disparar"
+    },
+    {
+      "id": "T-005-ST-06",
+      "titulo": "Hacer test de usuario rapido (pedir a 3 personas que naveguen y encontrar CTA)",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "nota": "Prueba simple: darle el sitio a 3 personas y pedirles 'encuentra como promocionar tu motel' — medir tiempo"
+    }
+  ]
+}

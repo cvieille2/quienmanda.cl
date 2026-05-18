@@ -1,0 +1,7 @@
+{
+  "name": "FIX ficha - cliente JS formato y H1",
+  "desc": "Corrige formato numero CL y H1 via JS en cliente",
+  "code": "add_action('wp_footer', function () {\n    if (is_singular('ficha_motel')) {\n        echo \"<script>\n(function(){\nvar e=document.querySelector('.badges span');\nif(e)e.textContent=e.textContent.replace(/\\$(\\d+),(\\d{3})/g,'$1.$2');\nvar t=document.querySelectorAll('.ficha-motel table td:nth-child(3)');\nfor(var i=0;i<t.length;i++)t[i].textContent=t[i].textContent.replace(/\\$(\\d+),(\\d{3})/g,'$1.$2');\nvar h=document.querySelector('.ficha-motel h1');\nif(h&&h.textContent.match(/^Motel\\s+Motel/))h.textContent=h.textContent.replace(/^Motel\\s+/,'');\n})();\n</script>\";\n    }\n});\n",
+  "scope": "front-end",
+  "active": true
+}

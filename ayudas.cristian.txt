@@ -1,0 +1,25 @@
+Cómo funciona:
+.\lanzar-equipo.ps1                    # Modo completo (default)
+.\lanzar-equipo.ps1 -SoloEstado        # Dashboard rápido
+.\lanzar-equipo.ps1 -TareaID T-001     # Solo una tarea específica
+.\lanzar-equipo.ps1 -Modo solo-feedback # Solo retroalimentación entre agentes
+
+cd C:\Users\Usuario\Desktop\multiplicar-dinero
+.\lanzar-equipo.ps1
+Si quieres solo ver el estado sin ejecutar nada:
+.\lanzar-equipo.ps1 -SoloEstado
+
+
+
+Pipeline de 5 pasos por ejecución:
+1. 
+Escanea inputs/ de los 17 agentes
+2. 
+Lee tareas pendientes de tareas/pendientes.json
+3. 
+Asigna y ejecuta: usa la tabla de ruteo del Director para convocar agentes por tipo de tarea
+4. 
+Genera retroalimentación: cross-links entre agentes que trabajan en la misma tarea
+5. 
+Muestra dashboard: quién tiene output, quién trabajó hoy, estado de tareas
+Resultado de la primera ejecución: 25 archivos de output creados, 12 archivos de feedback inter-agente, 3 tareas marcadas como en_curso, y todo registrado en la memoria del Director. Los equipos no involucrados (Pauta Digital, Lanzamientos, PMs de sitios pasivos) quedan en espera hasta que se les asigne trabajo.
