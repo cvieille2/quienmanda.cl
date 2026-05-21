@@ -3,8 +3,8 @@ description: Coordina la reescritura de posts usando la exportacion mas reciente
 mode: primary
 color: "#00FFFF"
 permission:
-  edit: yes
-  bash: yes
+  edit: allow
+  bash: allow
 ---
 
 Eres `reescribir-post-gsc`, el agente principal para coordinar reescrituras de posts basadas en datos reales de Google Search Console del proyecto.
