@@ -1,0 +1,97 @@
+{
+  "agente": "agente-director-agencia-digital",
+  "tarea_principal": "T-036",
+  "objetivo": "Clasificar el research de competencia por intencion de busqueda y repartir el trabajo por agente.",
+  "contexto": {
+    "archivo_fuente": "input/Keyword Stats 2026-05-22 at 13_13_12.html",
+    "total_filas": 4617,
+    "distribucion_intencion": {
+      "comercial": 1698,
+      "informacional": 632,
+      "navegacional": 3,
+      "mixto": 2284
+    }
+  },
+  "subtareas": [
+    {
+      "id": "T-036-ST-01",
+      "titulo": "Mapear keywords comerciales y oportunidades monetizables",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-consultor-seo-monetizacion",
+      "entregable": "Listado priorizado de keywords comerciales, SERP por keyword, competencia directa y oportunidades de pagina de dinero.",
+      "criterio_cierre": "Cada keyword comercial queda etiquetada con intencion, tipo de pagina ganador y potencial de monetizacion.",
+      "nota": "Incluir las querys mixtas que en la SERP se comportan como comerciales."
+    },
+    {
+      "id": "T-036-ST-02",
+      "titulo": "Traducir keywords informacionales y mixtas a angulos de contenido",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-copywriter-conversion",
+      "entregable": "Titulos, H2, CTA y enfoque editorial para grupos informacionales y mixtos.",
+      "criterio_cierre": "Cada grupo tiene un angulo de contenido util, claro y listo para redactar.",
+      "nota": "Diferenciar cuando una keyword mixta debe ir a guia informativa o pagina comercial." 
+    },
+    {
+      "id": "T-036-ST-03",
+      "titulo": "Priorizar oportunidades por negocio e impacto SEO",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-estratega-negocio-digital",
+      "entregable": "Matriz de prioridad por intencion, dificultad, impacto y dependencia.",
+      "criterio_cierre": "Queda claro que tipo de pagina va primero y cuales se descartan o difieren.",
+      "nota": "Separar comercial puro, informacional de autoridad y mixto de decision." 
+    },
+    {
+      "id": "T-036-ST-04",
+      "titulo": "Auditar SERP y formato ganador por intencion",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-analista-web-cro",
+      "entregable": "Analisis de competencia por intencion: formato, UX, CTA, tablas, FAQ y rich results.",
+      "criterio_cierre": "Cada intencion tiene un diagnostico CRO accionable.",
+      "nota": "Comparar si la SERP premia guias, fichas de producto, hubs o resultados de marketplace." 
+    },
+    {
+      "id": "T-036-ST-05",
+      "titulo": "Diseñar patrones visuales por tipo de intencion",
+      "estado": "completada",
+      "prioridad": "media",
+      "agente": "agente-disenador-ui-web",
+      "entregable": "Layouts recomendados para paginas comerciales, informacionales y mixtas.",
+      "criterio_cierre": "Cada tipo de pagina tiene un patron visual definido.",
+      "nota": "Pensar en paginas de dinero vs hubs informativos vs fichas mixtas." 
+    },
+    {
+      "id": "T-036-ST-06",
+      "titulo": "Definir malla de enlazado por intencion",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-especialista-enlazado-interno",
+      "entregable": "Mapa de enlaces internos para empujar de contenidos informativos a comerciales.",
+      "criterio_cierre": "Cada intencion tiene enlaces de entrada y salida con objetivo de conversion.",
+      "nota": "Priorizar hubs y rutas que lleven autoridad a paginas monetizables." 
+    },
+    {
+      "id": "T-036-ST-07",
+      "titulo": "Preparar plantilla SEO y WordPress por intencion",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-tecnico-wordpress-automatizacion",
+      "entregable": "Reglas de template, schema, meta y bloques para cada tipo de intencion.",
+      "criterio_cierre": "Se puede implementar en WP sin perder consistencia ni SEO.",
+      "nota": "Definir si cada intencion usa tabla, FAQ, CTA o bloque de producto." 
+    },
+    {
+      "id": "T-036-ST-08",
+      "titulo": "Coordinar, consolidar y cerrar la ejecucion",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-proyecto-avesnativaschilenas",
+      "entregable": "Resumen ejecutivo, memoria y siguientes pasos por intencion.",
+      "criterio_cierre": "La tarea queda trazada y lista para implementacion.",
+      "nota": "Cerrar con decisiones concretas: que se publica, que se actualiza y que se descarta." 
+    }
+  ]
+}

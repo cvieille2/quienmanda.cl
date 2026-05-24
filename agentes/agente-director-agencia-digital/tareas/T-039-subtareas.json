@@ -1,0 +1,132 @@
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-039",
+    "proyecto":  "visitandopuntaarenas.cl",
+    "objetivo":  "Crear una tarea por cada pagina monetizable de visitandopuntaarenas.cl y asignar responsable para integrar Travelpayouts y afiliados de viaje.",
+    "contexto":  {
+                     "sitio":  "visitandopuntaarenas.cl",
+                     "criterio_negocio":  "usar paginas con intencion comercial o de viaje para insertar bloques de afiliados, comparadores y CTA de reserva",
+                     "salida_esperada":  "matriz por URL con responsable, apoyo, tipo de monetizacion y criterio de cierre"
+                 },
+    "subtareas":  [
+                      {
+                          "id":  "T-039-ST-01",
+                          "titulo":  "Monetizar la landing de Torres del Paine desde Punta Arenas",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion",
+                                        "agente-disenador-ui-web"
+                                    ],
+                          "responsable":  "Copywriter de Conversion",
+                          "url":  "/tours/torres-del-paine-desde-punta-arenas/",
+                          "resultado_esperado":  "Brief y bloque comercial listos para insertar afiliados de tours, hotel y comparacion de ruta.",
+                          "entregable":  "Copy de conversión con CTA, FAQs, bloque de reserva y huecos definidos para afiliados Travelpayouts.",
+                          "criterio_cierre":  "La URL queda lista para captar reservas o leads con un bloque de monetizacion claro.",
+                          "nota":  "Prioridad maxima por intencion transaccional y potencial de reserva directa."
+                      },
+                      {
+                          "id":  "T-039-ST-02",
+                          "titulo":  "Monetizar la guia de Punta Arenas a Puerto Natales",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "calendario-editorial",
+                                        "agente-mentor-ventas-b2b"
+                                    ],
+                          "responsable":  "Consultor SEO Monetizacion",
+                          "url":  "/como-ir/punta-arenas-a-puerto-natales/",
+                          "resultado_esperado":  "La pagina queda con enfoque de traslado y bloques de afiliado para bus, traslado y hotel.",
+                          "entregable":  "Checklist SEO + matriz de afiliados sugeridos + criterio de cierre comercial.",
+                          "criterio_cierre":  "La URL queda lista para monetizar la decisión de transporte y alojamiento.",
+                          "nota":  "Es una de las mejores URLs para leads y afiliados por intención de ruta."
+                      },
+                      {
+                          "id":  "T-039-ST-03",
+                          "titulo":  "Monetizar la guia base de que hacer en Punta Arenas",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "calendario-editorial",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion",
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Estratega SEO/Editorial",
+                          "url":  "/guia/que-hacer-en-punta-arenas/",
+                          "resultado_esperado":  "La pieza queda pensada como hub editorial con bloques de afiliados a actividades y hoteles.",
+                          "entregable":  "Brief editorial con cluster, H1, H2, FAQs, CTAs y monetizacion por seccion.",
+                          "criterio_cierre":  "La pieza empuja clics hacia tours, hoteles y actividades relevantes.",
+                          "nota":  "Debe funcionar como pilar para enviar trafico hacia las landings transaccionales."
+                      },
+                      {
+                          "id":  "T-039-ST-04",
+                          "titulo":  "Monetizar la guia de Punta Arenas a Puerto Williams",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion",
+                                        "agente-disenador-ui-web"
+                                    ],
+                          "responsable":  "Copywriter de Conversion",
+                          "url":  "/como-ir/punta-arenas-a-puerto-williams/",
+                          "resultado_esperado":  "La pagina queda orientada a ruta, logistica y comparacion de opciones de viaje.",
+                          "entregable":  "Copy y bloque monetizable con vuelos, alojamiento previo y eSIM/seguro si aplica.",
+                          "criterio_cierre":  "La URL puede capturar leads y clics de afiliado sin perder foco editorial.",
+                          "nota":  "Buen encaje para vuelos, seguros y servicios de viaje."
+                      },
+                      {
+                          "id":  "T-039-ST-05",
+                          "titulo":  "Monetizar la landing de Perito Moreno desde Punta Arenas",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-estratega-negocio-digital",
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Consultor SEO Monetizacion",
+                          "url":  "/tours/perito-moreno-desde-punta-arenas/",
+                          "resultado_esperado":  "La pagina queda lista para capturar demanda de ruta larga con afiliados y reserva directa.",
+                          "entregable":  "Mapa de keywords, monetizacion sugerida y estructura de conversion para la landing.",
+                          "criterio_cierre":  "La landing queda preparada para vender una ruta extendida o derivar a afiliados.",
+                          "nota":  "Menor prioridad que Torres/Puerto Natales, pero con ticket interesante."
+                      },
+                      {
+                          "id":  "T-039-ST-06",
+                          "titulo":  "Monetizar la guia de cruceros por la Patagonia chilena",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion",
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Estratega de Negocio Digital",
+                          "url":  "/guias/cruceros-patagonia-chilena/",
+                          "resultado_esperado":  "La pieza queda priorizada como comparador y entrada a afiliados de viaje largo.",
+                          "entregable":  "Matriz de monetizacion por programa Travelpayouts y enfoque comercial por seccion.",
+                          "criterio_cierre":  "La guia tiene bloques definidos para vuelos, hoteles y actividades relacionadas.",
+                          "nota":  "Ideal para introducir comparadores y cross-sell de alojamiento o traslado."
+                      },
+                      {
+                          "id":  "T-039-ST-07",
+                          "titulo":  "Monetizar la guia mejor epoca para viajar a Patagonia",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "calendario-editorial",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion",
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Estratega SEO/Editorial",
+                          "url":  "/guias/mejor-epoca-patagonia/",
+                          "resultado_esperado":  "La pagina funciona como contenido de apoyo para empujar reservas y afiliados de viaje.",
+                          "entregable":  "Brief editorial con bloques de afiliado, FAQs y CTA de planificacion de viaje.",
+                          "criterio_cierre":  "La guia ayuda a convertir planificacion en clics de reserva o afiliado.",
+                          "nota":  "Buena para eSIM, seguro, hotel y vuelos si el contenido es utilitario."
+                      }
+                  ]
+}

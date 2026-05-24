@@ -1,0 +1,113 @@
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-031",
+    "proyecto":  "avesnativaschilenas.cl",
+    "objetivo":  "Convertir el contenido colgante de /tropicales/ y /chirihue/ en paginas, etiquetar con aves tropicales y segmentar por region con tags norte/sur.",
+    "contexto":  {
+                     "origen":  [
+                                    "/tropicales/",
+                                    "/chirihue/"
+                                ],
+                     "tag_base":  "aves tropicales",
+                     "tags_segmentacion":  [
+                                               "aves del norte",
+                                               "aves del sur"
+                                           ],
+                     "criterio":  "No forzar norte/sur en especies exóticas o insulares; en esos casos dejar solo aves tropicales y marcar region como no aplica/insular."
+                 },
+    "subtareas":  [
+                      {
+                          "id":  "T-031-ST-01",
+                          "titulo":  "Inventariar todos los contenidos bajo el hub tropicales",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Quedan inventariadas todas las URLs bajo tropicales y chirihue.",
+                          "entregable":  "Listado exacto de URLs, IDs, slugs, tipo de contenido y categoria actual para todo lo que cuelga de /tropicales/ y /chirihue/.",
+                          "criterio_cierre":  "Quedan identificadas todas las URLs objetivo con su ruta actual, sin duplicados y con evidencia de categoria padre/hija.",
+                          "nota":  "Incluir al menos: /tropicales/ave-asiatica-del-tamano-de-un-gallo-y-de-cola-larga/, /tropicales/el-ave-mas-grande-del-mundo-que-no-vuela/, /tropicales/ave-asiatica-galliforme-sin-cresta-de-cola-muy-larga/, /tropicales/picaflor-de-juan-fernandez/, /tropicales/chirihue/, /chirihue/chirihue-verdoso/ y /chirihue/chirihue-dorado/."
+                      },
+                      {
+                          "id":  "T-031-ST-02",
+                          "titulo":  "Clasificar cada URL por region para segmentacion por etiqueta",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Cada URL queda con tag regional o no aplica sin inventar datos.",
+                          "entregable":  "Matriz por URL con etiqueta base y region: norte, sur, insular o no aplica, con justificacion breve.",
+                          "criterio_cierre":  "Cada URL queda con una decision final de tag regional y una nota de por que se asigna esa region.",
+                          "nota":  "Si una especie no es chilena o no tiene distribucion util para el sitio, dejarla solo con aves tropicales. No inventar region."
+                      },
+                      {
+                          "id":  "T-031-ST-03",
+                          "titulo":  "Convertir los posts de tropicales en paginas y definir redireccion 301",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "apoyo":  [
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Tecnico WordPress",
+                          "resultado_esperado":  "Los posts quedan migrados a paginas con 301 activos y sin 404.",
+                          "entregable":  "Paginas creadas o migradas con su slug correcto, canonical revisado y mapa de redirects 301 desde los posts antiguos.",
+                          "criterio_cierre":  "Cada post objetivo tiene pagina equivalente publicada, URL final valida y redireccion funcionando sin errores 404.",
+                          "nota":  "Preservar slugs cuando convenga; si se cambia la URL, dejar 301 y actualizar enlaces internos."
+                      },
+                      {
+                          "id":  "T-031-ST-04",
+                          "titulo":  "Aplicar tags aves tropicales, aves del norte y aves del sur",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion"
+                                    ],
+                          "responsable":  "Tecnico WordPress",
+                          "resultado_esperado":  "Los tags base y regionales quedan aplicados de forma consistente.",
+                          "entregable":  "Contenido etiquetado en WordPress con tag base para todos y tag regional donde corresponda.",
+                          "criterio_cierre":  "Cada pagina/post objetivo tiene el tag aves tropicales; las URLs clasificadas tambien tienen aves del norte o aves del sur segun la matriz.",
+                          "nota":  "Crear o reutilizar las etiquetas necesarias sin duplicar nombres. Mantener consistencia de mayusculas/minusculas y slugs."
+                      },
+                      {
+                          "id":  "T-031-ST-05",
+                          "titulo":  "Actualizar hubs e interlinking por etiqueta",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-especialista-enlazado-interno",
+                          "apoyo":  [
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Enlazado Interno",
+                          "resultado_esperado":  "Los hubs y tags quedan interconectados sin huerfanas.",
+                          "entregable":  "Mapa de enlazado interno para tags y hubs de region, con enlaces desde las nuevas paginas hacia las taxonomias correctas.",
+                          "criterio_cierre":  "Existe una ruta de navegacion clara desde aves tropicales hacia norte/sur y cada pagina enlaza a su hub de segmentacion.",
+                          "nota":  "Asegurar que los tags se puedan usar como filtros reales y no queden huérfanos."
+                      },
+                      {
+                          "id":  "T-031-ST-06",
+                          "titulo":  "Redactar intros y titles de las nuevas paginas migradas",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-copywriter-conversion",
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Cada pagina migrada queda con titles, H1 e intros optimizados.",
+                          "entregable":  "Titles, H1 y primeros 2 parrafos optimizados para cada pagina migrada.",
+                          "criterio_cierre":  "Cada pagina nueva abre con keyword principal, contexto geográfico correcto y un gancho de lectura claro.",
+                          "nota":  "No usar texto genérico; adaptar el copy al tipo de ave y a la region asignada."
+                      },
+                      {
+                          "id":  "T-031-ST-07",
+                          "titulo":  "Validar publicacion, etiquetas y redirects tras migracion",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-proyecto-avesnativaschilenas",
+                          "responsable":  "PM Avesnativaschilenas",
+                          "resultado_esperado":  "La migracion queda validada con tags, redirects y enlaces correctos.",
+                          "entregable":  "Checklist final con paginas publicadas, tags visibles, redirects activos y enlaces internos verificados.",
+                          "criterio_cierre":  "No quedan 404 en las URLs migradas, las etiquetas aparecen en el front y la segmentacion por region es navegable.",
+                          "nota":  "Cerrar con reporte de que contenido queda en aves tropicales, que queda en norte y que queda en sur."
+                      }
+                  ]
+}

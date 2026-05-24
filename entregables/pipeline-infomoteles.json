@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "fecha": "2026-05-23",
+    "campania": "Outreach fichas destacadas - Ronda 1",
+    "objetivo": "5 fichas premium activas = $299.950/mes",
+    "metricas_clave": [
+      "Contactos enviados",
+      "Respuestas recibidas",
+      "Interesados en preview",
+      "Cierres"
+    ]
+  },
+  "prospectos": [
+    {
+      "id": "PRO-001",
+      "prioridad": 1,
+      "nombre": "Motel Diamante / Diamante Zapallar",
+      "ciudad": "Curico",
+      "direccion": "Cam. A Zapallar, Curico",
+      "telefono": "+56 75 259 0095",
+      "email": null,
+      "canal_contacto": "WhatsApp / SMS",
+      "datos_sc": {
+        "clics": 67,
+        "impresiones": 958,
+        "ctr": 6.99,
+        "posicion": 1.89
+      },
+      "oferta": "Ficha destacada premium - $59.990/mes",
+      "estado": "pendiente",
+      "fecha_contacto": null,
+      "respuesta": null,
+      "siguiente_paso": "Enviar WhatsApp",
+      "notas": "Mejor prospecto. Posicion #1, traccion real. Urgente contactar."
+    },
+    {
+      "id": "PRO-002",
+      "prioridad": 2,
+      "nombre": "Hotel Serrano",
+      "ciudad": "Antofagasta",
+      "direccion": "Teniente Ignacio Serrano 783, Antofagasta",
+      "telefono": "+56 55 278 7714",
+      "email": null,
+      "canal_contacto": "WhatsApp / SMS",
+      "datos_sc": {
+        "clics": 52,
+        "impresiones": 1217,
+        "ctr": 4.27,
+        "posicion": 3.31
+      },
+      "oferta": "Ficha destacada premium - $59.990/mes",
+      "estado": "pendiente",
+      "fecha_contacto": null,
+      "respuesta": null,
+      "siguiente_paso": "Enviar WhatsApp",
+      "notas": "Alto volumen de busqueda (1.217 impresiones). Prospecto premium."
+    },
+    {
+      "id": "PRO-003",
+      "prioridad": 3,
+      "nombre": "Motel Caudal (El Caudal)",
+      "ciudad": "Talcahuano",
+      "direccion": "Av. Pdte. Jorge Alessandri Rodriguez 3655, Talcahuano",
+      "telefono": "+56 41 316 6255",
+      "email": null,
+      "canal_contacto": "WhatsApp / SMS",
+      "datos_sc": {
+        "clics": 40,
+        "impresiones": 677,
+        "ctr": 5.91,
+        "posicion": 2.35
+      },
+      "oferta": "Ficha destacada premium - $59.990/mes",
+      "estado": "pendiente",
+      "fecha_contacto": null,
+      "respuesta": null,
+      "siguiente_paso": "Enviar WhatsApp",
+      "notas": "Posicion #2, traccion consistente."
+    },
+    {
+      "id": "PRO-004",
+      "prioridad": 4,
+      "nombre": "Motel Euro",
+      "ciudad": "Calama",
+      "direccion": "Avenida Oriente N°493, Calama",
+      "telefono": "+56 55 231 0515",
+      "email": "contacto@motel-euro.cl",
+      "canal_contacto": "Email (primario) / WhatsApp",
+      "datos_sc": {
+        "clics": 34,
+        "impresiones": 640,
+        "ctr": 5.31,
+        "posicion": 3.95
+      },
+      "oferta": "Ficha destacada premium - $59.990/mes",
+      "estado": "pendiente",
+      "fecha_contacto": null,
+      "respuesta": null,
+      "siguiente_paso": "Enviar email a contacto@motel-euro.cl",
+      "notas": "Unico con email publicado. Usar outreach por email."
+    },
+    {
+      "id": "PRO-005",
+      "prioridad": 5,
+      "nombre": "Oasis de los Niches",
+      "ciudad": "Curico",
+      "direccion": "Km 8.4 Camino Los Niches, Curico",
+      "telefono": "+56 9 9795 2502",
+      "email": null,
+      "canal_contacto": "WhatsApp (tiene WhatsApp)",
+      "datos_sc": {
+        "clics": 30,
+        "impresiones": 636,
+        "ctr": 4.72,
+        "posicion": 2.9
+      },
+      "oferta": "Ficha destacada premium - $59.990/mes",
+      "estado": "pendiente",
+      "fecha_contacto": null,
+      "respuesta": null,
+      "siguiente_paso": "Enviar WhatsApp",
+      "notas": "Posicion #2. Tiene WhatsApp directo."
+    }
+  ],
+  "acciones_hoy": [
+    "Enviar email a Motel Euro (contacto@motel-euro.cl) - archivo .eml listo",
+    "Enviar WhatsApp a Diamante, Serrano, Caudal, Oasis - mensajes listos",
+    "Registrar respuestas en este JSON",
+    "Si no responden en 3d, reenviar seguimiento en entregables/seguimiento-dia3.md"
+  ],
+  "ronda_2": [
+    {
+      "prioridad": 6,
+      "nombre": "Motel Montavord",
+      "ciudad": "San Miguel",
+      "telefono": "Buscar",
+      "datos_sc": "498 imp, 0.2% CTR, pos 9.85",
+      "notas": "CTR pesimo (0.2%). Mucho desperdicio de impresiones. Arreglar title + prospectar"
+    },
+    {
+      "prioridad": 7,
+      "nombre": "Motel Entre Rocas",
+      "ciudad": "Coquimbo",
+      "telefono": "Buscar",
+      "datos_sc": "232 imp, 0.43% CTR, pos 8.22",
+      "notas": "Alta impresion, CTR bajo. Prospecto para Ronda 2"
+    },
+    {
+      "prioridad": 8,
+      "nombre": "Motel Turqueza",
+      "ciudad": "Iquique",
+      "telefono": "Buscar",
+      "datos_sc": "211 imp, 0.47% CTR, pos 10.65",
+      "notas": "Nueva ciudad (Iquique). Prospecto para expandir cobertura"
+    },
+    {
+      "prioridad": 9,
+      "nombre": "Motel El Canelo",
+      "ciudad": "Punta Arenas",
+      "telefono": "Buscar",
+      "datos_sc": "204 imp, 0.49% CTR, pos 6.81",
+      "notas": "Punta Arenas - buena posicion, CTR bajo"
+    },
+    {
+      "prioridad": 10,
+      "nombre": "Motel El Cielo",
+      "ciudad": "Copiapo",
+      "telefono": "Buscar",
+      "datos_sc": "175 imp, 0.57% CTR, pos 14.22",
+      "notas": "Misma ciudad que Los Sauces. Posible combo"
+    },
+    {
+      "prioridad": 11,
+      "nombre": "Motel Magus",
+      "ciudad": "Recoleta",
+      "telefono": "Buscar",
+      "datos_sc": "170 imp, 0.59% CTR, pos 10.37",
+      "notas": "Recoleta, Santiago. Prospecto RM"
+    },
+    {
+      "prioridad": 12,
+      "nombre": "Motel Los Acacios",
+      "ciudad": "Santiago",
+      "telefono": "Buscar",
+      "datos_sc": "81 imp, 1.23% CTR, pos 9.93",
+      "notas": "Santiago centro. Prospecto para Ronda 2"
+    }
+  ],
+  "entregables": {
+    "titles_wp_aplicados": [
+      "Motel Los Sauces -> title + meta nuevo aplicado",
+      "Motel Yugos -> title + meta nuevo aplicado",
+      "Motel Los Gatitos -> title + meta nuevo aplicado"
+    ],
+    "pipeline_json": "entregables/pipeline-infomoteles.json",
+    "email_motel_euro": "entregables/email-motel-euro.eml",
+    "whatsapp_4_moteles": "entregables/mensajes-whatsapp-4-moteles.md",
+    "seguimiento_dia3": "entregables/seguimiento-dia3.md"
+  },
+  "notas": "Ronda 1: 5 prospectos prioritarios con datos SC + contactos. Ronda 2: 7 prospectos adicionales detectados en SC (alta impresion, CTR bajo). Cuando cierres Ronda 1, buscamos contactos para Ronda 2. El SMTP de mail.infomoteles.cl resuelve a Cloudflare (no expone SMTP directo). Los emails quedan en archivos .eml listos para enviar manualmente desde Roundcube en puerto 2096."
+}

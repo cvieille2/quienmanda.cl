@@ -1,0 +1,87 @@
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-032",
+    "proyecto":  "avesnativaschilenas.cl",
+    "objetivo":  "Crear un cluster de contenido sobre aves de Rapa Nui con una URL por intencion de busqueda, tomando como referencia la pagina lider de Photo Birding Chile y evitando canibalizacion.",
+    "contexto":  {
+                     "referencia_serp":  "https://www.photobirdingchile.com/Novedades/Rapa-Nui",
+                     "angulo":  "avifauna de Rapa Nui / Isla de Pascua",
+                     "criterios":  [
+                                       "Una URL por intencion",
+                                       "No inventar especies o datos no comprobados",
+                                       "Separar avifauna general, aves marinas, aves introducidas, aves extintas, nombres en rapanui y Manutara",
+                                       "Dejar el cluster listo para enlazado interno y futura monetizacion si aplica"
+                                   ]
+                 },
+    "subtareas":  [
+                      {
+                          "id":  "T-032-ST-01",
+                          "titulo":  "Mapear intenciones de busqueda y arquitectura del cluster Rapa Nui",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "El cluster Rapa Nui queda definido por intenciones, slugs y keywords.",
+                          "entregable":  "Mapa final de keywords, intenciones y URLs propuestas para el cluster de Rapa Nui.",
+                          "criterio_cierre":  "Quedan definidas las paginas necesarias, sin duplicar intenciones, con slug sugerido y keyword principal por URL.",
+                          "nota":  "Tomar como base al menos: guia general, aves marinas, aves introducidas, aves extintas, nombres en rapanui y Manutara. Separar sinonimos \u0027Rapa Nui\u0027 e \u0027Isla de Pascua\u0027 si justifican URL propia o canonica compartida."
+                      },
+                      {
+                          "id":  "T-032-ST-02",
+                          "titulo":  "Redactar titles, metas, H1 e intros para cada pagina del cluster",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Cada URL del cluster queda con copy SEO unico y listo para publicar.",
+                          "entregable":  "Pack de copy SEO por URL con title, meta description, H1 y primeros parrafos listos para publicar.",
+                          "criterio_cierre":  "Cada pagina tiene un enfoque unico, un gancho claro y copy alineado con la intencion detectada.",
+                          "nota":  "No copiar la redaccion de la competencia. Priorizar claridad, exactitud y diferenciacion por intencion."
+                      },
+                      {
+                          "id":  "T-032-ST-03",
+                          "titulo":  "Construir y publicar las nuevas paginas en WordPress",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "apoyo":  [
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Tecnico WordPress",
+                          "resultado_esperado":  "Las paginas quedan publicadas en WP sin 404 ni conflictos de canonicos.",
+                          "entregable":  "Paginas publicadas con slug correcto, canonical revisado, indexacion controlada y estructura limpia.",
+                          "criterio_cierre":  "Las URLs finales responden bien, no hay 404, y cada pagina queda visible en desktop y mobile.",
+                          "nota":  "Preservar jerarquia: hub general + paginas especificas. Si dos intenciones compiten, consolidar en una sola URL canonica."
+                      },
+                      {
+                          "id":  "T-032-ST-04",
+                          "titulo":  "Diseñar el enlazado interno del cluster Rapa Nui",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-especialista-enlazado-interno",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion"
+                                    ],
+                          "responsable":  "Enlazado Interno",
+                          "resultado_esperado":  "El hub y las paginas hijas quedan conectados con enlaces utiles.",
+                          "entregable":  "Mapa de enlazado entre hub, paginas hijas y contenidos existentes relacionados con aves insulares o marinas.",
+                          "criterio_cierre":  "El hub reparte autoridad y cada pagina apunta a su intencion sin dejar URLs huérfanas.",
+                          "nota":  "Conectar el nuevo cluster con cualquier contenido previo de aves insulares, marinas o de avistamiento que aporte contexto real."
+                      },
+                      {
+                          "id":  "T-032-ST-05",
+                          "titulo":  "Coordinar QA, publicacion y reporte final del cluster",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-proyecto-avesnativaschilenas",
+                          "responsable":  "PM Avesnativaschilenas",
+                          "resultado_esperado":  "El cluster queda publicado, enlazado y listo para medicion.",
+                          "entregable":  "Checklist de publicacion con URLs, estado de indexacion, enlaces internos y observaciones de calidad.",
+                          "criterio_cierre":  "Queda confirmado que el cluster esta publicado, enlazado y listo para medicion.",
+                          "nota":  "Cerrar con lista de paginas creadas, su intencion principal y cualquier ajuste pendiente para la siguiente iteracion."
+                      }
+                  ]
+}

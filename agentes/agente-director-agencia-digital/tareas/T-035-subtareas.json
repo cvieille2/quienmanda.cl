@@ -1,0 +1,302 @@
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-035",
+    "proyecto":  "avesnativaschilenas.cl",
+    "objetivo":  "Convertir 1764 keywords del archivo Keyword Stats 2026-05-22 en contenido monetizable con enlaces de afiliado Amazon.",
+    "contexto":  {
+                     "archivo_fuente":  "input/Keyword Stats 2026-05-22 at 10_42_55.html",
+                     "total_keywords":  1764,
+                     "intencion":  "100% comercial/compra",
+                     "monetizacion":  "Amazon Afiliados (amzn.to)",
+                     "disclaimer":  "Como afiliado de Amazon, gano por compras calificadas",
+                     "posts_existentes_contenedores":  [
+                                                           "/jaulas/",
+                                                           "/jaulas/para-loros/",
+                                                           "/jaulas/para-pajaros-pequenos/",
+                                                           "/jaulas/decorativas/",
+                                                           "/jaulas/grandes/",
+                                                           "/jaulas/para-palomas/",
+                                                           "/jaulas/modelos/",
+                                                           "/jaulas/marcas/",
+                                                           "/jaulas/portatiles/",
+                                                           "/jaulas/accesorios/",
+                                                           "/nidos/",
+                                                           "/tienda/comederos/",
+                                                           "/tienda/",
+                                                           "/loro/",
+                                                           "/gallina/",
+                                                           "/migratorias/paloma/"
+                                                       ]
+                 },
+    "subtareas":  [
+                      {
+                          "id":  "T-035-ST-01",
+                          "titulo":  "Estudio cluster: Loros, Guacamayos, Cacatuas, Agapornis (185 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Loros, guacamayos, cacatuas y agapornis quedan con match sitio, gaps y productos asignados.",
+                          "entregable":  "Lista de 185 keywords del cluster, match con posts existentes en el sitio, gap analysis, 5+ productos Amazon.es recomendados por keyword principal, propuesta de nuevos posts a crear y posts existentes a actualizar.",
+                          "criterio_cierre":  "Cada keyword del cluster tiene: (a) si existe post en el sitio o no, (b) si existe, que URL y que falta, (c) que producto Amazon afiliar, (d) recomendacion: crear o actualizar.",
+                          "nota":  "Revisar /loro/, /jaulas/para-loros/, /jaulas/ + buscar en GSC si hay URLs con trafico para estas KW."
+                      },
+                      {
+                          "id":  "T-035-ST-02",
+                          "titulo":  "Estudio cluster: Periquitos, Pericos Australianos (109 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Periquitos y pericos australianos quedan con match sitio y productos afiliados.",
+                          "entregable":  "Lista de 109 keywords del cluster, match con posts existentes, gap analysis, 5+ productos Amazon.es, propuesta de creacion/actualizacion.",
+                          "criterio_cierre":  "Cada keyword tiene match sitio + recomendacion de producto afiliado.",
+                          "nota":  "Revisar /jaulas/ y buscar si hay contenido sobre periquitos australianos."
+                      },
+                      {
+                          "id":  "T-035-ST-03",
+                          "titulo":  "Estudio cluster: Ninfas / Cockatiel (34 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Ninfas y cockatiel quedan con match sitio, gaps y productos afiliados.",
+                          "entregable":  "Lista de 34 keywords, match sitio, gap, productos Amazon, recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Match completo KW vs sitio.",
+                          "nota":  "Revisar /jaulas/ y si existe post sobre ninfas."
+                      },
+                      {
+                          "id":  "T-035-ST-04",
+                          "titulo":  "Estudio cluster: Canarios, Timbrados (138 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Canarios y timbrados quedan con cobertura, gaps y productos priorizados.",
+                          "entregable":  "138 keywords match, gap, productos Amazon (jaulas canarios, accesorios, comederos, nidos), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 138 KW.",
+                          "nota":  "Revisar /jaulas/, /cuidados/guia-completa-para-criar-canarios-en-casa/, /nidos/."
+                      },
+                      {
+                          "id":  "T-035-ST-05",
+                          "titulo":  "Estudio cluster: Cobayas, Cuyes, Conejillos India, Hamster, Ratones (93 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Cobayas y similares quedan con decision de alcance y productos afiliados.",
+                          "entregable":  "93 keywords match sitio, gap, productos Amazon (jaulas cobayas, accesorios, casas), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 93 KW.",
+                          "nota":  "Aunque son mascotas no-aves, las KW existen y se pueden captar con contenido en /jaulas/ o nuevo /mascotas/. Decision de alcance."
+                      },
+                      {
+                          "id":  "T-035-ST-06",
+                          "titulo":  "Estudio cluster: Gallinas, Codornices, Gallos Pelea, Perdices (239 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Gallinas, codornices y gallos quedan con match, gaps y productos asignados.",
+                          "entregable":  "239 keywords match, gap, productos Amazon (jaulas gallinas, codornices, bebederos, comederos), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 239 KW.",
+                          "nota":  "Revisar /gallina/ y si hay contenido sobre codornices o gallos de pelea."
+                      },
+                      {
+                          "id":  "T-035-ST-07",
+                          "titulo":  "Estudio cluster: Jaulas Trampa y Captura (63 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Jaulas trampa y captura quedan con match, gaps y decision de seccion.",
+                          "entregable":  "63 keywords match, gap, productos Amazon (jaulas trampa), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 63 KW.",
+                          "nota":  "Contenido nicho pero intencion de compra muy alta. Evaluar si crear seccion /trampas/."
+                      },
+                      {
+                          "id":  "T-035-ST-08",
+                          "titulo":  "Estudio cluster: Aviarios, Voladeras, Pajareras (236 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Aviarios, voladeras y pajareras quedan con hub urgente y productos asignados.",
+                          "entregable":  "236 keywords match, gap, productos Amazon (aviarios, voladeras, pajareras, accesorios), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 236 KW.",
+                          "nota":  "CLUSTER CRITICO. 236 keywords de compra directa. No existe post especifico. Crear hub /aviarios/ o /voladeras/ urgente."
+                      },
+                      {
+                          "id":  "T-035-ST-09",
+                          "titulo":  "Estudio cluster: Accesorios, Comederos, Nidos, Juguetes (53 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Accesorios, comederos, nidos y juguetes quedan con cobertura y productos.",
+                          "entregable":  "53 keywords match, gap, productos Amazon (comederos, bebederos, nidos, juguetes, perchas, transportines), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 53 KW.",
+                          "nota":  "Revisar /tienda/comederos/, /nidos/, /jaulas/accesorios/."
+                      },
+                      {
+                          "id":  "T-035-ST-10",
+                          "titulo":  "Estudio cluster: Palomas, Palomos, Buchones, Tortolas (60 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Palomas y buchones quedan con match sitio y monetizacion definida.",
+                          "entregable":  "60 keywords match, gap, productos Amazon (jaulas palomas, trampas, comederos), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 60 KW.",
+                          "nota":  "Revisar /migratorias/paloma/ y contenido existente."
+                      },
+                      {
+                          "id":  "T-035-ST-11",
+                          "titulo":  "Estudio cluster: Marcas, Modelos y Especificas (Pedros, 2gr, Vision, etc) (110 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Las marcas y modelos quedan con match y productos de afiliado por marca.",
+                          "entregable":  "110 keywords match, gap, productos Amazon por marca (amzn.to links directos a productos), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 110 KW.",
+                          "nota":  "Las marcas tienen alta intencion de compra. Revisar /jaulas/marcas/, /jaulas/modelos/."
+                      },
+                      {
+                          "id":  "T-035-ST-12",
+                          "titulo":  "Estudio cluster: Decorativas, Vintage, Madera, Alimentos y Salud (54 KW)",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Decorativas, alimentos y salud quedan con cobertura y productos definidos.",
+                          "entregable":  "54 keywords match, gap, productos Amazon (jaulas decorativas, alimentos, suplementos), recomendacion crear/actualizar.",
+                          "criterio_cierre":  "Cobertura completa de las 54 KW.",
+                          "nota":  "Revisar /jaulas/decorativas/ y contenido existente."
+                      },
+                      {
+                          "id":  "T-035-ST-13",
+                          "titulo":  "Consolidar estudios SEO y plan maestro de contenido afiliado",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion",
+                                        "agente-copywriter-conversion",
+                                        "agente-proyecto-avesnativaschilenas",
+                                        "agente-tecnico-wordpress-automatizacion",
+                                        "agente-especialista-enlazado-interno"
+                                    ],
+                          "responsable":  "Estratega Negocio Digital",
+                          "resultado_esperado":  "El plan maestro unifica clusters, prioridades, dependencias y orden de ejecucion.",
+                          "entregable":  "Plan maestro con: (1) posts a crear (titulo, slug, cluster, KW target), (2) posts a actualizar (URL, cambios necesarios, KW a anadir), (3) productos Amazon por post, (4) prioridad, (5) orden de ejecucion.",
+                          "criterio_cierre":  "Cada cluster tiene una ruta clara: crear nuevo post o actualizar existente, con productos Amazon asignados y prioridad definida.",
+                          "nota":  "Consolidar los 12 estudios SEO en un plan de accion unificado. Incluir tabla de prioridades y dependencias."
+                      },
+                      {
+                          "id":  "T-035-ST-14",
+                          "titulo":  "Ejecutar creacion/actualizacion de posts prioridad CRITICA (clusters 1, 8, 4)",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-tecnico-wordpress-automatizacion",
+                                        "agente-disenador-ui-web"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Los clusters criticos quedan publicados con afiliados y SEO basico.",
+                          "entregable":  "Posts redactados y publicados con contenido orientado a keywords del cluster + enlaces de afiliado Amazon contextuales.",
+                          "criterio_cierre":  "Cada post incluye: titulo con keyword, contenido util, 2+ enlaces afiliados contextuales, disclaimer, imagenes relevantes, SEO on-page basico.",
+                          "nota":  "Usar el plan maestro ST-13 para saber exactamente que crear/actualizar. Priorizar clusters con mayor volumen de KW."
+                      },
+                      {
+                          "id":  "T-035-ST-15",
+                          "titulo":  "Ejecutar creacion/actualizacion de posts prioridad ALTA (clusters 6, 9, 11, 2, 3)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-tecnico-wordpress-automatizacion"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Los clusters altos quedan publicados con afiliados y SEO basico.",
+                          "entregable":  "Posts redactados y publicados para clusters de prioridad alta.",
+                          "criterio_cierre":  "Contenido publicado con afiliados Amazon y SEO basico.",
+                          "nota":  "Segunda tanda de ejecucion."
+                      },
+                      {
+                          "id":  "T-035-ST-16",
+                          "titulo":  "Ejecutar creacion/actualizacion de posts prioridad MEDIA-BAJA (clusters 5, 7, 10, 12)",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-tecnico-wordpress-automatizacion"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Los clusters media-baja quedan publicados con afiliados y SEO basico.",
+                          "entregable":  "Posts redactados y publicados para clusters restantes.",
+                          "criterio_cierre":  "Contenido publicado con afiliados Amazon.",
+                          "nota":  "Tercera tanda."
+                      },
+                      {
+                          "id":  "T-035-ST-17",
+                          "titulo":  "Enlazado interno del nuevo contenido afiliado",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-especialista-enlazado-interno",
+                          "responsable":  "Enlazado Interno",
+                          "resultado_esperado":  "La malla interna conecta hubs, productos y nuevos posts con 3 enlaces minimos.",
+                          "entregable":  "Malla de enlaces entre los nuevos posts de compra, los hubs existentes (/jaulas/, /nidos/, /tienda/) y fichas de aves con trafico.",
+                          "criterio_cierre":  "Cada nuevo post tiene al menos 3 enlaces internos entrantes y salientes.",
+                          "nota":  "Distribuir autoridad desde fichas con trafico hacia las nuevas paginas de producto."
+                      },
+                      {
+                          "id":  "T-035-ST-18",
+                          "titulo":  "QA, seguimiento y cierre del pipeline",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-proyecto-avesnativaschilenas",
+                          "responsable":  "PM Avesnativaschilenas",
+                          "resultado_esperado":  "El pipeline queda cerrado con checklist, verificacion de enlaces y baseline registrado.",
+                          "entregable":  "Checklist final con: clusters procesados, posts creados, posts actualizados, enlaces afiliados verificados, SEO on-page validado, metricas baseline registradas.",
+                          "criterio_cierre":  "Pipeline completo documentado con resultados y proximos pasos.",
+                          "nota":  "Verificar que todos los enlaces de afiliado funcionan y tienen disclaimer. Registrar impresiones actuales en GSC como baseline."
+                      }
+                  ]
+}

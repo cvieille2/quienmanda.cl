@@ -1,3 +1,7 @@
-credenciales/
 .opencode/node_modules/
 C*Tempopencodeids_*.txt
+temp_*.py
+temp_publish_*.py
+tareas/_current_post_*.html
+tareas/set-yoast-*.py
+nul

@@ -1,0 +1,57 @@
+{
+  "agente": "agente-director-agencia-digital",
+  "tarea_principal": "T-037",
+  "objetivo": "Mapear la cobertura real del sitio por keyword y marcar si ya existe post o pagina en la arquitectura.",
+  "subtareas": [
+    {
+      "id": "T-037-ST-01",
+      "titulo": "Mapear cobertura existente por keyword",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-consultor-seo-monetizacion",
+      "entregable": "Tabla keyword -> intencion -> existe/no existe -> URL -> tipo de contenido.",
+      "criterio_cierre": "Cada keyword prioritaria queda marcada con cobertura real en el sitio.",
+      "nota": "Usar el research de T-036 como base y resolver existencia real en avesnativachilenas.cl." 
+    },
+    {
+      "id": "T-037-ST-02",
+      "titulo": "Proponer gap content para keywords sin cobertura",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-copywriter-conversion",
+      "entregable": "Lista de posts/paginas a crear para terminos sin contenido.",
+      "criterio_cierre": "Cada gap queda con enfoque editorial o comercial definido.",
+      "nota": "Separar gaps comerciales de gaps informacionales." 
+    },
+    {
+      "id": "T-037-ST-03",
+      "titulo": "Priorizar gaps por negocio",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-estratega-negocio-digital",
+      "entregable": "Matriz de prioridad por existencia, intencion e impacto.",
+      "criterio_cierre": "Se sabe que gaps atacar primero.",
+      "nota": "Dar prioridad a gaps con intencion comercial y baja competencia." 
+    },
+    {
+      "id": "T-037-ST-04",
+      "titulo": "Definir enlaces entre contenido existente y gaps",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-especialista-enlazado-interno",
+      "entregable": "Ruta de enlaces desde lo que ya existe hacia lo nuevo.",
+      "criterio_cierre": "La arquitectura empuja autoridad hacia las paginas monetizables.",
+      "nota": "Priorizar hubs, pilares y contenidos con trafico existente." 
+    },
+    {
+      "id": "T-037-ST-05",
+      "titulo": "Consolidar y cerrar en memoria",
+      "estado": "completada",
+      "prioridad": "media",
+      "agente": "agente-proyecto-avesnativaschilenas",
+      "entregable": "Resumen final + actualizacion de memoria.",
+      "criterio_cierre": "La arquitectura queda lista para uso operativo.",
+      "nota": "Registrar en memoria que ya existe cobertura real por terminos y gaps." 
+    }
+  ]
+}

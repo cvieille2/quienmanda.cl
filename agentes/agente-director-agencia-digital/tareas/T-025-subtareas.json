@@ -1,80 +1,96 @@
-{
-  "agente": "agente-director-agencia-digital",
-  "tarea_principal": "T-025",
-  "proyecto": "infomoteles.cl",
-  "objetivo": "Potenciar las fichas que ya reciben clics para subir CTR, conversion y volumen de contactos",
-  "subtareas": [
-    {
-      "id": "T-025-ST-01",
-      "titulo": "Auditar las 3 fichas foco con Search Console",
-      "estado": "pendiente",
-      "prioridad": "critica",
-      "agente": "agente-consultor-seo-monetizacion",
-      "entregable": "Diagnostico por URL con consultas, CTR, posicion, impresiones y oportunidad de mejora",
-      "criterio_cierre": "Cada ficha queda con keyword principal, 3 secundarias y una recomendacion concreta"
-    },
-    {
-      "id": "T-025-ST-02",
-      "titulo": "Reescribir title, meta description, H1 y subtitulo",
-      "estado": "pendiente",
-      "prioridad": "critica",
-      "agente": "agente-copywriter-conversion",
-      "entregable": "Pack de copy SEO por ficha",
-      "criterio_cierre": "Los textos reflejan la consulta real y mejoran el gancho comercial sin perder relevancia local"
-    },
-    {
-      "id": "T-025-ST-03",
-      "titulo": "Redisenar hero y jerarquia visual del primer pantallazo",
-      "estado": "pendiente",
-      "prioridad": "alta",
-      "agente": "agente-disenador-ui-web",
-      "entregable": "Propuesta visual mobile-first del bloque superior",
-      "criterio_cierre": "Precio, ubicacion, prueba social y CTA quedan visibles sin scroll"
-    },
-    {
-      "id": "T-025-ST-04",
-      "titulo": "Revisar conversion y simplificar friccion en CTA/formulario",
-      "estado": "pendiente",
-      "prioridad": "alta",
-      "agente": "agente-analista-web-cro",
-      "entregable": "Checklist CRO por ficha con mejoras de prioridad",
-      "criterio_cierre": "Cada ficha tiene acciones concretas para mejorar clic, scroll y contacto"
-    },
-    {
-      "id": "T-025-ST-05",
-      "titulo": "Validar tracking, mobile, velocidad y posibles 301",
-      "estado": "pendiente",
-      "prioridad": "alta",
-      "agente": "agente-tecnico-wordpress-automatizacion",
-      "entregable": "Checklist tecnico implementable por URL",
-      "criterio_cierre": "CTA, analytics, mobile y render quedan verificados sin errores criticos"
-    },
-    {
-      "id": "T-025-ST-06",
-      "titulo": "Reforzar enlazado interno hacia las fichas foco",
-      "estado": "pendiente",
-      "prioridad": "media",
-      "agente": "agente-especialista-enlazado-interno",
-      "entregable": "Mapa de enlaces contextuales y anchors",
-      "criterio_cierre": "Cada ficha foco recibe enlaces desde URLs con impresiones reales"
-    },
-    {
-      "id": "T-025-ST-07",
-      "titulo": "Definir orden del siguiente lote de fichas",
-      "estado": "pendiente",
-      "prioridad": "media",
-      "agente": "agente-estratega-negocio-digital",
-      "entregable": "Secuencia priorizada del siguiente lote",
-      "criterio_cierre": "Queda definido el siguiente grupo segun potencial comercial"
-    },
-    {
-      "id": "T-025-ST-08",
-      "titulo": "Coordinar publicacion y reporte comparativo",
-      "estado": "pendiente",
-      "prioridad": "alta",
-      "agente": "agente-proyecto-infomoteles",
-      "entregable": "Reporte antes/despues con estado de publicacion",
-      "criterio_cierre": "Se confirma que la primera ola quedo publicada y medible"
-    }
-  ]
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-025",
+    "proyecto":  "infomoteles.cl",
+    "objetivo":  "Potenciar las fichas que ya reciben clics para subir CTR, conversion y volumen de contactos",
+    "subtareas":  [
+                      {
+                          "id":  "T-025-ST-01",
+                          "titulo":  "Auditar las 3 fichas foco con Search Console",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Cada ficha foco queda diagnosticada con consultas, CTR, posicion, impresiones y oportunidad concreta.",
+                          "entregable":  "Diagnostico por URL con consultas, CTR, posicion, impresiones y oportunidad de mejora",
+                          "criterio_cierre":  "Cada ficha queda con keyword principal, 3 secundarias y una recomendacion concreta"
+                      },
+                      {
+                          "id":  "T-025-ST-02",
+                          "titulo":  "Reescribir title, meta description, H1 y subtitulo",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-copywriter-conversion",
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Titles, metas, H1 y subtitulo quedan reescritos para subir CTR sin perder relevancia local.",
+                          "entregable":  "Pack de copy SEO por ficha",
+                          "criterio_cierre":  "Los textos reflejan la consulta real y mejoran el gancho comercial sin perder relevancia local"
+                      },
+                      {
+                          "id":  "T-025-ST-03",
+                          "titulo":  "Redisenar hero y jerarquia visual del primer pantallazo",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-disenador-ui-web",
+                          "responsable":  "Disenador UI Web",
+                          "resultado_esperado":  "El hero queda definido con precio, ubicacion, prueba social y CTA visibles en mobile.",
+                          "entregable":  "Propuesta visual mobile-first del bloque superior",
+                          "criterio_cierre":  "Precio, ubicacion, prueba social y CTA quedan visibles sin scroll"
+                      },
+                      {
+                          "id":  "T-025-ST-04",
+                          "titulo":  "Revisar conversion y simplificar friccion en CTA/formulario",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-analista-web-cro",
+                          "responsable":  "Analista Web CRO",
+                          "resultado_esperado":  "La friccion de CTA y formulario queda reducida con acciones concretas por ficha.",
+                          "entregable":  "Checklist CRO por ficha con mejoras de prioridad",
+                          "criterio_cierre":  "Cada ficha tiene acciones concretas para mejorar clic, scroll y contacto"
+                      },
+                      {
+                          "id":  "T-025-ST-05",
+                          "titulo":  "Validar tracking, mobile, velocidad y posibles 301",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "responsable":  "Tecnico WordPress",
+                          "resultado_esperado":  "Tracking, mobile, velocidad y 301 quedan verificados sin errores criticos.",
+                          "entregable":  "Checklist tecnico implementable por URL",
+                          "criterio_cierre":  "CTA, analytics, mobile y render quedan verificados sin errores criticos"
+                      },
+                      {
+                          "id":  "T-025-ST-06",
+                          "titulo":  "Reforzar enlazado interno hacia las fichas foco",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-especialista-enlazado-interno",
+                          "responsable":  "Enlazado Interno",
+                          "resultado_esperado":  "Las fichas foco reciben enlaces desde URLs con impresiones reales.",
+                          "entregable":  "Mapa de enlaces contextuales y anchors",
+                          "criterio_cierre":  "Cada ficha foco recibe enlaces desde URLs con impresiones reales"
+                      },
+                      {
+                          "id":  "T-025-ST-07",
+                          "titulo":  "Definir orden del siguiente lote de fichas",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "responsable":  "Estratega Negocio Digital",
+                          "resultado_esperado":  "Queda priorizado el siguiente lote de fichas segun potencial comercial.",
+                          "entregable":  "Secuencia priorizada del siguiente lote",
+                          "criterio_cierre":  "Queda definido el siguiente grupo segun potencial comercial"
+                      },
+                      {
+                          "id":  "T-025-ST-08",
+                          "titulo":  "Coordinar publicacion y reporte comparativo",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-proyecto-infomoteles",
+                          "responsable":  "PM Infomoteles",
+                          "resultado_esperado":  "La primera ola queda publicada y con reporte comparativo antes/despues.",
+                          "entregable":  "Reporte antes/despues con estado de publicacion",
+                          "criterio_cierre":  "Se confirma que la primera ola quedo publicada y medible"
+                      }
+                  ]
 }

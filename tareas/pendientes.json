@@ -2,8 +2,8 @@
     "meta":  {
                  "objetivo_principal":  "Convertir $100.000 CLP en $1.000.000 CLP mensual recurrente",
                  "horizonte":  "30-45 dias",
-                 "proxima_revision":  "2026-05-17",
-                 "sesion_actual":  "2026-05-16",
+                 "proxima_revision":  "2026-05-28",
+                 "sesion_actual":  "2026-05-21",
                  "frente_activo":  "infomoteles.cl",
                  "total_agentes":  18,
                  "director":  "agente-director-agencia-digital",
@@ -477,6 +477,81 @@
                                           "T-026",
                                           "T-027"
                                       ]
+                   },
+                   {
+                       "id":  "T-029",
+                       "macro":  true,
+                       "tipo":  "seo_rescate",
+                       "fecha":  "2026-05-21",
+                       "prioridad":  "media",
+                       "estado":  "completada",
+                       "agente":  "agente-proyecto-avesnativaschilenas",
+                       "agente_principal":  "agente-proyecto-avesnativaschilenas",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Rescatar CTR, activar Search Console y ordenar contenido",
+                       "descripcion":  "El CTR del sitio es 0.26%. Activar Search Console, reescribir titles y metas de 20+ paginas, definir clusters topicos, implementar silos de enlazado interno y elegir ruta de monetizacion (afiliados/AdSense/donaciones).",
+                       "entregable":  "Search Console activo, 20+ paginas con titles nuevos, CTR medible, 3 clusters topicos, ruta de monetizacion definida",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-030",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-21",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-director-agencia-digital",
+                       "agente_principal":  "agente-director-agencia-digital",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Primeros 10 USD con AdSense + Amazon.es afiliados",
+                       "descripcion":  "AdSense activo y tag Amazon.es avesnativas-21 registrado. Subir de 1.160 CLP a 9.500 CLP con mejoras de CTR, tarjetas de afiliado y ubicacion de anuncios en las 10 URLs con mas trafico.",
+                       "entregable":  "9.500 CLP/mes de ingresos combinados con plan por URL, CTA visibles y reporte semanal",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-031",
+                       "macro":  true,
+                       "tipo":  "mejorar_arquitectura",
+                       "fecha":  "2026-05-21",
+                       "prioridad":  "media",
+                       "estado":  "completada",
+                       "agente":  "agente-proyecto-avesnativaschilenas",
+                       "agente_principal":  "agente-proyecto-avesnativaschilenas",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Migrar posts de /tropicales/ a paginas y segmentar por region",
+                       "descripcion":  "Convertir los posts que cuelgan de /tropicales/ y /chirihue/ en paginas, etiquetar con aves tropicales y clasificar norte/sur para crear segmentacion navegable por etiquetas regionales.",
+                       "entregable":  "Paginas migradas con tags aves tropicales, aves del norte, aves del sur, redirects 301 y enlazado interno funcional",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-034",
+                       "macro":  true,
+                       "tipo":  "monetizar_sitio",
+                       "fecha":  "2026-05-21",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-director-agencia-digital",
+                       "agente_principal":  "agente-director-agencia-digital",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Piqueros por post contra la SERP real",
+                       "descripcion":  "Crear una tarea por cada post del cluster Piqueros para auditar cada URL contra su SERP real, documentar el top 3, detectar gaps de contenido/imagen/schema y definir el plan de upgrade para pelear la primera posicion.",
+                       "entregable":  "Cuatro fichas auditadas, top 3 documentado por keyword, gap analysis por URL y plan maestro del cluster Piqueros",
+                       "depende_de":  null
+                   },
+                   {
+                       "id":  "T-033",
+                       "macro":  true,
+                       "tipo":  "auditoria_seo",
+                       "fecha":  "2026-05-21",
+                       "prioridad":  "alta",
+                       "estado":  "completada",
+                       "agente":  "agente-director-agencia-digital",
+                       "agente_principal":  "agente-director-agencia-digital",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Auditoria SERP cluster Piqueros",
+                       "descripcion":  "Auditar cada post del cluster Piqueros contra el top 3 real de Google, documentar estructura, imagenes, tablas, FAQs, schema y definir el upgrade exacto para pelear primera posicion.",
+                       "entregable":  "4 fichas auditadas + top 3 documentado + gap analysis + plan de upgrade por URL",
+                       "depende_de":  null
                    }
                ]
 }

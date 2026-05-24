@@ -1,0 +1,186 @@
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-029",
+    "proyecto":  "avesnativaschilenas.cl",
+    "objetivo":  "Rescatar el potencial SEO de avesnativaschilenas.cl: subir CTR de 0.26% a 1%+, activar Search Console, ordenar arquitectura de contenido y definir ruta de monetizacion",
+    "subtareas":  [
+                      {
+                          "id":  "T-029-ST-01",
+                          "titulo":  "Auditar CTR actual y diagnosticar causas del 0.26%",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Search Console y CTR quedan diagnosticados por URL con recomendaciones concretas.",
+                          "entregable":  "Diagnostico SEO con Search Console activado, CTR por pagina, keywords con oportunidad y recomendaciones por URL",
+                          "criterio_cierre":  "Search Console queda activo, cada pagina tiene keyword principal detectada y recomendacion de titulo/meta concreta"
+                      },
+                      {
+                          "id":  "T-029-ST-02",
+                          "titulo":  "Reescribir titles, meta descriptions y H1 de todas las paginas clave",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-copywriter-conversion",
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Cada URL clave queda con title, meta y H1 listos para mejorar CTR.",
+                          "entregable":  "Pack de copy SEO por pagina: title, meta description y H1 alineados con intencion de busqueda",
+                          "criterio_cierre":  "Cada URL tiene titulo con keyword principal + gancho de clic, meta con beneficio + llamado a accion, H1 descriptivo"
+                      },
+                      {
+                          "id":  "T-029-ST-03",
+                          "titulo":  "Definir estrategia de contenido y calendario editorial mensual",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "responsable":  "Estratega Negocio Digital",
+                          "resultado_esperado":  "Quedan definidos los clusters y el calendario mensual priorizado.",
+                          "entregable":  "Plan de contenido mensual con clusters topicos, brechas detectadas y prioridad por potencial de trafico",
+                          "criterio_cierre":  "Quedan definidos 3 clusters topicos, calendario de 4-8 articulos mensuales y orden de publicacion"
+                      },
+                      {
+                          "id":  "T-029-ST-04",
+                          "titulo":  "Implementar cambios tecnicos: Search Console, titles, meta, velocidad",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "responsable":  "Tecnico WordPress",
+                          "resultado_esperado":  "Search Console, metadata, velocidad y sitemap quedan funcionando.",
+                          "entregable":  "Search Console activo, titles y metas actualizados, velocidad validada, sitemap y tracking funcionando",
+                          "criterio_cierre":  "Search Console muestra datos, cambios de copy publicados, Core Web Vitals sin errores, sitemap enviado"
+                      },
+                      {
+                          "id":  "T-029-ST-05",
+                          "titulo":  "Disenar arquitectura de silos y enlazado interno",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-especialista-enlazado-interno",
+                          "responsable":  "Enlazado Interno",
+                          "resultado_esperado":  "Los silos y enlaces internos quedan definidos sin huerfanas.",
+                          "entregable":  "Mapa de silos tematicos, enlaces contextuales entre paginas del mismo cluster y redistribucion de autoridad",
+                          "criterio_cierre":  "Cada pagina clave recibe enlaces internos desde su cluster, las categorias funcionan como hubs, no hay huerfanas"
+                      },
+                      {
+                          "id":  "T-029-ST-06",
+                          "titulo":  "Optimizar engagement y conversion informacional",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-analista-web-cro",
+                          "responsable":  "Analista Web CRO",
+                          "resultado_esperado":  "Cada tipo de pagina queda con recomendaciones de engagement accionables.",
+                          "entregable":  "Diagnostico de engagement por pagina: tiempo en pagina, scroll depth, enlaces internos, llamado a accion informacional",
+                          "criterio_cierre":  "Cada tipo de pagina tiene recomendaciones para mantener al usuario y guiarlo al siguiente contenido"
+                      },
+                      {
+                          "id":  "T-029-ST-07",
+                          "titulo":  "Evaluar路子 de monetizacion para nicho de aves",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion"
+                                    ],
+                          "responsable":  "Estratega Negocio Digital",
+                          "resultado_esperado":  "Queda definida la ruta principal de monetizacion y una secundaria.",
+                          "entregable":  "Analisis de 3 vias de monetizacion viables: afiliados, AdSense, donaciones/contenido premium. Con proyeccion y esfuerzo",
+                          "criterio_cierre":  "Queda definida una ruta principal y una secundaria con metricas de activacion y plazo"
+                      },
+                      {
+                          "id":  "T-029-ST-08",
+                          "titulo":  "Coordinar publicacion, tracking y reporte de resultados",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-proyecto-avesnativaschilenas",
+                          "responsable":  "PM Avesnativaschilenas",
+                          "resultado_esperado":  "Los cambios quedan publicados y con seguimiento pre/post medible.",
+                          "entregable":  "Reporte de estado con cambios publicados, metricas pre/post y siguiente accion",
+                          "criterio_cierre":  "Se confirma que la primera ola de cambios quedo publicada, Search Console activo y CTR medible"
+                      },
+                      {
+                          "id":  "T-029-ST-09",
+                          "titulo":  "Identificar paginas con mayor potencial AdSense y plan por URL",
+                          "estado":  "completada",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "entregable":  "Analisis de Search Console con ranking de paginas por potencial AdSense, RPM estimado y orden de activacion",
+                          "criterio_cierre":  "Queda definido el top 20 de paginas con prioridad, tipo de anuncio y orden de implementacion"
+                      },
+                      {
+                          "id":  "T-029-ST-10",
+                          "titulo":  "Implementar bloques de AdSense en paginas TIER 1 y 2",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "responsable":  "Tecnico WordPress",
+                          "resultado_esperado":  "Los bloques AdSense quedan visibles en URLs TIER 1 y 2 sin romper layout.",
+                          "entregable":  "Bloques de anuncios AdSense implementados en las 15 paginas prioritarias, siguiendo el plan por URL",
+                          "criterio_cierre":  "Las paginas prioritarias tienen anuncios visibles sin romper layout, validado en mobile y desktop"
+                      },
+                      {
+                          "id":  "T-029-ST-11",
+                          "titulo":  "Optimizar titles y metas de las paginas con mayor impresiones para maximizar RPM",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Titles y metas del top 15 quedan optimizados para CTR y RPM.",
+                          "entregable":  "Titles y metas nuevas para las 15 paginas con mas impresiones, priorizando las de posicion \u003c15",
+                          "criterio_cierre":  "Cada URL del top 15 tiene title y meta optimizados para CTR, siguiendo el analisis de Search Console"
+                      },
+                      {
+                          "id":  "T-029-ST-12",
+                          "titulo":  "Agregar enlaces de afiliado Amazon.es en páginas con alto tráfico (Fase 1)",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-tecnico-wordpress-automatizacion"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Las paginas de alto trafico quedan con enlaces afiliados contextuales y disclaimer.",
+                          "entregable":  "Enlaces de afiliado contextuales insertados en 8+ páginas TIER 1 y 2 según el plan en output/plan-afiliados-amazon-avesnativaschilenas.md",
+                          "criterio_cierre":  "Cada página top tiene al menos 1 enlace contextual a producto Amazon.es con disclaimer de afiliado"
+                      },
+                      {
+                          "id":  "T-029-ST-13",
+                          "titulo":  "Expandir páginas de producto existentes con más contenido afiliado",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-tecnico-wordpress-automatizacion"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Las paginas de producto quedan ampliadas con productos, reviews y guias.",
+                          "entregable":  "Contenido nuevo en /jaulas/, /nidos/, /tienda/comederos/ con más productos Amazon.es, reviews y guías de compra",
+                          "criterio_cierre":  "Cada página de producto tiene al menos 5 productos listados con enlaces de afiliado y descripciones originales"
+                      },
+                      {
+                          "id":  "T-029-ST-14",
+                          "titulo":  "Crear nuevo contenido afiliado (artículos tipo guía de compra)",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion"
+                                    ],
+                          "responsable":  "Copywriter Conversion",
+                          "resultado_esperado":  "Se publican 4+ guias nuevas con afiliados y SEO de compra.",
+                          "entregable":  "Artículos nuevos: mejores prismáticos para avistamiento, comederos para colibríes, guía de libros de aves chilenas, equipo birdwatching",
+                          "criterio_cierre":  "4+ artículos nuevos publicados con enlaces de afiliado y optimización SEO para keywords de compra"
+                      },
+                      {
+                          "id":  "T-029-ST-15",
+                          "titulo":  "Implementar enlaces de afiliado y nuevo contenido en WordPress",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "responsable":  "Tecnico WordPress",
+                          "resultado_esperado":  "Afiliados y contenido nuevo quedan implementados en WordPress sin afectar velocidad.",
+                          "entregable":  "Enlaces de afiliado implementados en páginas TIER 1 + nuevo contenido subido + disclaimer visible",
+                          "criterio_cierre":  "Todos los enlaces funcionan, disclaimer presente, no afecta velocidad ni layout"
+                      }
+                  ]
+}

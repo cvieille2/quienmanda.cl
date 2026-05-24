@@ -1,0 +1,6 @@
+URL: https://avesnativaschilenas.cl/
+Usuario: cvieille
+clave wp-admin: cvcv1065/
+App Password: u0wM 1VRi v9wL Z71R 7XCx mnEq
+Propósito: Reescribir posts en infomoteles.cl vía WordPress API
+Creada: 2026-05-21

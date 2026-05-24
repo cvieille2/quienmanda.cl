@@ -1,0 +1,18 @@
+URL: https://visitandopuntaarenas.cl/
+Usuario: cvieille
+clave wp-admin: CVcv1065//
+App Password: EpAe QMwP G12X H6nJ KZXo WgdM
+Propósito: Reescribir posts en visitandopuntaarenas.cl vía WordPress API
+Creada: 2026-05-16
+
+configuracion correo:
+
+correos disponibles:
+invitado@visitandopuntaarenas.cl
+contacto@visitandopuntaarenas.cl
+admin@visitandopuntaarenas.cl
+Password:	todos los correos tienen la misma clave: CVcv1065//
+Incoming Server:	mail.visitandopuntaarenas.cl
+IMAP Port: 993 POP3 Port: 995
+Outgoing Server:	mail.visitandopuntaarenas.cl
+SMTP Port: 465

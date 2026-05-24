@@ -39,6 +39,8 @@
       "titulo": "Definir nuevas tareas monetizacion infomoteles.cl",
       "estado": "pendiente",
       "prioridad": "critica",
+      "responsable": "Director",
+      "resultado_esperado": "Queda un backlog monetizable para infomoteles con fichas, CTA, CRM y oferta.",
       "nota": "Objetivo: captar nuevos ingresos con fichas destacadas, CTA comercial, CRM y oferta de venta"
     },
     {
@@ -53,6 +55,8 @@
       "titulo": "Ventas: crear CRM Google Sheets y secuencia de contacto",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Ventas",
+      "resultado_esperado": "Queda un CRM operativo con pipeline, seguimiento y secuencia de contacto.",
       "nota": "Pipeline con prospecto, contacto, respuesta, diagnostico, cierre y seguimiento"
     },
     {
@@ -60,6 +64,8 @@
       "titulo": "Copywriter: escribir oferta comercial para para-moteles",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Copywriter Conversion",
+      "resultado_esperado": "La landing /para-moteles/ queda lista con copy, planes, FAQs y CTA de conversion.",
       "nota": "Landing /para-moteles/, planes, FAQs, objeciones y CTA orientado a conversion"
     },
     {
@@ -67,6 +73,8 @@
       "titulo": "Tecnico: dejar tracking y CTA listos",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Tecnico WordPress",
+      "resultado_esperado": "Tracking, CTA flotante y medicion quedan listos sin romper mobile.",
       "nota": "CTA flotante, GA4, Search Console, Pixel solo cuando haya traccion"
     },
     {
@@ -74,6 +82,8 @@
       "titulo": "Enlazado interno: auditar hubs y fichas comerciales",
       "estado": "pendiente",
       "prioridad": "media",
+      "responsable": "Enlazado Interno",
+      "resultado_esperado": "Queda la malla interna comercial definida entre hubs y fichas.",
       "nota": "Conectar fichas, hubs de ciudad y paginas comerciales"
     },
     {
@@ -81,6 +91,8 @@
       "titulo": "PM Infomoteles: coordinar publicacion y verificacion de datos",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "PM Infomoteles",
+      "resultado_esperado": "La publicacion queda coordinada con datos verificados por URL.",
       "nota": "Validar datos de fichas, precios, telefonos y fechas de verificacion"
     },
     {
@@ -88,6 +100,8 @@
       "titulo": "Supervisar Dia 1 del plan: subir /para-moteles/ + contactar top 3 moteles",
       "estado": "pendiente",
       "prioridad": "critica",
+      "responsable": "Director",
+      "resultado_esperado": "La primera ola queda subida y los tres primeros moteles contactados.",
       "nota": "Asegurar que el Tecnico suba los cambios y Ventas haga los primeros contactos"
     },
     {
@@ -95,6 +109,8 @@
       "titulo": "Compilar metricas de la semana y reportar resultado",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "PM Infomoteles",
+      "resultado_esperado": "Queda un reporte semanal con metricas y resultado del plan.",
       "nota": "Reporte al cierre del dia 7"
     },
     {
@@ -116,6 +132,8 @@
       "titulo": "CRO: revisar la pagina comercial /para-moteles/ y el CTA flotante",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Analista Web CRO",
+      "resultado_esperado": "La pagina comercial queda revisada y el CTA flotante ajustado para conversion.",
       "nota": "Medir claridad de oferta, formularios, prueba social y conversion"
     },
     {
@@ -130,6 +148,8 @@
       "titulo": "Copywriter: preparar el paquete de mensajes de venta para WhatsApp y email",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Copywriter Conversion",
+      "resultado_esperado": "Queda listo el paquete de mensajes de venta para WhatsApp y email.",
       "nota": "Debe incluir gancho, problema, prueba, propuesta y llamada a accion"
     },
     {
@@ -144,6 +164,8 @@
       "titulo": "Enlazado Interno: definir hubs de ciudad y enlaces desde posts antiguos",
       "estado": "pendiente",
       "prioridad": "media",
+      "responsable": "Enlazado Interno",
+      "resultado_esperado": "Quedan definidos los hubs de ciudad y los enlaces desde posts antiguos.",
       "nota": "Redistribuir autoridad hacia fichas y pagina comercial principal"
     },
     {
@@ -158,6 +180,8 @@
       "titulo": "PM Punta Arenas: preparar segunda ola para modelo replicable",
       "estado": "pendiente",
       "prioridad": "baja",
+      "responsable": "PM Punta Arenas",
+      "resultado_esperado": "Queda lista la preparacion de la segunda ola sin competir con infomoteles.",
       "nota": "No competir ahora con infomoteles; dejar lista la replicacion futura"
     },
     {
@@ -179,6 +203,8 @@
       "titulo": "Ventas: crear lista de 20 moteles para contactar esta semana",
       "estado": "pendiente",
       "prioridad": "critica",
+      "responsable": "Ventas",
+      "resultado_esperado": "Queda una lista de 20 moteles lista para contacto esta semana.",
       "nota": "Incluir nombre, ciudad, telefono, email, estado web y motivo de contacto"
     },
     {
@@ -186,6 +212,8 @@
       "titulo": "Copywriter: redactar secuencia de WhatsApp de 4 mensajes",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Copywriter Conversion",
+      "resultado_esperado": "Queda redactada la secuencia de 4 mensajes de WhatsApp lista para usar.",
       "nota": "Mensaje inicial, seguimiento 1, seguimiento 2 y cierre con llamada a accion"
     },
     {
@@ -193,6 +221,8 @@
       "titulo": "Tecnico: validar formulario, CTA flotante y eventos de conversion",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Tecnico WordPress",
+      "resultado_esperado": "Formulario, CTA flotante y eventos quedan validados sin errores en mobile.",
       "nota": "Comprobar que cada CTA dispare tracking y que no haya errores en mobile"
     },
     {
@@ -200,6 +230,8 @@
       "titulo": "CRO: evaluar la primera pagina comercial con 5 preguntas de conversion",
       "estado": "pendiente",
       "prioridad": "media",
+      "responsable": "Analista Web CRO",
+      "resultado_esperado": "La primera pagina comercial queda evaluada con hallazgos accionables.",
       "nota": "Claridad, urgencia, prueba social, friccion y CTA principal"
     },
     {
@@ -207,6 +239,8 @@
       "titulo": "Enlazado Interno: proponer 15 enlaces contextuales hacia fichas premium",
       "estado": "pendiente",
       "prioridad": "media",
+      "responsable": "Enlazado Interno",
+      "resultado_esperado": "Quedan propuestos 15 enlaces contextuales hacia fichas premium.",
       "nota": "Usar anchor text descriptivo y distribuir autoridad desde posts con trafico"
     },
     {
@@ -214,6 +248,8 @@
       "titulo": "PM SEO Local: definir capacidad operativa de 4 clientes activos",
       "estado": "pendiente",
       "prioridad": "media",
+      "responsable": "PM SEO Local",
+      "resultado_esperado": "Queda definida la capacidad operativa real para 4 clientes activos.",
       "nota": "Cuanto tiempo por cliente, entregables mensuales y limite de carga"
     },
     {
@@ -221,6 +257,8 @@
       "titulo": "Director: consolidar brief operativo para primera venta",
       "estado": "pendiente",
       "prioridad": "critica",
+      "responsable": "Director",
+      "resultado_esperado": "Queda consolidado el brief operativo para cerrar la primera venta.",
       "nota": "Debe juntar SEO, ventas, copy y tecnico en una sola ruta de ejecucion"
     },
     {
@@ -228,7 +266,81 @@
       "titulo": "Director: asignar validacion visual directa en el sitio web tras convertir imagenes a WebP",
       "estado": "pendiente",
       "prioridad": "alta",
+      "responsable": "Director",
+      "resultado_esperado": "Queda validado visualmente el sitio tras convertir imagenes a WebP.",
       "nota": "Asignar a alguien que revise el sitio web en produccion y confirme que las imagenes cargan en WebP, sin romper contenido ni layout"
+    },
+    {
+      "id": "T-008-ST-34",
+      "titulo": "Tecnico: unificar canonicas y variantes con slash y anclas",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "responsable": "Tecnico WordPress",
+      "resultado_esperado": "Cada ficha queda con una URL canonica unica y sin fragmentacion por variantes.",
+      "nota": "Resolver diferencias entre versiones con y sin slash y evitar que las anclas compitan como destinos principales"
+    },
+    {
+      "id": "T-008-ST-35",
+      "titulo": "SEO: subir CTR en fichas con muchas impresiones y pocos clics",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "responsable": "SEO",
+      "resultado_esperado": "Titles y metas mejorados en las fichas con mayor desperdicio de impresiones.",
+      "nota": "Prioridad: Los Sauces, La Giralda, Yugos, Montavord y Los Gatitos"
+    },
+    {
+      "id": "T-008-ST-36",
+      "titulo": "Analista Web CRO: cerrar instrumentacion de conversion en GA4",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "responsable": "Analista Web CRO",
+      "resultado_esperado": "Eventos clave, conversiones y recorrido comercial quedan medibles de forma fiable.",
+      "nota": "Hoy hay ingresos reportados, pero no eventos clave; hay que cerrar la medicion"
+    },
+    {
+      "id": "T-008-ST-37",
+      "titulo": "Copywriter Conversion: rehacer /para-moteles/ como landing comercial",
+      "estado": "pendiente",
+      "prioridad": "critica",
+      "responsable": "Copywriter Conversion",
+      "resultado_esperado": "La pagina /para-moteles/ queda lista con oferta clara, prueba social y CTA.",
+      "nota": "Debe responder a la intencion comercial B2B y empujar contacto"
+    },
+    {
+      "id": "T-008-ST-38",
+      "titulo": "Copywriter Conversion: rehacer la home como entrada comercial unica",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "responsable": "Copywriter Conversion",
+      "resultado_esperado": "La home deja una sola promesa, una sola CTA y una ruta clara a negocio.",
+      "nota": "Alinear la home con la intencion local transaccional principal"
+    },
+    {
+      "id": "T-008-ST-39",
+      "titulo": "Enlazado Interno: redisenar malla entre fichas, hubs y paginas comerciales",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "responsable": "Enlazado Interno",
+      "resultado_esperado": "La autoridad interna fluye hacia fichas premium y la landing comercial.",
+      "nota": "Eliminar rutas que lleven solo a lectura secundaria y priorizar CTA y fichas de alto valor"
+    },
+    {
+      "id": "T-008-ST-40",
+      "titulo": "PM Infomoteles: priorizar fichas con traccion y revenue comprobado",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "responsable": "PM Infomoteles",
+      "resultado_esperado": "Queda una lista corta de fichas para repetir el modelo ganador.",
+      "nota": "Priorizar Serrano Antofagasta, Diamante Curico, Caudal Talcahuano y Euro Calama"
+    },
+    {
+      "id": "T-008-ST-41",
+      "titulo": "PM Infomoteles: re-medicion despues de ajustes SEO y CRO",
+      "estado": "pendiente",
+      "prioridad": "media",
+      "responsable": "PM Infomoteles",
+      "resultado_esperado": "Queda definido el control posterior para verificar mejora de CTR, posicion e ingresos.",
+      "nota": "Comparar antes y despues de canonicas, snippets y CTA"
     }
   ]
 }

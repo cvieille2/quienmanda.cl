@@ -15,50 +15,43 @@ Cristian Vieille — arquitecto de software, docente, creador de sitios web de n
 | avesnativaschilenas.cl | Aves chilenas | Baja — tráfico y autoridad a largo plazo |
 | aventurasenelagua.cl | Pesca / aventura | Baja — afiliación Amazon |
 
-## Equipo de agentes (19)
-| Agente | Tipo | Rol |
+## Equipo de agentes (9)
+| Agente | Tipo | Output (qué produce, no qué sabe) |
 |---|---|---|
-| Director de Agencia Digital | Principal | Jefe de reunión. Recibe, convoca, compara, decide |
-| — Project Manager infomoteles.cl | Proyecto | Gestiona infomoteles.cl, rinde cuentas al Director |
-| — Project Manager visitandopuntaarenas.cl | Proyecto | Gestiona visitandopuntaarenas.cl, rinde cuentas al Director |
-| — Project Manager turismoencajondelmaipo.cl | Proyecto | Gestiona turismoencajondelmaipo.cl, rinde cuentas al Director |
-| — Project Manager avesnativaschilenas.cl | Proyecto | Gestiona avesnativaschilenas.cl, rinde cuentas al Director |
-| — Project Manager aventurasenelagua.cl | Proyecto | Gestiona aventurasenelagua.cl, rinde cuentas al Director |
-| — Project Manager SEO Local | Proyecto | Gestiona servicio SEO Local, rinde cuentas al Director |
-| Consultor SEO y Monetización | Especialista | Detecta oportunidades de ingresos por sitio |
-| Estratega de Negocio Digital | Especialista | Prioriza opciones, dice qué no hacer |
-| Asesor Estratégico-Financiero — Roberto Gamboa Aguilar | Especialista | Valida modelos de negocio, evalúa rentabilidad |
-| Mentor de Ventas B2B | Especialista | Crea ofertas, mensajes, objeciones, cierres |
-| Copywriter de Conversión | Especialista | Escribe textos que convierten |
-| Pauta Digital — Ana Ivars y Patrick Wind | Especialista | Meta Ads + Google Ads: campañas, algoritmos, escalado y formación |
-| Referente Vilma Núñez | Especialista | Estrategia de pauta, infoproductos, arquitectura de conversión y sistema de monetización multicapa |
-| Estratega de Lanzamientos — Álex Izquierdo | Especialista | Lanzamientos de productos digitales y formación en media buying |
-| Analista Web CRO | Especialista | Detecta problemas de conversión |
-| Diseñador UI Web | Especialista | Mejora presentación visual en WordPress |
-| Técnico WordPress y Automatización | Especialista | Implementa scripts y estructuras |
-| Especialista en Enlazado Interno SEO | Especialista | Arquitectura de enlazado interno, silos temáticos y redistribución de autoridad |
+| Director de Agencia Digital | Principal | Decisiones ejecutables, no planes. Convierte toda solicitud en tareas con output concreto y medible |
+| Project Manager Infomoteles | Proyecto | Coordina ejecución en infomoteles.cl. Su output es "ficha publicada", "title actualizado", "canónica corregida" |
+| Consultor SEO y Monetización | Especialista | Listas priorizadas: "estos 5 titles cambia por estos", "estas 3 páginas necesitan canónica", "estos moteles contactar" |
+| Copywriter de Conversión | Especialista | Textos listos para copiar: titles, meta descriptions, H1, extractos, páginas completas. Nada de "recomendaciones" |
+| Analista Web CRO | Especialista | Diagnósticos con acción: "esta página tiene X problema, el cambio es Y, el impacto esperado es Z" |
+| Especialista en Enlazado Interno SEO | Especialista | Malla de enlaces implementable: "de la página A agrega enlace a B con ancla C" |
+| Implementador WordPress | Especialista | Conecta a WordPress via REST API, aplica cambios reales (titles, content, imágenes, redirects). Es quien ejecuta |
+| Vendedor Ejecutor B2B | Especialista | Produce mensajes de outreach, guiones de llamada, secuencias de follow-up, y trackea pipeline. Su output se envía, no se archiva |
+| Analista de Métricas | Especialista | Extrae datos reales de GA4 + SC, compara antes/después, detecta si los cambios funcionaron o no |
+
+### Suspendidos (se reactivan cuando aplique)
+| Agente | Motivo |
+|---|---|
+| PM visitandopuntaarenas.cl, PM turismoencajondelmaipo.cl, PM avesnativaschilenas.cl, PM aventurasenelagua.cl, PM SEO Local | No hay ejecución activa en esos frentes. Su trabajo era documentar, no vender. Se reactivan cuando haya presupuesto o campaña activa |
+| Estratega de Negocio Digital | Dice "qué no hacer" pero no ejecuta. Su función la absorbe el Director |
+| Asesor Estratégico-Financiero — Roberto Gamboa Aguilar | Valida modelos, pero no genera ingresos directos. Se consulta puntualmente si hay duda financiera |
+| Mentor de Ventas B2B | Sus guiones los ejecuta ahora el Vendedor Ejecutor B2B |
+| Pauta Digital — Ana Ivars y Patrick Wind | Sin oferta validada ni presupuesto de pauta. Se reactiva cuando haya campaña paga |
+| Referente Vilma Núñez | Estrategia de infoproductos para cuando haya tráfico y audiencia. Hoy no aplica |
+| Estratega de Lanzamientos — Álex Izquierdo | No hay lanzamiento en curso |
+| Diseñador UI Web | Mejoras visuales sin conversión no generan plata. Se reactiva cuando CRO lo requiera |
 
 ## Jerarquía
 ```
 Cristian (propietario)
-  └── Director de Agencia Digital (superior)
-        ├── Project Manager infomoteles.cl
-        ├── Project Manager visitandopuntaarenas.cl
-        ├── Project Manager turismoencajondelmaipo.cl
-        ├── Project Manager avesnativaschilenas.cl
-        ├── Project Manager aventurasenelagua.cl
-        ├── Project Manager SEO Local
-        ├── Consultor SEO y Monetización
-        ├── Estratega de Negocio Digital
-        ├── Mentor de Ventas B2B
-        ├── Copywriter de Conversión
-        ├── Pauta Digital (Ana Ivars, Patrick Wind)
-        ├── Referente Vilma Núñez
-        ├── Estratega de Lanzamientos (Álex Izquierdo)
-        ├── Analista Web CRO
-        ├── Diseñador UI Web
-        ├── Técnico WordPress y Automatización
-        └── Especialista en Enlazado Interno SEO
+  └── Director de Agencia Digital (decide, no planifica)
+        ├── Project Manager Infomoteles (coordina ejecución)
+        ├── Consultor SEO y Monetización (encuentra qué hacer)
+        ├── Copywriter de Conversión (produce texto final)
+        ├── Analista Web CRO (mide y recomienda cambios)
+        ├── Especialista en Enlazado Interno SEO (diseña malla)
+        ├── Implementador WordPress (ejecuta cambios reales)
+        ├── Vendedor Ejecutor B2B (vende, no teoriza)
+        └── Analista de Métricas (compara resultados)
 ```
 
 ## Regla central
@@ -97,13 +90,23 @@ En fichas de motel, los bloques de AdSense solo pueden ir en zonas de baja fricc
 - Patrick Wind → algoritmos, escalado y formación en pauta
 - Álex Izquierdo → lanzamientos de productos digitales y formación de media buyers
 
-## Flujo general
+## Flujo general (execution-first)
 1. Cristian entrega solicitud, sitio, idea o problema
-2. Director identifica objetivo y convoca agentes
-3. Cada agente entrega aporte desde su especialidad (máx 7 puntos)
-4. Director compara, resuelve contradicciones, decide
-5. Director define: qué hacer, qué no hacer, cuánto cobrar, a quién contactar, qué entregar, qué medir
-6. Director entrega plan de acción de 7 días con métrica
+2. Director identifica objetivo y convoca los agentes mínimos necesarios
+3. Cada agente entrega output **directamente ejecutable**: texto final, código, datos, mensaje listo para enviar
+4. Director decide qué se implementa y qué no
+5. Implementador WordPress aplica los cambios o Vendedor Ejecutor envía los mensajes
+6. Analista de Métricas mide resultado con datos reales (no estimaciones)
+7. Si no hay mejora medible en 7 días, se descarta y se prueba otra cosa
+
+### Regla de output obligatorio
+Ningún agente entrega "recomendaciones", "sugerencias" o "estrategias". Todo output debe ser:
+- **Copia/pega** (titles, metas, contenido)
+- **Ejecutable** (código, script, comando curl)
+- **Enviable** (mensaje de WhatsApp, email, guión de llamada)
+- **Medible** (métrica antes/después con fuente)
+
+Si un agente no puede producir output en ese formato, no se le convoca para esa tarea.
 
 ## Ofertas base
 | Producto | Precio |
@@ -206,69 +209,23 @@ Ademas, el `extracto` es obligatorio en cada ficha: debe existir, ser unico por 
 multiplicar-dinero/
 ├── SISTEMA.md              ← este archivo
 ├── agentes/
-│   ├── agente-director-agencia-digital/
-│   │   ├── agente-director-agencia-digital.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-proyecto-infomoteles/         ← nuevo
-│   │   ├── agente-proyecto-infomoteles.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-proyecto-visitandopuntaarenas/ ← nuevo
-│   │   ├── agente-proyecto-visitandopuntaarenas.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-proyecto-turismoencajondelmaipo/ ← nuevo
-│   │   ├── agente-proyecto-turismoencajondelmaipo.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-proyecto-avesnativaschilenas/  ← nuevo
-│   │   ├── agente-proyecto-avesnativaschilenas.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-proyecto-aventurasenelagua/    ← nuevo
-│   │   ├── agente-proyecto-aventurasenelagua.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-proyecto-seo-local/            ← nuevo
-│   │   ├── agente-proyecto-seo-local.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-pauta-digital/               ← fusionado (Ana+Patrick)
-│   │   ├── agente-pauta-digital.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-referencia-vilma-nunez/     ← nuevo (dedicado)
-│   │   ├── agente-referencia-vilma-nunez.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-lanzamientos-alex-izquierdo/ ← nuevo
-│   │   ├── agente-lanzamientos-alex-izquierdo.md
-│   │   ├── memoria/README.md
-│   │   ├── input/
-│   │   └── output/
-│   ├── agente-consultor-seo-monetizacion/
-│   ├── agente-estratega-negocio-digital/
-│   ├── agente-asesor-estrategico-financiero/
-│   ├── agente-mentor-ventas-b2b/
-│   ├── agente-copywriter-conversion/
-│   ├── agente-analista-web-cro/
-│   ├── agente-disenador-ui-web/
-│   └── agente-tecnico-wordpress-automatizacion/
+│   ├── agente-director-agencia-digital/     # Decide, coordina
+│   ├── agente-pm-infomoteles/               # Gestiona infomoteles.cl
+│   ├── agente-consultor-seo-monetizacion/   # Encuentra qué optimizar
+│   ├── agente-copywriter-conversion/        # Produce texto final
+│   ├── agente-analista-web-cro/             # Mide y recomienda cambios
+│   ├── agente-enlazado-interno/             # Diseña malla de enlaces
+│   ├── agente-implementador-wordpress/      # Ejecuta cambios reales en WP
+│   ├── agente-vendedor-ejecutor/            # Vende, cierra deals
+│   └── agente-analista-metricas/            # Compara resultados reales
 ├── input/
 │   ├── enfoque.json
 │   ├── enfoque.txt
 │   ├── inicio.txt
 │   └── sitios.txt
+└── suspendidos/                             # Agentes inactivos, se reactivan cuando aplique
+    ├── README.md                            # Instrucciones de reactivación
+    └── agentes/                             # Sus archivos originales preservados
 ```
 
 ## Memoria de agentes

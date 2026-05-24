@@ -1,0 +1,33 @@
+ial-telegram:before {
+  content: "\f2c6";
+}
+
+.social-google:before {
+  content: "\f0d5";
+}
+
+.social-email:before {
+  content: "\f003";
+}
+
+.social-pinterest:before {
+  content: "\f0d2";
+}
+
+.social-tumblr:before {
+  content: "\f173";
+}
+
+.social-linkedin:before {
+  content: "\f0e1";
+}
+
+.social-github:before {
+  content: "\f09b";
+}
+
+.social-vk:before {
+  content: "\f189";
+}
+
+.social-instagram:before {

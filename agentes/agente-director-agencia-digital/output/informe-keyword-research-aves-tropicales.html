@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe Keyword Research — Aves Tropicales Chilenas · avesnativaschilenas.cl · 2026-05-21</title>
+  <style>
+    :root { --bg:#0b1220; --panel:#11192b; --line:#243047; --text:#e5e7eb; --muted:#94a3b8; --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444; --info:#60a5fa; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#0f172a; color:var(--text); line-height:1.5; }
+    .wrap { max-width:1320px; margin:0 auto; padding:32px 20px 56px; }
+    .hero { background:linear-gradient(135deg, #111827 0%, #0f172a 55%, #064e3b 100%); border:1px solid var(--line); border-radius:20px; padding:28px; margin-bottom:18px; }
+    h1 { margin:0 0 8px; font-size:28px; }
+    h2 { margin:0 0 12px; font-size:20px; }
+    h3 { margin:20px 0 10px; font-size:16px; color:#cbd5e1; }
+    p { margin:0 0 12px; }
+    .meta { color:var(--muted); font-size:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin:16px 0 22px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    .kpi { font-size:28px; font-weight:700; margin:0; }
+    .label { color:var(--muted); font-size:13px; margin-top:4px; }
+    .section { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:18px; margin-bottom:16px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th, td { padding:8px 6px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { color:#cbd5e1; }
+    .badge { display:inline-block; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:700; }
+    .ok { background:rgba(34,197,94,.15); color:#86efac; }
+    .warn { background:rgba(245,158,11,.15); color:#fcd34d; }
+    .bad { background:rgba(239,68,68,.15); color:#fca5a5; }
+    .info { background:rgba(96,165,250,.15); color:#bfdbfe; }
+    ul { margin:0; padding-left:18px; }
+    li { margin:0 0 6px; }
+    code { background:#0b1220; border:1px solid #243047; padding:2px 6px; border-radius:6px; color:#dbeafe; }
+    .note { background:#0b1220; border-left:4px solid var(--info); padding:12px 14px; border-radius:10px; margin:12px 0; }
+    .small { font-size:12px; color:var(--muted); }
+    .tag { display:inline-block; background:rgba(96,165,250,.12); color:#bfdbfe; border:1px solid #1e3a5f; padding:2px 8px; border-radius:999px; font-size:11px; }
+    .gap { background:rgba(34,197,94,.08); border-left:3px solid var(--ok); padding:10px 14px; border-radius:8px; margin:8px 0; }
+    .risk { background:rgba(245,158,11,.08); border-left:3px solid var(--warn); padding:10px 14px; border-radius:8px; margin:8px 0; }
+    .tabs { display:flex; gap:4px; margin-bottom:14px; flex-wrap:wrap; }
+    .tab { padding:6px 14px; border-radius:999px; font-size:12px; background:var(--panel); border:1px solid var(--line); color:var(--muted); cursor:default; }
+    .tab.act { background:rgba(96,165,250,.15); border-color:var(--info); color:var(--info); }
+    .specie-card { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin:6px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .specie-card .name { font-weight:700; min-width:200px; }
+    .specie-card .sci { color:var(--muted); font-style:italic; font-size:12px; min-width:180px; }
+    .specie-card .loc { font-size:12px; color:var(--info); }
+    .specie-card .status { font-size:11px; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    @media (max-width:720px) { .two-col { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="hero">
+      <h1>Keyword Research: <code>Aves Tropicales Chilenas</code></h1>
+      <p>Análisis de intención de búsqueda, contenido existente, brechas y oportunidades para el sitio <code>avesnativaschilenas.cl</code></p>
+      <p class="meta">Generado: 2026-05-21 · Fuentes: Google Search Console (CSV), WP REST API, investigación de especies</p>
+    </div>
+
+    <div class="grid">
+      <div class="card"><p class="kpi">303</p><div class="label">consultas tropicales/regionales en SC</div></div>
+      <div class="card"><p class="kpi">~50-60</p><div class="label">especies tropicales/subtropicales en Chile</div></div>
+      <div class="card"><p class="kpi">10</p><div class="label">posts existentes relacionados</div></div>
+      <div class="card"><p class="kpi">35+</p><div class="label">oportunidades detectadas (brechas)</div></div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CONTEXTO: QUÉ SON LAS AVES TROPICALES EN CHILE -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>1. Contexto: ¿Qué son las "aves tropicales" en Chile?</h2>
+      <p>Chile es mayormente templado-frío, pero tiene tres zonas con afinidad tropical:</p>
+      <ul>
+        <li><strong>Norte grande (Arica-Parinacota, Tarapacá, Antofagasta):</strong> relictos de bosque tropical seco, oasis y valles con especies tropicales en su límite sur.</li>
+        <li><strong>Isla de Pascua (Rapa Nui):</strong> isla oceánica polinésica con aves marinas tropicales y nombres locales rapa nui.</li>
+        <li><strong>Archipiélago Juan Fernández:</strong> islas subtropicales con alto endemismo.</li>
+        <li><strong>Islas Desventuradas (San Félix, San Ambrosio):</strong> colonias de aves tropicales.</li>
+      </ul>
+      <div class="note">
+        <strong>👉 Oportunidad:</strong> El concepto "aves tropicales chilenas" es una paradoja geográfica que atrae clics. Combinar "tropical" + "Chile" genera curiosidad y diferenciación frente a contenido genérico.
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CONTENIDO EXISTENTE -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>2. Contenido existente en el sitio</h2>
+      <p class="small">Posts publicados que cubren especies tropicales o subtropicales chilenas</p>
+      <table>
+        <tr><th>ID</th><th>Título</th><th>Slug</th><th>Especie tropical</th><th>Zona</th></tr>
+        <tr><td>6861</td><td>picaflor de arica</td><td>picaflor-de-arica</td><td>Picaflor de Arica (<em>Eulidia yarrellii</em>)</td><td>Norte</td></tr>
+        <tr><td>1191</td><td>Fardela tropical: características, hábitat y curiosidades</td><td>fardela-tropical</td><td>Fardela tropical (<em>Puffinus</em> spp.)</td><td>Oceánico</td></tr>
+        <tr><td>224</td><td>Loro Tricahue: características, hábitat y conservación</td><td>tricahue</td><td>Loro Tricahue (<em>Cyanoliseus patagonus</em>)</td><td>Centro</td></tr>
+        <tr><td>2198</td><td>El Cachudito de Juan Fernández: Una especie en peligro de extinción</td><td>el-cachudito-de-juan-fernandez</td><td>Cachudito de JF (<em>Anairetes fernandezianus</em>)</td><td>Juan Fernández</td></tr>
+        <tr><td>14123</td><td>Picaflor de Juan Fernandez: El Colibri Endemico de Chile</td><td>picaflor-de-juan-fernandez</td><td>Picaflor de JF (<em>Sephanoides fernandensis</em>)</td><td>Juan Fernández</td></tr>
+        <tr><td>4000</td><td>Familia Trochilidae (Colibríes): Características, Hábitat y Curiosidades</td><td>trochilidae</td><td>Familia Trochilidae</td><td>General</td></tr>
+        <tr><td>2107</td><td>Descubre todo sobre la fascinante familia Fregatidae</td><td>fregatidae</td><td>Ave fragata (<em>Fregata minor</em>)</td><td>Pascua</td></tr>
+        <tr><td>6906</td><td>piqueros de patas azules</td><td>piqueros-de-patas-azules</td><td>Piquero de patas azules</td><td>Costero</td></tr>
+        <tr><td>9983</td><td>aves de la primera region</td><td>aves-de-la-primera-region</td><td>Varias tropicales del norte</td><td>Norte</td></tr>
+        <tr><td>9984</td><td>aves de la segunda region</td><td>aves-de-la-segunda-region</td><td>Varias tropicales del norte</td><td>Norte</td></tr>
+        <tr><td>9987</td><td>aves de la quinta region</td><td>aves-de-la-quinta-region-2</td><td>Subtropicales de Chile central</td><td>Centro</td></tr>
+        <tr><td>11063</td><td>¿Conoces la Fardela Blanca de Juan Fernández?</td><td>fardela-blanca-de-juan-fernandez</td><td>Fardela blanca de JF (<em>Pterodroma externa</em>)</td><td>Juan Fernández</td></tr>
+        <tr><td>11399</td><td>La Fardela en Chile: Un Tesoro de la Fauna Marina</td><td>fardela</td><td>Varias fardelas</td><td>Oceánico</td></tr>
+      </table>
+      <div class="risk" style="margin-top:12px;">
+        <strong>⚠️ Observación crítica:</strong> El post pilar "Aves Tropicales Chilenas: Un Tesoro de Biodiversidad" (slug: <code>tropicales</code>, ID 6286) —que debería ser la página central del cluster— <strong>ya no existe (404)</strong>. Esto deja el cluster sin hub y toda la autoridad posible se pierde. Prioridad: restaurar o recrear este post como página pilar.
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- Mapa de especies tropicales chilenas -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>3. Mapa completo de especies tropicales chilenas</h2>
+      <p class="small">Familias con especies de origen tropical presentes en Chile. Las marcadas en <span class="tag">brecha</span> no tienen post dedicado.</p>
+
+      <h3>🐦 Phaethontidae — Aves del trópico (Rabijuncos)</h3>
+      <div class="two-col">
+        <div class="specie-card"><span class="name">Ave del trópico de cola roja</span><span class="sci">Phaethon rubricauda</span><span class="loc">Isla de Pascua, Sala y Gómez</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Ave del trópico de cola blanca</span><span class="sci">Phaethon lepturus</span><span class="loc">Isla de Pascua, Juan Fernández</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Ave del trópico de pico rojo</span><span class="sci">Phaethon aethereus</span><span class="loc">Juan Fernández, Chañaral</span><span class="tag">brecha</span></div>
+      </div>
+
+      <h3>🐦 Sulidae — Piqueros (aves de origen tropical)</h3>
+      <div class="two-col">
+        <div class="specie-card"><span class="name">Piquero blanco</span><span class="sci">Sula dactylatra</span><span class="loc">Pascua, Desventuradas</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Piquero café</span><span class="sci">Sula leucogaster</span><span class="loc">Isla de Pascua</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Piquero de patas coloradas</span><span class="sci">Sula sula</span><span class="loc">Accidental, Pascua</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Piquero peruano</span><span class="sci">Sula variegata</span><span class="loc">Costa norte</span><span class="tag">brecha</span></div>
+      </div>
+      <div class="specie-card" style="margin-top:4px;"><span class="name">Piqueros de patas azules</span><span class="sci">Sula nebouxii</span><span class="loc">Visitante</span><span class="status badge ok">✅ Post existe</span></div>
+
+      <h3>🐦 Fregatidae — Fragatas</h3>
+      <div class="specie-card"><span class="name">Ave fragata grande</span><span class="sci">Fregata minor</span><span class="loc">Isla de Pascua</span><span class="status badge ok">✅ Post existe (familia)</span></div>
+
+      <h3>🐦 Procellariidae — Fardelas tropicales</h3>
+      <div class="two-col">
+        <div class="specie-card"><span class="name">Fardela blanca de Juan Fernández</span><span class="sci">Pterodroma externa</span><span class="loc">Juan Fernández</span><span class="status badge ok">✅ Post existe</span></div>
+        <div class="specie-card"><span class="name">Fardela negra de Juan Fernández</span><span class="sci">Pterodroma neglecta</span><span class="loc">JF, Pascua</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Fardela de Pascua</span><span class="sci">Puffinus nativitatis</span><span class="loc">Isla de Pascua</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Fardela heráldica</span><span class="sci">Pterodroma arminjoniana</span><span class="loc">Isla de Pascua</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Fardela de Phoenix</span><span class="sci">Pterodroma alba</span><span class="loc">Isla de Pascua</span><span class="tag">brecha</span></div>
+      </div>
+
+      <h3>🐦 Trochilidae — Colibríes / Picaflores (familia tropical por excelencia)</h3>
+      <div class="two-col">
+        <div class="specie-card"><span class="name">Picaflor de Arica</span><span class="sci">Eulidia yarrellii</span><span class="loc">Valles de Arica</span><span class="status badge ok">✅ Post existe</span><span class="badge bad" style="margin-left:6px;">CR</span></div>
+        <div class="specie-card"><span class="name">Picaflor del norte</span><span class="sci">Rhodopis vesper</span><span class="loc">Arica - La Serena</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Picaflor de Juan Fernández</span><span class="sci">Sephanoides fernandensis</span><span class="loc">Juan Fernández</span><span class="status badge ok">✅ Post existe</span><span class="badge bad" style="margin-left:6px;">CR</span></div>
+        <div class="specie-card"><span class="name">Picaflor gigante</span><span class="sci">Patagona gigas</span><span class="loc">Norte/centro</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Picaflor de Cora</span><span class="sci">Thaumastura cora</span><span class="loc">Extremo norte (raro)</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Picaflor de la Puna</span><span class="sci">Oreotrochilus estella</span><span class="loc">Altos Andes norte</span><span class="tag">brecha</span></div>
+      </div>
+
+      <h3>🐦 Psittacidae — Loros / Cotorras (origen tropical)</h3>
+      <div class="two-col">
+        <div class="specie-card"><span class="name">Loro Tricahue</span><span class="sci">Cyanoliseus patagonus</span><span class="loc">Centro</span><span class="status badge ok">✅ Post existe</span></div>
+        <div class="specie-card"><span class="name">Choroy</span><span class="sci">Enicognathus leptorhynchus</span><span class="loc">Sur</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Cachaña</span><span class="sci">Enicognathus ferrugineus</span><span class="loc">Sur</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Cotorra argentina</span><span class="sci">Myiopsitta monachus</span><span class="loc">Introducida, Chile central</span><span class="tag">brecha</span></div>
+      </div>
+
+      <h3>🐦 Otras especies tropicales en Chile</h3>
+      <div class="two-col">
+        <div class="specie-card"><span class="name">Corbatita</span><span class="sci">Sporophila telasco</span><span class="loc">Arica</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Cazamoscas picochato</span><span class="sci">Myiophobus rufescens</span><span class="loc">Arica</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Martín pescador</span><span class="sci">Megaceryle torquata</span><span class="loc">Centro/sur</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Martín pescador verde</span><span class="sci">Chloroceryle americana</span><span class="loc">Arica</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Bandurrilla de Arica</span><span class="sci">Upucerthia</span><span class="loc">Arica</span><span class="status badge ok">✅ Post existe</span></div>
+        <div class="specie-card"><span class="name">Flamenco chileno</span><span class="sci">Phoenicopterus chilensis</span><span class="loc">Norte/centro</span><span class="status badge ok">✅ Post existe</span></div>
+      </div>
+
+      <h3>🐦 Aves de Rapa Nui — Nombres tradicionales polinésicos (alto interés cultural)</h3>
+      <div class="two-col">
+        <div class="specie-card"><span class="name">Tavake</span><span class="sci">Phaethon rubricauda</span><span class="loc">Ave del trópico cola roja</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Manutara</span><span class="sci">Sterna fuscata / lunata</span><span class="loc">Gaviotín pascuense</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Makohe</span><span class="sci">Fregata minor</span><span class="loc">Ave fragata</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Kena</span><span class="sci">Sula dactylatra</span><span class="loc">Piquero blanco</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Kima</span><span class="sci">Puffinus nativitatis</span><span class="loc">Fardela de Pascua</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Kia Kia</span><span class="sci">Gygis alba</span><span class="loc">Gaviotín albo</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Tuao</span><span class="sci">Anous stolidus</span><span class="loc">Gaviotín de San Félix</span><span class="tag">brecha</span></div>
+        <div class="specie-card"><span class="name">Tavi</span><span class="sci">Procelsterna cerulea</span><span class="loc">Gaviotín de San Ambrosio</span><span class="tag">brecha</span></div>
+      </div>
+
+      <div class="note">
+        <strong>📊 Total:</strong> 13 posts existentes para ~50-60 especies tropicales. <strong>Brecha de cobertura: ~75%.</strong> La mayoría de especies tropicales carismáticas (rabijuncos, piqueros, fardelas de Pascua, nombres rapa nui, colibríes del norte) no tienen contenido dedicado.
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ANÁLISIS DE CONSULTAS → Search Console -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>4. Demanda real desde Search Console</h2>
+      <p class="small">Consultas en Google identificadas en el sitio con intención tropical o de especies asociadas. Datos de los últimos 3 meses.</p>
+
+      <h3>4.1. Alto volumen / oportunidad de mejora</h3>
+      <table>
+        <tr><th>Consulta</th><th>Clics</th><th>Impr.</th><th>CTR</th><th>Pos.</th><th>¿Cubierta?</th><th>Acción</th></tr>
+        <tr>
+          <td>gaviotas avesnativaschilenas.cl</td><td>7</td><td>4.165</td><td>0.17%</td><td>1.29</td><td class="badge ok">Existe</td>
+          <td class="small">Marca propia, pos 1. CTR bajísimo → optimizar snippet y meta desc</td>
+        </tr>
+        <tr>
+          <td>diferencia entre colibri y picaflor</td><td>2</td><td>337</td><td>0.59%</td><td>5.47</td><td class="badge ok">Post 9420</td>
+          <td class="small">Posición media, 0 impresiones recientes → mejorar SEO on-page, enlazar a Trochilidae</td>
+        </tr>
+        <tr>
+          <td>tipo de paloma de 40 cm y cuello verdoso</td><td>1</td><td>168</td><td>0.6%</td><td>3.71</td><td class="badge ok">Existe</td>
+          <td class="small">Pos 3.7, poco CTR → mejorar título y meta</td>
+        </tr>
+        <tr>
+          <td>picaflor y colibri es lo mismo</td><td>1</td><td>77</td><td>1.3%</td><td>11.91</td><td class="badge ok">Post 9420</td>
+          <td class="small">Pos baja, misma intención que "diferencia entre" → fusión de contenido</td>
+        </tr>
+        <tr>
+          <td>patos chilenos</td><td>1</td><td>55</td><td>1.82%</td><td>13.42</td><td class="badge warn">Débil</td>
+          <td class="small">Pos 13, impresiones bajas → nuevo post si hay volumen sostenido</td>
+        </tr>
+        <tr>
+          <td>loro tricahue</td><td>1</td><td>8</td><td>12.5%</td><td>75.88</td><td class="badge ok">Post 224</td>
+          <td class="small">Existe pero pos 75! → necesita enlaces internos y mejora SEO urgente</td>
+        </tr>
+      </table>
+
+      <h3>4.2. Volumen medio con CTR 0% (oportunidades de mejora)</h3>
+      <table>
+        <tr><th>Consulta</th><th>Clics</th><th>Impr.</th><th>Pos.</th><th>Acción</th></tr>
+        <tr><td>¿qué piensas que sucede con las aves originarias de un lugar cuando llegan las palomas?</td><td>0</td><td>999</td><td>1</td><td>Ya posiciona pero no genera clics → mejorar título + snippet + llamado a acción</td></tr>
+        <tr><td>diferencia entre colibri y picaflor (variantes)</td><td>0</td><td>290+196+119+etc</td><td>2-6</td><td>Multiple variantes canibalizando → unificar en un solo post authority</td></tr>
+        <tr><td>cisne caracteristicas</td><td>0</td><td>114</td><td>84.87</td><td>Pos muy baja → nuevo post o mejora radical</td></tr>
+        <tr><td>pulga de paloma</td><td>0</td><td>86</td><td>18.93</td><td>Post existe (14119) pero no aparece → revisar indexación</td></tr>
+        <tr><td>colibri</td><td>0</td><td>57</td><td>4.79</td><td>Palabra genérica → post 4000 existe, mejorar para captar tráfico</td></tr>
+        <tr><td>tordo</td><td>0</td><td>56</td><td>73.21</td><td>Post 14118 en pos 73 → urgente enlazado interno</td></tr>
+        <tr><td>gaviotas</td><td>0</td><td>32</td><td>82.62</td><td>Post 2189 no aparece → crear cluster de gaviotas</td></tr>
+        <tr><td>martin pescador</td><td>0</td><td>19</td><td>86.53</td><td>No hay post → oportunidad directa</td></tr>
+        <tr><td>loro choroy</td><td>0</td><td>18</td><td>82.56</td><td>No hay post → especie endémica sin contenido</td></tr>
+      </table>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- OPORTUNIDADES CLAVE -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>5. Oportunidades de contenido priorizadas</h2>
+
+      <div class="gap">
+        <strong>🔴 PRIORIDAD 1 — Recrear página pilar "Aves Tropicales Chilenas"</strong><br>
+        <span class="small">El post original (ID 6286) desapareció (404). Esto deja el cluster sin hub. Recuperar contenido anterior vía Wayback Machine o reescribir desde cero. URL: <code>/tropicales/</code> o <code>/aves-tropicales-chilenas/</code>. Debe enlazar a todos los posts del cluster.</span>
+      </div>
+
+      <div class="gap">
+        <strong>🟠 PRIORIDAD 2 — Posts para especies tropicales sin contenido (brechas críticas)</strong><br>
+        <span class="small">Todas con intención informacional alta y potencial de rankear por bajo nivel de competencia:</span>
+        <ul>
+          <li><strong>Ave del trópico de cola roja</strong> (Phaethon rubricauda) — keyword "ave del tropico de cola roja" + "tavake" (nombre rapa nui). Alta intención cultural.</li>
+          <li><strong>Ave del trópico de cola blanca / pico rojo</strong> — complementan el cluster de rabijuncos. Keyword: "ave del tropico Chile".</li>
+          <li><strong>Fardela de Pascua</strong> (Puffinus nativitatis) — nombre local "kima". Endemismo de Isla de Pascua.</li>
+          <li><strong>Picaflor del norte</strong> (Rhodopis vesper) — "picaflor del norte características". Complementa al Picaflor de Arica.</li>
+          <li><strong>Choroy</strong> (Enicognathus leptorhynchus) — "loro choroy Chile", "choroy características". Ave única del sur de Chile.</li>
+          <li><strong>Cachaña</strong> (Enicognathus ferrugineus) — el loro más austral del mundo. "cachaña loro Chile". Diferenciación fuerte.</li>
+          <li><strong>Martín pescador</strong> (Megaceryle torquata) — "martin pescador Chile". Baja competencia, búsqueda estable.</li>
+          <li><strong>Corbatita</strong> (Sporophila telasco) — "corbatita ave Chile" o "corbatita pajarito". Ave pequeña del norte.</li>
+          <li><strong>Gaviotín pascuense / Manutara</strong> — contenido cultural rapa nui + biología.</li>
+        </ul>
+      </div>
+
+      <div class="gap">
+        <strong>🟡 PRIORIDAD 3 — Contenido geográfico / de zona (bajo esfuerzo, alto interés)</strong><br>
+        <ul>
+          <li><strong>Aves de Isla de Pascua (Rapa Nui)</strong> — guía completa con nombres tradicionales. Keyword: "aves de isla de pascua", "aves rapa nui".</li>
+          <li><strong>Aves del Archipiélago Juan Fernández</strong> — "aves de juan fernández". Post endémicos consolidado.</li>
+          <li><strong>Colibríes del norte de Chile</strong> — post cluster que agrupe picaflor de Arica + del norte + gigante + de Cora + de la Puna.</li>
+          <li><strong>Aves tropicales del desierto de Atacama</strong> — paradoja geográfica (tropical + desierto). Alto potencial de clics.</li>
+          <li><strong>Loros nativos de Chile</strong> — post pilar para Tricahue + Choroy + Cachaña.</li>
+        </ul>
+      </div>
+
+      <div class="risk">
+        <strong>⚠️ PRIORIDAD 4 — Rescatar posts existentes que no rankean</strong><br>
+        <ul>
+          <li><strong>Loro Tricahue</strong> (post 224, pos 75.88, 8 impresiones): necesita desesperadamente enlaces internos desde posts de loros y desde el pilar tropical.</li>
+          <li><strong>Tordo</strong> (post 14118, pos 73.21): agregar enlaces desde contenido relacionado.</li>
+          <li><strong>Churrete</strong> (post 6073, pos 73.62): necesita enlazado interno.</li>
+          <li><strong>Gaviotas</strong> (post 2189, pos 82.62): post extenso que no recibe tráfico → revisar contenido y enlaces.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- ESTRATEGIA DE CLUSTER -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>6. Estrategia de cluster propuesta</h2>
+      <div class="note">
+        <strong>Arquitectura:</strong> Un pilar central → subpilares por familia/zona → fichas de especie
+      </div>
+      <pre style="background:#0b1220;border:1px solid #243047;border-radius:10px;padding:14px;font-size:13px;line-height:1.7;overflow-x:auto;">
+┌──────────────────────────────────────────────────────┐
+│         🌴 AVES TROPICALES CHILENAS (pilar)          │
+│               /aves-tropicales-chilenas/              │
+├──────────────────────────────────────────────────────┤
+│  │                                                    │
+│  ├─ 🏝️ Aves de Isla de Pascua / Rapa Nui            │
+│  │   ├── Ave del trópico cola roja / Tavake          │
+│  │   ├── Fardela de Pascua / Kima                    │
+│  │   ├── Fragata / Makohe                            │
+│  │   ├── Piquero blanco / Kena                       │
+│  │   └── Gaviotines / Manutara, Kia Kia, Tuao, Tavi │
+│  │                                                    │
+│  ├─ 🏝️ Aves de Juan Fernández                       │
+│  │   ├── Picaflor de Juan Fernández                  │
+│  │   ├── Cachudito de Juan Fernández                 │
+│  │   ├── Fardela blanca / negra                      │
+│  │   └── Rayadito de Masafuera (CR)                  │
+│  │                                                    │
+│  ├─ 🌵 Aves del Norte Grande                         │
+│  │   ├── Colibríes del norte                         │
+│  │   │   ├── Picaflor de Arica (CR)                  │
+│  │   │   ├── Picaflor del norte                      │
+│  │   │   ├── Picaflor gigante                        │
+│  │   │   ├── Picaflor de Cora                        │
+│  │   │   └── Picaflor de la Puna                     │
+│  │   ├── Corbatita                                   │
+│  │   ├── Cazamoscas picochato                        │
+│  │   └── Martín pescador verde                       │
+│  │                                                    │
+│  ├─ 🦜 Loros nativos de Chile                        │
+│  │   ├── Loro Tricahue                               │
+│  │   ├── Choroy                                      │
+│  │   └── Cachaña                                     │
+│  │                                                    │
+│  └─ 🌊 Aves marinas tropicales                       │
+│      ├── Rabijuncos (3 especies)                      │
+│      ├── Piqueros (3-4 especies)                      │
+│      └── Fardelas tropicales                          │
+└──────────────────────────────────────────────────────┘
+      </pre>
+      <p class="small">Cada nodo enlaza al pilar central y recibe enlaces desde él. Los que ya tienen post se priorizan para enlazado interno; los nuevos se crean en orden de prioridad.</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- KEYWORDS DETECTADAS POR INTENCIÓN -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>7. Keywords por intención de búsqueda</h2>
+      <table>
+        <tr><th>Keyword / query</th><th>Tipo</th><th>Vol. estimado</th><th>Competencia</th><th>Acción</th></tr>
+        <tr>
+          <td>aves tropicales chilenas<br><span class="small">"aves tropicales Chile" "aves tropicales de Chile"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Medio</td>
+          <td><span class="badge ok">Baja</span></td>
+          <td>Pilar del cluster (recrear)</td>
+        </tr>
+        <tr>
+          <td>ave del tropico de cola roja<br><span class="small">"rabijunco cola roja" "tavake"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Medio-bajo</td>
+          <td><span class="badge ok">Muy baja</span></td>
+          <td>Ficha de especie nueva</td>
+        </tr>
+        <tr>
+          <td>picaflor del norte Chile<br><span class="small">"picaflor del norte características"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Medio-bajo</td>
+          <td><span class="badge ok">Baja</span></td>
+          <td>Ficha de especie nueva</td>
+        </tr>
+        <tr>
+          <td>loro choroy Chile<br><span class="small">"choroy" "choroy loro"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Bajo</td>
+          <td><span class="badge ok">Muy baja</span></td>
+          <td>Ficha de especie nueva</td>
+        </tr>
+        <tr>
+          <td>cachaña loro<br><span class="small">"cachaña Chile" "cachaña ave"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Bajo</td>
+          <td><span class="badge ok">Muy baja</span></td>
+          <td>Ficha de especie nueva</td>
+        </tr>
+        <tr>
+          <td>aves de isla de pascua<br><span class="small">"fauna de isla de pascua" "aves rapa nui"</span></td>
+          <td><span class="badge info">Informacional / Viaje</span></td>
+          <td>Medio</td>
+          <td><span class="badge ok">Baja</span></td>
+          <td>Post geográfico nuevo</td>
+        </tr>
+        <tr>
+          <td>aves de juan fernández<br><span class="small">"fauna juan fernández" "aves archipiélago"</span></td>
+          <td><span class="badge info">Informacional / Viaje</span></td>
+          <td>Medio-bajo</td>
+          <td><span class="badge ok">Baja</span></td>
+          <td>Post geográfico nuevo</td>
+        </tr>
+        <tr>
+          <td>flamenco chileno<br><span class="small">"flamenco Chile" "phoenicopterus chilensis"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Medio</td>
+          <td><span class="badge warn">Media</span></td>
+          <td>Post 11469 existe, mejorar SEO</td>
+        </tr>
+        <tr>
+          <td>colibri o picaflor diferencia<br><span class="small">(múltiples variantes, ~27 combinaciones detectadas)</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Alto</td>
+          <td><span class="badge warn">Media-alta</span></td>
+          <td>Consolidar variantes → un post authority</td>
+        </tr>
+        <tr>
+          <td>martin pescador Chile<br><span class="small">"martín pescador chileno" "martin pescador características"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Bajo</td>
+          <td><span class="badge ok">Baja</span></td>
+          <td>Nuevo post</td>
+        </tr>
+        <tr>
+          <td>colibries del norte de Chile<br><span class="small">"picaflores del norte" "colibríes de Chile norte"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Bajo</td>
+          <td><span class="badge ok">Muy baja</span></td>
+          <td>Post cluster: "Colibríes del norte de Chile"</td>
+        </tr>
+        <tr>
+          <td>loros nativos de Chile<br><span class="small">"loros chilenos" "especies de loros Chile"</span></td>
+          <td><span class="badge info">Informacional</span></td>
+          <td>Medio-bajo</td>
+          <td><span class="badge ok">Baja</span></td>
+          <td>Post cluster: "Loros nativos de Chile"</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- RECOMENDACIONES TÉCNICAS -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>8. Recomendaciones técnicas y editoriales</h2>
+      <ul>
+        <li><strong>Restaurar el pilar tropical:</strong> Recuperar el contenido del post 6286 desde caché de Google o Wayback Machine. Si no es posible, reescribir desde cero con estructura de cluster hub.</li>
+        <li><strong>Canibalización detectada:</strong> "diferencia entre colibri y picaflor" tiene ~27 variantes canibalizando entre sí. Elegir la URL con mejor posición (post 9420) como canónica y redirigir/consolidar las demás variantes hacia ella.</li>
+        <li><strong>Enlazado interno urgente:</strong> Posts de Tricahue (pos 75), Tordo (pos 73), Churrete (pos 73), Gaviotas (pos 82) necesitan enlaces desde el pilar tropical y desde otros posts del cluster para transferir autoridad.</li>
+        <li><strong>Nombres rapa nui como keywords de nicho:</strong> "Tavake", "Manutara", "Makohe", "Kena", "Kima", "Kia Kia" — son búsquedas de bajo volumen pero altísima intención cultural y prácticamente sin competencia. Cada una merece al menos una mención destacada dentro del post de Isla de Pascua o fichas de especie.</li>
+        <li><strong>Formato de fichas:</strong> Cada ficha de especie tropical debe incluir: nombre común + científico, zona geográfica, estado de conservación, dieta, hábitat, curiosidad, galería de fotos y enlaces a especies relacionadas.</li>
+        <li><strong>Potencial afiliado:</strong> Guías de campo, binoculares, libros de aves de Chile, tours de birdwatching en Rapa Nui y Juan Fernández.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- PLAN DE ACCIÓN -->
+    <!-- ============================================ -->
+    <div class="section">
+      <h2>9. Plan de acción resumido</h2>
+      <table>
+        <tr><th>#</th><th>Acción</th><th>Prioridad</th><th>Esfuerzo</th><th>Impacto estimado</th></tr>
+        <tr><td>1</td><td>Recrear página pilar /aves-tropicales-chilenas/</td><td><span class="badge bad">Crítica</span></td><td>Alto</td><td>Reactivar todo el cluster</td></tr>
+        <tr><td>2</td><td>Consolidar variantes "colibrí vs picaflor" en post único authority</td><td><span class="badge warn">Alta</span></td><td>Bajo</td><td>Capturar todo el tráfico de ~27 variantes</td></tr>
+        <tr><td>3</td><td>Rescatar posts hundidos (Tricahue, Tordo, Churrete, Gaviotas) con enlazado interno</td><td><span class="badge warn">Alta</span></td><td>Bajo</td><td>Recuperar tráfico existente sin crear contenido</td></tr>
+        <tr><td>4</td><td>Crear post "Aves de Isla de Pascua" con nombres rapa nui</td><td><span class="badge warn">Alta</span></td><td>Medio</td><td>Medio-alto (interés cultural + viajes)</td></tr>
+        <tr><td>5</td><td>Crear fichas de aves del trópico (3 especies de rabijuncos)</td><td>Media</td><td>Bajo</td><td>Medio (nicho, poca competencia)</td></tr>
+        <tr><td>6</td><td>Crear post "Loros nativos de Chile (Tricahue, Choroy, Cachaña)"</td><td>Media</td><td>Medio</td><td>Medio (loros siempre atraen tráfico)</td></tr>
+        <tr><td>7</td><td>Crear post "Colibríes del norte de Chile" (cluster de picaflores)</td><td>Media</td><td>Medio</td><td>Medio</td></tr>
+        <tr><td>8</td><td>Crear fichas individuales: Choroy, Cachaña, Corbatita, Martín pescador</td><td>Media-baja</td><td>Bajo c/u</td><td>Bajo-medio</td></tr>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:18px;">
+      <p><strong>📌 Conclusión:</strong> El sitio tiene una base sólida de contenido sobre aves nativas chilenas pero el sub-cluster tropical está <strong>huérfano</strong> desde la desaparición del pilar. Hay ~35 especies tropicales sin cubrir y ~27 variantes de keywords canibalizadas. Con la recreación del pilar + 5-8 posts nuevos + rescate de enlaces internos, el cluster tropical podría generar un incremento estimado del 15-25% en tráfico orgánico del sitio.</p>
+    </div>
+
+  </div>
+</body>
+</html>

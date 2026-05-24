@@ -1,0 +1,33 @@
+URL: https://infomoteles.cl/
+Usuario: cvieille
+clave wp-admin: cvcv1065/
+App Password: QCZg BNQs mcnf HMXE OvBm MXpz
+Propósito: Reescribir posts en infomoteles.cl vía WordPress API
+Creada: 2026-05-16
+
+Mail Client Automatic Configuration Scripts
+Listed below are the available mail client automatic configuration scripts. Select the script for your mail client and operating system.
+
+Application	Protocols
+Windows Live Mail® 	IMAP over SSL/TLS POP3 over SSL/TLS IMAP POP3 (Post Office Protocol v3)
+iOS for iPhone/iPad/iPod and MacOS® Mail.app®	IMAP over SSL/TLS IMAP
+Mail Client Manual Settings
+If you do not see an auto-configuration script for your client in the list above, you can manually configure your mail client using the settings below. We recommend that you use IMAP and SMTP for your email account rather than ActiveSync unless you are on Android and need calendar and contacts support or push updates.
+
+Secure SSL/TLS Settings (Recommended)
+Username:	contacto@infomoteles.cl
+Password:	CVcv1065//
+Incoming Server:	mail.infomoteles.cl
+IMAP Port: 993 POP3 Port: 995
+Outgoing Server:	mail.infomoteles.cl
+SMTP Port: 465
+IMAP, POP3, and SMTP require authentication.
+Hide Non SSL/TLS Settings 
+Non-SSL Settings (NOT Recommended)
+Username:	contacto@infomoteles.cl
+Password:	CVcv1065//
+Incoming Server:	mail.infomoteles.cl
+IMAP Port: 143 POP3 Port: 110
+Outgoing Server:	mail.infomoteles.cl
+SMTP Port: 587
+IMAP, POP3, and SMTP require authentication.

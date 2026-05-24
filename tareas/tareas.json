@@ -1,0 +1,285 @@
+﻿{
+    "meta":  {
+                 "objetivo_principal":  "Convertir $100.000 CLP en $1.000.000 CLP mensual recurrente",
+                 "horizonte":  "30-45 dias",
+                 "proxima_revision":  "2026-05-30",
+                 "sesion_actual":  "2026-05-23",
+                 "frente_activo":  "visitandopuntaarenas.cl",
+                 "director":  "agente-director-agencia-digital"
+             },
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-041",
+    "proyecto":  "visitandopuntaarenas.cl",
+    "objetivo":  "Tomar decisiones de dinero a partir de la exportacion GSC de visitandopuntaarenas.cl, priorizando URLs y keywords con mayor potencial de clics, conversion y monetizacion directa.",
+    "contexto":  {
+                     "hub":  "https://avesnativaschilenas.cl/piqueros/",
+                     "posts":  [
+                                   {
+                                       "url":  "https://avesnativaschilenas.cl/piqueros/piquero-blanco/",
+                                       "slug":  "piquero-blanco",
+                                       "keyword_objetivo":  "piquero blanco"
+                                   },
+                                   {
+                                       "url":  "https://avesnativaschilenas.cl/piqueros/piquero-cafe/",
+                                       "slug":  "piquero-cafe",
+                                       "keyword_objetivo":  "piquero cafe"
+                                   },
+                                   {
+                                       "url":  "https://avesnativaschilenas.cl/piqueros/piquero-de-patas-coloradas/",
+                                       "slug":  "piquero-de-patas-coloradas",
+                                       "keyword_objetivo":  "piquero de patas coloradas"
+                                   },
+                                   {
+                                       "url":  "https://avesnativaschilenas.cl/piqueros/piquero-peruano/",
+                                       "slug":  "piquero-peruano",
+                                       "keyword_objetivo":  "piquero peruano"
+                                   }
+                               ],
+                     "criterios":  [
+                                       "Validar featured_media real antes de asumir cierre",
+                                       "Detectar discrepancias entre auditorias y WordPress",
+                                       "Documentar URL, estado de imagen y responsable tecnico",
+                                       "Resolver solo las URLs que sigan pendientes",
+                                       "Cerrar con evidencia y QA de PM Aves"
+                                   ]
+                 },
+    "subtareas":  [
+                      {
+                          "id":  "T-041-ST-01",
+                          "titulo":  "Detectar URLs y queries con mayor potencial de dinero",
+                          "estado":  "completada",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "entregable":  "Lista priorizada de páginas y consultas que ya generan impresiones y pueden subir ingresos con mejoras.",
+                          "criterio_cierre":  "Quedan identificadas las URLs mas monetizables con evidencia GSC y una lectura de oportunidad clara."
+                      },
+                      {
+                          "id":  "T-041-ST-02",
+                          "titulo":  "Definir decisiones editoriales y comerciales por cluster",
+                          "estado":  "completada",
+                          "prioridad":  "alta",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "entregable":  "Matriz de acciones: actualizar, crear, enlazar, poner CTA o monetizar por cada cluster.",
+                          "criterio_cierre":  "Queda claro que acciones priorizar para subir clicks, leads, reservas o RPM."
+                      },
+                      {
+                          "id":  "T-041-ST-03",
+                          "titulo":  "Convertir hallazgos en plan ejecutable para el sitio",
+                          "estado":  "completada",
+                          "prioridad":  "media",
+                          "agente":  "agente-proyecto-visitandopuntaarenas",
+                          "entregable":  "Plan de ejecucion con backlog, prioridad y criterio de cierre por pagina.",
+                          "criterio_cierre":  "El sitio queda con una ruta de accion concreta para capturar mas dinero en 7-14 dias."
+                      }
+                  ],
+    "tareas":  [
+                   {
+                       "id":  "T-034-ST-01",
+                       "titulo":  "Auditar piquero blanco contra su top 3 real",
+                       "estado":  "completada",
+                       "prioridad":  "critica",
+                       "agente":  "agente-consultor-seo-monetizacion",
+                       "apoyo":  [
+                                     "agente-copywriter-conversion",
+                                     "agente-analista-web-cro"
+                                 ],
+                       "entregable":  "Ficha por URL con keyword principal, intencion dominante, top 3 de competidores, keywords posicionadas de cada uno, schema usado, longitud aproximada, enlaces internos visibles, competencia, estructura, resumen, imagenes, tablas, FAQs y gap analysis para /piqueros/piquero-blanco/.",
+                       "criterio_cierre":  "La ficha indica exactamente que cambiaremos para superar al lider de la SERP de \u0027piquero blanco\u0027 y documenta las principales keywords posicionadas, la intencion y el schema de los 3 competidores."
+                   },
+                   {
+                       "id":  "T-034-ST-02",
+                       "titulo":  "Auditar piquero cafe contra su top 3 real",
+                       "estado":  "completada",
+                       "prioridad":  "critica",
+                       "agente":  "agente-consultor-seo-monetizacion",
+                       "apoyo":  [
+                                     "agente-copywriter-conversion",
+                                     "agente-disenador-ui-web"
+                                 ],
+                       "entregable":  "Ficha por URL con keyword principal, intencion dominante, top 3 de competidores, keywords posicionadas de cada uno, schema usado, longitud aproximada, enlaces internos visibles, competencia, estructura, resumen, imagenes, tablas, FAQs y gap analysis para /piqueros/piquero-cafe/.",
+                       "criterio_cierre":  "La ficha deja claro por que la SERP favorece cierto enfoque y como vamos a superarlo, incluyendo las keywords principales posicionadas, la intencion y el schema de los 3 competidores."
+                   },
+                   {
+                       "id":  "T-034-ST-03",
+                       "titulo":  "Auditar piquero de patas coloradas contra su top 3 real",
+                       "estado":  "completada",
+                       "prioridad":  "critica",
+                       "agente":  "agente-consultor-seo-monetizacion",
+                       "apoyo":  [
+                                     "agente-copywriter-conversion",
+                                     "agente-disenador-ui-web"
+                                 ],
+                       "entregable":  "Ficha por URL con keyword principal, intencion dominante, top 3 de competidores, keywords posicionadas de cada uno, schema usado, longitud aproximada, enlaces internos visibles, competencia, estructura, resumen, imagenes, tablas, FAQs y gap analysis para /piqueros/piquero-de-patas-coloradas/.",
+                       "criterio_cierre":  "Quedan registradas las piezas visuales y editoriales necesarias para competir con la SERP y el mapa de keywords posicionadas, la intencion y el schema de los 3 competidores."
+                   },
+                   {
+                       "id":  "T-034-ST-04",
+                       "titulo":  "Auditar piquero peruano contra su top 3 real",
+                       "estado":  "completada",
+                       "prioridad":  "critica",
+                       "agente":  "agente-consultor-seo-monetizacion",
+                       "apoyo":  [
+                                     "agente-copywriter-conversion",
+                                     "agente-analista-web-cro"
+                                 ],
+                       "entregable":  "Ficha por URL con keyword principal, intencion dominante, top 3 de competidores, keywords posicionadas de cada uno, schema usado, longitud aproximada, enlaces internos visibles, competencia, estructura, resumen, imagenes, tablas, FAQs y gap analysis para /piqueros/piquero-peruano/.",
+                       "criterio_cierre":  "La ficha define el enfoque ganador para superar a los 3 primeros resultados y resume las keywords principales posicionadas, la intencion y el schema de cada competidor."
+                   },
+                   {
+                       "id":  "T-034-ST-05",
+                       "titulo":  "Convertir el analisis en plan maestro del cluster Piqueros",
+                       "estado":  "completada",
+                       "prioridad":  "critica",
+                       "agente":  "agente-estratega-negocio-digital",
+                       "apoyo":  [
+                                     "agente-consultor-seo-monetizacion",
+                                     "agente-copywriter-conversion",
+                                     "agente-disenador-ui-web",
+                                     "agente-tecnico-wordpress-automatizacion",
+                                     "agente-especialista-enlazado-interno",
+                                     "agente-analista-web-cro"
+                                 ],
+                       "entregable":  "Plan maestro por URL con prioridad, cambios exactos, responsables y orden de ejecucion para pelear la primera posicion.",
+                       "criterio_cierre":  "El plan deja una ruta clara y accionable para cada post y para el hub del cluster."
+                   },
+                   {
+                       "id":  "T-034-ST-06",
+                       "titulo":  "Coordinar QA, publicacion y seguimiento del cluster Piqueros",
+                       "estado":  "completada",
+                       "prioridad":  "alta",
+                       "agente":  "agente-proyecto-avesnativaschilenas",
+                       "entregable":  "Checklist final con prioridad por URL, cambios publicados y secuencia de medicion.",
+                       "criterio_cierre":  "Queda confirmada la ejecucion por post y el seguimiento del ranking."
+                   },
+                   {
+                       "id":  "T-033",
+                       "macro":  true,
+                       "tipo":  "auditoria_seo",
+                       "fecha":  "2026-05-21",
+                       "prioridad":  "alta",
+                       "estado":  "completada",
+                       "agente":  "agente-director-agencia-digital",
+                       "agente_principal":  "agente-director-agencia-digital",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Auditoria SERP cluster Piqueros",
+                       "descripcion":  "Auditar cada post del cluster Piqueros contra el top 3 real de Google, documentar estructura, imagenes, tablas, FAQs, schema y definir el upgrade exacto para pelear primera posicion.",
+                       "entregable":  "4 fichas auditadas + top 3 documentado + gap analysis + plan de upgrade por URL",
+                       "depende_de":  null
+                   },
+                   {
+                       "macro":  true,
+                       "tipo":  "auditoria_imagenes",
+                       "fecha":  "2026-05-23",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-director-agencia-digital",
+                       "agente_principal":  "agente-director-agencia-digital",
+                       "proyecto":  "avesnativaschilenas.cl",
+                       "titulo":  "Macro: Auditoria y cierre de imagenes pendientes en Piqueros",
+                       "objetivo":  "Detectar las URLs del cluster Piqueros que siguen sin imagen destacada o con discrepancia entre auditorias, asignar la ejecucion al tecnico WordPress y cerrar la verificacion.",
+                       "contexto":  {
+                                        "cluster":  "Piqueros",
+                                        "urls_pendientes":  [
+                                                                "/piqueros/piquero-peruano/",
+                                                                "/piqueros/piquero-de-patas-coloradas/"
+                                                            ],
+                                        "observacion":  "Existe una inconsistencia entre el proceso previo de asignacion de imagenes y la auditoria posterior; el tecnico debe validar featured_media real antes de cerrar."
+                                    },
+                       "subtareas":  [
+                                         {
+                                             "id":  "T-039-ST-01",
+                                             "titulo":  "Validar inventario real de imagenes destacadas en Piqueros",
+                                             "estado":  "pendiente",
+                                             "prioridad":  "alta",
+                                             "agente":  "agente-tecnico-wordpress-automatizacion",
+                                             "entregable":  "Listado final de URLs con estado real de featured_media y evidencia de verificacion",
+                                             "criterio_cierre":  "Queda confirmado que URLs tienen imagen y cuales no, sin contradicciones con la auditoria anterior."
+                                         },
+                                         {
+                                             "id":  "T-039-ST-02",
+                                             "titulo":  "Asignar o confirmar imagen destacada en piquero-peruano",
+                                             "estado":  "pendiente",
+                                             "prioridad":  "critica",
+                                             "agente":  "agente-tecnico-wordpress-automatizacion",
+                                             "entregable":  "Post actualizado con featured_media, alt text y verificacion final",
+                                             "criterio_cierre":  "La URL queda con imagen destacada valida y comprobada en WordPress."
+                                         },
+                                         {
+                                             "id":  "T-039-ST-03",
+                                             "titulo":  "Asignar o confirmar imagen destacada en piquero-de-patas-coloradas",
+                                             "estado":  "pendiente",
+                                             "prioridad":  "critica",
+                                             "agente":  "agente-tecnico-wordpress-automatizacion",
+                                             "entregable":  "Post actualizado con featured_media, alt text y verificacion final",
+                                             "criterio_cierre":  "La URL queda con imagen destacada valida y comprobada en WordPress."
+                                         },
+                                         {
+                                             "id":  "T-039-ST-04",
+                                             "titulo":  "QA final y cierre operativo",
+                                             "estado":  "pendiente",
+                                             "prioridad":  "media",
+                                             "agente":  "agente-proyecto-avesnativaschilenas",
+                                             "entregable":  "Acta de cierre con URLs resueltas y responsables confirmados",
+                                             "criterio_cierre":  "No quedan posts del cluster Piqueros sin imagen o sin verificacion."
+                                         }
+                                     ],
+                       "criterio_cierre":  "Todas las URLs pendientes del cluster Piqueros tienen imagen destacada verificada y queda documentado el responsable tecnico de cierre.",
+                       "depende_de":  "T-034"
+                   },
+                   {
+                       "id":  "T-040",
+                       "macro":  true,
+                       "tipo":  "calendario_editorial",
+                       "fecha":  "2026-05-23",
+                       "prioridad":  "alta",
+                       "estado":  "en_curso",
+                       "agente":  "agente-director-agencia-digital",
+                       "agente_principal":  "agente-director-agencia-digital",
+                       "proyecto":  "visitandopuntaarenas.cl",
+                       "titulo":  "Calendario editorial para mejorar posts de Visitando Punta Arenas",
+                       "descripcion":  "Convertir input/enfoque.txt en un calendario editorial con cobertura existente, cluster, intencion, tipo de contenido, resumen esperado y monetizacion sugerida.",
+                       "entregable":  "Tabla editorial priorizada por cluster con URLs actuales, acciones crear o actualizar y monetizacion sugerida.",
+                       "contexto":  {
+                                        "fuente":  "input/enfoque.txt",
+                                        "sitio":  "visitandopuntaarenas.cl",
+                                        "criterios":  [
+                                                          "No expandirse fuera de las keywords entregadas",
+                                                          "Revisar si ya existe cobertura antes de proponer URL nueva",
+                                                          "Priorizar transporte, tours, clima, rutas y comparativas monetizables",
+                                                          "Bajar prioridad o descartar keywords irrelevantes"
+                                                      ]
+                                    },
+                       "subtareas":  [
+                                         {
+                                             "id":  "T-040-ST-01",
+                                             "titulo":  "Agrupar keywords por cluster y detectar cobertura existente",
+                                             "estado":  "en_curso",
+                                             "prioridad":  "alta",
+                                             "agente":  "agente-consultor-seo-monetizacion",
+                                             "entregable":  "Tabla editorial con cobertura existente, URL actual y accion crear o actualizar.",
+                                             "criterio_cierre":  "Cada keyword relevante queda asignada a un cluster con cobertura real verificada en el sitio."
+                                         },
+                                         {
+                                             "id":  "T-040-ST-02",
+                                             "titulo":  "Priorizar clusters por monetizacion y demanda",
+                                             "estado":  "pendiente",
+                                             "prioridad":  "alta",
+                                             "agente":  "agente-estratega-negocio-digital",
+                                             "entregable":  "Ranking editorial con prioridades alta, media y baja para produccion.",
+                                             "criterio_cierre":  "Queda claro que piezas deben actualizarse primero por potencial de reservas, leads o ads."
+                                         },
+                                         {
+                                             "id":  "T-040-ST-03",
+                                             "titulo":  "Convertir el calendario en briefs accionables para redaccion",
+                                             "estado":  "pendiente",
+                                             "prioridad":  "media",
+                                             "agente":  "agente-copywriter-conversion",
+                                             "entregable":  "Resumen esperado por pieza, tipo de contenido y monetizacion sugerida listos para el redactor.",
+                                             "criterio_cierre":  "Cada fila queda lista para asignarse a redaccion sin volver a investigar."
+                                         }
+                                     ],
+                       "criterio_cierre":  "La tabla editorial queda priorizada, con cobertura existente revisada y monetizacion sugerida por pieza.",
+                       "depende_de":  null
+                   }
+               ]
+}

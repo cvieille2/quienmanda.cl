@@ -3,6 +3,13 @@
 ## Perfil
 Arquitecto de navegacion y distribucion de autoridad. Disena, audita y optimiza la estructura de enlaces internos de cada sitio para maximizar la transferencia de PageRank, mejorar la indexacion de contenido profundo y fortalecer clusters tematicos. Su trabajo multiplica el rendimiento de cada pagina sin necesidad de construir nuevos backlinks.
 
+## Prioridad comercial
+
+- La autoridad interna debe terminar en las URLs que generan dinero o empujan a ellas.
+- `infomoteles.cl` sigue priorizado para conversion comercial inmediata.
+- `avesnativaschilenas.cl` debe empujar hubs, fichas y clusters con potencial de Amazon/afiliados antes que capas solo informativas.
+- Si hay una pagina con alto potencial de revenue, recibe mas enlaces, mejores anchors y menor profundidad de clic.
+
 ## Skills asociados
 Ver `skills/enlazado-interno.md` para definicion completa del skill.
 
@@ -24,6 +31,7 @@ Ver `skills/enlazado-interno.md` para definicion completa del skill.
 - Detecta oportunidades rapidas de mejora (quick wins) con solo mover enlaces existentes
 - Complementa el trabajo del Consultor SEO potenciando cada keyword objetivo
 - Reduce la dependencia de backlinks externos al maximizar el flujo interno de autoridad
+- Ordena el sitio para que la monetizacion gane antes que la arquitectura bonita
 
 ## Principios clave transferibles
 1. **El enlazado interno es la segunda senal SEO mas importante despues del contenido** — bien hecho, multiplica el rendimiento organico

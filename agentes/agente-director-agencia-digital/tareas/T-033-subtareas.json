@@ -1,0 +1,89 @@
+{
+  "agente": "agente-director-agencia-digital",
+  "tarea_principal": "T-033",
+  "proyecto": "avesnativaschilenas.cl",
+  "objetivo": "Analizar cada post del cluster Piqueros contra el top 3 real de Google para su keyword principal y definir la ruta exacta para alcanzar la primera posicion.",
+  "contexto": {
+    "hub": "https://avesnativaschilenas.cl/piqueros/",
+    "posts_objetivo": [
+      "/piqueros/piquero-blanco/",
+      "/piqueros/piquero-cafe/",
+      "/piqueros/piquero-de-patas-coloradas/",
+      "/piqueros/piquero-peruano/"
+    ],
+    "criterios": [
+      "Una ficha por cada post del cluster",
+      "Buscar la keyword principal en Google antes de analizar",
+      "Comparar solo el top 3 real de la SERP para esa keyword",
+      "Documentar URL competencia, estructura, resumen, imagenes, tablas, FAQs y recursos visuales",
+      "Definir brechas concretas y el plan de mejora para superar al lider"
+    ]
+  },
+  "subtareas": [
+    {
+      "id": "T-033-ST-01",
+      "titulo": "Auditar el piquero blanco y su SERP principal",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-consultor-seo-monetizacion",
+      "apoyo": ["agente-copywriter-conversion", "agente-analista-web-cro"],
+      "entregable": "Ficha de analisis del keyword principal, top 3 de Google, competencia, gaps y oportunidad de posicionamiento para /piqueros/piquero-blanco/.",
+      "criterio_cierre": "La ficha incluye keyword exacta, intent de busqueda, URLs competidoras, estructura H1-H3, resumen de contenido, imagen principal, imagenes internas, tablas, FAQs, schema probable y recomendacion concreta para ganar la SERP.",
+      "nota": "Identificar si la busqueda prioriza guia informativa, identificacion, distribucion en Chile, significado local 'kena' o mezcla de todos."
+    },
+    {
+      "id": "T-033-ST-02",
+      "titulo": "Auditar el piquero cafe y su SERP principal",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-consultor-seo-monetizacion",
+      "apoyo": ["agente-copywriter-conversion", "agente-disenador-ui-web"],
+      "entregable": "Ficha de analisis del keyword principal, top 3 de Google, competencia, gaps y oportunidad de posicionamiento para /piqueros/piquero-cafe/.",
+      "criterio_cierre": "La ficha debe mostrar que entiende por que la SERP premia cierto enfoque y que cambio exacto necesita nuestra pagina para superarlo.",
+      "nota": "Detectar si el color, la distribucion en Isla de Pascua o el registro reciente dominan la intencion de busqueda."
+    },
+    {
+      "id": "T-033-ST-03",
+      "titulo": "Auditar el piquero de patas coloradas y su SERP principal",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-consultor-seo-monetizacion",
+      "apoyo": ["agente-copywriter-conversion", "agente-disenador-ui-web"],
+      "entregable": "Ficha de analisis del keyword principal, top 3 de Google, competencia, gaps y oportunidad de posicionamiento para /piqueros/piquero-de-patas-coloradas/.",
+      "criterio_cierre": "Quedan registradas las URLs rivales, el formato que usan, el tipo de imagenes, y la estructura que debemos igualar o superar.",
+      "nota": "Ver si la SERP privilegia identificacion visual, rareza del avistamiento o contexto de Isla de Pascua."
+    },
+    {
+      "id": "T-033-ST-04",
+      "titulo": "Auditar el piquero peruano y su SERP principal",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-consultor-seo-monetizacion",
+      "apoyo": ["agente-copywriter-conversion", "agente-analista-web-cro"],
+      "entregable": "Ficha de analisis del keyword principal, top 3 de Google, competencia, gaps y oportunidad de posicionamiento para /piqueros/piquero-peruano/.",
+      "criterio_cierre": "La ficha resume exactamente que tipo de contenido esta rankeando y que elementos de valor faltan en nuestra pagina.",
+      "nota": "Distinguir si Google favorece un enfoque de costa, distribucion biologica, identificacion o relacion con otras especies del grupo."
+    },
+    {
+      "id": "T-033-ST-05",
+      "titulo": "Convertir el analisis SERP en un plan de upgrade para el cluster completo",
+      "estado": "completada",
+      "prioridad": "critica",
+      "agente": "agente-estratega-negocio-digital",
+      "apoyo": ["agente-consultor-seo-monetizacion", "agente-copywriter-conversion", "agente-disenador-ui-web", "agente-tecnico-wordpress-automatizacion", "agente-especialista-enlazado-interno", "agente-analista-web-cro"],
+      "entregable": "Plan maestro para llevar cada post de piqueros a la primera posicion con cambios de contenido, estructura, imagenes, tablas, interlinking y soporte tecnico.",
+      "criterio_cierre": "El plan define que cambia cada URL, quien lo ejecuta, en que orden y cual es la version objetivo para superar a los 3 primeros resultados.",
+      "nota": "Usar todo el equipo si hace falta. Si una sola mejora no alcanza, combinar SEO, copy, diseno, tecnico y enlazado interno para construir la mejor pagina de la SERP."
+    },
+    {
+      "id": "T-033-ST-06",
+      "titulo": "Coordinar publicacion, QA y seguimiento del cluster piqueros",
+      "estado": "completada",
+      "prioridad": "alta",
+      "agente": "agente-proyecto-avesnativaschilenas",
+      "entregable": "Checklist final con URLs auditadas, prioridades de implementacion, cambios publicados y seguimiento de ranking.",
+      "criterio_cierre": "Queda clara la secuencia de ejecucion y la forma de medir si el cluster empieza a subir posiciones.",
+      "nota": "Cerrar con una tabla de prioridad por URL: impacto SEO, dificultad, dependencia y riesgo de canibalizacion."
+    }
+  ]
+}

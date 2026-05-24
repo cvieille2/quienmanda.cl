@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría SEO — Transporte en Punta Arenas | visitandopuntaarenas.cl</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #38bdf8;
+    --accent2: #f59e0b;
+    --green: #22c55e;
+    --red: #ef4444;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #334155;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: .25rem; background: linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--muted); font-size: 1.05rem; margin-bottom: 2rem; }
+  .meta-badge {
+    display: inline-flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem;
+  }
+  .badge {
+    padding: .3rem .8rem; border-radius: 999px; font-size: .8rem;
+    font-weight: 600; background: var(--card); border: 1px solid var(--border);
+  }
+  .badge.red { border-color: var(--red); color: var(--red); }
+  .badge.green { border-color: var(--green); color: var(--green); }
+  .badge.amber { border-color: var(--accent2); color: var(--accent2); }
+  .badge.blue { border-color: var(--accent); color: var(--accent); }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 1rem;
+    padding: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .card h2 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+  .card h2 .icon { font-size: 1.5rem; }
+  .card h3 { font-size: 1.1rem; margin: 1rem 0 .5rem; color: var(--accent); }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .stat {
+    text-align: center; padding: 1rem; background: rgba(56,189,248,.08); border-radius: .75rem;
+    border: 1px solid rgba(56,189,248,.15);
+  }
+  .stat .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+  .stat .label { font-size: .8rem; color: var(--muted); }
+  table {
+    width: 100%; border-collapse: collapse; margin: .75rem 0;
+    font-size: .9rem;
+  }
+  th, td { padding: .6rem .75rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: rgba(56,189,248,.1); color: var(--accent); font-weight: 600; }
+  tr:hover { background: rgba(255,255,255,.03); }
+  .competitor { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1rem 0; }
+  .competitor h3 { margin-top: 0; }
+  .tag { display: inline-block; padding: .15rem .6rem; border-radius: 4px; font-size: .75rem; font-weight: 600; margin-right: .3rem; }
+  .tag.green { background: rgba(34,197,94,.2); color: var(--green); }
+  .tag.red { background: rgba(239,68,68,.2); color: var(--red); }
+  .tag.amber { background: rgba(245,158,11,.2); color: var(--accent2); }
+  .gap-item { display: flex; align-items: flex-start; gap: .75rem; margin: .5rem 0; padding: .5rem; border-radius: .5rem; background: rgba(255,255,255,.02); }
+  .gap-item .priority { font-size: .7rem; font-weight: 700; padding: .15rem .5rem; border-radius: 4px; white-space: nowrap; }
+  .priority.critica { background: var(--red); color: #fff; }
+  .priority.alta { background: var(--accent2); color: #000; }
+  .priority.media { background: var(--accent); color: #000; }
+  .priority.baja { background: var(--muted); color: #000; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .3rem 0; }
+  .steps { counter-reset: step; }
+  .steps li { list-style: none; counter-increment: step; margin: .5rem 0; padding: .75rem; background: rgba(255,255,255,.02); border-radius: .5rem; border-left: 3px solid var(--accent2); }
+  .steps li::before { content: counter(step); font-weight: 800; color: var(--accent2); margin-right: .5rem; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .progress-bar { height: 8px; background: var(--border); border-radius: 4px; margin: .5rem 0; overflow: hidden; }
+  .progress-bar .fill { height: 100%; border-radius: 4px; }
+  .fill.green { background: var(--green); width: 40%; }
+  .fill.amber { background: var(--accent2); width: 60%; }
+  .fill.red { background: var(--red); width: 25%; }
+  .pill { display: inline-block; padding: .2rem .7rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+  .pill.yes { background: rgba(34,197,94,.2); color: var(--green); }
+  .pill.no { background: rgba(239,68,68,.2); color: var(--red); }
+  .pill.partial { background: rgba(245,158,11,.2); color: var(--accent2); }
+  .footer { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) { h1 { font-size: 1.6rem; } .card { padding: 1rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🚍 Auditoría SEO: Transporte en Punta Arenas</h1>
+<div class="subtitle">Análisis completo de competencia, brechas de contenido y plan de acción para <code>visitandopuntaarenas.cl/transporte/</code></div>
+
+<div class="meta-badge">
+  <span class="badge blue">📅 24 mayo 2026</span>
+  <span class="badge amber">🔍 keyword: "transporte Punta Arenas"</span>
+  <span class="badge red">⚠️ Contenido crítico: solo 524 palabras</span>
+  <span class="badge green">🟢 Yoast Schema Article presente</span>
+</div>
+
+<!-- ========== RESUMEN EJECUTIVO ========== -->
+<div class="card">
+<h2><span class="icon">📊</span> Resumen Ejecutivo</h2>
+<div class="grid-3">
+  <div class="stat"><div class="num">524</div><div class="label">Palabras actuales</div></div>
+  <div class="stat"><div class="num">2,500+</div><div class="label">Palabras objetivo (5× más)</div></div>
+  <div class="stat"><div class="num">4</div><div class="label">Preguntas FAQ actuales</div></div>
+  <div class="stat"><div class="num">6-10</div><div class="label">FAQ objetivo</div></div>
+  <div class="stat"><div class="num">3/10</div><div class="label">Score de completitud</div></div>
+  <div class="stat"><div class="num">10+</div><div class="label">Brechas críticas/altas</div></div>
+</div>
+<p style="margin-top:1rem; color: var(--muted);">
+  La página de transporte cumple como hub indexador pero <strong>carece de profundidad informativa</strong>.
+  Con solo 524 palabras en el cuerpo, no desarrolla ninguno de los subtópicos que promete.
+  Wikipedia y desarmadero.cl la superan ampliamente en detalle técnico. Hay oportunidad de convertirla
+  en la guía definitiva de movilidad en Punta Arenas.
+</p>
+</div>
+
+<!-- ========== FICHA TÉCNICA ========== -->
+<div class="card">
+<h2><span class="icon">📋</span> Ficha Técnica de la Página Actual</h2>
+<div class="grid-2">
+  <div>
+    <table>
+      <tr><th>Atributo</th><th>Valor</th></tr>
+      <tr><td>URL</td><td><code>/transporte/</code></td></tr>
+      <tr><td>Title SEO</td><td>Transporte en Punta Arenas 2026 | Guía completa</td></tr>
+      <tr><td>Meta description</td><td>Descubre cómo moverte por Punta Arenas: micros, colectivos, buses, ferrys y más. Guía actualizada 2025 con rutas, horarios y consejos de viaje.</td></tr>
+      <tr><td>H1</td><td>Transportes a Punta Arenas: Guía completa de locomoción, micros, colectivos y más</td></tr>
+      <tr><td>Word count (body)</td><td><strong>524 palabras</strong> ⚠️</td></tr>
+      <tr><td>Fecha publicación</td><td>14 abril 2025</td></tr>
+      <tr><td>Última modificación</td><td>24 mayo 2026</td></tr>
+      <tr><td>Canonical</td><td>✓ Correcta</td></tr>
+    </table>
+  </div>
+  <div>
+    <table>
+      <tr><th>SEO Técnico</th><th>Estado</th></tr>
+      <tr><td>Yoast Article Schema</td><td><span class="pill yes">✓ Presente</span></td></tr>
+      <tr><td>FAQPage Schema</td><td><span class="pill no">✗ Ausente</span></td></tr>
+      <tr><td>BreadcrumbList Schema</td><td><span class="pill yes">✓ Presente</span></td></tr>
+      <tr><td>Open Graph tags</td><td><span class="pill yes">✓ Presentes</span></td></tr>
+      <tr><td>Twitter Cards</td><td><span class="pill yes">✓ Presentes</span></td></tr>
+      <tr><td>Imagen destacada (featured image)</td><td><span class="pill yes">✓ Presente (WebP 400×267)</span></td></tr>
+      <tr><td>Imágenes lazy load</td><td><span class="pill partial">⚠ Placeholder SVG</span></td></tr>
+      <tr><td>Enlaces internos salientes</td><td>12+ (subpáginas de transporte)</td></tr>
+      <tr><td>Plugin AffiliateBooster</td><td><span class="pill yes">✓ Detectado</span></td></tr>
+      <tr><td>AdSense / GPT</td><td><span class="pill yes">✓ Detectado</span></td></tr>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ========== TOP 5 SERP ========== -->
+<div class="card">
+<h2><span class="icon">🔎</span> Top 5 SERP — "transporte Punta Arenas"</h2>
+<p style="color:var(--muted); margin-bottom:1rem;">Resultados reales de Google. Nuestra página aparece posicionada pero compite con actores diversos.</p>
+<table>
+  <thead>
+    <tr><th>#</th><th>URL</th><th>Tipo</th><th>Autoridad</th><th>Qué cubre mejor que nosotros</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><code>visitandopuntaarenas.cl/transporte/</code></td>
+      <td>Hub guía</td>
+      <td>Media</td>
+      <td>— (es nuestra página)</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><code>es.wikipedia.org/wiki/Red_Punta_Arenas_de_Movilidad</code></td>
+      <td>Enciclopédico</td>
+      <td>⭐⭐⭐⭐⭐</td>
+      <td>Historia completa, tabla rutas con hitos, años de creación, flota, citas</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><code>desarmadero.cl/...recorrido-de-micros-en-punta-arenas/</code></td>
+      <td>Blog / Guía</td>
+      <td>⭐⭐</td>
+      <td>Horarios por línea (día hábil vs fin de semana), FAQ 6 preguntas, tips</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><code>elpinguino.com/noticia/2026/01/07/plan-verano-2026...</code></td>
+      <td>Noticia</td>
+      <td>⭐⭐⭐⭐</td>
+      <td>Información actualizada Plan Verano 2026, pago electrónico, buses eléctricos</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><code>transportepuntaarenas.com/</code></td>
+      <td>Comercial</td>
+      <td>⭐⭐</td>
+      <td>Servicio de transporte privado con reserva online, testimonios reales</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== ANÁLISIS COMPETIDORES ========== -->
+<div class="card">
+<h2><span class="icon">🕵️</span> Análisis Detallado por Competidor</h2>
+
+<div class="competitor">
+<h3>🥇 Wikipedia — Red Punta Arenas de Movilidad</h3>
+<p><strong>Fortalezas:</strong></p>
+<ul>
+  <li>Historia completa del sistema (Movigas → Vía Austral → Red)</li>
+  <li>Tabla detallada de rutas con cabeceras, hitos, horarios y año de creación</li>
+  <li>Especificaciones técnicas de flota (modelo Volare, capacidad, año)</li>
+  <li>Múltiples referencias y fuentes oficiales</li>
+  <li>Dominio de máxima autoridad (Wikipedia)</li>
+</ul>
+<p><strong>Debilidades:</strong></p>
+<ul>
+  <li>No cubre transporte interurbano, taxis, colectivos, Uber</li>
+  <li>Sin FAQ, sin consejos prácticos para turistas</li>
+  <li>Sin imágenes de rutas ni mapas interactivos</li>
+  <li>Estilo formal, no apto para viajeros primerizos</li>
+</ul>
+</div>
+
+<div class="competitor">
+<h3>🥈 Desarmadero.cl — "Cómo es el recorrido de micros en Punta Arenas"</h3>
+<p><strong>Fortalezas:</strong></p>
+<ul>
+  <li>Tablas de horarios diferenciadas (día hábil vs fin de semana)</li>
+  <li>6 preguntas FAQ bien segmentadas</li>
+  <li>Consejos prácticos de uso</li>
+  <li>Mención a apps móviles (Moovit)</li>
+  <li>Dato de sostenibilidad (+15% uso transporte público)</li>
+</ul>
+<p><strong>Debilidades:</strong></p>
+<ul>
+  <li>Contenido genérico, algunas rutas parecen incorrectas (líneas 3, 4 no existen en RED)</li>
+  <li>No cubre colectivos, taxis, aeropuerto, buses interurbanos</li>
+  <li>Dominio de baja autoridad (desarmadero.cl es un sitio generalista)</li>
+  <li>Sin schema FAQPage (solo FAQ visibles)</li>
+</ul>
+</div>
+
+<div class="competitor">
+<h3>🥉 El Pingüino — "Plan Verano 2026"</h3>
+<p><strong>Fortalezas:</strong></p>
+<ul>
+  <li>Información fresca y relevante (enero 2026)</li>
+  <li>Cubre pago electrónico (Bipay, QR, tarjetas bancarias)</li>
+  <li>Detalles de frecuencia en horas punta</li>
+  <li>Proyecto buses eléctricos y Electroterminal</li>
+  <li>Alta autoridad local (diario regional histórico)</li>
+</ul>
+<p><strong>Debilidades:</strong></p>
+<ul>
+  <li>Contenido noticioso, no permanente</li>
+  <li>No es una guía completa, solo cubre Plan Verano</li>
+  <li>Sin schema, sin FAQ</li>
+</ul>
+</div>
+
+<div class="competitor">
+<h3>🏁 TransportePuntaArenas.com</h3>
+<p><strong>Fortalezas:</strong></p>
+<ul>
+  <li>Sitio comercial con reserva online funcional</li>
+  <li>Testimonios de clientes reales (5+ reseñas)</li>
+  <li>Múltiples servicios: VIP, turismo, eventos, empresas</li>
+  <li>Atención multi-idioma y WhatsApp directo</li>
+</ul>
+<p><strong>Debilidades:</strong></p>
+<ul>
+  <li>No es contenido informativo, es página de servicios</li>
+  <li>No cubre transporte público, micros, ni opciones económicas</li>
+  <li>Sin SEO on-page optimizado para búsquedas informacionales</li>
+</ul>
+</div>
+</div>
+
+<!-- ========== ESQUEMA COMPARATIVO ========== -->
+<div class="card">
+<h2><span class="icon">📐</span> Tabla Comparativa: Nuestra Página vs Competidores</h2>
+<table>
+  <thead>
+    <tr><th>Característica</th><th>Visitando Punta Arenas</th><th>Wikipedia</th><th>Desarmadero.cl</th><th>El Pingüino</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Word count aprox.</td><td><span class="tag red">524</span></td><td><span class="tag green">3,000+</span></td><td><span class="tag green">1,500</span></td><td><span class="tag amber">~800</span></td></tr>
+    <tr><td>Rutas RED detalladas (tabla)</td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓ Completa</span></td><td><span class="pill partial">⚠ Parcial</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Historia del sistema</td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓ Completa</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>FAQ (preguntas visibles)</td><td><span class="pill partial">⚠ 4</span></td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓ 6</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>FAQPage Schema</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Tabla horarios (día hábil / finde)</td><td><span class="pill no">✗</span></td><td><span class="pill partial">⚠ Solo horario genérico</span></td><td><span class="pill yes">✓ Sí</span></td><td><span class="pill partial">⚠ Frecuencias</span></td></tr>
+    <tr><td>Colectivos (info detallada)</td><td><span class="pill partial">⚠ Menciona</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Tarifas / Precios</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill partial">⚠ Menciona algunas</span></td></tr>
+    <tr><td>Aeropuerto / Taxis / Transfer</td><td><span class="pill partial">⚠ Enlace a subpágina</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Uber / Apps movilidad</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Buses interurbanos (Natales, Calafate)</td><td><span class="pill yes">✓ Tabla</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Pago electrónico (Bipay, QR)</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓ Detallado</span></td></tr>
+    <tr><td>Proyecto buses eléctricos</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓ Sí</span></td></tr>
+    <tr><td>Mapa interactivo / recorridos</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Testimonios / reseñas</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== GAP ANALYSIS ========== -->
+<div class="card">
+<h2><span class="icon">🕳️</span> Gap Analysis — Brechas de Contenido</h2>
+
+<h3 style="color: var(--red);">🔴 Críticas (impacto directo en ranking)</h3>
+<div class="gap-item"><span class="priority critica">CRÍTICA</span> <strong>Contenido insuficiente:</strong> 524 palabras es muy poco para una guía de transporte que aspira a posicionar. La competencia directa tiene 3-6× más contenido. <em>Solución: expandir a 2,500+ palabras.</em></div>
+<div class="gap-item"><span class="priority critica">CRÍTICA</span> <strong>Sin FAQPage Schema:</strong> Aunque hay 4 FAQ visibles, no están marcadas con schema JSON-LD. Esto impide que Google muestre las preguntas en rich snippets. <em>Solución: agregar FAQPage schema con 8-10 preguntas.</em></div>
+<div class="gap-item"><span class="priority critica">CRÍTICA</span> <strong>Sin tabla detallada de rutas RED:</strong> Wikipedia tiene tabla completa con cabeceras, hitos y horarios. Nosotros solo mencionamos las rutas por encima. <em>Solución: tabla completa de las 9 líneas (1, 2, 5, 6, 6V, 8, 8V, 9, VH).</em></div>
+
+<h3 style="color: var(--accent2); margin-top: 1.5rem;">🟠 Alta</h3>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Tarifas actualizadas 2026:</strong> Desde febrero 2026 hay nuevos precios ($470 adulto, $230 adulto mayor, $160 estudiante). No están en la página.</div>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Pago electrónico (Bipay):</strong> Desde enero 2026 el efectivo dejó de operar. La página no menciona cómo pagar, dónde recargar, ni los puntos de venta de tarjetas.</div>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Horarios por línea y día:</strong> Desarmadero.cl tiene tabla día hábil vs finde. Nosotros no tenemos horarios específicos.</div>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Información de colectivos pobre:</strong> Solo se mencionan líneas 11, 12, 13. Hay muchas más (011, 114, 220, 800, 714, 100) sin detalle de recorridos.</div>
+
+<h3 style="color: var(--accent); margin-top: 1.5rem;">🔵 Media</h3>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Historia del transporte público:</strong> Wikipedia tiene 3 etapas históricas (Movigas, Vía Austral, RED). Nosotros no tenemos nada.</div>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Proyecto buses eléctricos / Electroterminal:</strong> Noticia de alto interés local. Ayuda a mostrar que la página está actualizada.</div>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Uber en Punta Arenas:</strong> Opera en la ciudad. No lo mencionamos. Uber tiene página dedicada.</div>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Taxi / Radiotaxi / Teletrans:</strong> Solo hay enlace a subpágina de aeropuerto. Falta info de radio-taxi local, tarifas estimadas, apps de taxi.</div>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Bicicleta / caminar / scooters:</strong> La página de Uber cubre opciones de movilidad activa. Nosotros no.</div>
+
+<h3 style="color: var(--muted); margin-top: 1.5rem;">⚪ Baja</h3>
+<div class="gap-item"><span class="priority baja">BAJA</span> <strong>Testimonios de usuarios reales:</strong> Transportepuntaarenas.com tiene reseñas. Nosotros no.</div>
+<div class="gap-item"><span class="priority baja">BAJA</span> <strong>Mapa interactivo de rutas:</strong> Moovit app tiene tracking en vivo. Sería un plus tener un mapa o embeber Moovit.</div>
+<div class="gap-item"><span class="priority baja">BAJA</span> <strong>Vehículos de carga / mudanzas:</strong> Tenemos subpágina pero falta contexto en el hub.</div>
+<div class="gap-item"><span class="priority baja">BAJA</span> <strong>Transporte escolar:</strong> Nicho específico, no urgente pero suma completitud.</div>
+</div>
+
+<!-- ========== FORTALEZAS ACTUALES ========== -->
+<div class="card">
+<h2><span class="icon">✅</span> Puntos Fuertes de la Página Actual</h2>
+<div class="grid-2">
+  <div>
+    <ul>
+      <li><strong>Arquitectura hub-and-spoke:</strong> La página funciona como centro neurálgico que enlaza a 12+ subpáginas especializadas (micros, carga, aeropuerto, buses, ciudades). Esto es excelente para SEO de cluster.</li>
+      <li><strong>Canonical y meta correctas:</strong> No hay problemas técnicos de duplicación.</li>
+      <li><strong>Yoast Article Schema presente:</strong> Google puede identificar el contenido como artículo.</li>
+      <li><strong>Breadcrumb correcto:</strong> Ayuda a la navegación y las migas de pan en SERP.</li>
+      <li><strong>Tabla de destinos interurbanos:</strong> Bien estructurada, con emojis, duración y por qué ir.</li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li><strong>Fecha de modificación reciente:</strong> 24 mayo 2026 — Google valora las actualizaciones.</li>
+      <li><strong>Imagen destacada en WebP:</strong> Buen rendimiento.</li>
+      <li><strong>Newsletter integrado:</strong> Captación de leads vía Mailchimp.</li>
+      <li><strong>AffiliateBooster detectado:</strong> Potencial de monetización por afiliados.</li>
+      <li><strong>Velocidad:</strong> Uso de Rocket Loader, lazy loading y WP Rocket (minificación).</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== DEBILIDADES ========== -->
+<div class="card">
+<h2><span class="icon">⚠️</span> Puntos Débiles</h2>
+<div class="grid-2">
+  <div>
+    <ul>
+      <li><strong>Contenido muy superficial:</strong> 524 palabras es extremadamente poco para ser llamada "guía completa".</li>
+      <li><strong>Solo 2 H2</strong> en el body: "¿Qué tipo de servicio necesitas?" y "Principales ciudades".</li>
+      <li><strong>FAQ sin schema:</strong> Las preguntas no se marcan para rich snippets.</li>
+      <li><strong>Sin tarifas ni precios:</strong> Información clave para el usuario.</li>
+      <li><strong>Sin información de pago electrónico:</strong> Hito 2026 que debería estar destacado.</li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li><strong>Colectivos apenas mencionados:</strong> Sin detalle de rutas, frecuencias, tarifas.</li>
+      <li><strong>Sin mapa ni embeddings:</strong> No hay mapas de rutas, ni widget de Moovit.</li>
+      <li><strong>Sin contenido sobre Uber/taxis/apps:</strong> El usuario moderno busca estas opciones.</li>
+      <li><strong>Historia del transporte ausente:</strong> Diferenciador que tiene Wikipedia y nosotros no.</li>
+      <li><strong>Imágenes placeholder SVG:</strong> Las imágenes reales no cargan hasta interacción (lazy loading extremo).</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== MONETIZACIÓN ========== -->
+<div class="card">
+<h2><span class="icon">💰</span> Oportunidades de Monetización</h2>
+<table>
+  <thead>
+    <tr><th>Oportunidad</th><th>Tipo</th><th>Viabilidad</th><th>Notas</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Comparador de buses interurbanos</td><td><span class="tag green">Afiliado</span></td><td>Alta</td><td>Enlaces a Busbud (ya detectado en SERP), pasajes Pullman/Cruz del Sur</td></tr>
+    <tr><td>Alquiler de autos en Punta Arenas</td><td><span class="tag green">Afiliado</span></td><td>Alta</td><td>Discovery, Rentalcars, Localiza — comisiones por reserva</td></tr>
+    <tr><td>Traslados privados / Transfers</td><td><span class="tag green">Afiliado</span></td><td>Alta</td><td>Convenio con transportepuntaarenas.com o teletrans.cl por lead/CPA</td></tr>
+    <tr><td>Tours y excursiones</td><td><span class="tag green">Afiliado</span></td><td>Media</td><td>GetYourGuide, Viator, o tours locales hacia Torres del Paine</td></tr>
+    <tr><td>AdSense (display)</td><td><span class="tag amber">Display</span></td><td>Media</td><td>Ya implementado, reforzar con unidades en medio del contenido expandido</td></tr>
+    <tr><td>Seguros de viaje</td><td><span class="tag green">Afiliado</span></td><td>Media</td><td>Al llegar en bus/avión, el viajero可能需要 seguro — enlace a comparadores</td></tr>
+    <tr><td>Newsletter → Ofertas de hospedaje</td><td><span class="tag amber">Email</span></td><td>Media</td><td>Capturar leads y enviar ofertas de alojamiento asociado</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== PLAN DE ACCIÓN ========== -->
+<div class="card">
+<h2><span class="icon">🚀</span> Plan de Acción — Pasos a Seguir</h2>
+<ol class="steps">
+  <li>
+    <strong>Expandir contenido a 2,500+ palabras</strong><br>
+    Agregar secciones: historia del transporte, descripción detallada de RED, tabla completa de rutas con cabeceras y horarios, tarifas 2026, pago electrónico, colectivos con detalle de líneas.
+    <div class="progress-bar"><div class="fill red" style="width:20%"></div></div>
+    <span style="font-size:.85rem;color:var(--muted)">Estado actual: 20% — hay bosquejo pero sin profundidad</span>
+  </li>
+  <li>
+    <strong>Agregar FAQPage Schema JSON-LD</strong><br>
+    Marcar las 4 FAQ existentes + agregar 4-6 nuevas preguntas (tarifas, pago electrónico, horarios domingo, líneas de colectivos, cómo llegar al aeropuerto, etc.). Implementar como <code>&lt;script type="application/ld+json"&gt;</code> al final del contenido.
+    <div class="progress-bar"><div class="fill red" style="width:10%"></div></div>
+    <span style="font-size:.85rem;color:var(--muted)">Estado actual: 10% — FAQ visibles pero sin schema</span>
+  </li>
+  <li>
+    <strong>Tabla completa de rutas RED (9 líneas)</strong><br>
+    Crear tabla con: Línea, Cabeceras, Hitos principales, Horario, Frecuencia, Año de creación. Basarse en Wikipedia pero con formato más amigable para turistas.
+  </li>
+  <li>
+    <strong>Sección de tarifas y pago electrónico</strong><br>
+    Agregar tabla de tarifas actualizadas (feb 2026): Adulto $470, Persona Mayor $230, Estudiante $160. Explicar sistema Bipay, puntos de recarga, QR, tarjetas bancarias.
+  </li>
+  <li>
+    <strong>Sección de colectivos detallada</strong><br>
+    Listar líneas principales (011, 114, 220, 800, 714, 100) con zonas que cubren. Precio estimado. Dónde tomarlos.
+  </li>
+  <li>
+    <strong>Agregar sección de taxis/Uber/transfer</strong><br>
+    Radiotaxis locales, apps, tarifas estimadas aeropuerto-centro. Uber disponible. Enlace a subpágina de aeropuerto.
+  </li>
+  <li>
+    <strong>Agregar sección de buses interurbanos mejorada</strong><br>
+    Expandir tabla actual con: empresas operadoras, precios de referencia, cómo comprar pasajes online, terminales de salida.
+  </li>
+  <li>
+    <strong>Historia del transporte público</strong><br>
+    Resumen breve: Movigas (2010) → Vía Austral (2017) → RED (2020-presente). 3-4 párrafos, valor agregado único frente a competidores.
+  </li>
+  <li>
+    <strong>Proyecto buses eléctricos 2026</strong><br>
+    Párrafo sobre licitación de 100 buses eléctricos, Electroterminal, pistas exclusivas. Demuestra actualización constante.
+  </li>
+  <li>
+    <strong>Embed de Moovit o mapa de rutas</strong><br>
+    Widget de Moovit app para tracking en vivo o mapa estático de la RED. Ayuda a la experiencia de usuario.
+  </li>
+</ol>
+</div>
+
+<!-- ========== PRIORIDADES WEEKLY ========== -->
+<div class="card">
+<h2><span class="icon">📅</span> Prioridades por Semana</h2>
+<table>
+  <thead>
+    <tr><th>Semana</th><th>Acción</th><th>Impacto estimado</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Semana 1</strong></td><td>Expansión de contenido a 2,500+ palabras + tabla rutas RED + tarifas</td><td>⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Semana 2</strong></td><td>FAQPage Schema + sección colectivos + taxis/Uber</td><td>⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Semana 3</strong></td><td>Historia + buses eléctricos + pago electrónico (Bipay)</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Semana 4</strong></td><td>Embed Moovit + enlazado interno fino + revisión de monetización</td><td>⭐⭐⭐</td></tr>
+    <tr><td><strong>Semana 5</strong></td><td>Monitoreo de posiciones, ajuste fino de contenido según CTR</td><td>⭐⭐⭐</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== SCHEMA RECOMENDADO ========== -->
+<div class="card">
+<h2><span class="icon">🔌</span> Schema FAQPage — Ejemplo para Implementar</h2>
+<p style="color:var(--muted); margin-bottom:1rem;">Agregar al final del contenido (antes de cerrar <code>&lt;/div&gt;</code> del post):</p>
+<pre style="background:#0a0f1e; padding:1rem; border-radius:.5rem; overflow-x:auto; font-size:.8rem; line-height:1.4;"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué colectivos hay en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Existen múltiples líneas como 011, 114, 220, 800, 714 y 100, que conectan distintos sectores de la ciudad. La ruta tradicional va desde Pedro Aguirre Cerda (sur) hasta Zona Franca (norte)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta la micro en Punta Arenas 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde febrero 2026: adulto $470, persona mayor $230, estudiante $160. El pago es 100% electrónico mediante tarjeta Bipay, QR o tarjeta bancaria."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se paga el transporte público en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde enero 2026 solo se acepta pago electrónico: tarjeta Punta Arenas Conectado ($1.550), TNE, código QR (app Bipay Wallet) o tarjetas bancarias Visa/Mastercard débito/crédito."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué micros van al aeropuerto de Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hay micro directa al aeropuerto. Las opciones son: taxi (radio-taxi local ~$10.000-15.000), transfer privado, o bus Busbud/Austral Bus desde terminal hasta el aeropuerto por ~$11 USD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay Uber en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, Uber opera en Punta Arenas. También hay taxis tradicionales y servicios de transfer privado como Transportes Punta Arenas y Teletrans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuáles son los horarios de las micros RED en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las micros operan de 7:00 a 22:00 horas (lun-sáb) y 9:00 a 21:00 (domingo). Frecuencia: 10-15 min en hora punta, 20-30 min en horario normal. La línea 1 y 2 tienen variante nocturna extendida."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+</div>
+
+<!-- ========== ENLAZADO INTERNO SUGERIDO ========== -->
+<div class="card">
+<h2><span class="icon">🔗</span> Enlazado Interno Sugerido</h2>
+<div class="grid-2">
+  <div>
+    <p><strong>Enlaces entrantes (hacia /transporte/):</strong></p>
+    <ul>
+      <li>Home → "Cómo moverte en Punta Arenas"</li>
+      <li>/servicios/ → sección de transporte</li>
+      <li>/alojamiento/ → "Cómo llegar a tu alojamiento"</li>
+      <li>/tours/ → "Transporte para tus excursiones"</li>
+      <li>/aeropuerto/ → "Transporte público en la ciudad"</li>
+      <li>/gastronomia/ → "Cómo llegar a los restaurantes"</li>
+    </ul>
+  </div>
+  <div>
+    <p><strong>Enlaces salientes (desde /transporte/):</strong></p>
+    <ul>
+      <li>→ /transporte/recorridos-de-micros/ (subpágina rutas)</li>
+      <li>→ /aeropuerto/ (transporte aeropuerto)</li>
+      <li>→ /buses/ (pasajes interurbanos)</li>
+      <li>→ /transporte/transporte-de-carga/</li>
+      <li>→ /puerto-natales/ (conexión con Natales)</li>
+      <li>→ /torres-del-paine/ (cómo llegar al parque)</li>
+      <li>→ / (home contextual)</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== BUYER PERSONA ========== -->
+<div class="card">
+<h2><span class="icon">👤</span> Buyer Persona y Etapa del Customer Journey</h2>
+<div class="grid-2">
+  <div>
+    <h3>🎯 Turista que planea su viaje</h3>
+    <p><strong>Nombre:</strong> Camila, 32 años, argentina/chilena, planifica viaje a Patagonia.</p>
+    <p><strong>Etapa:</strong> Consideración → Decisión</p>
+    <p><strong>Busca:</strong> "Cómo moverse en Punta Arenas", "micros Punta Arenas horarios", "taxi aeropuerto Punta Arenas precio"</p>
+    <p><strong>Necesita:</strong> Información práctica y confiable para decidir si alquila auto, usa transporte público o contrata transfers.</p>
+  </div>
+  <div>
+    <h3>🏠 Residente o viajero frecuente</h3>
+    <p><strong>Nombre:</strong> Pablo, 45 años, residente de Punta Arenas o trabajador temporal.</p>
+    <p><strong>Etapa:</strong> Descubrimiento → Retención</p>
+    <p><strong>Busca:</strong> "cómo pagar micro Punta Arenas 2026", "tarjeta bipay Punta Arenas", "recarga transporte público"</p>
+    <p><strong>Necesita:</strong> Información operativa actualizada: tarifas, métodos de pago, horarios, rutas.</p>
+  </div>
+</div>
+</div>
+
+<!-- ========== INDICADORES CLAVE ========== -->
+<div class="card">
+<h2><span class="icon">📈</span> KPIs a Monitorear</h2>
+<table>
+  <thead>
+    <tr><th>KPI</th><th>Línea base</th><th>Objetivo (30 días)</th><th>Objetivo (90 días)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Posición promedio "transporte Punta Arenas"</td><td>#1-3</td><td>#1 estable</td><td>#1 con featured snippet</td></tr>
+    <tr><td>Posición "micros Punta Arenas horarios"</td><td>No posicionado</td><td>#5</td><td>#3</td></tr>
+    <tr><td>Posición "cómo pagar micro Punta Arenas"</td><td>No posicionado</td><td>#5</td><td>#3</td></tr>
+    <tr><td>Posición "colectivos Punta Arenas"</td><td>No posicionado</td><td>#3</td><td>#1-2</td></tr>
+    <tr><td>Clics orgánicos mensuales (GSC)</td><td>~50-100</td><td>+50%</td><td>+150%</td></tr>
+    <tr><td>CTR desde SERP</td><td>~3-5%</td><td>8%+</td><td>12%+ (con rich snippet)</td></tr>
+    <tr><td>Word count</td><td>524</td><td>2,500+</td><td>3,000+</td></tr>
+    <tr><td>FAQPage Schema implementado</td><td>No</td><td>Sí</td><td>Sí</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== NOTAS FINALES ========== -->
+<div class="card" style="border-left: 3px solid var(--accent2);">
+<h2><span class="icon">💡</span> Conclusión</h2>
+<p>
+  La página <code>/transporte/</code> de <strong>visitandopuntaarenas.cl</strong> tiene una arquitectura SEO sólida (hub-and-spoke, Yoast schema, breadcrumbs) pero 
+  <strong>carece del contenido sustancial</strong> necesario para dominar el nicho. Con solo 524 palabras, no puede competir 
+  contra la profundidad de Wikipedia ni contra la especificidad de desarmadero.cl en rutas y horarios.
+</p>
+<p style="margin-top: .75rem;">
+  La oportunidad es enorme: expandir el contenido a una guía completa de 2,500-3,000 palabras que cubra 
+  <strong>rutas RED, tarifas 2026, pago electrónico, colectivos, taxis, Uber, buses interurbanos e historia del transporte</strong>, 
+  todo con FAQPage schema para capturar rich snippets. Además, hay <strong>múltiples vías de monetización</strong> 
+  por afiliados (alquiler de autos, pasajes de bus, transfers, tours) que hoy no se están aprovechando.
+</p>
+<p style="margin-top: .75rem; font-weight: 600; color: var(--accent);">
+  🎯 Prioridad #1: Expandir contenido y agregar FAQPage schema. Esto solo ya debería mover el indicador de posiciones y CTR.
+</p>
+</div>
+
+<div class="footer">
+  Generado el 24 mayo 2026 · Skill: Consultoría SEO y Monetización · Protector: reescribir-post-gsc<br>
+  <span style="opacity:.6;">Datos obtenidos de SERP real, fetch de competidores y análisis on-page.</span>
+</div>
+
+</div>
+</body>
+</html>

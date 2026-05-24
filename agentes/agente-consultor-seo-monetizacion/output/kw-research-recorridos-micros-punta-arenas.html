@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KW Research — Recorridos de Micros Punta Arenas</title>
+<style>
+  :root {
+    --primary: #1a365d;
+    --secondary: #2b6cb0;
+    --accent: #ecc94b;
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --text: #2d3748;
+    --border: #e2e8f0;
+    --red: #e53e3e;
+    --orange: #dd6b20;
+    --green: #38a169;
+    --gray: #718096;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .header h1 { font-size: 2.2em; margin-bottom: 8px; }
+  .header .sub { font-size: 1.1em; opacity: 0.9; }
+  .header .meta { font-size: 0.85em; opacity: 0.7; margin-top: 12px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    border: 1px solid var(--border);
+  }
+  h2 {
+    color: var(--primary);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h3 {
+    color: var(--secondary);
+    font-size: 1.15em;
+    margin: 20px 0 10px 0;
+  }
+  h4 {
+    color: var(--text);
+    font-size: 1em;
+    margin: 14px 0 6px 0;
+    font-weight: 600;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.9em;
+  }
+  th, td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: #edf2f7;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  tr:hover { background: #f7fafc; }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .tag-red { background: #fff5f5; color: var(--red); border: 1px solid #fed7d7; }
+  .tag-orange { background: #fffaf0; color: var(--orange); border: 1px solid #feebc8; }
+  .tag-green { background: #f0fff4; color: var(--green); border: 1px solid #c6f6d5; }
+  .tag-blue { background: #ebf8ff; color: var(--secondary); border: 1px solid #bee3f8; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; font-weight: 600; }
+  .pill-red { background: #e53e3e; color: white; }
+  .pill-orange { background: #dd6b20; color: white; }
+  .pill-green { background: #38a169; color: white; }
+  .pill-gray { background: #718096; color: white; }
+  .kpi-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 14px 0; }
+  .kpi {
+    background: #f7fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .kpi .num { font-size: 2em; font-weight: 700; color: var(--primary); }
+  .kpi .label { font-size: 0.8em; color: var(--gray); margin-top: 4px; }
+  .kpi .sub-num { font-size: 0.9em; color: var(--gray); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .checklist li { margin-bottom: 6px; list-style: none; padding-left: 20px; position: relative; }
+  .checklist li::before { content: "✅"; position: absolute; left: 0; }
+  .crosslist li { margin-bottom: 6px; list-style: none; padding-left: 20px; position: relative; }
+  .crosslist li::before { content: "❌"; position: absolute; left: 0; }
+  .star { color: var(--accent); }
+  .inline-code {
+    background: #edf2f7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.85em;
+  }
+  pre {
+    background: #1a202c;
+    color: #e2e8f0;
+    padding: 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.8em;
+    line-height: 1.5;
+    margin: 14px 0;
+  }
+  .action-table td:first-child { font-weight: 600; }
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: var(--primary);
+    border-radius: 50%;
+    font-size: 0.85em;
+    font-weight: 700;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .flex-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 768px) {
+    .header { padding: 40px 20px; }
+    .header h1 { font-size: 1.5em; }
+    .card { padding: 18px 16px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .kpi-group { grid-template-columns: repeat(2, 1fr); }
+  }
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .summary-box {
+    background: linear-gradient(135deg, #ebf8ff, #e6fffa);
+    border: 1px solid #bee3f8;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 14px 0;
+  }
+  .fire { color: var(--red); }
+  .highlight { background: #fefcbf; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 Keyword Research — Alta Calidad</h1>
+  <div class="sub">Recorridos de Micros en Punta Arenas</div>
+  <div class="meta">
+    URL: <strong>visitandopuntaarenas.cl/transporte/recorridos-de-micros/</strong> &nbsp;|&nbsp; 24 mayo 2026
+  </div>
+</div>
+
+<div class="container">
+
+<!-- =========== 1 =========== -->
+<div class="card">
+  <h2><span class="section-number">1</span> Estado Actual Desde GSC</h2>
+
+  <div class="kpi-group">
+    <div class="kpi"><div class="num">34</div><div class="label">Clics totales</div></div>
+    <div class="kpi"><div class="num">679</div><div class="label">Impresiones totales</div></div>
+    <div class="kpi"><div class="num">5.01%</div><div class="label">CTR</div></div>
+    <div class="kpi"><div class="num" style="color: var(--orange);">6.34</div><div class="label">Posición promedio</div></div>
+  </div>
+
+  <p style="font-size:0.9em; color: var(--gray); margin-top: -6px;">
+    🔥 Es la <strong>página #1 del sitio por impresiones</strong> en todo el GSC. Sin embargo, posición 6.34 fuera del top 5 y CTR bajo.
+  </p>
+
+  <h3>Consultas que ya traen tráfico</h3>
+  <table>
+    <thead><tr><th>Consulta</th><th>Clics</th><th>Impr.</th><th>CTR</th><th>Posición</th></tr></thead>
+    <tbody>
+      <tr><td>recorrido micros punta arenas</td><td>6</td><td>18</td><td>33.33%</td><td><span class="pill pill-green">2.06</span></td></tr>
+      <tr><td>horario micros punta arenas</td><td>3</td><td>12</td><td>25%</td><td><span class="pill pill-green">3.08</span></td></tr>
+      <tr><td>recorridos micros punta arenas</td><td>2</td><td>6</td><td>33.33%</td><td><span class="pill pill-green">2.83</span></td></tr>
+      <tr><td>recorrido micro 9 punta arenas</td><td>2</td><td>21</td><td>9.52%</td><td><span class="pill pill-green">4.14</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Consultas con impresiones pero <span class="fire">0 clics</span> (oportunidades de oro)</h3>
+  <table>
+    <thead><tr><th>Consulta</th><th>Impr.</th><th>Pos.</th><th>Diagnóstico</th></tr></thead>
+    <tbody>
+      <tr><td>recorrido micro 5 punta arenas</td><td>27</td><td>8.63</td><td><span class="tag tag-orange">Posición baja</span></td></tr>
+      <tr><td>micros punta arenas</td><td>21</td><td>6.9</td><td><span class="tag tag-orange">Posición 7</span></td></tr>
+      <tr><td>recorrido micro 6 punta arenas</td><td>11</td><td>6.36</td><td><span class="tag tag-orange">Posición media</span></td></tr>
+      <tr><td>recorrido micro 8 punta arenas</td><td>11</td><td>10.55</td><td><span class="tag tag-red">Muy baja</span></td></tr>
+      <tr><td>recorrido micro 2 punta arenas</td><td>9</td><td>5.22</td><td><span class="tag tag-green">Buena pos. sin clic</span></td></tr>
+      <tr><td>recorrido micro 1 punta arenas</td><td>7</td><td>6.57</td><td><span class="tag tag-orange">Posición media</span></td></tr>
+      <tr><td><strong>hasta que hora pasan las micros en punta arenas</strong></td><td>6</td><td><span class="pill pill-green">3.0</span></td><td><span class="tag tag-red">🔥 Excelente posición, 0 clics</span></td></tr>
+      <tr><td><strong>locomocion punta arenas</strong></td><td>5</td><td><span class="pill pill-green">4.4</span></td><td><span class="tag tag-red">🔥 Posición 4 sin clics</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 2 =========== -->
+<div class="card">
+  <h2><span class="section-number">2</span> Keyword Objective</h2>
+  <table>
+    <thead><tr><th>Tipo</th><th>Keyword</th><th>Intención</th><th>Prioridad</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-red">Principal</span></td><td>recorridos micros punta arenas</td><td>Informativa / Navegacional</td><td><span class="pill pill-red">Alta</span></td></tr>
+      <tr><td><span class="tag tag-red">Foco #2</span></td><td>horario micros punta arenas</td><td>Informativa</td><td><span class="pill pill-red">Alta</span></td></tr>
+      <tr><td><span class="tag tag-red">Foco #3</span></td><td>micros punta arenas</td><td>Informativa</td><td><span class="pill pill-red">Alta</span></td></tr>
+      <tr><td><span class="tag tag-orange">Long-tail</span></td><td>recorrido micro 9 punta arenas</td><td>Navegacional</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-orange">Long-tail</span></td><td>recorrido micro 2 punta arenas</td><td>Navegacional</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-orange">Long-tail</span></td><td>recorrido micro 5 punta arenas</td><td>Navegacional</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-orange">Long-tail</span></td><td>recorrido micro 6 punta arenas</td><td>Navegacional</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-orange">Long-tail</span></td><td>recorrido micro 8 punta arenas</td><td>Navegacional</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-orange">Long-tail</span></td><td>recorrido micro 1 punta arenas</td><td>Navegacional</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-orange">Long-tail</span></td><td>hasta que hora pasan las micros en punta arenas</td><td>Informativa</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-green">Inform.</span></td><td>red punta arenas de movilidad</td><td>Informativa</td><td><span class="pill pill-orange">Media</span></td></tr>
+      <tr><td><span class="tag tag-green">Inform.</span></td><td>recorridos colectivos punta arenas</td><td>Informativa</td><td><span class="pill pill-orange">Media</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 3 =========== -->
+<div class="card">
+  <h2><span class="section-number">3</span> Top 5 de la SERP</h2>
+  <table>
+    <thead><tr><th>#</th><th>URL</th><th>Tipo</th><th>Posición</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>https://es.wikipedia.org/wiki/Red_Punta_Arenas_de_Movilidad</td><td><span class="tag tag-blue">Wikipedia</span></td><td>Top 1-3</td></tr>
+      <tr><td>2</td><td>https://desarmadero.cl/como-es-el-recorrido-de-micros-en-punta-arenas-y-sus-rutas/</td><td><span class="tag tag-gray">Blog genérico</span></td><td>Top 3-5</td></tr>
+      <tr><td>3</td><td>https://www.itvpatagonia.com/noticias/regional/02-09-2025/extienden-recorridos-de-micros-8-y-vh-en-punta-arenas/</td><td><span class="tag tag-blue">Medio local</span></td><td>Top 5-8</td></tr>
+      <tr><td>4</td><td>https://elpinguino.com/noticias/20746/Los-recorridos-de-taxicolectivos-en-Punta-Arenas-y-sus-variantes</td><td><span class="tag tag-blue">Medio local</span></td><td>Top 5-10</td></tr>
+      <tr><td><strong>N</strong></td><td><strong>https://visitandopuntaarenas.cl/transporte/recorridos-de-micros/</strong></td><td><span class="tag tag-green">Nuestro sitio</span></td><td><strong>6.34</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 4 =========== -->
+<div class="card">
+  <h2><span class="section-number">4</span> Análisis por Competidor</h2>
+
+  <!-- 4.1 -->
+  <h3>4.1 Wikipedia — Red Punta Arenas de Movilidad</h3>
+  <div class="grid-2">
+    <div>
+      <p><strong>URL:</strong> <a href="https://es.wikipedia.org/wiki/Red_Punta_Arenas_de_Movilidad" target="_blank">es.wikipedia.org/wiki/Red_Punta_Arenas_de_Movilidad</a></p>
+      <table>
+        <tr><th>Atributo</th><th>Valor</th></tr>
+        <tr><td>Longitud</td><td>~5,000+ palabras</td></tr>
+        <tr><td>Tablas</td><td>✅ 9 líneas con cabeceras, hitos, horario, año</td></tr>
+        <tr><td>FAQs</td><td>❌ No tiene</td></tr>
+        <tr><td>Schema</td><td>Article (Wikipedia)</td></tr>
+        <tr><td>Mapas</td><td>❌ No embebido</td></tr>
+      </table>
+    </div>
+    <div>
+      <h4>Fortalezas</h4>
+      <ul class="checklist">
+        <li>Autoridad de dominio máxima</li>
+        <li>Información histórica completa</li>
+        <li>Tabla con recorridos calle por calle (ida y regreso)</li>
+        <li>Horarios específicos por línea</li>
+      </ul>
+      <h4 style="margin-top:12px;">Debilidades</h4>
+      <ul class="crosslist">
+        <li>Sin enfoque turístico</li>
+        <li>Sin información de pago</li>
+        <li>Sin FAQs</li>
+        <li>Contenido académico, no amigable</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 4.2 -->
+  <h3>4.2 Desarmadero.cl — Cómo es el recorrido de micros en Punta Arenas</h3>
+  <div class="grid-2">
+    <div>
+      <table>
+        <tr><th>Atributo</th><th>Valor</th></tr>
+        <tr><td>Longitud</td><td>~800-1,000 palabras</td></tr>
+        <tr><td>FAQs</td><td>✅ 6 preguntas básicas</td></tr>
+        <tr><td>Schema</td><td>❌ Sin schema</td></tr>
+      </table>
+    </div>
+    <div>
+      <h4>Fortalezas</h4>
+      <ul class="checklist">
+        <li>FAQ básico</li>
+        <li>Estructura limpia</li>
+      </ul>
+      <h4 style="margin-top:12px;">Debilidades</h4>
+      <ul class="crosslist">
+        <li><span class="tag tag-red">ERROR</span> Menciona "tarjeta bip!" (es de Santiago)</li>
+        <li><span class="tag tag-red">ERROR</span> Inventa líneas 3 y 4 que no existen</li>
+        <li>Contenido superficial</li>
+        <li>Baja autoridad de dominio</li>
+        <li>Imágenes rotas</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 4.3 -->
+  <h3>4.3 ITV Patagonia — Extienden recorridos micros 8 y VH</h3>
+  <div class="grid-2">
+    <div>
+      <table>
+        <tr><th>Atributo</th><th>Valor</th></tr>
+        <tr><td>Tipo</td><td>Noticia periodística</td></tr>
+        <tr><td>Longitud</td><td>~600 palabras</td></tr>
+        <tr><td>Schema</td><td>NewsArticle</td></tr>
+      </table>
+    </div>
+    <div>
+      <h4>Fortalezas</h4>
+      <ul class="checklist">
+        <li>Autoridad local (medio regional)</li>
+        <li><strong>79 mil pagos con tarjeta</strong> en el primer mes</li>
+        <li>Fuente oficial (Seremi de Transporte)</li>
+        <li>Información sobre extensión de recorridos</li>
+      </ul>
+      <h4 style="margin-top:12px;">Debilidades</h4>
+      <ul class="crosslist">
+        <li>No es una guía, es noticia</li>
+        <li>Sin estructura perenne</li>
+        <li>Sin FAQs ni tablas de rutas</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- 4.4 -->
+  <h3>4.4 El Pingüino — Recorridos de taxicolectivos</h3>
+  <div class="grid-2">
+    <div>
+      <table>
+        <tr><th>Atributo</th><th>Valor</th></tr>
+        <tr><td>Tipo</td><td>Noticia / Guía de colectivos</td></tr>
+        <tr><td>Longitud</td><td>~1,000 palabras</td></tr>
+        <tr><td>Schema</td><td>❌ Sin schema</td></tr>
+      </table>
+    </div>
+    <div>
+      <h4>Fortalezas</h4>
+      <ul class="checklist">
+        <li>22 líneas de colectivos mapeadas</li>
+        <li>Medio con autoridad local</li>
+      </ul>
+      <h4 style="margin-top:12px;">Debilidades</h4>
+      <ul class="crosslist">
+        <li>Contenido del año <strong>2009</strong> (obsoleto)</li>
+        <li>Enfocado solo en taxicolectivos</li>
+        <li>Sin imágenes útiles</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- =========== 5 =========== -->
+<div class="card">
+  <h2><span class="section-number">5</span> Gap Analysis</h2>
+
+  <h3>5.1 Lo que la competencia tiene y nosotros NO</h3>
+  <table>
+    <thead><tr><th>Brecha</th><th>Competidor</th><th>Prioridad</th></tr></thead>
+    <tbody>
+      <tr><td>Mapa interactivo de rutas (Google Maps / Moovit)</td><td>Wikipedia (enlace PDF)</td><td><span class="pill pill-red">Crítica</span></td></tr>
+      <tr><td>Recorridos calle por calle (ida y regreso) con nombres exactos</td><td>Wikipedia</td><td><span class="pill pill-red">Crítica</span></td></tr>
+      <tr><td>Datos de pago electrónico oficiales (79 mil pagos)</td><td>ITV Patagonia</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>Líneas de colectivos detalladas (22 líneas)</td><td>El Pingüino</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>Noticias recientes de cambios de recorridos</td><td>ITV, LP Austral</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>Enlace a app Moovit en tiempo real</td><td>Wikipedia</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>Historia del sistema (Movigas → Vía Austral → Red)</td><td>Wikipedia</td><td><span class="pill pill-green">Media</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>5.2 Lo que nosotros tenemos y la competencia NO</h3>
+  <ul class="checklist">
+    <li><strong>Enfoque turístico</strong> — guía para visitantes, no solo para locales</li>
+    <li><strong>Comparativa micro vs colectivo vs taxi</strong> — tabla con pros/contras</li>
+    <li><strong>Medios de pago completos</strong> — Tarjeta, QR Bipay, contactless, TNE, Persona Mayor</li>
+    <li><strong>FAQs orientadas a turistas</strong> — 9 preguntas sobre destinos específicos</li>
+    <li><strong>Enlace a planificador de rutas</strong> — calculador interno</li>
+    <li><strong>Schema Article Yoast</strong> — ✅ implementado</li>
+    <li><strong>Contenido 2026</strong> — fecha de modificación reciente</li>
+    <li><strong>Precios actualizados</strong> — $390 adulto, $190 adulto mayor, $130 estudiante</li>
+  </ul>
+
+  <h3>5.3 Oportunidades únicas (nadie lo cubre bien)</h3>
+  <table>
+    <thead><tr><th>Oportunidad</th><th>Impacto</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-red">FAQPage Schema</span> — Google rich snippets = +CTR</td><td>🔴 Alto</td></tr>
+      <tr><td>Páginas individuales por línea (1,2,5,6,8) — 80+ impresiones/mes sin clic</td><td>🔴 Alto</td></tr>
+      <tr><td>Mapa embebido con todas las rutas</td><td>🟡 Medio</td></tr>
+      <tr><td>Calculadora interactiva "qué micro tomar"</td><td>🟡 Medio</td></tr>
+      <tr><td>Video institucional o animación de rutas</td><td>🟢 Bajo</td></tr>
+      <tr><td>Sección "Micro desde/hacia el aeropuerto"</td><td>🟡 Medio</td></tr>
+      <tr><td>Guía "Dónde comprar y recargar tarjeta"</td><td>🟡 Medio</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 6 =========== -->
+<div class="card">
+  <h2><span class="section-number">6</span> Título SEO Recomendado</h2>
+  <div class="grid-2">
+    <div>
+      <h4>Actual</h4>
+      <div style="background:#fed7d7; padding:12px 16px; border-radius:8px; border:1px solid #feb2b2;">
+        ► Recorridos de Micros en Punta Arenas: Líneas, Horarios y Pago
+      </div>
+    </div>
+    <div>
+      <h4>Propuesta (optimizado)</h4>
+      <div style="background:#c6f6d5; padding:12px 16px; border-radius:8px; border:1px solid #9ae6b4; font-weight:600;">
+        Recorridos de Micros en Punta Arenas 2026: Líneas 1, 2, 5, 6, 8 y 9, Horarios y Pago Electrónico
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:12px; font-size:0.9em; color:var(--gray);">
+    ✏️ Incluir números de línea atrapa búsquedas long-tail. El año 2026 indica frescura.
+  </p>
+</div>
+
+<!-- =========== 7 =========== -->
+<div class="card">
+  <h2><span class="section-number">7</span> Meta Description Recomendada</h2>
+  <div class="grid-2">
+    <div>
+      <h4>Actual</h4>
+      <div style="background:#fed7d7; padding:12px 16px; border-radius:8px; border:1px solid #feb2b2; font-size:0.85em;">
+        Consulta los recorridos de micros en Punta Arenas: líneas 1, 2, 5, 6, 8 y 9, horarios referenciales, sectores principales, tarifa y medios de pago actualizados.
+      </div>
+    </div>
+    <div>
+      <h4>Propuesta (150-160 caracteres)</h4>
+      <div style="background:#c6f6d5; padding:12px 16px; border-radius:8px; border:1px solid #9ae6b4; font-size:0.85em;">
+        Guía completa 2026 de micros en Punta Arenas ✅ Líneas 1️⃣2️⃣5️⃣6️⃣8️⃣9️⃣, rutas a Zona Franca, Mall, Hospital, UMAG y Costanera. Pasaje desde $390 CLP. Pago con tarjeta y QR. Horarios 7:00-22:00.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========== 8 =========== -->
+<div class="card">
+  <h2><span class="section-number">8</span> Estructura H2/H3 Propuesta</h2>
+  <div style="font-family: monospace; background: #f7fafc; padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+    <div style="color: var(--primary); font-weight: 700;"># Recorridos de Micros en Punta Arenas: líneas, horarios y pago 2026</div>
+    <div style="margin-top:8px;">## ✅ Cómo funcionan las micros en Punta Arenas</div>
+    <div>## ✅ Principales recorridos de micros en Punta Arenas</div>
+    <div>&nbsp;&nbsp;### ✅ Recorrido micro 1 Punta Arenas</div>
+    <div>&nbsp;&nbsp;### ✅ Recorrido micro 2 Punta Arenas</div>
+    <div>&nbsp;&nbsp;### ✅ Recorrido micro 5 Punta Arenas</div>
+    <div>&nbsp;&nbsp;### ✅ Recorrido micro 6 Punta Arenas</div>
+    <div>&nbsp;&nbsp;### ✅ Recorrido micro 8 Punta Arenas</div>
+    <div>&nbsp;&nbsp;### ✅ Recorrido micro 9 Punta Arenas</div>
+    <div style="color: var(--green); font-weight: 600;">## 🆕 Mapa interactivo de rutas</div>
+    <div style="color: var(--green); font-weight: 600;">## 🆕 Recorridos calle por calle (ida y regreso)</div>
+    <div>## ✅ Qué micro me sirve según mi destino</div>
+    <div style="color: var(--green); font-weight: 600;">## 🆕 Micro desde el Aeropuerto al Centro</div>
+    <div>## ✅ Micro a Zona Franca en Punta Arenas</div>
+    <div>## ✅ Cómo se paga la micro en Punta Arenas</div>
+    <div style="color: var(--green); font-weight: 600;">&nbsp;&nbsp;### 🆕 Dónde comprar y recargar la Tarjeta Punta Arenas Conectado</div>
+    <div style="color: var(--green); font-weight: 600;">&nbsp;&nbsp;### 🆕 Estadísticas del pago electrónico en Punta Arenas</div>
+    <div>## ✅ Horarios y frecuencia de las micros</div>
+    <div style="color: var(--green); font-weight: 600;">## 🆕 Historia del sistema (Movigas → Vía Austral → Red)</div>
+    <div style="color: var(--green); font-weight: 600;">## 🆕 Flota actual: buses Volare con WiFi, USB y calefacción</div>
+    <div>## ✅ Cómo usar las micros si no conoces la ciudad</div>
+    <div>## ✅ Micros, colectivos o taxi: qué conviene</div>
+    <div style="color: var(--green); font-weight: 600;">&nbsp;&nbsp;### 🆕 Tabla completa de líneas de colectivos con destinos</div>
+    <div>## ✅ Preguntas frecuentes (expandir a 15)</div>
+    <div>## ✅ Fuentes y cómo verificar información actualizada</div>
+  </div>
+</div>
+
+<!-- =========== 9 =========== -->
+<div class="card">
+  <h2><span class="section-number">9</span> Schema — FAQPage (listo para implementar)</h2>
+  <p>Ningún competidor tiene FAQPage Schema. Agregarlo permite <strong>rich snippets</strong> en Google con preguntas y respuestas desplegables.</p>
+
+  <pre>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué micro me sirve para ir a Zona Franca?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para ir a Zona Franca revisa primero las líneas 2, 5, 6 y 8, según tu punto de origen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta el pasaje en micro en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El pasaje adulto cuesta $390 CLP. Personas mayores pagan $190 y estudiantes $130."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se puede pagar la micro con efectivo en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. El sistema funciona exclusivamente con pago electrónico: tarjeta Punta Arenas Conectado, TNE, Bipay Wallet QR o tarjeta bancaria contactless."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿A qué hora deja de funcionar el transporte público en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Muchas líneas operan hasta cerca de las 21:30 o 22:00 horas, aunque puede variar por línea, día o condiciones climáticas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay micro al aeropuerto de Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las micros urbanas no llegan directamente al aeropuerto. La opción más económica es tomar Bus Sur (desde $3.500 CLP) o un taxi/transfer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde puedo comprar y recargar la tarjeta Punta Arenas Conectado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En el Centro de Atención de Usuarios (CAU) y en más de 83 comercios de la ciudad. También hay puntos de recarga en el Mall Espacio Urbano y Zona Franca."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funcionan las micros los domingos y festivos en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, pero con frecuencias reducidas. Muchas líneas operan hasta las 21:00 los domingos. Es recomendable verificar en Moovit antes de salir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué micro me sirve para ir a la Universidad de Magallanes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La Línea 8 es la referencia principal para llegar a UMAG, especialmente si vienes desde Zona Franca, Costanera o centro."
+      }
+    }
+  ]
+}</pre>
+</div>
+
+<!-- =========== 10 =========== -->
+<div class="card">
+  <h2><span class="section-number">10</span> Enlazado Interno Sugerido</h2>
+  <table>
+    <thead><tr><th>Página actual</th><th>Enlazar hacia</th><th>Anchor text</th></tr></thead>
+    <tbody>
+      <tr><td>recorridos-de-micros</td><td>/transporte/</td><td>Planificador de viajes</td></tr>
+      <tr><td>recorridos-de-micros</td><td>/zona-franca/</td><td>Zona Franca de Punta Arenas</td></tr>
+      <tr><td>recorridos-de-micros</td><td>/mall-espacio-urbano-pionero/</td><td>Mall Espacio Urbano Pionero</td></tr>
+      <tr><td>recorridos-de-micros</td><td>/transporte/linea-9/</td><td>Línea 9</td></tr>
+      <tr><td>recorridos-de-micros</td><td>/</td><td>Punta Arenas</td></tr>
+      <tr><td>recorridos-de-micros</td><td>/buses/bus-sur/</td><td>Bus Sur aeropuerto</td></tr>
+      <tr><td>recorridos-de-micros</td><td>/transporte/cruce-porvenir-punta-arenas/</td><td>Cómo ir a Porvenir</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Nuevas páginas sugeridas para crear</h3>
+  <table>
+    <thead><tr><th>URL sugerida</th><th>Keyword objetivo</th><th>Prioridad</th></tr></thead>
+    <tbody>
+      <tr><td>/transporte/linea-1-punta-arenas/</td><td>recorrido micro 1 punta arenas</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>/transporte/linea-2-punta-arenas/</td><td>recorrido micro 2 punta arenas</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>/transporte/linea-5-punta-arenas/</td><td>recorrido micro 5 punta arenas</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>/transporte/linea-6-punta-arenas/</td><td>recorrido micro 6 punta arenas</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>/transporte/linea-8-punta-arenas/</td><td>recorrido micro 8 punta arenas</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td>/transporte/tarjeta-punta-arenas-conectado/</td><td>tarjeta punta arenas conectado</td><td><span class="pill pill-green">Media</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 11 =========== -->
+<div class="card">
+  <h2><span class="section-number">11</span> Plan de Acción Priorizado</h2>
+  <table>
+    <thead><tr><th>#</th><th>Acción</th><th>Impacto</th><th>Esfuerzo</th><th>Tipo</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Agregar FAQPage Schema (JSON-LD)</td><td><span class="pill pill-red">Alto</span></td><td><span class="pill pill-green">Bajo</span></td><td>Schema</td></tr>
+      <tr><td>2</td><td>Optimizar meta description con precio + año</td><td><span class="pill pill-red">Alto</span></td><td><span class="pill pill-green">Bajo</span></td><td>Meta</td></tr>
+      <tr><td>3</td><td>Agregar tabla de recorridos calle por calle</td><td><span class="pill pill-red">Alto</span></td><td><span class="pill pill-orange">Medio</span></td><td>Contenido</td></tr>
+      <tr><td>4</td><td>Crear páginas individuales líneas 1,2,5,6,8</td><td><span class="pill pill-red">Alto</span></td><td><span class="pill pill-orange">Medio</span></td><td>Cluster</td></tr>
+      <tr><td>5</td><td>Agregar sección "Micro al aeropuerto"</td><td><span class="pill pill-orange">Medio</span></td><td><span class="pill pill-green">Bajo</span></td><td>Contenido</td></tr>
+      <tr><td>6</td><td>Sección "Dónde comprar/recargar tarjeta"</td><td><span class="pill pill-orange">Medio</span></td><td><span class="pill pill-green">Bajo</span></td><td>Contenido</td></tr>
+      <tr><td>7</td><td>Embeder mapa de rutas</td><td><span class="pill pill-orange">Medio</span></td><td><span class="pill pill-orange">Medio</span></td><td>UX</td></tr>
+      <tr><td>8</td><td>Incluir datos de pago electrónico oficiales</td><td><span class="pill pill-orange">Medio</span></td><td><span class="pill pill-green">Bajo</span></td><td>Contenido</td></tr>
+      <tr><td>9</td><td>Sección breve de historia del sistema</td><td><span class="pill pill-green">Bajo</span></td><td><span class="pill pill-green">Bajo</span></td><td>Contenido</td></tr>
+      <tr><td>10</td><td>Tabla de líneas de colectivos</td><td><span class="pill pill-orange">Medio</span></td><td><span class="pill pill-orange">Medio</span></td><td>Contenido</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 12 =========== -->
+<div class="card">
+  <h2><span class="section-number">12</span> Proyección Post-Optimización</h2>
+  <table>
+    <thead><tr><th>Métrica</th><th>Hoy</th><th>Potencial</th><th>Mejora</th></tr></thead>
+    <tbody>
+      <tr><td>Posición GSC</td><td>6.34</td><td>Top 3-4</td><td>+40%</td></tr>
+      <tr><td>CTR</td><td>5.01%</td><td>12-18%</td><td>+200%</td></tr>
+      <tr><td>Clics/mes</td><td>~34</td><td>~100-150</td><td>+300%</td></tr>
+      <tr><td>Impresiones/mes</td><td>~679</td><td>~900-1,200</td><td>+50%</td></tr>
+      <tr><td>Palabras del post</td><td>~2,042</td><td>~3,500-4,000</td><td>+80%</td></tr>
+      <tr><td>FAQs</td><td>9</td><td>15</td><td>+60%</td></tr>
+      <tr><td>Schema</td><td>Article</td><td>Article + FAQPage</td><td>—</td></tr>
+      <tr><td>Páginas del cluster</td><td>1 (línea 9)</td><td>6</td><td>5 nuevas</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 13 =========== -->
+<div class="card">
+  <h2><span class="section-number">13</span> Monetización Detectada</h2>
+  <table>
+    <thead><tr><th>Vía</th><th>Cómo</th><th>Prioridad</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AdSense</strong></td><td>Mejorar CTR de 5% → 15% en 679 impresiones = ~100 clics extra/mes</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td><strong>Tráfico a páginas monetizables</strong></td><td>Empujar a Zona Franca, Mall, Tours, Alojamiento</td><td><span class="pill pill-orange">Alta</span></td></tr>
+      <tr><td><strong>Afiliados</strong></td><td>Moovit, apps de transporte, seguro de viaje</td><td><span class="pill pill-green">Media</span></td></tr>
+      <tr><td><strong>Lead gen</strong></td><td>Newsletter (ya existe formulario al final del post)</td><td><span class="pill pill-green">Baja</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- =========== 14 =========== -->
+<div class="card">
+  <h2><span class="section-number">14</span> Resumen Ejecutivo</h2>
+
+  <div class="summary-box">
+    La página de <strong>recorridos de micros</strong> es la que más impresiones genera en todo visitandopuntaarenas.cl (<strong>679</strong>), pero su <strong>posición 6.34 y CTR 5%</strong> la dejan muy por debajo de su potencial.
+  </div>
+
+  <div class="grid-3" style="margin: 20px 0;">
+    <div style="background:#fff5f5; padding:16px; border-radius:10px; border:1px solid #fed7d7; text-align:center;">
+      <div style="font-size:2em; font-weight:700; color:var(--red);">679</div>
+      <div style="font-size:0.85em; color:var(--gray);">Impresiones/mes</div>
+    </div>
+    <div style="background:#fffaf0; padding:16px; border-radius:10px; border:1px solid #feebc8; text-align:center;">
+      <div style="font-size:2em; font-weight:700; color:var(--orange);">6.34</div>
+      <div style="font-size:0.85em; color:var(--gray);">Posición promedio</div>
+    </div>
+    <div style="background:#f0fff4; padding:16px; border-radius:10px; border:1px solid #c6f6d5; text-align:center;">
+      <div style="font-size:2em; font-weight:700; color:var(--green);">5.01%</div>
+      <div style="font-size:0.85em; color:var(--gray);">CTR actual</div>
+    </div>
+  </div>
+
+  <p><strong>La competencia directa:</strong></p>
+  <ul>
+    <li><span class="tag tag-blue">Wikipedia</span> — gana por autoridad y tabla calle por calle</li>
+    <li><span class="tag tag-gray">desarmadero.cl</span> — tiene errores graves (menciona "bip!" de Santiago)</li>
+    <li><span class="tag tag-blue">ITV Patagonia</span> — tiene datos frescos de pago electrónico que nosotros no tenemos</li>
+  </ul>
+
+  <p style="margin-top:16px;"><strong>La oportunidad más grande y de menor esfuerzo:</strong></p>
+  <div style="background:#fefcbf; padding:14px 18px; border-radius:8px; border:1px solid #f6e05e;">
+    <strong>1. Agregar FAQPage Schema</strong> — ningún competidor lo tiene. Google premia con rich snippets.<br>
+    <strong>2. Crear páginas individuales para cada línea</strong> — capturar ~80 impresiones mensuales perdidas.
+  </div>
+
+  <p style="margin-top:16px; font-size:0.85em; color:var(--gray); text-align:center;">
+    Informe generado por <strong>agente-consultor-seo-monetizacion</strong> · Basado en datos GSC reales + SERP analysis + fetch competitivo<br>
+    24 de mayo 2026
+  </p>
+</div>
+
+</div><!-- /container -->
+
+</body>
+</html>

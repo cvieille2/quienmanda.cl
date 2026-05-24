@@ -1,6 +1,7 @@
 ﻿<#
-  LANZADOR DEL EQUIPO DE AGENTES - v2.0
-  Plan + Build nativos para 17 agentes.
+  LANZADOR DEL EQUIPO DE AGENTES - v3.0
+  Equipo reducido de 19 a 9 agentes. Execution-first.
+  Fuente oficial: tareas.json (con compatibilidad para pendientes.json)
   Un solo comando: .\lanzar-equipo.ps1
 #>
 
@@ -15,50 +16,169 @@ param(
 $BASE_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
 $AGENTES_DIR = Join-Path $BASE_DIR "agentes"
 $TAREAS_DIR = Join-Path $BASE_DIR "tareas"
+$TAREAS_DIRECTOR_DIR = Join-Path $BASE_DIR "agentes\agente-director-agencia-digital\tareas"
+$TAREAS_OFICIAL = Join-Path $TAREAS_DIR "tareas.json"
 $PENDIENTES = Join-Path $TAREAS_DIR "pendientes.json"
 
 $AGENTES = @{}
-$AGENTES["agente-director-agencia-digital"] = @{Nombre="Director"; Rol="Jefe de reunion"}
-$AGENTES["agente-proyecto-infomoteles"] = @{Nombre="PM Infomoteles"; Rol="PM infomoteles.cl"}
-$AGENTES["agente-proyecto-visitandopuntaarenas"] = @{Nombre="PM Punta Arenas"; Rol="PM visitandopuntaarenas.cl"}
-$AGENTES["agente-proyecto-turismoencajondelmaipo"] = @{Nombre="PM Cajon del Maipo"; Rol="PM turismoencajondelmaipo.cl"}
-$AGENTES["agente-proyecto-avesnativaschilenas"] = @{Nombre="PM Aves"; Rol="PM avesnativaschilenas.cl"}
-$AGENTES["agente-proyecto-aventurasenelagua"] = @{Nombre="PM Aventuras"; Rol="PM aventurasenelagua.cl"}
-$AGENTES["agente-proyecto-seo-local"] = @{Nombre="PM SEO Local"; Rol="PM servicio SEO Local"}
-$AGENTES["agente-consultor-seo-monetizacion"] = @{Nombre="SEO"; Rol="Consultor SEO y monetizacion"}
-$AGENTES["agente-estratega-negocio-digital"] = @{Nombre="Estratega"; Rol="Priorizacion de oportunidades"}
-$AGENTES["agente-asesor-estrategico-financiero"] = @{Nombre="Asesor Financiero"; Rol="Validacion financiera"}
-$AGENTES["agente-mentor-ventas-b2b"] = @{Nombre="Ventas"; Rol="Mentor de ventas B2B"}
-$AGENTES["agente-copywriter-conversion"] = @{Nombre="Copywriter"; Rol="Copywriting de conversion"}
-$AGENTES["agente-analista-web-cro"] = @{Nombre="CRO"; Rol="Analista de conversion"}
-$AGENTES["agente-disenador-ui-web"] = @{Nombre="Disenador"; Rol="Diseno UI/UX web"}
-$AGENTES["agente-tecnico-wordpress-automatizacion"] = @{Nombre="Tecnico"; Rol="WordPress y automatizacion"}
-$AGENTES["agente-pauta-digital"] = @{Nombre="Pauta Digital"; Rol="Meta Ads + Google Ads"}
-$AGENTES["agente-lanzamientos-alex-izquierdo"] = @{Nombre="Lanzamientos"; Rol="Estrategia de lanzamientos"}
-$AGENTES["agente-especialista-enlazado-interno"] = @{Nombre="Enlazado Interno"; Rol="Arquitectura de enlazado interno SEO"}
+# EQUIPO ACTIVO (9 agentes)
+$AGENTES["agente-director-agencia-digital"] = @{Nombre="Director"; Rol="Decide, no planifica"}
+$AGENTES["agente-pm-infomoteles"] = @{Nombre="PM Infomoteles"; Rol="Coordina ejecucion en infomoteles.cl"}
+$AGENTES["agente-consultor-seo-monetizacion"] = @{Nombre="SEO"; Rol="Encuentra que optimizar"}
+$AGENTES["agente-copywriter-conversion"] = @{Nombre="Copywriter"; Rol="Produce texto final listo para publicar"}
+$AGENTES["agente-analista-web-cro"] = @{Nombre="CRO"; Rol="Diagnostica y recomienda cambios con datos"}
+$AGENTES["agente-especialista-enlazado-interno"] = @{Nombre="Enlazado Interno"; Rol="Disena malla de enlaces implementable"}
+$AGENTES["agente-implementador-wordpress"] = @{Nombre="Implementador"; Rol="Aplica cambios reales en WP via REST API"}
+$AGENTES["agente-vendedor-ejecutor"] = @{Nombre="Vendedor Ejecutor"; Rol="Ejecuta ventas B2B, produce mensajes enviables"}
+$AGENTES["agente-analista-metricas"] = @{Nombre="Analista Metricas"; Rol="Mide resultados reales, compara antes/despues"}
+
+# EQUIPO SUSPENDIDO (comentado, se reactiva cuando aplique)
+# $AGENTES["agente-proyecto-visitandopuntaarenas"] = @{Nombre="PM Punta Arenas"; Rol="PM visitandopuntaarenas.cl"}
+# $AGENTES["agente-proyecto-turismoencajondelmaipo"] = @{Nombre="PM Cajon del Maipo"; Rol="PM turismoencajondelmaipo.cl"}
+# $AGENTES["agente-proyecto-avesnativaschilenas"] = @{Nombre="PM Aves"; Rol="PM avesnativaschilenas.cl"}
+# $AGENTES["agente-proyecto-aventurasenelagua"] = @{Nombre="PM Aventuras"; Rol="PM aventurasenelagua.cl"}
+# $AGENTES["agente-proyecto-seo-local"] = @{Nombre="PM SEO Local"; Rol="PM servicio SEO Local"}
+# $AGENTES["agente-estratega-negocio-digital"] = @{Nombre="Estratega"; Rol="Priorizacion de oportunidades"}
+# $AGENTES["agente-asesor-estrategico-financiero"] = @{Nombre="Asesor Financiero"; Rol="Validacion financiera"}
+# $AGENTES["agente-mentor-ventas-b2b"] = @{Nombre="Ventas"; Rol="Mentor de ventas B2B"}
+# $AGENTES["agente-disenador-ui-web"] = @{Nombre="Disenador"; Rol="Diseno UI/UX web"}
+# $AGENTES["agente-pauta-digital"] = @{Nombre="Pauta Digital"; Rol="Meta Ads + Google Ads"}
+# $AGENTES["agente-lanzamientos-alex-izquierdo"] = @{Nombre="Lanzamientos"; Rol="Estrategia de lanzamientos"}
+# $AGENTES["calendario-editorial"] = @{Nombre="Calendario Editorial"; Rol="Calendario editorial y priorizacion"}
 
 $RUTEO = @{}
-$RUTEO["monetizar_sitio"] = @{Req=@("agente-consultor-seo-monetizacion","agente-estratega-negocio-digital","agente-mentor-ventas-b2b"); Opc=@("agente-copywriter-conversion","agente-analista-web-cro","agente-disenador-ui-web","agente-tecnico-wordpress-automatizacion","agente-especialista-enlazado-interno")}
-$RUTEO["crear_oferta_comercial"] = @{Req=@("agente-mentor-ventas-b2b","agente-copywriter-conversion","agente-estratega-negocio-digital"); Opc=@("agente-disenador-ui-web","agente-asesor-estrategico-financiero")}
-$RUTEO["mejorar_landing"] = @{Req=@("agente-analista-web-cro","agente-copywriter-conversion","agente-disenador-ui-web"); Opc=@("agente-tecnico-wordpress-automatizacion")}
-$RUTEO["automatizar_proceso"] = @{Req=@("agente-tecnico-wordpress-automatizacion"); Opc=@("agente-consultor-seo-monetizacion","agente-analista-web-cro")}
-$RUTEO["priorizar_ideas"] = @{Req=@("agente-estratega-negocio-digital"); Opc=@("agente-consultor-seo-monetizacion","agente-mentor-ventas-b2b","agente-asesor-estrategico-financiero")}
-$RUTEO["auditoria_seo"] = @{Req=@("agente-consultor-seo-monetizacion"); Opc=@("agente-analista-web-cro","agente-tecnico-wordpress-automatizacion","agente-especialista-enlazado-interno")}
-$RUTEO["evaluar_rentabilidad"] = @{Req=@("agente-asesor-estrategico-financiero","agente-estratega-negocio-digital"); Opc=@("agente-consultor-seo-monetizacion","agente-mentor-ventas-b2b")}
+$RUTEO["monetizar_sitio"] = @{Req=@("agente-consultor-seo-monetizacion","agente-copywriter-conversion"); Opc=@("agente-analista-web-cro","agente-implementador-wordpress","agente-especialista-enlazado-interno","agente-vendedor-ejecutor")}
+$RUTEO["mejorar_landing"] = @{Req=@("agente-analista-web-cro","agente-copywriter-conversion"); Opc=@("agente-implementador-wordpress")}
+$RUTEO["implementar_cambio"] = @{Req=@("agente-implementador-wordpress"); Opc=@("agente-analista-metricas")}
+$RUTEO["auditoria_seo"] = @{Req=@("agente-consultor-seo-monetizacion"); Opc=@("agente-analista-web-cro","agente-implementador-wordpress","agente-especialista-enlazado-interno")}
+$RUTEO["ventas_b2b"] = @{Req=@("agente-vendedor-ejecutor"); Opc=@("agente-consultor-seo-monetizacion")}
+$RUTEO["medir_resultados"] = @{Req=@("agente-analista-metricas"); Opc=@()}
+$RUTEO["auditar_enlazado_interno"] = @{Req=@("agente-especialista-enlazado-interno"); Opc=@("agente-consultor-seo-monetizacion","agente-implementador-wordpress")}
 $RUTEO["reportar_estado"] = @{Req=@(); Opc=@()}
-$RUTEO["escalar_proyecto"] = @{Req=@("agente-asesor-estrategico-financiero","agente-mentor-ventas-b2b"); Opc=@("agente-consultor-seo-monetizacion","agente-estratega-negocio-digital")}
-$RUTEO["lanzar_pauta_digital"] = @{Req=@("agente-pauta-digital"); Opc=@("agente-copywriter-conversion","agente-analista-web-cro","agente-estratega-negocio-digital")}
-$RUTEO["crear_embudo_lanzamiento"] = @{Req=@("agente-lanzamientos-alex-izquierdo","agente-copywriter-conversion","agente-pauta-digital"); Opc=@("agente-estratega-negocio-digital")}
-$RUTEO["optimizar_campania"] = @{Req=@("agente-pauta-digital"); Opc=@("agente-analista-web-cro")}
-$RUTEO["formar_media_buyer"] = @{Req=@("agente-lanzamientos-alex-izquierdo","agente-pauta-digital"); Opc=@()}
-$RUTEO["auditar_enlazado_interno"] = @{Req=@("agente-especialista-enlazado-interno"); Opc=@("agente-consultor-seo-monetizacion","agente-tecnico-wordpress-automatizacion")}
-$RUTEO["servicio_seo_mensual"] = @{Req=@("agente-consultor-seo-monetizacion","agente-estratega-negocio-digital","agente-mentor-ventas-b2b"); Opc=@("agente-copywriter-conversion","agente-proyecto-seo-local","agente-asesor-estrategico-financiero","agente-especialista-enlazado-interno")}
 
 # Funciones auxiliares
 function Get-Ruta { param([string]$Id) return Join-Path $AGENTES_DIR $Id }
 function Test-Existe { param([string]$Id) return (Test-Path (Join-Path $AGENTES_DIR $Id)) }
 function Write-File { param([string]$Path, [string]$Content) Set-Content -LiteralPath $Path -Value $Content -Encoding UTF8 }
 function Read-File { param([string]$Path) if (Test-Path $Path) { return Get-Content $Path -Raw -Encoding UTF8 } else { return "" } }
+function Add-TareaUnica {
+    param(
+        [object]$Tarea,
+        [string]$Origen,
+        [System.Collections.ArrayList]$Lista,
+        [hashtable]$OrigenPorId
+    )
+
+    if ($Tarea -eq $null) { return }
+    if ($Tarea.estado -ne "pendiente" -and $Tarea.estado -ne "en_curso") { return }
+    if ($Tarea.id -and -not $OrigenPorId.ContainsKey($Tarea.id)) {
+        [void]$Lista.Add($Tarea)
+        $OrigenPorId[$Tarea.id] = $Origen
+    }
+}
+
+function Set-TareaEstadoEnArchivo {
+    param(
+        [string]$Archivo,
+        [string]$IdTarea,
+        [string]$Estado
+    )
+
+    if (-not (Test-Path $Archivo)) { return }
+    $data = Get-Content $Archivo -Raw -Encoding UTF8 | ConvertFrom-Json
+    $coleccion = $null
+    $propiedad = $null
+    if ($data.PSObject.Properties.Name -contains "tareas") {
+        $coleccion = $data.tareas
+        $propiedad = "tareas"
+    } elseif ($data.PSObject.Properties.Name -contains "subtareas") {
+        $coleccion = $data.subtareas
+        $propiedad = "subtareas"
+    }
+
+    if ($coleccion -eq $null) { return }
+    for ($i = 0; $i -lt $coleccion.Count; $i++) {
+        if ($coleccion[$i].id -eq $IdTarea) {
+            $coleccion[$i].estado = $Estado
+            break
+        }
+    }
+
+    $data | ConvertTo-Json -Depth 10 | Set-Content $Archivo -Encoding UTF8
+}
+
+function Get-TipoPorAgenteTarea {
+    param([string]$IdAgente)
+
+    switch ($IdAgente) {
+        "agente-consultor-seo-monetizacion" { return "auditoria_seo" }
+        "agente-copywriter-conversion" { return "mejorar_landing" }
+        "agente-analista-web-cro" { return "mejorar_landing" }
+        "agente-especialista-enlazado-interno" { return "auditar_enlazado_interno" }
+        "agente-implementador-wordpress" { return "implementar_cambio" }
+        "agente-vendedor-ejecutor" { return "ventas_b2b" }
+        "agente-analista-metricas" { return "medir_resultados" }
+        default { return "reportar_estado" }
+    }
+}
+
+function Get-SubtareasDirector {
+    param([string]$IdMacro)
+
+    $archivo = Join-Path $TAREAS_DIRECTOR_DIR "$IdMacro-subtareas.json"
+    if (-not (Test-Path $archivo)) { return @() }
+
+    $data = Get-Content $archivo -Raw -Encoding UTF8 | ConvertFrom-Json
+    $subtareas = @()
+    foreach ($st in $data.subtareas) {
+        $subtareas += [PSCustomObject]@{
+            id = $st.id
+            tipo = Get-TipoPorAgenteTarea -IdAgente $st.agente
+            titulo = $st.titulo
+            sitio = "avesnativaschilenas.cl"
+            proyecto = "avesnativaschilenas.cl"
+            agente = $st.agente
+            agente_principal = $st.agente
+            apoyo = @($st.apoyo)
+            estado = $st.estado
+            prioridad = $st.prioridad
+            subtarea_principal = $IdMacro
+        }
+    }
+
+    return $subtareas
+}
+
+function Test-TareaSolicitada {
+    param($Tarea, [string]$Filtro)
+
+    if ($Filtro -eq "") { return $true }
+    if ($Tarea.id -eq $Filtro) { return $true }
+    if ($Tarea.subtarea_principal -eq $Filtro) { return $true }
+    return $false
+}
+
+function New-TareaCajaInfomoteles {
+    $fecha = Get-Date -Format "yyyyMMdd-HHmm"
+    return [PSCustomObject]@{
+        id = "T-008"
+        macro = $true
+        tipo = "monetizar_sitio"
+        fecha = Get-Date -Format "yyyy-MM-dd"
+        prioridad = "critica"
+        agente = "agente-director-agencia-digital"
+        agente_principal = "agente-director-agencia-digital"
+        proyecto = "infomoteles.cl"
+        titulo = "Caja infomoteles: cerrar CRM, oferta, tracking y primera venta"
+        descripcion = "Destrabar la ruta comercial inmediata de infomoteles con CRM, oferta /para-moteles/, tracking, pipeline de ventas, lista corta de 20 moteles y validacion de la primera venta."
+        entregable = "Brief operativo de caja + lista priorizada de 20 moteles + criterio de primera venta validado"
+        dependencias = @("T-001","T-003","T-004","T-005","T-006","T-007")
+        evidencia = "El bloqueo directo para caja sigue siendo la ruta comercial incompleta"
+        accion = "Coordinar la salida comercial minima para cobrar esta semana"
+        cierre = "Existe /para-moteles/, CRM vivo, tracking validado, pipeline con 20 moteles y una venta o compromiso formal documentado"
+        estado = "pendiente"
+    }
+}
 
 function New-TareaFallback {
     param([string]$IdAgente)
@@ -82,8 +202,89 @@ function New-TareaFallback {
         "agente-disenador-ui-web" { return [PSCustomObject]@{ id="AUTO-$fecha-DISENO"; tipo="mejorar_landing"; titulo="Entregar componente visual vendible"; sitio="infomoteles.cl"; url="/para-moteles/"; evidencia="Falta bloque visual final de planes"; accion="Diseñar bloque mobile-first y CTA"; cierre="Cerrar cuando el HTML quede listo para insertar"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
         "agente-pauta-digital" { return [PSCustomObject]@{ id="AUTO-$fecha-PAUTA"; tipo="lanzar_pauta_digital"; titulo="Dejar pauta lista solo si hay oferta validada"; sitio="infomoteles.cl"; url="infomoteles.cl"; evidencia="Pauta bloqueada hasta validar oferta"; accion="Preparar sistema sin activar campaña"; cierre="Cerrar cuando exista oferta validada y presupuesto"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
         "agente-lanzamientos-alex-izquierdo" { return [PSCustomObject]@{ id="AUTO-$fecha-LANZ"; tipo="crear_embudo_lanzamiento"; titulo="Dejar embudo de lanzamiento listo para usar"; sitio="multinicho"; url="multinicho"; evidencia="Embudo debe esperar validacion comercial"; accion="Dejar secuencia lista sin activar"; cierre="Cerrar cuando haya lead magnet, seguimiento y cierre definidos"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
-        default { return [PSCustomObject]@{ id="AUTO-$fecha-$($IdAgente.ToUpper())"; tipo="reportar_estado"; titulo="Tomar accion inmediata"; sitio="multinicho"; url="multinicho"; evidencia="Agente sin tarea especifica"; accion="Ejecutar entrega util hoy"; cierre="Cerrar cuando exista evidencia utilizable"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
+        "agente-implementador-wordpress" { return [PSCustomObject]@{ id="AUTO-$fecha-IMPLEMENT"; tipo="implementar_cambio"; titulo="Ejecutar cambios prioritarios en WordPress"; sitio="infomoteles.cl"; url="infomoteles.cl"; evidencia="Output de Copywriter, SEO y CRO listo para aplicar"; accion="Aplicar cambios via REST API o preparar comandos exactos"; cierre="Cerrar cuando los cambios esten aplicados y verificados HTTP 200"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
+        "agente-vendedor-ejecutor" { return [PSCustomObject]@{ id="AUTO-$fecha-VENDEDOR"; tipo="ventas_b2b"; titulo="Ejecutar ronda de outreach a moteles priorizados"; sitio="infomoteles.cl"; url="infomoteles.cl"; evidencia="Lista de moteles con datos de contacto disponible"; accion="Producir mensajes de WhatsApp/email listos para enviar"; cierre="Cerrar cuando se hayan enviado 10 contactos y registrado respuestas"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
+        "agente-analista-metricas" { return [PSCustomObject]@{ id="AUTO-$fecha-METRICAS"; tipo="medir_resultados"; titulo="Medir impacto de ultimos cambios en infomoteles.cl"; sitio="infomoteles.cl"; url="infomoteles.cl"; evidencia="Cambios aplicados sin comparacion de resultados"; accion="Extraer datos GA4 + SC, comparar antes/despues"; cierre="Cerrar cuando haya tabla por URL con cambio % y conclusion"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
+        default { return [PSCustomObject]@{ id="AUTO-$fecha-$($IdAgente.ToUpper())"; tipo="reportar_estado"; titulo="Tomar accion inmediata"; sitio="infomoteles.cl"; url="infomoteles.cl"; evidencia="Agente sin tarea especifica"; accion="Ejecutar entrega util hoy"; cierre="Cerrar cuando exista evidencia utilizable"; agente=$IdAgente; agente_principal=$IdAgente; estado="pendiente" } }
     }
+}
+
+function New-TareaRevision {
+    param([string]$IdAgente)
+
+    $tid = "REV-$($IdAgente -replace 'agente-','')"
+    $cfg = $REVISION_MAP[$IdAgente]
+    if ($cfg -ne $null) {
+        return [PSCustomObject]@{
+            id = $tid
+            tipo = $cfg.tipo
+            titulo = $cfg.titulo
+            sitio = $cfg.sitio
+            proyecto = $cfg.sitio
+            agente = $IdAgente
+            agente_principal = $IdAgente
+            estado = "en_curso"
+            prioridad = "alta"
+        }
+    }
+
+    $tarea = New-TareaFallback -IdAgente $IdAgente
+    $tarea.id = $tid
+    $tarea.estado = "en_curso"
+    return $tarea
+}
+
+function New-FeedbackParaDirector {
+    param([string]$IdAgente, $Tarea, [array]$AgentesConvocados)
+
+    $nombre = $AGENTES[$IdAgente].Nombre
+    $fecha = Get-Date -Format "yyyy-MM-dd HH:mm"
+    $tarea_id = if ($Tarea -and $Tarea.id) { $Tarea.id } else { "REVISION-GENERAL" }
+    $titulo = if ($Tarea -and $Tarea.titulo) { $Tarea.titulo } else { "Revision general" }
+    $tipo = if ($Tarea -and $Tarea.tipo) { $Tarea.tipo } else { "revision_general" }
+    $sitio = if ($Tarea -and $Tarea.sitio) { $Tarea.sitio } elseif ($Tarea -and $Tarea.proyecto) { $Tarea.proyecto } else { "multinicho" }
+    $estado = if ($Tarea -and $Tarea.estado) { $Tarea.estado } else { "en_curso" }
+    $entregable = if ($Tarea -and $Tarea.entregable) { $Tarea.entregable } elseif ($Tarea -and $Tarea.criterio_cierre) { $Tarea.criterio_cierre } else { "Entregable en consolidacion" }
+    $cierre = if ($Tarea -and $Tarea.cierre) { $Tarea.cierre } elseif ($Tarea -and $Tarea.criterio_cierre) { $Tarea.criterio_cierre } else { "Validar evidencia real y cerrar con URL, captura o decision concreta." }
+
+    $otros = @()
+    foreach ($o in $AgentesConvocados) {
+        if ($o -ne $IdAgente) { $otros += "  - " + $AGENTES[$o].Nombre + " (" + $o + ")" }
+    }
+    if ($otros.Count -eq 0) { $otros += "  - Ninguno" }
+    $otros_txt = $otros -join "`n"
+
+    return @"
+# Feedback para Director de Agencia Digital
+## Fecha: $fecha
+## Tarea: $tarea_id
+
+## Estado actual
+- Agente: $nombre
+- Titulo: $titulo
+- Tipo: $tipo
+- Sitio: $sitio
+- Estado: $estado
+- Entregable / criterio: $entregable
+
+## Agentes coordinados en esta tarea
+$otros_txt
+
+## Lo que dejo listo
+- Plan y build generados en `output/plan/` y `output/build/`.
+- Feedback recibido por el equipo en esta sesion.
+
+## Lo que falta cerrar
+- $cierre
+
+## Recomendacion
+1. Revisar plan y build antes de aprobar.
+2. Validar evidencia real y una URL concreta.
+3. Cerrar solo si ya hay accion medible.
+
+Firmado,
+$nombre
+"@
 }
 
 function Get-ConvocadosPorTarea {
@@ -93,7 +294,17 @@ function Get-ConvocadosPorTarea {
     $principal = $Tarea.agente_principal
     if (-not $principal) { $principal = $Tarea.agente }
     if ($principal -and (Test-Existe $principal)) { $convocados += $principal }
-    $ruta_ruteo = $RUTEO[$Tarea.tipo]
+    if ($Tarea.apoyo) {
+        foreach ($id in @($Tarea.apoyo)) {
+            if (Test-Existe $id -and $convocados -notcontains $id) { $convocados += $id }
+        }
+    }
+    $tipo_ruteo = $Tarea.tipo
+    if (-not $tipo_ruteo -and $principal -and $REVISION_MAP.ContainsKey($principal)) {
+        $tipo_ruteo = $REVISION_MAP[$principal].tipo
+    }
+    $ruta_ruteo = $null
+    if ($tipo_ruteo) { $ruta_ruteo = $RUTEO[$tipo_ruteo] }
     if ($ruta_ruteo -ne $null) {
         foreach ($id in $ruta_ruteo.Req) { if (Test-Existe $id -and $convocados -notcontains $id) { $convocados += $id } }
         foreach ($id in $ruta_ruteo.Opc) { if (Test-Existe $id -and $convocados -notcontains $id) { $convocados += $id } }
@@ -392,6 +603,49 @@ Entregar shortcode funcional en < 7 dias
 3. Preparar reporte de trafico por pagina comercial
 "@
         }
+        "calendario-editorial" {
+            $plan = @"
+# Calendario Editorial - visitandopuntaarenas.cl
+## Sesion: $fecha | Tarea: $($Tarea.id)
+
+## Objetivo
+Convertir el listado de keywords en una secuencia editorial monetizable, revisando primero si el sitio ya cubre cada intencion y separando landings transaccionales de guias informacionales.
+
+## Criterios de priorizacion
+1. Punta Arenas y rutas directas desde la ciudad
+2. Torres del Paine y Puerto Natales
+3. Puerto Williams y Perito Moreno
+4. Guias amplias solo si empujan a piezas monetizables
+
+## Entregable
+Tabla editorial con keyword principal, cluster, intencion, cobertura existente, URL actual, accion sugerida, URL sugerida, tipo, prioridad, resumen esperado y monetizacion.
+
+## Tabla editorial
+
+| Keyword principal | Cluster | Intencion | Cobertura existente | URL actual | Accion sugerida | URL sugerida | Tipo | Prioridad | Resumen esperado | Monetizacion |
+|---|---|---|---|---|---|---|---|---|---|---|
+| tour punta arenas torres del paine | Torres del Paine | Transaccional | parcial | `/tours/` | crear | `/tours/torres-del-paine-desde-punta-arenas/` | Landing | Alta | Explicar reserva, itinerario, que incluye y por que conviene salir desde Punta Arenas. | Reserva directa / leads |
+| torres del paine desde punta arenas | Torres del Paine | Comercial | parcial | `/tours/` | crear | `/torres-del-paine-desde-punta-arenas/` | Guia/Landing | Alta | Resolver rutas, tiempos, precios y mejor forma de llegar desde la ciudad. | Leads / afiliados |
+| viaje punta arenas a puerto natales | Puerto Natales | Comercial | parcial | `/como-ir/` | crear | `/como-ir/punta-arenas-a-puerto-natales/` | Guia | Alta | Comparar transporte, tiempos y costo para decidir la mejor ruta. | Leads / afiliados |
+| tour a puerto natales desde punta arenas | Puerto Natales | Transaccional | parcial | `/tours/` | crear | `/tours/punta-arenas-a-puerto-natales/` | Landing | Alta | Presentar una ruta organizada o servicio asociado con foco en conversion. | Reserva directa |
+| qué hacer en punta arenas y alrededores | Punta Arenas | Informacional | parcial | `/guia/` | actualizar | `/guia/que-hacer-en-punta-arenas/` | Pilar | Alta | Servir como guia base de la ciudad y empujar a las landings monetizables. | Ads / afiliados / leads |
+| viajes a puerto williams desde punta arenas | Puerto Williams | Comercial | parcial | `/como-ir/` | crear | `/como-ir/punta-arenas-a-puerto-williams/` | Guia | Media | Explicar opciones reales de viaje y resolver la logistica de acceso. | Afiliados / leads |
+| tour perito moreno desde punta arenas | Perito Moreno | Transaccional | no existe | - | crear | `/tours/perito-moreno-desde-punta-arenas/` | Landing | Media | Ofrecer una ruta extendida para capturar demanda de viaje combinando destinos. | Reserva directa |
+
+## Keywords relacionadas por cluster
+
+- Torres del Paine: `tour a torres del paine desde punta arenas`, `excursion torres del paine desde punta arenas`, `full day torres del paine desde punta arenas`
+- Puerto Natales: `como ir de punta arenas a puerto natales`, `bus de punta arenas a puerto natales`, `distancia punta arenas puerto natales`
+- Punta Arenas: `lugares para visitar en punta arenas`, `panoramas en punta arenas`, `miradores en punta arenas`
+- Puerto Williams: `como llegar a puerto williams`, `vuelo punta arenas puerto williams`, `barco a puerto williams`
+
+## Observaciones
+
+- Ya existe cobertura parcial en los hubs `tours/`, `como-ir/` y `guia/`.
+- Las primeras piezas a trabajar son Torres del Paine, Puerto Natales y la guia de Punta Arenas.
+- Las keywords fuera de Punta Arenas o de rutas conectadas se dejan fuera del calendario.
+"@
+        }
         "agente-proyecto-avesnativaschilenas" {
             $plan = @"
 # Plan PM Aves - avesnativaschilenas.cl
@@ -579,8 +833,43 @@ Lead magnet -> email/WhatsApp -> diagnostico -> llamada -> propuesta -> cierre
 "@
         }
         default {
+            if ($IdAgente -eq "agente-director-agencia-digital" -and $Tarea.id -eq "T-008") {
+                $plan = @"
+# Plan Director - Caja infomoteles
+## Sesion: $fecha | Tarea: $($Tarea.id)
+
+## Objetivo
+Dejar lista la primera ruta comercial que pueda convertir en caja esta semana.
+
+## Entregables que deben quedar cerrados
+| Entregable | Responsable | Cierre |
+|---|---|---|
+| CRM Google Sheets | Ventas | Columnas: motel, ciudad, contacto, estado, ultimo contacto, siguiente paso y monto |
+| Oferta /para-moteles/ | Copywriter + CRO | Planes, FAQ, prueba social y CTA visible |
+| Tracking | Tecnico | GA4, Search Console, CTA flotante y eventos de conversion |
+| Pipeline de 20 moteles | Ventas | 20 prospectos priorizados, secuencia de 4 mensajes y seguimiento |
+| Lista de 20 moteles | PM Infomoteles + SEO | 20 nombres prioritarios con ciudad y motivo |
+| Brief operativo | Director | Una hoja con orden de ejecucion y criterio de cierre |
+| Primera venta | Director + Ventas | Cobro o compromiso formal con evidencia |
+
+## Orden de ataque
+1. Publicar /para-moteles/
+2. Cargar el CRM
+3. Activar tracking y verificar eventos
+4. Contactar top 3 moteles
+5. Completar la lista de 20 prospectos
+6. Cerrar la primera venta o dejar compromiso firmado
+
+## Criterio de cierre
+- /para-moteles/ publicada y medible
+- CRM operativo
+- 20 moteles cargados
+- tracking verificado
+- primera venta validada con evidencia
+"@
+            } else {
             # PMs de sitios no activos, agentes sin tarea asignada
-        $plan = @"
+            $plan = @"
 # Plan $nombre
 ## Sesion: $fecha | Tarea: $($Tarea.id)
 
@@ -593,6 +882,7 @@ Tarea activa asignada por el lanzador.
 3. Reportar evidencia utilizable.
 4. Responder con `URL + estado + evidencia + accion + criterio de cierre`.
 "@
+            }
         }
     }
     if ($plan -ne "") { Write-File $archivo $plan; Write-Host "    [PLAN] $nombre - plan listo" -ForegroundColor Cyan }
@@ -1023,6 +1313,33 @@ add_shortcode('fichas_destacadas', 'shortcode_fichas_destacadas');
 3. Reportar al Director con lista de contactos
 "@
         }
+        "calendario-editorial" {
+            $build = @"
+# Build Calendario Editorial - visitandopuntaarenas.cl
+## Sesion: $fecha
+
+## Cobertura detectada
+- Hubs ya cubiertos de forma parcial: `/tours/`, `/como-ir/` y `/guia/`
+- Piezas nuevas recomendadas: landings de Torres del Paine, Puerto Natales y Perito Moreno
+- Pieza a actualizar: guia base de Punta Arenas
+
+## Cola priorizada para WordPress
+1. `/tours/torres-del-paine-desde-punta-arenas/` - landing transaccional
+2. `/como-ir/punta-arenas-a-puerto-natales/` - guia comercial
+3. `/guia/que-hacer-en-punta-arenas/` - pillar informacional
+4. `/tours/punta-arenas-a-puerto-natales/` - landing transaccional
+5. `/como-ir/punta-arenas-a-puerto-williams/` - guia monetizable
+6. `/tours/perito-moreno-desde-punta-arenas/` - landing transaccional
+
+## Checklist de publicacion
+- Slug limpio y consistente
+- H1 alineado con keyword principal
+- Meta description lista
+- Enlaces internos a clusters vecinos
+- CTA y monetizacion definidos
+- Marcar si la pieza crea contenido nuevo o actualiza cobertura parcial
+"@
+        }
         "agente-proyecto-avesnativaschilenas" {
             $build = @"
 # Build PM Aves - avesnativaschilenas.cl
@@ -1254,6 +1571,66 @@ Usar infomoteles.cl como prueba social
 "@
         }
         default {
+            if ($IdAgente -eq "agente-director-agencia-digital" -and $Tarea.id -eq "T-008") {
+                $build = @"
+# Brief operativo - Caja infomoteles
+## Sesion: $fecha
+
+## Lista corta priorizada de 20 moteles
+| # | Motel | Ciudad | Motivo |
+|---|---|---|---|
+| 1 | Motel La Cascada | Concepcion | Alto ajuste a la demanda visible |
+| 2 | Motel Caracol | Concepcion | Marca recordable y activa en busqueda |
+| 3 | Motel Capricho | Concepcion | Buen fit para ficha premium |
+| 4 | Motel Bella Luna | Concepcion | Potencial visual y comercial |
+| 5 | Motel Vitara | Concepcion | Prospecto con nombre directo |
+| 6 | Motel Deja-vu | Copiapo | Prospecto reconocido en SERP |
+| 7 | Motel Los Sauces | Copiapo | Mucha impresion, oportunidad de mejora |
+| 8 | Motel Diamante | Curico | Ajuste a ficha premium |
+| 9 | 725 Motel | Curico | Marca corta, facil de recordar |
+| 10 | Motel y Cabanas Rauquen | Curico | Alojamiento mixto con demanda |
+| 11 | Motel Vertigo | Providencia | Zona de alta demanda y mayor ticket |
+| 12 | Motel Amor Amor | Providencia | Naming comercial directo |
+| 13 | Motel Marin 014 | Providencia | Marca con busqueda navegacional |
+| 14 | Motel Holley | Providencia | Prospecto de alta visibilidad |
+| 15 | Motel Cielo Azul | Providencia | Nombre apto para oferta destacada |
+| 16 | Motel Ah Express | Providencia | Fit transaccional claro |
+| 17 | Motel Gala | Providencia | Prospecto premium |
+| 18 | Tropical Motel | Estacion Central | Segmento urbano con volumen |
+| 19 | Motel Kaoma | Santiago | Nombre buscable y directo |
+| 20 | Motel Los Acacios | Santiago | Prospecto para cierre rapido |
+
+## CRM minimo
+| Campo | Uso |
+|---|---|
+| Motel | Nombre del prospecto |
+| Ciudad | Segmento y prioridad |
+| Contacto | WhatsApp / telefono / email |
+| Estado | Nuevo, contactado, responde, diagnostico, propuesta, cerrado |
+| Ultimo contacto | Fecha y canal |
+| Siguiente paso | Proxima accion concreta |
+| Monto | Ficha, setup o ambos |
+
+## Tracking minimo
+- GA4: `click_whatsapp`, `click_llamar`, `submit_para_moteles`, `click_cta_flotante`
+- Search Console: validar indexacion de `/para-moteles/`
+- CTA flotante: visible en mobile y desktop
+
+## Validacion de primera venta
+1. Mensaje enviado y registrado en CRM
+2. Oferta /para-moteles/ compartida
+3. Respuesta positiva o llamada agendada
+4. Evidencia de cobro o compromiso formal
+5. CRM marcado como `cerrado`
+
+## Criterio de cierre
+- CRM vivo
+- oferta publicada
+- tracking verificado
+- 20 moteles cargados
+- primera venta validada
+"@
+            } else {
         $build = @"
 # Build $nombre - Tarea automatica
 ## Sesion: $fecha
@@ -1278,6 +1655,7 @@ $($Tarea.cierre)
 2. Evidencia o decision concreta.
 3. Siguiente paso accionable.
 "@
+            }
         }
     }
     if ($build -ne "") { Write-File $archivo $build; Write-Host "    [BUILD] $nombre - entregable listo" -ForegroundColor Magenta }
@@ -1292,16 +1670,20 @@ function Invoke-Agente {
 }
 
 function Invoke-FeedbackAgentes {
-    param([array]$AgentesConvocados, [string]$RutaOutputRaiz)
+    param([array]$AgentesConvocados, [string]$RutaOutputRaiz, [hashtable]$TareasPorAgente = @{})
     foreach ($id_agente in $AgentesConvocados) {
         $ruta = Join-Path (Get-Ruta $id_agente) "output"
         $fb_path = Join-Path $ruta "feedback-recibido.md"
-        if (Test-Path $fb_path) { continue }
+        $ya_tiene_fb = Test-Path $fb_path
         $otros = @()
         foreach ($o in $AgentesConvocados) { if ($o -ne $id_agente) { $otros += $o } }
-        if ($otros.Count -eq 0) { continue }
+        if ($otros.Count -eq 0) { $otros += $id_agente }
         $lineas = ""
-        foreach ($o in $otros) { $lineas += "  - " + $AGENTES[$o].Nombre + " (" + $o + ")`n" }
+        foreach ($o in $otros) {
+            if ($o -eq $id_agente) { continue }
+            $lineas += "  - " + $AGENTES[$o].Nombre + " (" + $o + ")`n"
+        }
+        if ($lineas -eq "") { $lineas = "  - Ninguno`n" }
         $nombre = $AGENTES[$id_agente].Nombre
         $fecha = Get-Date -Format "yyyy-MM-dd HH:mm"
         $fb = @"
@@ -1315,15 +1697,25 @@ $lineas
 2. Si algo contradice tu especialidad, genera feedback en output/feedback-para-[id].md
 3. Si todo esta alineado, no necesitas hacer nada
 "@
-        Write-File $fb_path $fb
-        Write-Host "    [FB]   $nombre - feedback de colegas" -ForegroundColor Yellow
+        if (-not $ya_tiene_fb) {
+            Write-File $fb_path $fb
+            Write-Host "    [FB]   $nombre - feedback de colegas" -ForegroundColor Yellow
+        }
+
+        $tarea_actual = $null
+        if ($TareasPorAgente -ne $null -and $TareasPorAgente.ContainsKey($id_agente)) { $tarea_actual = $TareasPorAgente[$id_agente] }
+        if ($tarea_actual -eq $null) { $tarea_actual = New-TareaFallback -IdAgente $id_agente }
+        $fb_director = Join-Path $ruta "feedback-para-agente-director-agencia-digital-$($tarea_actual.id).md"
+        Write-File $fb_director (New-FeedbackParaDirector -IdAgente $id_agente -Tarea $tarea_actual -AgentesConvocados $AgentesConvocados)
+        Write-Host "    [FB]   $nombre - feedback al director" -ForegroundColor Yellow
     }
 }
 
 function Mostrar-Banner {
+    $total_equipo = $AGENTES.Keys.Count - 1
     Write-Host "================================================" -ForegroundColor Cyan
-    Write-Host "  LANZADOR DEL EQUIPO DE AGENTES - v2.0" -ForegroundColor Cyan
-    Write-Host "  Plan + Build nativos para 17 agentes" -ForegroundColor Cyan
+    Write-Host "  LANZADOR DEL EQUIPO DE AGENTES - v2.1" -ForegroundColor Cyan
+    Write-Host "  Plan + Build nativos para $total_equipo agentes + director" -ForegroundColor Cyan
     Write-Host "  Sesion: $Sesion" -ForegroundColor Cyan
     Write-Host "================================================" -ForegroundColor Cyan
     Write-Host ""
@@ -1332,11 +1724,29 @@ function Mostrar-Banner {
 function Mostrar-Ayuda {
     Write-Host ""
     Write-Host "USO: .\lanzar-equipo.ps1 [opciones]" -ForegroundColor Yellow
-    Write-Host "  (sin opciones)  Plan + Build + Feedback por tareas pendientes"
+    Write-Host "  (sin opciones)  Plan + Build + Feedback por tareas activas"
     Write-Host "  -Modo revision  Todos los 16 agentes trabajan simultaneamente"
     Write-Host "  -SoloEstado     Dashboard rapido"
-    Write-Host "  -TareaID T-025  Solo una tarea (T-025, T-026 o T-027)"
+    Write-Host "  -TareaID T-025  Solo una tarea por ID"
+    Write-Host "  -TareaID T-033  Ejecuta las subtareas macro de T-033"
+    Write-Host "  -TareaID T-036  Ejecuta las subtareas macro de T-036"
+    Write-Host "  -TareaID T-037  Ejecuta las subtareas macro de T-037"
     Write-Host "  -Ayuda          Esta ayuda"
+    Write-Host ""
+    exit
+}
+
+function Mostrar-Ayuda {
+    Write-Host ""
+    Write-Host "USO: .\lanzar-equipo.ps1 [opciones]" -ForegroundColor Yellow
+    Write-Host "  (sin opciones)  Plan + Build + Feedback por tareas activas"
+    Write-Host "  -Modo revision  Todos los agentes trabajan simultaneamente y dejan feedback para el Director" -ForegroundColor Yellow
+    Write-Host "  -SoloEstado     Dashboard rapido" -ForegroundColor Yellow
+    Write-Host "  -TareaID T-025  Solo una tarea por ID" -ForegroundColor Yellow
+    Write-Host "  -TareaID T-033  Ejecuta las subtareas macro de T-033" -ForegroundColor Yellow
+    Write-Host "  -TareaID T-036  Ejecuta las subtareas macro de T-036" -ForegroundColor Yellow
+    Write-Host "  -TareaID T-037  Ejecuta las subtareas macro de T-037" -ForegroundColor Yellow
+    Write-Host "  -Ayuda          Esta ayuda" -ForegroundColor Yellow
     Write-Host ""
     exit
 }
@@ -1344,25 +1754,29 @@ function Mostrar-Ayuda {
 function Mostrar-Dashboard {
     Write-Host "`n=== DASHBOARD DEL EQUIPO ===" -ForegroundColor Cyan
     $total = $AGENTES.Keys.Count
-    $con_plan = 0; $con_build = 0; $con_memoria = 0; $con_feedback = 0
+    $con_plan = 0; $con_build = 0; $con_memoria = 0; $con_feedback = 0; $con_feedback_director = 0
     foreach ($id in $AGENTES.Keys) {
         $r = Get-Ruta $id
         $plan_dir = Join-Path (Join-Path $r "output") "plan"
         $build_dir = Join-Path (Join-Path $r "output") "build"
         $mem = Join-Path (Join-Path $r "memoria") "$Sesion.md"
         $fb = Join-Path (Join-Path $r "output") "feedback-recibido.md"
+        $fb_director = @(Get-ChildItem (Join-Path $r "output") -Filter "feedback-para-agente-director-agencia-digital-*.md" -ErrorAction SilentlyContinue)
         if ((Test-Path $plan_dir) -and @(Get-ChildItem $plan_dir -Filter "*.md").Count -gt 0) { $con_plan++ }
         if ((Test-Path $build_dir) -and @(Get-ChildItem $build_dir -Filter "*.md").Count -gt 0) { $con_build++ }
         if (Test-Path $mem) { $con_memoria++ }
         if (Test-Path $fb) { $con_feedback++ }
+        if ($fb_director.Count -gt 0) { $con_feedback_director++ }
     }
     Write-Host "  Agentes: $total"
     Write-Host "  Con plan/: $con_plan"
     Write-Host "  Con build/: $con_build"
     Write-Host "  Con feedback: $con_feedback"
+    Write-Host "  Con feedback al director: $con_feedback_director"
     Write-Host "  Con memoria hoy: $con_memoria"
-    if (Test-Path $PENDIENTES) {
-        $dr = Get-Content $PENDIENTES -Raw -Encoding UTF8 | ConvertFrom-Json
+    $archivo_tareas = if (Test-Path $TAREAS_OFICIAL) { $TAREAS_OFICIAL } else { $PENDIENTES }
+    if (Test-Path $archivo_tareas) {
+        $dr = Get-Content $archivo_tareas -Raw -Encoding UTF8 | ConvertFrom-Json
         $pc = 0; $ec = 0; $cc = 0
         foreach ($t in $dr.tareas) {
             if ($t.estado -eq "pendiente") { $pc++ }
@@ -1387,23 +1801,14 @@ function Mostrar-Dashboard {
 }
 
 $REVISION_MAP = @{}
-$REVISION_MAP["agente-consultor-seo-monetizacion"] = @{tipo="auditoria_seo"; titulo="Auditoria SEO del sitio principal"; sitio="infomoteles.cl"}
-$REVISION_MAP["agente-estratega-negocio-digital"] = @{tipo="priorizar_ideas"; titulo="Priorizar oportunidades del sistema"; sitio="multinicho"}
-$REVISION_MAP["agente-mentor-ventas-b2b"] = @{tipo="crear_oferta_comercial"; titulo="Crear oferta comercial unificada"; sitio="multinicho"}
-$REVISION_MAP["agente-copywriter-conversion"] = @{tipo="mejorar_landing"; titulo="Escribir copy para landing de fichas destacadas"; sitio="infomoteles.cl"}
+$REVISION_MAP["agente-consultor-seo-monetizacion"] = @{tipo="auditoria_seo"; titulo="Auditoria SEO de infomoteles.cl"; sitio="infomoteles.cl"}
+$REVISION_MAP["agente-copywriter-conversion"] = @{tipo="mejorar_landing"; titulo="Escribir copy para fichas y landing"; sitio="infomoteles.cl"}
 $REVISION_MAP["agente-analista-web-cro"] = @{tipo="mejorar_landing"; titulo="Optimizar conversion de pagina de fichas"; sitio="infomoteles.cl"}
-$REVISION_MAP["agente-disenador-ui-web"] = @{tipo="mejorar_landing"; titulo="Disenar bloque de planes de fichas"; sitio="infomoteles.cl"}
-$REVISION_MAP["agente-tecnico-wordpress-automatizacion"] = @{tipo="automatizar_proceso"; titulo="Automatizar sistema de fichas destacadas"; sitio="infomoteles.cl"}
-$REVISION_MAP["agente-asesor-estrategico-financiero"] = @{tipo="evaluar_rentabilidad"; titulo="Evaluar rentabilidad de fichas vs SEO local"; sitio="multinicho"}
-$REVISION_MAP["agente-pauta-digital"] = @{tipo="lanzar_pauta_digital"; titulo="Plan de campania para promocionar fichas"; sitio="infomoteles.cl"}
-$REVISION_MAP["agente-lanzamientos-alex-izquierdo"] = @{tipo="crear_embudo_lanzamiento"; titulo="Lanzamiento de servicio SEO Local B2B"; sitio="multinicho"}
-$REVISION_MAP["agente-proyecto-infomoteles"] = @{tipo="reportar_estado"; titulo="Reporte de estado del proyecto infomoteles.cl"; sitio="infomoteles.cl"}
-$REVISION_MAP["agente-proyecto-visitandopuntaarenas"] = @{tipo="reportar_estado"; titulo="Reporte de estado del proyecto VPA"; sitio="visitandopuntaarenas.cl"}
-$REVISION_MAP["agente-proyecto-avesnativaschilenas"] = @{tipo="reportar_estado"; titulo="Reporte de estado del proyecto avesnativaschilenas.cl"; sitio="avesnativaschilenas.cl"}
-$REVISION_MAP["agente-proyecto-turismoencajondelmaipo"] = @{tipo="reportar_estado"; titulo="Reporte de estado del proyecto turismoencajondelmaipo.cl"; sitio="turismoencajondelmaipo.cl"}
-$REVISION_MAP["agente-proyecto-aventurasenelagua"] = @{tipo="reportar_estado"; titulo="Reporte de estado del proyecto aventurasenelagua.cl"; sitio="aventurasenelagua.cl"}
-$REVISION_MAP["agente-proyecto-seo-local"] = @{tipo="servicio_seo_mensual"; titulo="Preparar oferta de servicio SEO Local"; sitio="multinicho"}
+$REVISION_MAP["agente-pm-infomoteles"] = @{tipo="reportar_estado"; titulo="Reporte de estado infomoteles.cl"; sitio="infomoteles.cl"}
 $REVISION_MAP["agente-especialista-enlazado-interno"] = @{tipo="auditar_enlazado_interno"; titulo="Auditar enlazado interno de infomoteles.cl"; sitio="infomoteles.cl"}
+$REVISION_MAP["agente-implementador-wordpress"] = @{tipo="implementar_cambio"; titulo="Ejecutar cambios pendientes en WordPress"; sitio="infomoteles.cl"}
+$REVISION_MAP["agente-vendedor-ejecutor"] = @{tipo="ventas_b2b"; titulo="Ejecutar ronda de ventas a moteles"; sitio="infomoteles.cl"}
+$REVISION_MAP["agente-analista-metricas"] = @{tipo="medir_resultados"; titulo="Medir resultados de ultimos cambios"; sitio="infomoteles.cl"}
 
 # ============================================================
 # MAIN
@@ -1414,14 +1819,13 @@ if ($SoloEstado) { Mostrar-Dashboard; exit }
 
 if ($Modo -eq "revision") {
     Write-Host "`n[REVISION GENERAL] Activando todos los agentes..." -ForegroundColor Green
-    $rev_count = 0; $tareas_revision = @()
+    $rev_count = 0; $tareas_revision = @(); $tareas_revision_por_agente = @{}
     foreach ($id_a in $AGENTES.Keys) {
         if ($id_a -eq "agente-director-agencia-digital") { continue }
-        $cfg = $REVISION_MAP[$id_a]
-        if ($cfg -eq $null) { continue }
-        $rev_count++; $tid = "REV-$($id_a -replace 'agente-','')"
-        $tarea_rev = [PSCustomObject]@{id=$tid; tipo=$cfg.tipo; titulo=$cfg.titulo; sitio=$cfg.sitio}
+        $rev_count++
+        $tarea_rev = New-TareaRevision -IdAgente $id_a
         $tareas_revision += @{id_a=$id_a; tarea=$tarea_rev}
+        $tareas_revision_por_agente[$id_a] = $tarea_rev
     }
     foreach ($tr in $tareas_revision) {
         $nombre = $AGENTES[$tr.id_a].Nombre
@@ -1433,23 +1837,89 @@ if ($Modo -eq "revision") {
     }
     $convocados_revision = $tareas_revision | ForEach-Object { $_.id_a }
     Write-Host "[FASE 4] Feedback general..." -ForegroundColor Green
-    Invoke-FeedbackAgentes -AgentesConvocados $convocados_revision -RutaOutputRaiz ""
+    Invoke-FeedbackAgentes -AgentesConvocados $convocados_revision -RutaOutputRaiz "" -TareasPorAgente $tareas_revision_por_agente
     Write-Host "`n[REVISION COMPLETADA]" -ForegroundColor Green
     Mostrar-Dashboard
     exit
 }
 
 Write-Host "`n[FASE 1] Cargando tareas..." -ForegroundColor Green
-$pendientes_data = @()
+$pendientes_data = New-Object System.Collections.ArrayList
 $agentes_con_tarea = @{}
-if (Test-Path $PENDIENTES) {
-    $pendientes_raw = Get-Content $PENDIENTES -Raw -Encoding UTF8 | ConvertFrom-Json
-    foreach ($t in $pendientes_raw.tareas) {
-        if ($t.estado -eq "pendiente" -or $t.estado -eq "en_curso") { $pendientes_data += $t }
+
+$fuentes_tareas = @()
+if (Test-Path $TAREAS_OFICIAL) { $fuentes_tareas += $TAREAS_OFICIAL }
+if (Test-Path $PENDIENTES) { $fuentes_tareas += $PENDIENTES }
+if (Test-Path $TAREAS_DIRECTOR_DIR) {
+    $fuentes_tareas += @(Get-ChildItem $TAREAS_DIRECTOR_DIR -Filter "*-subtareas.json" -ErrorAction SilentlyContinue | Sort-Object FullName | ForEach-Object { $_.FullName })
+}
+
+$origen_por_tarea = @{}
+foreach ($archivo in $fuentes_tareas) {
+    $raw = Get-Content $archivo -Raw -Encoding UTF8 | ConvertFrom-Json
+    $lista = $null
+    if ($raw.PSObject.Properties.Name -contains "tareas") { $lista = $raw.tareas }
+    elseif ($raw.PSObject.Properties.Name -contains "subtareas") { $lista = $raw.subtareas }
+    if ($lista -eq $null) { continue }
+    foreach ($t in $lista) {
+        Add-TareaUnica -Tarea $t -Origen $archivo -Lista $pendientes_data -OrigenPorId $origen_por_tarea
         if ($t.estado -eq "pendiente" -or $t.estado -eq "en_curso") {
             if ($t.agente) { $agentes_con_tarea[$t.agente] = $true }
             if ($t.agente_principal) { $agentes_con_tarea[$t.agente_principal] = $true }
+            if ($t.apoyo) { foreach ($id in @($t.apoyo)) { if ($id) { $agentes_con_tarea[$id] = $true } } }
         }
+    }
+}
+
+if ($TareaID -match '^T-036') {
+    foreach ($st in Get-SubtareasDirector -IdMacro "T-036") {
+        $pendientes_data += $st
+        if ($st.agente) { $agentes_con_tarea[$st.agente] = $true }
+        if ($st.agente_principal) { $agentes_con_tarea[$st.agente_principal] = $true }
+    }
+}
+
+if ($TareaID -match '^T-033') {
+    foreach ($st in Get-SubtareasDirector -IdMacro "T-033") {
+        $pendientes_data += $st
+        if ($st.agente) { $agentes_con_tarea[$st.agente] = $true }
+        if ($st.agente_principal) { $agentes_con_tarea[$st.agente_principal] = $true }
+        if ($st.apoyo) { foreach ($id in @($st.apoyo)) { $agentes_con_tarea[$id] = $true } }
+    }
+}
+
+if ($TareaID -match '^T-035') {
+    foreach ($st in Get-SubtareasDirector -IdMacro "T-035") {
+        $pendientes_data += $st
+        if ($st.agente) { $agentes_con_tarea[$st.agente] = $true }
+        if ($st.agente_principal) { $agentes_con_tarea[$st.agente_principal] = $true }
+        if ($st.apoyo) { foreach ($id in @($st.apoyo)) { $agentes_con_tarea[$id] = $true } }
+    }
+}
+
+if ($TareaID -match '^T-037') {
+    foreach ($st in Get-SubtareasDirector -IdMacro "T-037") {
+        $pendientes_data += $st
+        if ($st.agente) { $agentes_con_tarea[$st.agente] = $true }
+        if ($st.agente_principal) { $agentes_con_tarea[$st.agente_principal] = $true }
+    }
+}
+
+if ($TareaID -match '^T-038') {
+    foreach ($st in Get-SubtareasDirector -IdMacro "T-038") {
+        $pendientes_data += $st
+        if ($st.agente) { $agentes_con_tarea[$st.agente] = $true }
+        if ($st.agente_principal) { $agentes_con_tarea[$st.agente_principal] = $true }
+        if ($st.apoyo) { foreach ($id in @($st.apoyo)) { $agentes_con_tarea[$id] = $true } }
+    }
+}
+
+if ($TareaID -match '^T-039') {
+    foreach ($st in Get-SubtareasDirector -IdMacro "T-039") {
+        $pendientes_data += $st
+        if ($st.agente) { $agentes_con_tarea[$st.agente] = $true }
+        if ($st.agente_principal) { $agentes_con_tarea[$st.agente_principal] = $true }
+        if ($st.apoyo) { foreach ($id in @($st.apoyo)) { $agentes_con_tarea[$id] = $true } }
     }
 }
 
@@ -1467,12 +1937,19 @@ if ($pendientes_data.Count -eq 0) {
     }
 }
 
+if ($TareaID -eq "T-008" -and -not ($pendientes_data | Where-Object { $_.id -eq "T-008" })) {
+    $pendientes_data += New-TareaCajaInfomoteles
+    Write-Host "  [AUTO] Cargando T-008 operativo para infomoteles" -ForegroundColor Yellow
+}
+
 foreach ($tarea in $pendientes_data) {
-    if ($TareaID -ne "" -and $tarea.id -ne $TareaID) { continue }
+    if (-not (Test-TareaSolicitada -Tarea $tarea -Filtro $TareaID)) { continue }
     Write-Host "`n[TAREA] $($tarea.id) - $($tarea.titulo)" -ForegroundColor Cyan
     $tarea.estado = "en_curso"
     $convocados = Get-ConvocadosPorTarea -Tarea $tarea
     if ($convocados.Count -eq 0) { Write-Host "  [!] Sin agentes convocados" -ForegroundColor Red; continue }
+    $feedback_por_agente = @{}
+    foreach ($id_fb in $convocados) { $feedback_por_agente[$id_fb] = $tarea }
 
     Write-Host "  Agentes: $(($convocados | ForEach-Object { $AGENTES[$_].Nombre }) -join ', ')" -ForegroundColor Gray
 
@@ -1495,7 +1972,7 @@ foreach ($tarea in $pendientes_data) {
 
     # FASE 4: FEEDBACK
     Write-Host "[FASE 4] Feedback - coordinando..." -ForegroundColor Green
-    Invoke-FeedbackAgentes -AgentesConvocados $convocados -RutaOutputRaiz ""
+    Invoke-FeedbackAgentes -AgentesConvocados $convocados -RutaOutputRaiz "" -TareasPorAgente $feedback_por_agente
 
     # Registrar en memoria del Director
     $mem_dir = Join-Path (Get-Ruta "agente-director-agencia-digital") "memoria"
@@ -1511,11 +1988,9 @@ foreach ($tarea in $pendientes_data) {
 "@
     Add-Content -LiteralPath $mem_file -Value $entrada -Encoding UTF8
 
-    # Actualizar pendientes.json
-    if (Test-Path $PENDIENTES) {
-        $jr = Get-Content $PENDIENTES -Raw -Encoding UTF8 | ConvertFrom-Json
-        for ($i = 0; $i -lt $jr.tareas.Count; $i++) { if ($jr.tareas[$i].id -eq $tarea.id) { $jr.tareas[$i].estado = "en_curso"; break } }
-        $jr | ConvertTo-Json -Depth 10 | Set-Content $PENDIENTES -Encoding UTF8
+    # Actualizar tareas.json o pendientes.json segun el archivo activo
+    if ($origen_por_tarea.ContainsKey($tarea.id)) {
+        Set-TareaEstadoEnArchivo -Archivo $origen_por_tarea[$tarea.id] -IdTarea $tarea.id -Estado "en_curso"
     }
 }
 

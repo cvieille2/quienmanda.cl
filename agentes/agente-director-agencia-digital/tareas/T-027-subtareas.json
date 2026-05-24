@@ -1,57 +1,77 @@
-{
-  "agente": "agente-director-agencia-digital",
-  "tarea_principal": "T-027",
-  "proyecto": "infomoteles.cl",
-  "objetivo": "Construir una arquitectura limpia que permita escalar a 10k/dia sin duplicados ni canibalizacion",
-  "subtareas": [
-    {
-      "id": "T-027-ST-01",
-      "titulo": "Fortalecer la home como entrada comercial",
-      "estado": "pendiente",
-      "prioridad": "critica",
-      "agente": "agente-estratega-negocio-digital",
-      "apoyo": ["agente-copywriter-conversion"],
-      "entregable": "Mensaje unico, estructura de bloques y CTA principal de home",
-      "criterio_cierre": "La home tiene una sola promesa, una ruta prioritaria y enlaces a landings/fichas"
-    },
-    {
-      "id": "T-027-ST-02",
-      "titulo": "Diseñar y priorizar landings por ciudad/zona",
-      "estado": "pendiente",
-      "prioridad": "critica",
-      "agente": "agente-consultor-seo-monetizacion",
-      "apoyo": ["agente-especialista-enlazado-interno"],
-      "entregable": "Mapa de landings por ciudad/zona con intención y prioridad",
-      "criterio_cierre": "Cada landing tiene una intención definida y no compite con otra URL"
-    },
-    {
-      "id": "T-027-ST-03",
-      "titulo": "Resolver fichas de motel con estructura de conversion",
-      "estado": "pendiente",
-      "prioridad": "critica",
-      "agente": "agente-analista-web-cro",
-      "apoyo": ["agente-copywriter-conversion", "agente-tecnico-wordpress-automatizacion"],
-      "entregable": "Checklist de ficha ideal, copy por bloque y requisitos tecnicos",
-      "criterio_cierre": "La ficha queda lista para vender, con CTA, tarifas, FAQ, mapa y tracking"
-    },
-    {
-      "id": "T-027-ST-04",
-      "titulo": "Fusionar posts viejos utiles y eliminar duplicados",
-      "estado": "pendiente",
-      "prioridad": "alta",
-      "agente": "agente-consultor-seo-monetizacion",
-      "apoyo": ["agente-especialista-enlazado-interno", "agente-tecnico-wordpress-automatizacion"],
-      "entregable": "Inventario de posts a fusionar, URL canonica y redirecciones",
-      "criterio_cierre": "No quedan duplicados compitiendo por la misma intencion"
-    },
-    {
-      "id": "T-027-ST-05",
-      "titulo": "Coordinar publicacion, medicion y orden de despliegue",
-      "estado": "pendiente",
-      "prioridad": "media",
-      "agente": "agente-proyecto-infomoteles",
-      "entregable": "Plan de despliegue por fases y reporte comparativo",
-      "criterio_cierre": "Se confirma que se publica primero y como se mide el impacto"
-    }
-  ]
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-027",
+    "proyecto":  "infomoteles.cl",
+    "objetivo":  "Construir una arquitectura limpia que permita escalar a 10k/dia sin duplicados ni canibalizacion",
+    "subtareas":  [
+                      {
+                          "id":  "T-027-ST-01",
+                          "titulo":  "Fortalecer la home como entrada comercial",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "apoyo":  [
+                                        "agente-copywriter-conversion"
+                                    ],
+                          "responsable":  "Estratega Negocio Digital",
+                          "resultado_esperado":  "La home queda como entrada comercial con ruta prioritaria y enlaces utiles.",
+                          "entregable":  "Mensaje unico, estructura de bloques y CTA principal de home",
+                          "criterio_cierre":  "La home tiene una sola promesa, una ruta prioritaria y enlaces a landings/fichas"
+                      },
+                      {
+                          "id":  "T-027-ST-02",
+                          "titulo":  "Diseñar y priorizar landings por ciudad/zona",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-especialista-enlazado-interno"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Cada ciudad o zona queda con landing priorizada y sin canibalizacion.",
+                          "entregable":  "Mapa de landings por ciudad/zona con intención y prioridad",
+                          "criterio_cierre":  "Cada landing tiene una intención definida y no compite con otra URL"
+                      },
+                      {
+                          "id":  "T-027-ST-03",
+                          "titulo":  "Resolver fichas de motel con estructura de conversion",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-analista-web-cro",
+                          "apoyo":  [
+                                        "agente-copywriter-conversion",
+                                        "agente-tecnico-wordpress-automatizacion"
+                                    ],
+                          "responsable":  "Analista Web CRO",
+                          "resultado_esperado":  "Las fichas quedan listas para vender con CTA, tarifas, FAQ, mapa y tracking.",
+                          "entregable":  "Checklist de ficha ideal, copy por bloque y requisitos tecnicos",
+                          "criterio_cierre":  "La ficha queda lista para vender, con CTA, tarifas, FAQ, mapa y tracking"
+                      },
+                      {
+                          "id":  "T-027-ST-04",
+                          "titulo":  "Fusionar posts viejos utiles y eliminar duplicados",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-especialista-enlazado-interno",
+                                        "agente-tecnico-wordpress-automatizacion"
+                                    ],
+                          "responsable":  "SEO Monetizacion",
+                          "resultado_esperado":  "Los duplicados quedan fusionados y las canonicas y redirecciones definidas.",
+                          "entregable":  "Inventario de posts a fusionar, URL canonica y redirecciones",
+                          "criterio_cierre":  "No quedan duplicados compitiendo por la misma intencion"
+                      },
+                      {
+                          "id":  "T-027-ST-05",
+                          "titulo":  "Coordinar publicacion, medicion y orden de despliegue",
+                          "estado":  "en_curso",
+                          "prioridad":  "media",
+                          "agente":  "agente-proyecto-infomoteles",
+                          "responsable":  "PM Infomoteles",
+                          "resultado_esperado":  "El despliegue queda ordenado y medible por fases.",
+                          "entregable":  "Plan de despliegue por fases y reporte comparativo",
+                          "criterio_cierre":  "Se confirma que se publica primero y como se mide el impacto"
+                      }
+                  ]
 }

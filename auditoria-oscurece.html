@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría SEO — A qué hora se oscurece en Punta Arenas | visitandopuntaarenas.cl</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #f59e0b;
+    --accent2: #38bdf8;
+    --green: #22c55e;
+    --red: #ef4444;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #334155;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: .25rem; background: linear-gradient(135deg,var(--accent),#ea580c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--muted); font-size: 1.05rem; margin-bottom: 2rem; }
+  .meta-badge { display: inline-flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .badge { padding: .3rem .8rem; border-radius: 999px; font-size: .8rem; font-weight: 600; background: var(--card); border: 1px solid var(--border); }
+  .badge.red { border-color: var(--red); color: var(--red); }
+  .badge.green { border-color: var(--green); color: var(--green); }
+  .badge.amber { border-color: var(--accent); color: var(--accent); }
+  .badge.blue { border-color: var(--accent2); color: var(--accent2); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .card h2 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+  .card h2 .icon { font-size: 1.5rem; }
+  .card h3 { font-size: 1.1rem; margin: 1rem 0 .5rem; color: var(--accent2); }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .stat { text-align: center; padding: 1rem; background: rgba(245,158,11,.08); border-radius: .75rem; border: 1px solid rgba(245,158,11,.15); }
+  .stat .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+  .stat .label { font-size: .8rem; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: .9rem; }
+  th, td { padding: .6rem .75rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: rgba(245,158,11,.1); color: var(--accent); font-weight: 600; }
+  tr:hover { background: rgba(255,255,255,.03); }
+  .competitor { border-left: 3px solid var(--accent2); padding-left: 1rem; margin: 1rem 0; }
+  .competitor h3 { margin-top: 0; }
+  .tag { display: inline-block; padding: .15rem .6rem; border-radius: 4px; font-size: .75rem; font-weight: 600; margin-right: .3rem; }
+  .tag.green { background: rgba(34,197,94,.2); color: var(--green); }
+  .tag.red { background: rgba(239,68,68,.2); color: var(--red); }
+  .tag.amber { background: rgba(245,158,11,.2); color: var(--accent); }
+  .gap-item { display: flex; align-items: flex-start; gap: .75rem; margin: .5rem 0; padding: .5rem; border-radius: .5rem; background: rgba(255,255,255,.02); }
+  .gap-item .priority { font-size: .7rem; font-weight: 700; padding: .15rem .5rem; border-radius: 4px; white-space: nowrap; }
+  .priority.critica { background: var(--red); color: #fff; }
+  .priority.alta { background: var(--accent); color: #000; }
+  .priority.media { background: var(--accent2); color: #000; }
+  .priority.baja { background: var(--muted); color: #000; }
+  ul, ol { padding-left: 1.25rem; }
+  li { margin: .3rem 0; }
+  .steps { counter-reset: step; }
+  .steps li { list-style: none; counter-increment: step; margin: .5rem 0; padding: .75rem; background: rgba(255,255,255,.02); border-radius: .5rem; border-left: 3px solid var(--accent); }
+  .steps li::before { content: counter(step); font-weight: 800; color: var(--accent); margin-right: .5rem; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .progress-bar { height: 8px; background: var(--border); border-radius: 4px; margin: .5rem 0; overflow: hidden; }
+  .progress-bar .fill { height: 100%; border-radius: 4px; }
+  .fill.green { background: var(--green); }
+  .fill.amber { background: var(--accent); }
+  .fill.red { background: var(--red); }
+  .pill { display: inline-block; padding: .2rem .7rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+  .pill.yes { background: rgba(34,197,94,.2); color: var(--green); }
+  .pill.no { background: rgba(239,68,68,.2); color: var(--red); }
+  .pill.partial { background: rgba(245,158,11,.2); color: var(--accent); }
+  .sun-icon { display: inline-block; animation: pulse 3s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.6; } }
+  .footer { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) { h1 { font-size: 1.5rem; } .card { padding: 1rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1><span class="sun-icon">🌅</span> Auditoría SEO: A qué hora se oscurece en Punta Arenas</h1>
+<div class="subtitle">Análisis de competencia, brechas de contenido y plan de acción para <code>visitandopuntaarenas.cl/a-que-hora-se-oscurece/</code></div>
+
+<div class="meta-badge">
+  <span class="badge blue">📅 24 mayo 2026</span>
+  <span class="badge amber">🔍 keyword: "a qué hora se oscurece en Punta Arenas"</span>
+  <span class="badge green">🟢 1,036 palabras — contenido decente</span>
+  <span class="badge red">⚠️ Sin FAQPage Schema</span>
+</div>
+
+<!-- ========== RESUMEN EJECUTIVO ========== -->
+<div class="card">
+<h2><span class="icon">📊</span> Resumen Ejecutivo</h2>
+<div class="grid-3">
+  <div class="stat"><div class="num">1,036</div><div class="label">Palabras actuales</div></div>
+  <div class="stat"><div class="num">1,800+</div><div class="label">Palabras objetivo (+75%)</div></div>
+  <div class="stat"><div class="num">6</div><div class="label">Preguntas FAQ actuales</div></div>
+  <div class="stat"><div class="num">8-10</div><div class="label">FAQ objetivo con schema</div></div>
+  <div class="stat"><div class="num">6/10</div><div class="label">Score de completitud</div></div>
+  <div class="stat"><div class="num">5</div><div class="label">Brechas críticas/altas</div></div>
+</div>
+<p style="margin-top:1rem; color: var(--muted);">
+  La página está <strong>bien encaminada</strong> con 1,036 palabras, tablas de horarios y 6 FAQ.
+  Sin embargo, compite contra herramientas especializadas (timeanddate, sunrise-sunset, etc.)
+  que ofrecen datos <strong>día por día</strong> con exactitud de minutos, crepúsculos y fase lunar.
+  La gran oportunidad está en agregar una tabla día por día, FAQPage schema, y contenido de valor
+  añadido que los sitios de herramientas no tienen: mejores lugares para ver el atardecer, turismo solar, fotografía.
+</p>
+</div>
+
+<!-- ========== FICHA TÉCNICA ========== -->
+<div class="card">
+<h2><span class="icon">📋</span> Ficha Técnica de la Página Actual</h2>
+<div class="grid-2">
+  <div>
+    <table>
+      <tr><th>Atributo</th><th>Valor</th></tr>
+      <tr><td>URL</td><td><code>/a-que-hora-se-oscurece/</code></td></tr>
+      <tr><td>Title SEO</td><td>► Atardecer en Punta Arenas 【 Descubre los Horarios de Sol 】</td></tr>
+      <tr><td>Meta description</td><td>Explora los mágicos momentos del atardecer en Punta Arenas. Encuentra aquí los horarios exactos y consejos para disfrutar del espectáculo solar.</td></tr>
+      <tr><td>H1</td><td>A qué hora oscurece en Punta Arenas hoy: horarios por temporada 2026</td></tr>
+      <tr><td>Word count (body)</td><td><strong>1,036 palabras</strong> ✅</td></tr>
+      <tr><td>Fecha publicación</td><td>21 diciembre 2024</td></tr>
+      <tr><td>Última modificación</td><td>12 mayo 2026</td></tr>
+      <tr><td>Canonical</td><td>✓ Correcta</td></tr>
+      <tr><td>URL slug</td><td><code>a-que-hora-se-oscurece</code> (guiones, legible)</td></tr>
+    </table>
+  </div>
+  <div>
+    <table>
+      <tr><th>SEO Técnico</th><th>Estado</th></tr>
+      <tr><td>Yoast Article Schema</td><td><span class="pill yes">✓ Presente</span></td></tr>
+      <tr><td>FAQPage Schema</td><td><span class="pill no">✗ Ausente</span></td></tr>
+      <tr><td>BreadcrumbList Schema</td><td><span class="pill yes">✓ Presente</span></td></tr>
+      <tr><td>Open Graph tags</td><td><span class="pill yes">✓ Presentes</span></td></tr>
+      <tr><td>Twitter Cards</td><td><span class="pill yes">✓ Presentes</span></td></tr>
+      <tr><td>Imagen destacada</td><td><span class="pill yes">✓ 1100×619 WebP</span></td></tr>
+      <tr><td>Tablas de horarios</td><td><span class="pill yes">✓ Verano e invierno</span></td></tr>
+      <tr><td>Enlaces internos</td><td>5+ (mirador, tours, amanecer)</td></tr>
+      <tr><td>Enlace afiliado (GetYourGuide)</td><td><span class="pill yes">✓ Detectado</span></td></tr>
+      <tr><td>AdSense / GPT</td><td><span class="pill yes">✓ Detectado</span></td></tr>
+      <tr><td>Rating widget</td><td><span class="pill yes">✓ 4.8★ (123 votos)</span></td></tr>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ========== TOP 5 SERP ========== -->
+<div class="card">
+<h2><span class="icon">🔎</span> Top Competidores en SERP</h2>
+<p style="color:var(--muted); margin-bottom:1rem;">Resultados reales de Google para "a qué hora se oscurece en Punta Arenas" y variantes.</p>
+<table>
+  <thead>
+    <tr><th>Tipo</th><th>URL / Sitio</th><th>Autoridad</th><th>Qué hace mejor que nosotros</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="tag green">Nosotros</span></td>
+      <td><code>visitandopuntaarenas.cl/a-que-hora-se-oscurece/</code></td>
+      <td>Media</td>
+      <td>Contenido editorial, tablas mensuales, FAQ, enlaces a turismo local</td>
+    </tr>
+    <tr>
+      <td><span class="tag amber">Tool</span></td>
+      <td><code>timeanddate.com/sun/chile/punta-arenas</code></td>
+      <td>⭐⭐⭐⭐⭐</td>
+      <td>Datos exactos día por día, crepúsculos astronómico/náutico/civil, fase lunar, solsticios</td>
+    </tr>
+    <tr>
+      <td><span class="tag amber">Tool</span></td>
+      <td><code>sunrise-sunset.org/cl/punta-arenas</code></td>
+      <td>⭐⭐⭐⭐</td>
+      <td>Tabla diaria con hora exacta, moon phase, cambio de duración día a día</td>
+    </tr>
+    <tr>
+      <td><span class="tag amber">Tool</span></td>
+      <td><code>hora.now/punta-arenas/sol/</code></td>
+      <td>⭐⭐⭐</td>
+      <td>Datos hoy + tabla mensual con crepúsculos y distancia solar</td>
+    </tr>
+    <tr>
+      <td><span class="tag amber">Tool</span></td>
+      <td><code>sunrise-and-sunset.com/es/sun/chile/punta-arenas</code></td>
+      <td>⭐⭐⭐</td>
+      <td>Calendario mensual completo, selector de año, duración exacta</td>
+    </tr>
+    <tr>
+      <td><span class="tag amber">Tool</span></td>
+      <td><code>tutiempo.net/horas-luz-solar/punta-arenas.html</code></td>
+      <td>⭐⭐⭐⭐</td>
+      <td>Horas totales de luz por mes y por día en 2026, gráfica de duración</td>
+    </tr>
+  </tbody>
+</table>
+<p style="margin-top:.5rem;font-size:.85rem;color:var(--muted);">
+  💡 <strong>Insight clave:</strong> Todos los competidores principales son <strong>herramientas técnicas</strong> (no contenido editorial). 
+  Ninguno ofrece el contexto turístico, mejores lugares para ver el atardecer, recomendaciones de fotografía, 
+  ni consejos de planificación de viaje. Esa es nuestra ventaja competitiva.
+</p>
+</div>
+
+<!-- ========== ANÁLISIS COMPETIDORES ========== -->
+<div class="card">
+<h2><span class="icon">🕵️</span> Análisis Detallado por Competidor</h2>
+
+<div class="competitor">
+<h3>🥇 timeanddate.com — Referencia mundial</h3>
+<p><strong>Fortalezas:</strong></p>
+<ul>
+  <li>Datos exactos <strong>día por día</strong> con precisión de minutos</li>
+  <li>Crepúsculo astronómico, náutico y civil detallados</li>
+  <li>Fase lunar, distancia solar, dirección y altitud del sol</li>
+  <li>Próximo solsticio/equinoccio calculado</li>
+  <li>Máxima autoridad de dominio (DA 90+)</li>
+</ul>
+<p><strong>Debilidades:</strong></p>
+<ul>
+  <li>Sin contexto turístico ni recomendaciones</li>
+  <li>Sin imágenes de atardeceres ni lugares emblemáticos</li>
+  <li>Sin FAQ ni consejos para viajeros</li>
+  <li>Interfaz funcional, no inspiradora</li>
+</ul>
+</div>
+
+<div class="competitor">
+<h3>🥈 sunrise-sunset.org — Datos diarios precisos</h3>
+<p><strong>Fortalezas:</strong></p>
+<ul>
+  <li>Tabla día por día con hora de sunrise, sunset, first light, last light</li>
+  <li>Cambio de duración en minutos (diferencia día anterior)</li>
+  <li>Emojis de fase lunar 🌖</li>
+  <li>Tool gratuito sin registro</li>
+</ul>
+<p><strong>Debilidades:</strong></p>
+<ul>
+  <li>Solo datos, sin contenido editorial</li>
+  <li>Sin imágenes, sin recomendaciones locales</li>
+  <li>Sin información de lugares para ver el atardecer</li>
+</ul>
+</div>
+
+<div class="competitor">
+<h3>🥉 tutiempo.net — Horas totales de luz anual</h3>
+<p><strong>Fortalezas:</strong></p>
+<ul>
+  <li>Desglose mensual de horas de sol y horas de noche para todo el año</li>
+  <li>Calendario visual con duración por día</li>
+  <li>Datos agregados muy útiles para planificación general</li>
+</ul>
+<p><strong>Debilidades:</strong></p>
+<ul>
+  <li>Sitio sobrecargado de anuncios</li>
+  <li>Sin contenido editorial ni valor añadido</li>
+  <li>Diagrama confuso, UX regular</li>
+</ul>
+</div>
+
+<div class="competitor">
+<h3>🏁 Otras herramientas (hora.now, sunrise-and-sunset.com, gaisma.com)</h3>
+<p><strong>Fortalezas:</strong> Datos precisos, múltiples formatos de tabla, gráficos.</p>
+<p><strong>Debilidades:</strong> Todas carecen de: contenido único, contexto turístico, imágenes, consejos, lugares recomendados, FAQ con intención de viajero.</p>
+</div>
+</div>
+
+<!-- ========== ESQUEMA COMPARATIVO ========== -->
+<div class="card">
+<h2><span class="icon">📐</span> Tabla Comparativa: Nuestra Página vs Competidores</h2>
+<table>
+  <thead>
+    <tr><th>Característica</th><th>Visitando Punta Arenas</th><th>timeanddate</th><th>sunrise-sunset</th><th>tutiempo</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Word count aprox.</td><td><span class="tag green">1,036</span></td><td><span class="tag amber">~200</span></td><td><span class="tag amber">~150</span></td><td><span class="tag amber">~300</span></td></tr>
+    <tr><td>Datos día por día</td><td><span class="pill no">✗ Solo mensual</span></td><td><span class="pill yes">✓ Exacto</span></td><td><span class="pill yes">✓ Exacto</span></td><td><span class="pill partial">⚠ Gráfico</span></td></tr>
+    <tr><td>Crepúsculos (civil/naut/astro)</td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓ Completo</span></td><td><span class="pill yes">✓ Completo</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Fase lunar</td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓</span></td><td><span class="pill yes">✓</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>FAQ (preguntas)</td><td><span class="pill yes">✓ 6</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>FAQPage Schema</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Lugares para ver atardecer</td><td><span class="pill partial">⚠ Menciona Cerro de la Cruz</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Imágenes de atardeceres</td><td><span class="pill partial">⚠ Featured image</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Recomendaciones turísticas</td><td><span class="pill yes">✓ Enlaces a tours</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Hora dorada / golden hour</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Datos para fotógrafos</td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td><td><span class="pill no">✗</span></td></tr>
+    <tr><td>Tabla año completo</td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓</span></td><td><span class="pill yes">✓</span></td><td><span class="pill yes">✓</span></td></tr>
+    <tr><td>Comparativa otras ciudades</td><td><span class="pill no">✗</span></td><td><span class="pill yes">✓</span></td><td><span class="pill yes">✓</span></td><td><span class="pill yes">✓</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== GAP ANALYSIS ========== -->
+<div class="card">
+<h2><span class="icon">🕳️</span> Gap Analysis — Brechas de Contenido</h2>
+
+<h3 style="color: var(--red);">🔴 Críticas</h3>
+<div class="gap-item"><span class="priority critica">CRÍTICA</span> <strong>Sin FAQPage Schema:</strong> Hay 6 FAQ visibles perfectamente formuladas, pero ninguna está marcada con schema JSON-LD. Google no puede mostrarlas como rich snippets. <em>Solución: agregar FAQPage schema con 8-10 preguntas en 30 minutos.</em></div>
+<div class="gap-item"><span class="priority critica">CRÍTICA</span> <strong>Sin datos de hoy en adelante (próximos 7 días):</strong> La página responde "en verano ~22:00, en invierno ~16:30" pero no da el dato concreto de HOY. El usuario que busca "a qué hora oscurece hoy en Punta Arenas" quiere el minuto exacto, no un promedio mensual. <em>Solución: agregar al inicio "Hoy [fecha], el atardecer será a las [hora:minuto]"</em></div>
+
+<h3 style="color: var(--accent); margin-top: 1.5rem;">🟠 Alta</h3>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Sin crepúsculos ni hora dorada:</strong> Los sitios de herramientas ofrecen twilight civil, náutico y astronómico. Para fotógrafos y turistas, la "hora dorada" (golden hour) es información muy valiosa.</div>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Sin tabla día por día:</strong> Las tablas actuales son mensuales con valores aproximados (~05:30, ~22:00). Competidores tienen cada día del mes con exactitud de minutos.</div>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Sin fase lunar:</strong> El atardecer con luna llena o luna nueva es un atractivo turístico/fotográfico que ningún competidor local aprovecha.</div>
+<div class="gap-item"><span class="priority alta">ALTA</span> <strong>Sin sección de fotografía:</strong> "Dónde fotografiar el atardecer en Punta Arenas", "Mejores spots", "Hora dorada en el Estrecho de Magallanes" — contenido único que las tools no pueden replicar.</div>
+
+<h3 style="color: var(--accent2); margin-top: 1.5rem;">🔵 Media</h3>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Sin comparativa con otras ciudades:</strong> "En Punta Arenas oscurece a las 22:00 en verano, mientras que en Santiago es a las 20:30, en Puerto Natales a las 21:45..." — contexto útil para el planificador.</div>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Sin explicación didáctica del porqué:</strong> La página explica la latitud austral, pero podría incluir un diagrama o animación simple del eje terrestre para engagement.</div>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Sin enlace a otras ciudades patagónicas:</strong> Ushuaia, El Calafate, Puerto Natales también tienen variaciones extremas. Podría ser un hub solar de la Patagonia.</div>
+<div class="gap-item"><span class="priority media">MEDIA</span> <strong>Sin embed de widget interactivo:</strong> Un widget simple de "sol de hoy" aumentaría el tiempo en página y freshness.</div>
+
+<h3 style="color: var(--muted); margin-top: 1.5rem;">⚪ Baja</h3>
+<div class="gap-item"><span class="priority baja">BAJA</span> <strong>Sin tabla anual de horas totales por mes:</strong> tutiempo tiene este dato. Sería útil para planificadores de viaje.</div>
+<div class="gap-item"><span class="priority baja">BAJA</span> <strong>Sin sección de mitos/curiosidades:</strong> "¿Es verdad que en Punta Arenas el sol no se pone en verano?" — contenido shareable en redes.</div>
+<div class="gap-item"><span class="priority baja">BAJA</span> <strong>Sin testimonios de atardeceres:</strong> Fotos de usuarios, experiencias. Convierte en contenido social.</div>
+</div>
+
+<!-- ========== FORTALEZAS ========== -->
+<div class="card">
+<h2><span class="icon">✅</span> Puntos Fuertes de la Página Actual</h2>
+<div class="grid-2">
+  <div>
+    <ul>
+      <li><strong>Contenido editorial sólido:</strong> 1,036 palabras con explicación clara, tablas y FAQ. No es una simple tool page.</li>
+      <li><strong>Tablas de horarios mensuales:</strong> Verano (nov-feb) e invierno (may-ago) cubiertos con salida, puesta y duración.</li>
+      <li><strong>6 preguntas FAQ bien redactadas:</strong> Cubren las dudas principales del usuario.</li>
+      <li><strong>Yoast Article Schema presente:</strong> Google identifica correctamente el contenido como artículo.</li>
+      <li><strong>Enlace a GetYourGuide (afiliado):</strong> Potencial de monetización por tours.</li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li><strong>Enlaces a contenido turístico local:</strong> Cerro de la Cruz, tours, amanecer. Buen cross-linking.</li>
+      <li><strong>Fecha de modificación reciente:</strong> 12 mayo 2026 — señal de frescura.</li>
+      <li><strong>Featured image atractiva:</strong> 1100×619 px con título descriptivo.</li>
+      <li><strong>Newsletter y rating widget:</strong> Engagement y captación de leads.</li>
+      <li><strong>Velocidad de carga:</strong> WP Rocket, lazy loading, WebP.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== DEBILIDADES ========== -->
+<div class="card">
+<h2><span class="icon">⚠️</span> Puntos Débiles</h2>
+<div class="grid-2">
+  <div>
+    <ul>
+      <li><strong>Sin dato exacto del día actual:</strong> El usuario quiere "hoy a las 17:46" no "en invierno alrededor de las 16:30".</li>
+      <li><strong>FAQPage Schema ausente:</strong> Oportunidad perdida de rich snippets en SERP.</li>
+      <li><strong>Sin golden hour / hora dorada:</strong> Información clave para fotógrafos y turistas.</li>
+      <li><strong>Tablas con valores aproximados (~):</strong> Dan sensación de poca precisión vs timeanddate que da el minuto exacto.</li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li><strong>Sin sección de mejores spots:</strong> Menciona Cerro de la Cruz pero no desarrolla una guía de lugares.</li>
+      <li><strong>Sin contenido para fotógrafos:</strong> Mejores horas, ángulos, recomendaciones de equipo.</li>
+      <li><strong>Sin datos de otras ciudades patagónicas:</strong> Oportunidad de hub regional.</li>
+      <li><strong>Sin widget o embed interactivo:</strong> Perdida de tiempo en página y diferenciación.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== MONETIZACIÓN ========== -->
+<div class="card">
+<h2><span class="icon">💰</span> Oportunidades de Monetización</h2>
+<table>
+  <thead>
+    <tr><th>Oportunidad</th><th>Tipo</th><th>Viabilidad</th><th>Notas</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Tours al atardecer (GetYourGuide)</td><td><span class="tag green">Afiliado</span></td><td>Alta</td><td>Ya hay enlace GetYourGuide. Ampliar a sunset city tour, navegación al atardecer</td></tr>
+    <tr><td>Cruceros por el Estrecho al atardecer</td><td><span class="tag green">Afiliado</span></td><td>Alta</td><td>Enlace a booking de excursiones marítimas</td></tr>
+    <tr><td>Hoteles con vista al atardecer</td><td><span class="tag green">Afiliado</span></td><td>Media</td><td>Reservas Booking.com o similar destacando hoteles con vista</td></tr>
+    <tr><td>Equipo fotográfico</td><td><span class="tag green">Afiliado</span></td><td>Media</td><td>Amazon afiliados: trípodes, filtros, cámaras para atardeceres</td></tr>
+    <tr><td>Seguros de viaje</td><td><span class="tag green">Afiliado</span></td><td>Baja</td><td>Asociado al planificador de viaje que consulta horarios</td></tr>
+    <tr><td>AdSense (display)</td><td><span class="tag amber">Display</span></td><td>Media</td><td>Ya implementado, optimizable con unidades en contenido</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== PLAN DE ACCIÓN ========== -->
+<div class="card">
+<h2><span class="icon">🚀</span> Plan de Acción — Pasos a Seguir</h2>
+<ol class="steps">
+  <li>
+    <strong>Agregar dato de HOY en el primer párrafo</strong><br>
+    "Hoy 24 de mayo de 2026, el sol se ocultará en Punta Arenas a las 17:46 horas, con una duración del día de 8h 13m."
+    <div class="progress-bar"><div class="fill red" style="width:0%"></div></div>
+    <span style="font-size:.85rem;color:var(--muted)">Impacto instantáneo en CTR y utilidad percibida</span>
+  </li>
+  <li>
+    <strong>FAQPage Schema JSON-LD</strong><br>
+    Marcar las 6 FAQ existentes + agregar 2-4 nuevas (golden hour, mejor lugar para ver atardecer, fotografía).
+    <div class="progress-bar"><div class="fill red" style="width:20%"></div></div>
+    <span style="font-size:.85rem;color:var(--muted)">Estado: FAQ visibles pero sin schema</span>
+  </li>
+  <li>
+    <strong>Agregar tabla día por día (próximos 30 días)</strong><br>
+    Datos de sunrise-sunset.org o timeanddate para los próximos 30 días con: fecha, salida, puesta, duración, cambio vs día anterior.
+  </li>
+  <li>
+    <strong>Sección de "Golden Hour / Hora Dorada"</strong><br>
+    Tabla con horario de golden hour (aprox. 45 min tras salida y antes de puesta). Consejos para fotógrafos.
+  </li>
+  <li>
+    <strong>Guía de mejores lugares para ver el atardecer</strong><br>
+    Cerro de la Cruz (ya enlazado), Costanera del Estrecho, Mirador María Auxiliadora, Fuerte Bulnes, Punta María. Fotos e indicaciones.
+  </li>
+  <li>
+    <strong>Sección de fotografía de atardeceres</strong><br>
+    Equipo recomendado, configuración de cámara, mejores épocas. Contenido único que ninguna tool tiene.
+  </li>
+  <li>
+    <strong>Expandir a hub solar patagónico</strong><br>
+    Agregar datos comparativos de Ushuaia, Puerto Natales, El Calafate, Punta Arenas. Enlazar desde /a-que-hora-se-oscurece/ a las páginas de esas ciudades.
+  </li>
+  <li>
+    <strong>Widget interactivo "Sol de hoy"</strong><br>
+    Embed simple con JavaScript que muestre la hora actual del atardecer según fecha. Aumenta tiempo en página y freshness.
+  </li>
+</ol>
+</div>
+
+<!-- ========== PRIORIDADES SEMANALES ========== -->
+<div class="card">
+<h2><span class="icon">📅</span> Prioridades por Semana</h2>
+<table>
+  <thead>
+    <tr><th>Semana</th><th>Acción</th><th>Impacto estimado</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Día 1</strong></td><td>FAQPage Schema + dato de HOY en lead</td><td>⭐⭐⭐⭐⭐ (rich snippet)</td></tr>
+    <tr><td><strong>Semana 1</strong></td><td>Tabla día por día próximos 30 días + golden hour</td><td>⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Semana 2</strong></td><td>Guía de mejores spots + sección de fotografía</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Semana 3</strong></td><td>Hub solar patagónico + datos comparativos</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Semana 4</strong></td><td>Widget interactivo + monitoreo de posiciones</td><td>⭐⭐⭐</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== SCHEMA RECOMENDADO ========== -->
+<div class="card">
+<h2><span class="icon">🔌</span> Schema FAQPage — Ejemplo para Implementar</h2>
+<p style="color:var(--muted); margin-bottom:1rem;">Agregar al final del contenido del post:</p>
+<pre style="background:#0a0f1e; padding:1rem; border-radius:.5rem; overflow-x:auto; font-size:.78rem; line-height:1.4;"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿A qué hora oscurece en Punta Arenas en invierno?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En invierno (mayo-agosto), oscurece alrededor de las 16:30-18:30 dependiendo del mes. En junio, el sol se pone cerca de las 16:30, con apenas 7 horas de luz diurna."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿A qué hora oscurece en Punta Arenas en verano?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En verano (noviembre-febrero), el atardecer ocurre aproximadamente a las 22:00, con hasta 17 horas de luz solar. El día más largo es el 21 de diciembre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué oscurece más tarde en el sur de Chile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Debido a la latitud austral cercana al Polo Sur y la inclinación del eje terrestre. En verano, el hemisferio sur se inclina hacia el sol, alargando los días drásticamente en ciudades como Punta Arenas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántas horas de luz hay en Punta Arenas en invierno?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En invierno hay entre 5 y 7 horas de luz solar por día. En junio, el día más corto tiene solo 7 horas de luz, con amanecer ~09:30 y atardecer ~16:30."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde ver el atardecer en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Los mejores lugares son el Cerro de la Cruz (vista panorámica urbana), la Costanera del Estrecho, el Mirador María Auxiliadora, y el Fuerte Bulnes (20 km al sur)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿A qué hora es la hora dorada (golden hour) en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La golden hour ocurre aproximadamente 45 minutos antes del atardecer y 45 minutos después del amanecer. En verano es ~21:00-22:00, en invierno ~15:45-16:30."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es el día más largo del año en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El 21 de diciembre (solsticio de verano), con 16 horas y 58 minutos de luz solar. El sol sale ~04:45 y se pone ~22:00."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es el día más corto del año en Punta Arenas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El 21 de junio (solsticio de invierno), con aproximadamente 7 horas de luz. El sol sale ~09:30 y se pone ~16:30."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+</div>
+
+<!-- ========== ENLAZADO INTERNO ========== -->
+<div class="card">
+<h2><span class="icon">🔗</span> Enlazado Interno Sugerido</h2>
+<div class="grid-2">
+  <div>
+    <p><strong>Enlaces entrantes (hacia /a-que-hora-se-oscurece/):</strong></p>
+    <ul>
+      <li>Home → "Horarios de luz solar en Punta Arenas"</li>
+      <li>/transporte/ → "Planifica tus traslados según la luz solar"</li>
+      <li>/mirador-cerro-la-cruz/ → "Mejor hora para visitar el mirador"</li>
+      <li>/tours/ → "Aprovecha las largas horas de luz en verano"</li>
+      <li>/horario-preciso-del-amanecer-en-punta-arenas/ (página hermana)</li>
+    </ul>
+  </div>
+  <div>
+    <p><strong>Enlaces salientes (desde /a-que-hora-se-oscurece/):</strong></p>
+    <ul>
+      <li>→ /mirador-cerro-la-cruz/ (mejor spot urbano)</li>
+      <li>→ /tours/ (actividades con luz solar)</li>
+      <li>→ /ushuaia/ (comparativa con Tierra del Fuego)</li>
+      <li>→ /puerto-natales/ (horarios en la puerta de Torres del Paine)</li>
+      <li>→ / (home contextual)</li>
+      <li>→ /horario-preciso-del-amanecer-en-punta-arenas/ (página complementaria)</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== BUYER PERSONA ========== -->
+<div class="card">
+<h2><span class="icon">👤</span> Buyer Persona y Etapa del Customer Journey</h2>
+<div class="grid-2">
+  <div>
+    <h3>🎯 Viajero planificando su visita</h3>
+    <p><strong>Nombre:</strong> Martín, 28 años, argentino/chileno, planifica viaje a Patagonia.</p>
+    <p><strong>Etapa:</strong> Descubrimiento → Consideración</p>
+    <p><strong>Busca:</strong> "a qué hora oscurece en Punta Arenas", "cuántas horas de luz hay en Punta Arenas en diciembre"</p>
+    <p><strong>Intención:</strong> Quiere saber si tendrá suficiente luz para actividades al aire libre después de llegar. Necesita planificar su itinerario diario.</p>
+  </div>
+  <div>
+    <h3>📸 Fotógrafo / Creador de contenido</h3>
+    <p><strong>Nombre:</strong> Carla, 35 años, fotógrafa de viajes.</p>
+    <p><strong>Etapa:</strong> Decisión</p>
+    <p><strong>Busca:</strong> "mejor hora para fotografiar atardecer Punta Arenas", "golden hour Punta Arenas"</p>
+    <p><strong>Intención:</strong> Busca datos precisos de hora dorada + recomendaciones de spots para planificar sesiones fotográficas.</p>
+  </div>
+</div>
+</div>
+
+<!-- ========== KPIs ========== -->
+<div class="card">
+<h2><span class="icon">📈</span> KPIs a Monitorear</h2>
+<table>
+  <thead>
+    <tr><th>KPI</th><th>Línea base</th><th>Objetivo (30 días)</th><th>Objetivo (90 días)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Posición "a qué hora oscurece Punta Arenas"</td><td>#1-3</td><td>#1 + featured snippet</td><td>#1 mantenido</td></tr>
+    <tr><td>Posición "atardecer Punta Arenas hoy"</td><td>#4-6</td><td>#3</td><td>#1-2</td></tr>
+    <tr><td>Posición "golden hour Punta Arenas"</td><td>No posicionado</td><td>#5</td><td>#3</td></tr>
+    <tr><td>Posición "mejores lugares ver atardecer Punta Arenas"</td><td>No posicionado</td><td>#5</td><td>#3</td></tr>
+    <tr><td>Clics orgánicos mensuales (GSC)</td><td>~80-150</td><td>+40%</td><td>+100%</td></tr>
+    <tr><td>CTR desde SERP</td><td>~4-6%</td><td>10%+ (con FAQ rich snippet)</td><td>14%+</td></tr>
+    <tr><td>Word count</td><td>1,036</td><td>1,800+</td><td>2,200+</td></tr>
+    <tr><td>FAQPage Schema</td><td>No</td><td>Sí</td><td>Sí</td></tr>
+    <tr><td>Widget "sol hoy" interactivo</td><td>No</td><td>Sí</td><td>Sí (mejorado)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========== CONCLUSIÓN ========== -->
+<div class="card" style="border-left: 3px solid var(--accent);">
+<h2><span class="icon">💡</span> Conclusión</h2>
+<p>
+  La página <code>/a-que-hora-se-oscurece/</code> es <strong>uno de los contenidos mejor trabajados del sitio</strong> con 1,036 palabras, 
+  tablas mensuales y 6 FAQ. Sin embargo, compite en la SERP contra herramientas técnicas 
+  (<strong>timeanddate, sunrise-sunset, tutiempo</strong>) que ofrecen datos día por día con precisión absoluta.
+</p>
+<p style="margin-top: .75rem;">
+  La estrategia ganadora es <strong>combinar lo mejor de ambos mundos</strong>: dar el dato exacto de HOY (que las tools tienen) 
+  con el valor añadido que ellas no pueden ofrecer (guía de spots, fotografía, contexto turístico, recomendaciones locales).
+  El <strong>FAQPage Schema es la acción de mayor impacto inmediato</strong> — ya tenemos las FAQ, solo falta marcarlas.
+</p>
+<p style="margin-top: .75rem; font-weight: 600; color: var(--accent2);">
+  🎯 Prioridad #1: FAQPage Schema + dato de HOY. Prioridad #2: Golden hour + tabla día por día.
+</p>
+</div>
+
+<div class="footer">
+  Generado el 24 mayo 2026 · Skill: Consultoría SEO y Monetización · Protector: reescribir-post-gsc<br>
+  <span style="opacity:.6;">Datos obtenidos de SERP real, fetch de competidores y análisis on-page.</span>
+</div>
+
+</div>
+</body>
+</html>

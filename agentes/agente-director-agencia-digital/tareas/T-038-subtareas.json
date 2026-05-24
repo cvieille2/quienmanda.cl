@@ -1,0 +1,159 @@
+﻿{
+    "agente":  "agente-director-agencia-digital",
+    "tarea_principal":  "T-038",
+    "proyecto":  "visitandopuntaarenas.cl",
+    "objetivo":  "Convertir el listado de keywords de input/enfoque.txt en un calendario editorial monetizable y coordinar la creacion, validacion y publicacion en WordPress de los posts priorizados.",
+    "contexto":  {
+                     "archivo_fuente":  "input/enfoque.txt",
+                     "sitio":  "visitandopuntaarenas.cl",
+                     "criterio_negocio":  "contenido turistico con potencial de reserva, leads, afiliados de tours y rutas de viaje",
+                     "salida_esperada":  "calendario editorial + asignacion de responsables por etapa + secuencia de publicacion"
+                 },
+    "subtareas":  [
+                      {
+                          "id":  "T-038-ST-01",
+                          "titulo":  "Armar calendario editorial por cluster y prioridad",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "calendario-editorial",
+                          "responsable":  "Estratega SEO/Editorial",
+                          "resultado_esperado":  "Tabla editorial con keyword principal, relacionadas, cluster, intencion, URL sugerida, tipo, prioridad, resumen esperado y monetizacion sugerida.",
+                          "entregable":  "Calendario editorial consolidado a partir de input/enfoque.txt, descartando keywords irrelevantes para el sitio y agrupando por URL o cluster.",
+                          "criterio_cierre":  "Cada keyword util queda asignada a un cluster, una URL sugerida y una via de monetizacion.",
+                          "nota":  "Priorizar Punta Arenas, Torres del Paine, Puerto Natales, Perito Moreno y Puerto Williams. Marcar como baja prioridad las KW fuera del alcance del sitio."
+                      },
+                      {
+                          "id":  "T-038-ST-02",
+                          "titulo":  "Definir plan de produccion y responsables por pieza",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "apoyo":  [
+                                        "agente-copywriter-conversion",
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "Estratega de Negocio Digital",
+                          "resultado_esperado":  "Cada pieza tiene responsable de creacion, validacion y publicacion.",
+                          "entregable":  "Matriz de trabajo con: creador, validador SEO, validador negocio y publicador WordPress por cada URL priorizada.",
+                          "criterio_cierre":  "No queda ninguna pieza prioritaria sin responsable asignado para crear, revisar y publicar.",
+                          "nota":  "Separar landings transaccionales de guias informacionales y definir prioridad de ejecucion."
+                      },
+                      {
+                          "id":  "T-038-ST-03",
+                          "titulo":  "Redactar briefs y contenido de los posts prioritarios",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "calendario-editorial"
+                                    ],
+                          "responsable":  "Copywriter de Conversion",
+                          "resultado_esperado":  "Cada post sale con brief claro, enfoque, subtitulos sugeridos y angulo monetizable.",
+                          "entregable":  "Brief por URL priorizada con H1, H2, resumen esperado, FAQs y CTA sugeridos.",
+                          "criterio_cierre":  "El redactor tiene suficiente material para escribir sin inventar la estrategia.",
+                          "nota":  "Usar las keywords relacionadas del calendario como base de redaccion."
+                      },
+                      {
+                          "id":  "T-038-ST-04",
+                          "titulo":  "Validar SEO, enlazado y coherencia monetizable",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-especialista-enlazado-interno"
+                                    ],
+                          "responsable":  "Consultor SEO Monetizacion",
+                          "resultado_esperado":  "Los borradores quedan validados antes de publicar.",
+                          "entregable":  "Checklist de validacion por pieza: intencion, keyword principal, keywords relacionadas, monetizacion, enlaces internos y riesgo de canibalizacion.",
+                          "criterio_cierre":  "Cada borrador tiene visto bueno para WordPress.",
+                          "nota":  "Rechazar piezas con keywords sin ajuste real al negocio del sitio."
+                      },
+                      {
+                          "id":  "T-038-ST-05",
+                          "titulo":  "Publicar en WordPress y verificar salida",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "Tecnico WordPress / Automatizacion",
+                          "resultado_esperado":  "Las URLs priorizadas quedan publicadas y verificadas en el sitio.",
+                          "entregable":  "Publicacion de los posts aprobados, revision de slugs, SEO on-page, enlaces y verificacion final.",
+                          "criterio_cierre":  "Cada URL publicada responde al brief, carga correctamente y queda lista para indexacion.",
+                          "nota":  "Validar mobile, titles, metas, CTA y enlaces antes de cerrar."
+                      },
+                      {
+                          "id":  "T-038-ST-06",
+                          "titulo":  "Inventario de cobertura existente en el sitio",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "calendario-editorial",
+                          "responsable":  "Estratega SEO/Editorial",
+                          "resultado_esperado":  "Cada keyword prioritaria queda marcada con cobertura existente, URL actual y accion crear o actualizar.",
+                          "entregable":  "Tabla keyword -\u003e cobertura existente -\u003e URL actual -\u003e accion sugerida -\u003e prioridad para las 30 keywords mas relevantes.",
+                          "criterio_cierre":  "No queda ninguna keyword prioritaria sin verificar cobertura real en el sitio.",
+                          "nota":  "Primero revisar el dominio y luego hacer busqueda tipo site: si hace falta."
+                      },
+                      {
+                          "id":  "T-038-ST-07",
+                          "titulo":  "Elegir las 5 primeras URLs a trabajar",
+                          "estado":  "en_curso",
+                          "prioridad":  "critica",
+                          "agente":  "agente-estratega-negocio-digital",
+                          "apoyo":  [
+                                        "agente-consultor-seo-monetizacion"
+                                    ],
+                          "responsable":  "Estratega de Negocio Digital",
+                          "resultado_esperado":  "Quedan definidas las 5 primeras piezas a crear o actualizar con prioridad de negocio.",
+                          "entregable":  "Lista corta con 5 URLs, razon de prioridad, tipo de accion y orden de ejecucion.",
+                          "criterio_cierre":  "Ya existe un foco claro para la primera tanda de trabajo.",
+                          "nota":  "Priorizar Torres del Paine, Puerto Natales y Punta Arenas antes de rutas secundarias."
+                      },
+                      {
+                          "id":  "T-038-ST-08",
+                          "titulo":  "Brief de los 3 primeros contenidos",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-copywriter-conversion",
+                          "apoyo":  [
+                                        "calendario-editorial"
+                                    ],
+                          "responsable":  "Copywriter de Conversion",
+                          "resultado_esperado":  "Los 3 primeros posts quedan listos para redaccion.",
+                          "entregable":  "Brief de cada pieza con H1, H2, resumen esperado, FAQs, CTA y keywords relacionadas.",
+                          "criterio_cierre":  "Un redactor puede empezar a escribir sin pedir aclaraciones.",
+                          "nota":  "Usar el formato del calendario editorial como base."
+                      },
+                      {
+                          "id":  "T-038-ST-09",
+                          "titulo":  "Validacion SEO y monetizacion de los 3 primeros briefs",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-consultor-seo-monetizacion",
+                          "apoyo":  [
+                                        "agente-especialista-enlazado-interno"
+                                    ],
+                          "responsable":  "Consultor SEO Monetizacion",
+                          "resultado_esperado":  "Los 3 briefs salen validados antes de pasar a WordPress.",
+                          "entregable":  "Checklist de validacion por pieza: intencion, cobertura, monetizacion, riesgo de canibalizacion y enlazado sugerido.",
+                          "criterio_cierre":  "Cada brief tiene visto bueno para producirse.",
+                          "nota":  "No aprobar piezas sin relacion clara con la conversion o la captacion del sitio."
+                      },
+                      {
+                          "id":  "T-038-ST-10",
+                          "titulo":  "Publicar la primera tanda en WordPress",
+                          "estado":  "en_curso",
+                          "prioridad":  "alta",
+                          "agente":  "agente-tecnico-wordpress-automatizacion",
+                          "apoyo":  [
+                                        "agente-proyecto-avesnativaschilenas"
+                                    ],
+                          "responsable":  "Tecnico WordPress / Automatizacion",
+                          "resultado_esperado":  "La primera tanda de contenidos queda subida, revisada y lista para indexar.",
+                          "entregable":  "Publicacion de las 3 primeras URLs con slugs, titles, metas, CTA y enlaces internos.",
+                          "criterio_cierre":  "Los contenidos quedan visibles, correctos y sin errores criticos.",
+                          "nota":  "Validar mobile, slugs y enlaces antes de cerrar cada URL."
+                      }
+                  ]
+}
