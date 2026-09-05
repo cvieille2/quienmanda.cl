@@ -17,3 +17,6 @@
 /database/database.sqlite
 npm-debug.log
 yarn-error.log
+
+# Laravel dev-generated (Vite dev server)
+/public/fonts-manifest.dev.json
