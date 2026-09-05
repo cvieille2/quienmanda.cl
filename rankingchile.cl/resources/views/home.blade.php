@@ -272,6 +272,24 @@
             moneyDisplay(v) {
                 return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL');
             },
+            get projectedToTop() {
+                if (!this.modal.profile) return this.limits.min;
+                const need = this.modal.profile.toTop;
+                if (need > 0 && need <= this.limits.max) return need;
+                return this.limits.max;
+            },
+            get projection() {
+                const p = this.modal.profile;
+                if (!p || !this.modal.amount) return { rank: p ? p.rank : null, tied: false };
+                const target = p.amount + this.modal.amount;
+                let rank = 1, ahead = 0;
+                for (let i = 0; i < this.ranking.length; i++) {
+                    if (this.ranking[i].amount >= target) ahead++;
+                }
+                rank = ahead + 1;
+                const tied = ahead > 0 && this.ranking[ahead - 1].amount === target;
+                return { rank, tied };
+            },
             goPay() {
                 if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
                 if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }

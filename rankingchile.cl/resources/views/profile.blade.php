@@ -145,6 +145,24 @@
                 tick(); setInterval(tick, 1000);
             },
             moneyDisplay(v) { return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL'); },
+            get projectedToTop() {
+                if (!this.modal.profile) return this.limits.min;
+                const need = this.modal.profile.toTop;
+                if (need > 0 && need <= this.limits.max) return need;
+                return this.limits.max;
+            },
+            get projection() {
+                const p = this.modal.profile;
+                if (!p || !this.modal.amount) return { rank: p ? p.rank : null, tied: false };
+                const target = p.amount + this.modal.amount;
+                let race = 0;
+                for (let i = 0; i < this.ranking.length; i++) {
+                    if (this.ranking[i].amount >= target) race++;
+                }
+                const rank = race + 1;
+                const tied = race > 0 && this.ranking[race - 1].amount === target;
+                return { rank, tied };
+            },
             async copyShare(url) {
                 try { await navigator.clipboard.writeText(url); } catch (e) {}
             },
@@ -158,7 +176,7 @@
             },
             setCustomAmount(ev) { const v = parseInt(ev.target.value) || 0; this.modal.amount = Math.max(0, v); this.setQuick(null); },
             setQuick(val) { this.modal.amount = val; },
-            suggestedAmount() {
+            get suggestedAmount() {
                 if (!this.modal.profile) return this.limits.min;
                 const need = this.modal.profile.toTop;
                 return (need > 0 && need <= this.limits.max) ? need : this.limits.min;

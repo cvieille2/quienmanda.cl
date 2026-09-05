@@ -25,19 +25,18 @@
             <div class="my-4 text-center text-3xl font-black text-[#F53003]" x-text="moneyDisplay(suggestedAmount)"></div>
             <p class="text-center text-xs text-gray-400" x-text="'(para el puesto #1)'"></p>
 
-            <div class="mt-5">
-                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide" x-text="'¿Cuánto apoyas? (mín ' + moneyDisplay(limits.min) + ' · máx ' + moneyDisplay(limits.max) + ')'"></label>
-                <div class="mt-2 grid grid-cols-4 gap-2">
-                    <template x-for="q in modal.quickAmounts" :key="q">
-                        <button @click="setQuick(q)"
-                            class="py-3 rounded-xl border font-bold text-sm"
-                            :class="modal.amount === q ? 'bg-[#1B1B18] text-white border-[#1B1B18]' : 'bg-white border-gray-300 hover:border-gray-400'"
-                            x-text="'$' + q.toLocaleString('es-CL')"></button>
-                    </template>
-                    <input type="number" inputmode="numeric" placeholder="Otro"
-                        @input="setCustomAmount($event)"
-                        class="py-3 rounded-xl border border-gray-300 text-center font-bold text-sm w-full focus:border-[#F53003] focus:outline-none" />
+            <div x-show="modal.amount >= limits.min && modal.amount <= limits.max" class="mt-3">
+                <div class="flex items-center justify-between text-xs text-gray-500 rounded-xl bg-gray-50 border border-gray-200 px-3 py-2">
+                    <span>Con <span class="font-bold" x-text="moneyDisplay(modal.amount)"></span> quedaría en</span>
+                    <span class="font-black text-lg" :class="projection.rank === 1 ? 'text-[#F8B803]' : 'text-[#1B1B18]'">
+                        #<span x-text="projection.rank"></span>
+                        <span class="text-xs font-normal text-gray-500" x-show="projection.tied" x-text="'(empata en el Nº' + (projection.rank - 1) + ')'"></span>
+                    </span>
                 </div>
+                <button @click="setQuick(projectedToTop)" x-show="projection.rank > 1 && projectedToTop <= limits.max"
+                    class="mt-2 w-full text-[#F53003] text-xs font-bold underline underline-offset-2">
+                    ⬆️ Sube al #1 con <span x-text="moneyDisplay(projectedToTop)"></span> (dale, más!)
+                </button>
             </div>
 
             <div x-show="modal.amount > limits.max" class="mt-2 text-xs text-[#F53003]" x-text="'⚠️ Máx ' + moneyDisplay(limits.max) + ' por apoyo. Haz varios.'"></div>
