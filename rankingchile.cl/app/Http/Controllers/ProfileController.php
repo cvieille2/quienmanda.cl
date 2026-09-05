@@ -26,6 +26,7 @@ class ProfileController extends Controller
 
         $entry = collect($rankings)->firstWhere('profile_id', $profile->id);
         $rank = $entry['position'] ?? null;
+        $cfg = $period?->configuration ?? [];
 
         return view('profile', [
             'profile'          => $profile,
@@ -34,6 +35,10 @@ class ProfileController extends Controller
             'leader'           => $leader,
             'entry'            => $entry,
             'rank'             => $rank,
+            'limits'           => [
+                'min' => (int) ($cfg['minimum_support_clp'] ?? \App\Services\PaymentLimitsService::MIN_CLP),
+                'max' => (int) ($cfg['maximum_support_clp'] ?? \App\Services\PaymentLimitsService::MAX_CLP),
+            ],
             'paymentsEnabled'  => $flags->isEnabled(\App\Models\FeatureFlag::KEY_PAYMENTS_ENABLED),
             'sharingEnabled'   => $flags->isEnabled(\App\Models\FeatureFlag::KEY_SHARING_ENABLED, true),
             'checkoutToken'    => Str::random(32),

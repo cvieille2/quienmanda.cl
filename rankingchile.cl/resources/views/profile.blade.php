@@ -16,6 +16,7 @@
 <div class="min-h-screen" x-data="quienmanda({
     paymentsEnabled: {{ $paymentsEnabled ? 'true' : 'false' }},
     checkoutToken: '{{ $checkoutToken }}',
+    limits: { min: {{ $limits['min'] }}, max: {{ $limits['max'] }} },
     ranking: {{ json_encode(array_map(fn($r) => [
         'id' => $r['profile_id'], 'slug' => $r['slug'], 'name' => $r['display_name'],
         'amount' => $r['total_real_clp'], 'rank' => $r['position'], 'toTop' => $r['to_number_one_clp'] ?? 0,
@@ -71,7 +72,7 @@
 
             @if ($paymentsEnabled)
                 <button
-                    @click="openCheckout(@js($profile->id), '{{ $profile->slug }}', '{{ $profile->display_name }}', '{{ $rank }}')"
+                    @click="openCheckout(@js($profile->id))"
                     class="mt-6 w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl active:scale-[0.98] transition">
                     👑 APOYAR A {{ strtoupper($profile->display_name) }}
                 </button>
@@ -109,7 +110,7 @@
     @if ($paymentsEnabled && $entry)
         <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             <button
-                @click="openCheckout(@js($profile->id), '{{ $profile->slug }}', '{{ $profile->display_name }}', '{{ $rank }}')"
+                @click="openCheckout(@js($profile->id))"
                 class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl shadow-lg active:scale-[0.98] transition">
                 👑 APOYAR · {{ money_clp($entry['to_number_one_clp'] ?: ($entry['overtake_above_clp'] ?: 1000)) }}
             </button>
@@ -126,7 +127,7 @@
         return {
             ...config,
             countdown: '',
-            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000] },
+            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false },
             fm: { email: '', name: '', age18: false },
             submitting: false,
             error: null,
@@ -147,28 +148,32 @@
             async copyShare(url) {
                 try { await navigator.clipboard.writeText(url); } catch (e) {}
             },
-            openCheckout(id, slug, name, rank) {
-                const p = this.ranking.find(r => r.id === id);
-                this.modal = { open: true, step: 1, profile: { id, slug, name, rank, amount: p ? p.amount : 0, toTop: p ? p.toTop : 1000 }, amount: 0, quickAmounts: [1000, 2000, 5000] };
+            openCheckout(id) {
+                const p = this.ranking.find(r => r.id === id) || {};
+                const min = this.limits.min;
+                this.modal = { open: true, step: 1, confirmed: false,
+                    profile: { id, slug: p.slug || '', name: p.name || '', rank: p.rank || null, amount: p.amount || 0, toTop: p.toTop || min },
+                    amount: 0, quickAmounts: [min, min * 2, min * 5] };
                 this.fm = { email: '', name: '', age18: false }; this.error = null;
             },
-            setCustomAmount(ev) { const v = parseInt(ev.target.value) || 0; this.modal.amount = Math.max(0, v); },
+            setCustomAmount(ev) { const v = parseInt(ev.target.value) || 0; this.modal.amount = Math.max(0, v); this.setQuick(null); },
             setQuick(val) { this.modal.amount = val; },
-            get suggestedAmount() {
-                if (!this.modal.profile) return 1000;
+            suggestedAmount() {
+                if (!this.modal.profile) return this.limits.min;
                 const need = this.modal.profile.toTop;
-                return (need > 0 && need <= 500000) ? need : 1000;
+                return (need > 0 && need <= this.limits.max) ? need : this.limits.min;
             },
             goPay() {
-                if (!this.modal.amount || this.modal.amount < 1000) { this.error = 'El mínimo es $1.000.'; return; }
-                if (this.modal.amount > 500000) { this.error = 'Máx $500.000 por apoyo. Haz varios.'; return; }
-                if (!this.fm.age18) { this.error = 'Debes ser mayor de 18 años.'; return; }
+                if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
+                if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }
+                if (this.modal.amount > this.limits.max) { this.error = `Máximo ${this.moneyDisplay(this.limits.max)} por apoyo. Haz varios.`; return; }
                 this.modal.step = 2; this.error = null;
             },
             async submitPayment() {
                 const email = this.fm.email.trim();
                 if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { this.error = 'Ingresa un email válido.'; return; }
-                this.submitting = true; this.error = null;
+                if (!this.fm.age18) { this.error = 'Debes declarar que eres mayor de 18 años.'; return; }
+                this.submitting = true; this.error = null; this.modal.confirmed = false;
                 try {
                     const res = await fetch('/api/pagos', {
                         method: 'POST',
@@ -182,7 +187,7 @@
                     const data = await res.json();
                     if (!res.ok) { throw new Error(data.error === 'checkout_disabled' ? 'Pagos desactivados por ahora.' : (data.message || 'No pudimos procesar tu pago.')); }
                     if (data.checkout_url) { window.location.href = data.checkout_url; return; }
-                    this.modal.step = 3; this.modal.confirmed = true;
+                    this.modal.step = 3;
                 } catch (err) { this.error = err.message; }
                 finally { this.submitting = false; }
             },

@@ -18,6 +18,7 @@
 <div class="min-h-screen" x-data="quienmanda({
     paymentsEnabled: {{ $paymentsEnabled ? 'true' : 'false' }},
     checkoutToken: '{{ $checkoutToken }}',
+    limits: { min: {{ $limits['min'] }}, max: {{ $limits['max'] }} },
     ranking: {{ json_encode(array_map(fn($r) => [
         'id' => $r['profile_id'],
         'slug' => $r['slug'],
@@ -62,9 +63,9 @@
                     </div>
                     @if ($paymentsEnabled)
                         <button
-                            @click="openCheckout(@js($leader['profile_id']), '{{ $leader['slug'] }}', '{{ $leader['display_name'] }}', '{{ $leader['rank'] }}')"
+                            @click="openCheckout(@js($leader['profile_id']))"
                             class="mt-5 w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black text-lg py-4 rounded-2xl tracking-wide shadow-lg active:scale-[0.98] transition">
-                            👑 QUITARLE LA CORONA
+                            🛡️ DEFENDER LA CORONA
                         </button>
                     @else
                         <div class="mt-5 w-full bg-white/10 text-white/70 font-semibold py-4 rounded-2xl">💤 Pagos desactivados</div>
@@ -104,7 +105,7 @@
                                 <div class="text-right">
                                     <div class="font-black {{ $isLeader ? 'text-[#F53003]' : '' }}">{{ money_clp($r['total_real_clp']) }}</div>
                                     @if (! $isLeader && $r['overtake_above_clp'] > 0)
-                                        <button @click.prevent="openCheckout(@js($r['profile_id']), '{{ $r['slug'] }}', '{{ $r['display_name'] }}', '{{ $r['position'] }}')"
+                                        <button @click.prevent="openCheckout(@js($r['profile_id']))"
                                             class="text-[#F53003] text-xs font-bold underline underline-offset-2">🔥 faltan {{ money_clp($r['overtake_above_clp']) }}</button>
                                     @endif
                                 </div>
@@ -112,9 +113,9 @@
                             @if ($isLeader)
                                 <div class="mt-3">
                                     <button
-                                        @click.prevent="openCheckout(@js($r['profile_id']), '{{ $r['slug'] }}', '{{ $r['display_name'] }}', '{{ $r['position'] }}')"
+                                        @click.prevent="openCheckout(@js($r['profile_id']))"
                                         class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-3 rounded-xl active:scale-[0.98] transition">
-                                        👑 QUITARLE LA CORONA
+                                        🛡️ DEFENDER LA CORONA
                                     </button>
                                 </div>
                             @endif
@@ -127,7 +128,7 @@
                                 {{ $r['verification_status'] === 'verified' ? '✓' : ($r['verification_status'] === 'pending' ? '…' : '') }}
                             </span>
                             <div class="flex-1 font-medium">{{ $r['display_name'] }}</div>
-                            <button @click.prevent="openCheckout(@js($r['profile_id']), '{{ $r['slug'] }}', '{{ $r['display_name'] }}', '{{ $r['position'] }}')"
+                            <button @click.prevent="openCheckout(@js($r['profile_id']))"
                                 class="text-sm font-bold text-[#F53003]">APOYAR</button>
                             <span class="font-bold tabular-nums">{{ money_clp($r['total_real_clp']) }}</span>
                         </a>
@@ -198,10 +199,10 @@
     @if ($paymentsEnabled && $leader)
         <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             <button
-                @click="openCheckout(@js($leader['profile_id']), '{{ $leader['slug'] }}', '{{ $leader['display_name'] }}', '{{ $leader['rank'] }}')"
+                @click="openCheckout(@js($leader['profile_id']))"
                 class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl shadow-lg active:scale-[0.98] transition"
             >
-                👑 QUITARLE LA CORONA · {{ $leader ? money_clp($leader['to_number_one_clp'] ?: 1000) : '$1.000' }}
+                🛡️ DEFENDER LA CORONA · {{ $leader ? money_clp($leader['to_number_one_clp'] ?: 1000) : '$1.000' }}
             </button>
         </div>
     @endif
@@ -219,7 +220,7 @@
             showFaq: false,
             periodEnds: 0,
             countdown: '',
-            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000] },
+            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false },
             fm: { email: '', name: '', age18: false },
             submitting: false,
             error: null,
@@ -238,13 +239,22 @@
                       m = Math.floor((s % 3600) / 60), sec = s % 60;
                 this.countdown = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(sec).padStart(2,'0')}s`;
             },
-            openCheckout(id, slug, name, rank) {
-                const p = this.ranking.find(r => r.id === id);
+            openCheckout(id) {
+                const p = this.ranking.find(r => r.id === id) || {};
+                const min = this.limits.min;
                 this.modal = {
-                    open: true, step: 1, profile: { id, slug, name, rank, amount: p ? p.amount : 0,
-                        toTop: p ? p.toTop : 1000 },
+                    open: true, step: 1,
+                    profile: {
+                        id,
+                        slug: p.slug || '',
+                        name: p.name || '',
+                        rank: p.rank || null,
+                        amount: p.amount || 0,
+                        toTop: p.toTop || min,
+                    },
                     amount: 0,
-                    quickAmounts: [1000, 2000, 5000],
+                    quickAmounts: [min, min * 2, min * 5],
+                    confirmed: false,
                 };
                 this.fm = { email: '', name: '', age18: false };
                 this.error = null;
@@ -252,25 +262,26 @@
             setCustomAmount(ev) { const v = parseInt(ev.target.value) || 0; this.modal.amount = Math.max(0, v); this.setQuick(null); },
             setQuick(val) { this.modal.amount = val; },
             get suggestedAmount() {
-                if (!this.modal.profile) return 1000;
+                if (!this.modal.profile) return this.limits.min;
                 const need = this.modal.profile.toTop;
-                if (need > 0 && need <= 500000) return need;
-                return 1000;
+                if (need > 0 && need <= this.limits.max) return need;
+                return this.limits.min;
             },
             moneyDisplay(v) {
                 return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL');
             },
             goPay() {
-                if (!this.modal.amount || this.modal.amount < 1000) { this.error = 'El mínimo es $1.000.'; return; }
-                if (this.modal.amount > 500000) { this.error = 'Máx $500.000 por apoyo. Haz varios.'; return; }
-                if (!this.fm.age18) { this.error = 'Debes ser mayor de 18 años.'; return; }
+                if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
+                if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }
+                if (this.modal.amount > this.limits.max) { this.error = `Máximo ${this.moneyDisplay(this.limits.max)} por apoyo. Haz varios.`; return; }
                 this.modal.step = 2;
                 this.error = null;
             },
             async submitPayment() {
                 const email = this.fm.email.trim();
                 if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { this.error = 'Ingresa un email válido.'; return; }
-                this.submitting = true; this.error = null;
+                if (!this.fm.age18) { this.error = 'Debes declarar que eres mayor de 18 años.'; return; }
+                this.submitting = true; this.error = null; this.modal.confirmed = false;
                 try {
                     const res = await fetch('/api/pagos', {
                         method: 'POST',
@@ -288,7 +299,7 @@
                     const data = await res.json();
                     if (!res.ok) { throw new Error(data.error === 'checkout_disabled' ? 'Pagos desactivados por ahora.' : (data.message || 'No pudimos procesar tu pago.')); }
                     if (data.checkout_url) { window.location.href = data.checkout_url; return; }
-                    this.modal.step = 3; this.modal.confirmed = true;
+                    this.modal.step = 3;
                 } catch (err) { this.error = err.message; }
                 finally { this.submitting = false; }
             },

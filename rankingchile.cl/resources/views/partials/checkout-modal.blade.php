@@ -26,7 +26,7 @@
             <p class="text-center text-xs text-gray-400" x-text="'(para el puesto #1)'"></p>
 
             <div class="mt-5">
-                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">¿Cuánto apoyas? (mín $1.000 · máx $500.000)</label>
+                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide" x-text="'¿Cuánto apoyas? (mín ' + moneyDisplay(limits.min) + ' · máx ' + moneyDisplay(limits.max) + ')'"></label>
                 <div class="mt-2 grid grid-cols-4 gap-2">
                     <template x-for="q in modal.quickAmounts" :key="q">
                         <button @click="setQuick(q)"
@@ -34,19 +34,19 @@
                             :class="modal.amount === q ? 'bg-[#1B1B18] text-white border-[#1B1B18]' : 'bg-white border-gray-300 hover:border-gray-400'"
                             x-text="'$' + q.toLocaleString('es-CL')"></button>
                     </template>
-                    <input type="number" inputmode="numeric" min="1000" max="500000" placeholder="Otro"
+                    <input type="number" inputmode="numeric" placeholder="Otro"
                         @input="setCustomAmount($event)"
                         class="py-3 rounded-xl border border-gray-300 text-center font-bold text-sm w-full focus:border-[#F53003] focus:outline-none" />
                 </div>
             </div>
 
-            <div x-show="modal.amount > 500000" class="mt-2 text-xs text-[#F53003]">⚠️ Máx $500.000 por apoyo. Haz varios.</div>
-            <div x-show="modal.amount > 0 && modal.amount < 1000 && modal.amount !== 1000" class="mt-2 text-xs text-[#F53003]">El mínimo es $1.000.</div>
+            <div x-show="modal.amount > limits.max" class="mt-2 text-xs text-[#F53003]" x-text="'⚠️ Máx ' + moneyDisplay(limits.max) + ' por apoyo. Haz varios.'"></div>
+            <div x-show="modal.amount > 0 && modal.amount < limits.min" class="mt-2 text-xs text-[#F53003]" x-text="'El mínimo es ' + moneyDisplay(limits.min) + '.'"></div>
             <div x-show="error" class="mt-3 text-sm text-[#F53003]" x-text="error"></div>
 
             <button @click="goPay()" :disabled="!modal.amount"
                 class="mt-5 w-full bg-[#F53003] disabled:bg-gray-300 disabled:text-gray-500 hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl active:scale-[0.98] transition"
-                x-text="'👑 QUITARLE LA CORONA · ' + moneyDisplay(modal.amount)"></button>
+                x-text="(modal.profile.rank === 1 ? '🛡️ DEFENDER LA CORONA · ' : '⭐ APOYAR AHORA · ') + moneyDisplay(modal.amount)"></button>
             <p class="mt-3 text-center text-xs text-gray-400">Pago rápido. Puedes quedar en anónimo.</p>
         </div>
 
@@ -84,16 +84,15 @@
             </button>
         </div>
 
-        {{-- PASO 3: PROCESANDO / CONFIRMACIÓN --}}
+        {{-- PASO 3: PROCESANDO (acreditación SÓLO la confirma el servidor/estado) --}}
         <div x-show="modal.step === 3" class="text-center py-10">
-            <template x-if="modal.confirmed">
-                <div>
-                    <div class="text-6xl">✅</div>
-                    <h3 class="mt-4 text-xl font-extrabold">PAGO RECIBIDO</h3>
-                    <p class="mt-2 text-sm text-gray-600" x-text="'Tu apoyo se reflejó en el ranking. ¡Gracias!'"></p>
-                    <button @click="modal.open = false" class="mt-6 w-full bg-[#1B1B18] text-white font-black py-4 rounded-2xl">CONTINUAR 🎉</button>
-                </div>
-            </template>
+            <div class="text-6xl">⏳</div>
+            <h3 class="mt-4 text-xl font-extrabold">Procesando tu apoyo</h3>
+            <p class="mt-2 text-sm text-gray-600">
+                Estamos confirmando tu pago. <span class="font-semibold">No cierres esta página.</span>
+                El pago queda registrado cuando el servidor lo confirme.
+            </p>
+            <button @click="modal.open = false" class="mt-6 w-full bg-[#1B1B18] text-white font-black py-4 rounded-2xl">VOLVER AL RANKING</button>
         </div>
     </div>
 </div>
