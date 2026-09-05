@@ -104,13 +104,13 @@
                                 </div>
                                 <div class="text-right">
                                     <div class="font-black {{ $isLeader ? 'text-[#F53003]' : '' }}">{{ money_clp($r['total_real_clp']) }}</div>
-                                    @if (! $isLeader && $r['overtake_above_clp'] > 0)
+                                    @if (! $isLeader && $r['overtake_above_clp'] > 0 && $paymentsEnabled)
                                         <button @click.prevent="openCheckout(@js($r['profile_id']))"
                                             class="text-[#F53003] text-xs font-bold underline underline-offset-2">🔥 faltan {{ money_clp($r['overtake_above_clp']) }}</button>
                                     @endif
                                 </div>
                             </div>
-                            @if ($isLeader)
+                            @if ($isLeader && $paymentsEnabled)
                                 <div class="mt-3">
                                     <button
                                         @click.prevent="openCheckout(@js($r['profile_id']))"
@@ -128,8 +128,10 @@
                                 {{ $r['verification_status'] === 'verified' ? '✓' : ($r['verification_status'] === 'pending' ? '…' : '') }}
                             </span>
                             <div class="flex-1 font-medium">{{ $r['display_name'] }}</div>
-                            <button @click.prevent="openCheckout(@js($r['profile_id']))"
-                                class="text-sm font-bold text-[#F53003]">APOYAR</button>
+                            @if ($paymentsEnabled)
+                                <button @click.prevent="openCheckout(@js($r['profile_id']))"
+                                    class="text-sm font-bold text-[#F53003]">APOYAR</button>
+                            @endif
                             <span class="font-bold tabular-nums">{{ money_clp($r['total_real_clp']) }}</span>
                         </a>
                     @endif
