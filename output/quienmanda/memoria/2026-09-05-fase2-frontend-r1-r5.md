@@ -62,8 +62,9 @@ ranking (vacíos, sin transacciones, pagos desactivados). 3 commits en `rankingc
 
 ## SIGUIENTE_PASO
 
-1. (Opcional pedido) Reporte formal en este formato entregado al dueño.
-2. Desbloqueo de Fase 3: el dueño entrega B8 + B3 (+ B6/B4).
-3. QA MariaDB real + 6 ítems consola BanaHosting (Fase 0.5) con acceso hosting.
+1. **⚡ Feature nuevo APLICADO (mismo día):** indicador de posición futura en el paso 1 del modal (`Con $X quedaría en #N` + botón `Sube al #1 con $Y`). Commit `fef4c36`. Proyección exacta: `pos = 1 + count(perfiles con monto >= miMonto + apoyo)`, empate = queda detrás. `suggestedAmount` corregido a getter en `profile.blade.php`.
+2. (Opcional pedido) Reporte formal en este formato entregado al dueño.
+3. Desbloqueo de Fase 3: el dueño entrega B8 + B3 (+ B6/B4).
+4. QA MariaDB real + 6 ítems consola BanaHosting (Fase 0.5) con acceso hosting.
 </content>
 </invoke>
