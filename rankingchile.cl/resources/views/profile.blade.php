@@ -4,12 +4,12 @@
 
 @push('meta')
     <meta property="og:title" content="{{ $profile->display_name }} está #{{ $rank }} en ¿Quién Manda? 👑" />
-    <meta property="og:description" content="Faltan {{ money_clp($entry['overtake_above_clp'] ?? 1000) }} para que {{ $profile->display_name }} siga escalando. Ayuda y súbelo." />
+    <meta property="og:description" content="Faltan {{ money_clp($entry['overtake_above_clp'] ?? 1000) }} para que {{ $profile->display_name }} siga escalando. Impúlsalo y supéralo." />
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ $profile->display_name }} está #{{ $rank }} en ¿Quién Manda?" />
-    <meta name="twitter:description" content="El ranking que se decide con plata. Apoya a {{ $profile->display_name }}." />
+    <meta name="twitter:description" content="El ranking que se decide con plata. Impulsa a {{ $profile->display_name }}." />
 @endpush
 
 @section('body')
@@ -23,19 +23,14 @@
     ], $ranking)) }}
 )">
 
-    <header class="sticky top-0 z-40 bg-[#1B1B18] text-white">
-        <div class="mx-auto max-w-2xl px-4 py-2 flex items-center justify-between gap-3">
-            <a href="{{ route('home') }}" class="flex items-center gap-2 font-bold tracking-tight">
-                <span class="text-lg">👑</span>
-                <span class="hidden sm:inline">quienmanda.cl</span>
-                <span class="sm:hidden">quienmanda</span>
-            </a>
-            <div class="flex items-center gap-3 text-sm">
-                <span class="text-[#F8B803] font-mono font-bold tabular-nums" x-text="countdown"></span>
-                <span class="text-white/60 text-xs leading-tight">para el<br>RESET</span>
-            </div>
+    @php $activePage = 'profile'; @endphp
+    @section('headerExtra')
+        <div class="flex items-center gap-2" x-show="countdown">
+            <span class="text-[#F8B803] font-mono font-bold tabular-nums" x-text="countdown"></span>
+            <span class="text-white/60 text-xs leading-tight">para el<br>RESET</span>
         </div>
-    </header>
+    @endsection
+    @include('partials.site-header')
 
     <main class="mx-auto max-w-2xl px-4 pb-28 pt-6">
 
@@ -65,7 +60,7 @@
 
             @if ($entry)
                 <div class="mt-4 text-sm text-gray-600">
-                    👥 {{ number_format($entry['supporter_count']) }} personas apoyan a {{ $profile->display_name }} esta semana
+                    👥 {{ number_format($entry['supporter_count']) }} personas impulsan a {{ $profile->display_name }} esta semana
                     <span class="text-gray-400 text-xs">(distintas y validadas)</span>
                 </div>
             @endif
@@ -74,7 +69,7 @@
                 <button
                     @click="openCheckout(@js($profile->id))"
                     class="mt-6 w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl active:scale-[0.98] transition">
-                    👑 APOYAR A {{ strtoupper($profile->display_name) }}
+                    👑 IMPULSAR A {{ strtoupper($profile->display_name) }}
                 </button>
                 @if ($entry && $entry['overtake_above_clp'] > 0)
                     <p class="mt-2 text-xs text-gray-500">para superar al puesto de arriba · <span class="font-bold text-[#F53003]">🔥 faltan {{ money_clp($entry['overtake_above_clp']) }}</span></p>
@@ -87,33 +82,39 @@
             @if ($sharingEnabled)
                 <div class="mt-6 rounded-2xl bg-[#1B1B18] text-white p-5 text-left">
                     <h2 class="font-extrabold">🎯 Moviliza a tu comunidad</h2>
-                    <p class="text-xs text-white/70 mt-1">Comparte el link de apoyo para movilizar a tu grupo.</p>
+                    <p class="text-xs text-white/70 mt-1">Comparte el link de impulso para movilizar a tu grupo.</p>
                     <div class="mt-3 flex gap-2">
                         <input readonly value="{{ url()->current() }}?ref=share_trophy" class="flex-1 bg-white/10 rounded-lg px-3 py-2 text-xs focus:outline-none" onclick="this.select()" />
                         <button @click="copyShare('{{ url()->current() }}?ref=share_trophy')" class="bg-white text-[#1B1B18] rounded-lg px-4 py-2 text-xs font-bold">📋 Copiar</button>
                     </div>
-                    <a href="https://wa.me/?text={{ urlencode('🔥 Apoya a ' . $profile->display_name . ' en quienmanda.cl 👑 ' . url()->current()) }}"
-                       target="_blank" class="mt-2 block text-center bg-[#25D366] text-white font-bold py-2 rounded-lg text-sm">📣 COMPARTIR PARA MOVILIZAR</a>
+                    <a href="https://wa.me/?text={{ urlencode('🔥 Impulsa a ' . $profile->display_name . ' en quienmanda.cl 👑 ' . url()->current()) }}"
+                       target="_blank" class="mt-2 block text-center bg-[#25D366] text-white font-bold py-2 rounded-lg text-sm">📣 COMPARTIR PARA IMPULSAR</a>
                 </div>
             @endif
 
             <a href="{{ route('home') }}" class="mt-6 block text-[#F53003] font-bold text-sm">← Ver ranking completo</a>
         </div>
 
-        <div class="mt-8 text-center text-xs text-gray-400 pb-6">
-            <p>Cierre semanal: domingo 23:59 (America/Santiago)</p>
-            <p>Cada CLP cuenta. Falta {{ money_clp($entry['overtake_above_clp'] ?? 1000) }} para el siguiente puesto.</p>
+        <div class="mt-6 text-center">
+            <a href="{{ route('rules') }}" class="text-sm font-bold text-[#F53003] underline underline-offset-2 hover:text-[#c22a02] transition">
+                📋 Ver reglas del ranking →
+            </a>
         </div>
+
+        @include('partials.site-footer')
     </main>
 
     {{-- STICKY CTA --}}
     @if ($paymentsEnabled && $entry)
-        <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-            <button
-                @click="openCheckout(@js($profile->id))"
-                class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl shadow-lg active:scale-[0.98] transition">
-                👑 APOYAR · {{ money_clp($entry['to_number_one_clp'] ?: ($entry['overtake_above_clp'] ?: 1000)) }}
-            </button>
+        <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+            <div class="mx-auto max-w-2xl">
+                <p class="mb-2 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-gray-500">Acción inmediata</p>
+                <button
+                    @click="openCheckout(@js($profile->id))"
+                    class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black text-base sm:text-lg py-5 rounded-2xl shadow-xl active:scale-[0.98] transition">
+                    👑 IMPULSAR · {{ money_clp($entry['to_number_one_clp'] ?: ($entry['overtake_above_clp'] ?: 1000)) }}
+                </button>
+            </div>
         </div>
     @endif
 
@@ -127,7 +128,7 @@
         return {
             ...config,
             countdown: '',
-            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false },
+            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false }, receiptData: { periodCode: '', reference: '' },
             fm: { email: '', name: '', age18: false },
             submitting: false,
             error: null,
@@ -169,9 +170,11 @@
             openCheckout(id) {
                 const p = this.ranking.find(r => r.id === id) || {};
                 const min = this.limits.min;
+                const needTop = p.toTop || min;
+                const suggested = (needTop > 0 && needTop <= this.limits.max) ? needTop : min;
                 this.modal = { open: true, step: 1, confirmed: false,
                     profile: { id, slug: p.slug || '', name: p.name || '', rank: p.rank || null, amount: p.amount || 0, toTop: p.toTop || min },
-                    amount: 0, quickAmounts: [min, min * 2, min * 5] };
+                    amount: suggested, quickAmounts: [min, min * 2, min * 5] };
                 this.fm = { email: '', name: '', age18: false }; this.error = null;
             },
             setCustomAmount(ev) { const v = parseInt(ev.target.value) || 0; this.modal.amount = Math.max(0, v); this.setQuick(null); },
@@ -184,7 +187,7 @@
             goPay() {
                 if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
                 if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }
-                if (this.modal.amount > this.limits.max) { this.error = `Máximo ${this.moneyDisplay(this.limits.max)} por apoyo. Haz varios.`; return; }
+                if (this.modal.amount > this.limits.max) { this.error = `Máximo ${this.moneyDisplay(this.limits.max)} por impulso. Haz varios.`; return; }
                 this.modal.step = 2; this.error = null;
             },
             async submitPayment() {
@@ -205,7 +208,7 @@
                     const data = await res.json();
                     if (!res.ok) { throw new Error(data.error === 'checkout_disabled' ? 'Pagos desactivados por ahora.' : (data.message || 'No pudimos procesar tu pago.')); }
                     if (data.checkout_url) { window.location.href = data.checkout_url; return; }
-                    this.modal.step = 3;
+                    this.receiptData = { periodCode: data.period_code || '', reference: data.external_reference || data.receipt_id || '' }; this.modal.step = 3;
                 } catch (err) { this.error = err.message; }
                 finally { this.submitting = false; }
             },

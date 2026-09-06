@@ -5,12 +5,12 @@
 @push('meta')
     @if ($period && $leader)
         <meta property="og:title" content="¿QUIÉN MANDA EN CHILE ESTA SEMANA?" />
-        <meta property="og:description" content="El ranking que se decide con plata. 👑 {{ $leader['display_name'] }} lidera con {{ money_clp($leader['total_real_clp']) }}. ¡Destrónalo!" />
+        <meta property="og:description" content="El ranking que se decide con plata. 👑 {{ $leader['display_name'] }} lidera con {{ money_clp($leader['total_real_clp']) }}. ¡Impúlsalo para superarlo!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ url('/') }}" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="¿QUIÉN MANDA EN CHILE ESTA SEMANA?" />
-        <meta name="twitter:description" content="El ranking que se decide con plata. {{ $leader['display_name'] }} manda con {{ money_clp($leader['total_real_clp']) }}." />
+        <meta name="twitter:description" content="El ranking que se decide con plata. {{ $leader['display_name'] }} manda con {{ money_clp($leader['total_real_clp']) }}. Súperalo con inversión promocional." />
     @endif
 @endpush
 
@@ -32,20 +32,14 @@
     ], $ranking)) }}
 )">
 
-    {{-- STICKY TOP: countdown + marca --}}
-    <header class="sticky top-0 z-40 bg-[#1B1B18] text-white">
-        <div class="mx-auto max-w-2xl px-4 py-2 flex items-center justify-between gap-3">
-            <a href="{{ route('home') }}" class="flex items-center gap-2 font-bold tracking-tight">
-                <span class="text-lg">👑</span>
-                <span class="hidden sm:inline">quienmanda.cl</span>
-                <span class="sm:hidden">quienmanda</span>
-            </a>
-            <div class="flex items-center gap-3 text-sm" x-show="periodEnds > 0">
-                <span class="text-[#F8B803] font-mono font-bold tabular-nums" x-text="countdown"></span>
-                <span class="text-white/60 text-xs leading-tight">para el<br>RESET</span>
-            </div>
+    @php $activePage = 'home'; @endphp
+    @section('headerExtra')
+        <div class="flex items-center gap-2" x-show="periodEnds > 0">
+            <span class="text-[#F8B803] font-mono font-bold tabular-nums" x-text="countdown"></span>
+            <span class="text-white/60 text-xs leading-tight">para el<br>RESET</span>
         </div>
-    </header>
+    @endsection
+    @include('partials.site-header')
 
     <main class="mx-auto max-w-2xl px-4 pb-28">
 
@@ -59,7 +53,7 @@
                     <div class="mt-2 text-[#F8B803] text-3xl font-black">{{ money_clp($leader['total_real_clp']) }}</div>
                     <div class="mt-1 text-white/60 text-sm">esta semana</div>
                     <div class="mt-1 text-white/60 text-xs">
-                        👥 {{ number_format($leader['supporter_count']) }} personas apoyan
+                        👥 {{ number_format($leader['supporter_count']) }} personas impulsan
                     </div>
                     @if ($paymentsEnabled)
                         <button
@@ -100,7 +94,7 @@
                                     <div class="font-bold">{{ $r['display_name'] }}
                                         @if ($r['is_community_created'])<span class="text-xs text-gray-400">👥</span>@endif
                                     </div>
-                                    <div class="text-xs text-gray-500">👥 {{ number_format($r['supporter_count']) }} personas</div>
+                                     <div class="text-xs text-gray-500">👥 {{ number_format($r['supporter_count']) }} personas impulsan</div>
                                 </div>
                                 <div class="text-right">
                                     <div class="font-black {{ $isLeader ? 'text-[#F53003]' : '' }}">{{ money_clp($r['total_real_clp']) }}</div>
@@ -130,7 +124,7 @@
                             <div class="flex-1 font-medium">{{ $r['display_name'] }}</div>
                             @if ($paymentsEnabled)
                                 <button @click.prevent="openCheckout(@js($r['profile_id']))"
-                                    class="text-sm font-bold text-[#F53003]">APOYAR</button>
+                                        class="text-sm font-bold text-[#F53003]">IMPULSAR</button>
                             @endif
                             <span class="font-bold tabular-nums">{{ money_clp($r['total_real_clp']) }}</span>
                         </a>
@@ -139,7 +133,7 @@
             </section>
         @else
             <section class="mt-8 text-center py-10 text-gray-500">
-                <p>Aún no hay apoyos esta semana. ¡Sé el primero!</p>
+                <p>Aún no hay impulsos esta semana. ¡Sé el primero!</p>
             </section>
         @endif
 
@@ -148,7 +142,7 @@
             <h3 class="text-xl font-extrabold mb-4">⚖️ Así funciona / Reglas simples</h3>
             <ol class="space-y-3 text-sm">
                 <li class="flex gap-3"><span class="font-black text-[#F8B803]">1.</span> Elige a tu favorito</li>
-                <li class="flex gap-3"><span class="font-black text-[#F8B803]">2.</span> Paga $1.000+ y súbelo</li>
+                <li class="flex gap-3"><span class="font-black text-[#F8B803]">2.</span> Paga $1.000+ e impúlsalo</li>
                 <li class="flex gap-3"><span class="font-black text-[#F8B803]">3.</span> Se actualiza el ranking en vivo</li>
                 <li class="flex gap-3"><span class="font-black text-[#F8B803]">4.</span> ¿Le quitas la corona? Compártelo 👑</li>
             </ol>
@@ -168,19 +162,19 @@
             <h3 class="font-extrabold text-base">Preguntas frecuentes</h3>
             <details>
                 <summary class="font-bold cursor-pointer">¿Esto es real o está manipulado?</summary>
-                <p class="mt-1 text-gray-600">Los montos son pagos reales verificados. Cada apoyo suma al total público. Los créditos promocionales aparecen marcados como "Inicio destacado".</p>
+                <p class="mt-1 text-gray-600">Los montos son pagos reales verificados. Cada impulso suma al total público. Los créditos promocionales aparecen marcados como "Inicio destacado".</p>
             </details>
             <details>
                 <summary class="font-bold cursor-pointer">¿Mi artista recibe este dinero?</summary>
-                <p class="mt-1 text-gray-600">Tu apoyo compra visibilidad y promoción del perfil dentro de este ranking. Es una plataforma independiente y no afiliada al artista.</p>
+                <p class="mt-1 text-gray-600">Tu impulso compra visibilidad y promoción del perfil dentro de este ranking. Es una plataforma independiente y no afiliada al artista.</p>
             </details>
             <details>
                 <summary class="font-bold cursor-pointer">¿Qué gano yo?</summary>
-                <p class="mt-1 text-gray-600">Tu participación hace subir a quien apoyas y queda registrada en el ranking. No hay premio monetario para quien apoya.</p>
+                <p class="mt-1 text-gray-600">Tu participación hace subir a quien impulsas y queda registrada en el ranking. No hay premio monetario para quien impulsa.</p>
             </details>
             <details>
                 <summary class="font-bold cursor-pointer">¿Y si pago y alguien me supera?</summary>
-                <p class="mt-1 text-gray-600">Tu aporte siempre suma al total de apoyo. Ninguna posición futura queda garantizada.</p>
+                <p class="mt-1 text-gray-600">Tu impulso siempre suma al total de visibilidad. Ninguna posición futura queda garantizada.</p>
             </details>
             <details>
                 <summary class="font-bold cursor-pointer">¿Mi aporte de $1.000 importa?</summary>
@@ -188,24 +182,28 @@
             </details>
         </section>
 
-        {{-- Footer --}}
-        <footer class="mt-10 text-center text-xs text-gray-400 pb-8">
-            <p>⏳ Cierre semanal: domingo 23:59 (America/Santiago)</p>
-            @if ($period)
-                <p class="mt-1">Ciclo {{ $period->code }} · {{ $period->starts_at->timezone('America/Santiago')->format('d/m') }} – {{ $period->ends_at->timezone('America/Santiago')->format('d/m') }}</p>
-            @endif
-        </footer>
+        {{-- REGLAS COMPLETAS --}}
+        <section class="mt-6 text-center">
+            <a href="{{ route('rules') }}" class="inline-block text-sm font-bold text-[#F53003] underline underline-offset-2 hover:text-[#c22a02] transition">
+                📋 Ver reglas completas →
+            </a>
+        </section>
+
+        @include('partials.site-footer')
     </main>
 
     {{-- STICKY CTA INFERIOR (thumb-zone) --}}
     @if ($paymentsEnabled && $leader)
-        <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-            <button
-                @click="openCheckout(@js($leader['profile_id']))"
-                class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl shadow-lg active:scale-[0.98] transition"
-            >
-                🛡️ DEFENDER LA CORONA · {{ $leader ? money_clp($leader['to_number_one_clp'] ?: 1000) : '$1.000' }}
-            </button>
+        <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+            <div class="mx-auto max-w-2xl">
+                <p class="mb-2 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-gray-500">Acción inmediata</p>
+                <button
+                    @click="openCheckout(@js($leader['profile_id']))"
+                    class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black text-base sm:text-lg py-5 rounded-2xl shadow-xl active:scale-[0.98] transition"
+                >
+                    🛡️ DEFENDER LA CORONA · {{ $leader ? money_clp($leader['to_number_one_clp'] ?: 1000) : '$1.000' }}
+                </button>
+            </div>
         </div>
     @endif
 
@@ -222,7 +220,7 @@
             showFaq: false,
             periodEnds: 0,
             countdown: '',
-            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false },
+            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false }, receiptData: { periodCode: '', reference: '' },
             fm: { email: '', name: '', age18: false },
             submitting: false,
             error: null,
@@ -244,6 +242,8 @@
             openCheckout(id) {
                 const p = this.ranking.find(r => r.id === id) || {};
                 const min = this.limits.min;
+                const needTop = p.toTop || min;
+                const suggested = (needTop > 0 && needTop <= this.limits.max) ? needTop : min;
                 this.modal = {
                     open: true, step: 1,
                     profile: {
@@ -254,7 +254,7 @@
                         amount: p.amount || 0,
                         toTop: p.toTop || min,
                     },
-                    amount: 0,
+                    amount: suggested,
                     quickAmounts: [min, min * 2, min * 5],
                     confirmed: false,
                 };
@@ -293,7 +293,7 @@
             goPay() {
                 if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
                 if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }
-                if (this.modal.amount > this.limits.max) { this.error = `Máximo ${this.moneyDisplay(this.limits.max)} por apoyo. Haz varios.`; return; }
+                if (this.modal.amount > this.limits.max) { this.error = `Máximo ${this.moneyDisplay(this.limits.max)} por impulso. Haz varios.`; return; }
                 this.modal.step = 2;
                 this.error = null;
             },
@@ -319,7 +319,7 @@
                     const data = await res.json();
                     if (!res.ok) { throw new Error(data.error === 'checkout_disabled' ? 'Pagos desactivados por ahora.' : (data.message || 'No pudimos procesar tu pago.')); }
                     if (data.checkout_url) { window.location.href = data.checkout_url; return; }
-                    this.modal.step = 3;
+                    this.receiptData = { periodCode: data.period_code || '', reference: data.external_reference || data.receipt_id || '' }; this.modal.step = 3;
                 } catch (err) { this.error = err.message; }
                 finally { this.submitting = false; }
             },
