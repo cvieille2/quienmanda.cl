@@ -28,7 +28,7 @@ class MercadoPagoGateway implements PaymentGatewayInterface
 
         $body = [
             'items' => [[
-                'title'      => 'Apoyo a ' . ($metadata['subject'] ?? 'perfil') . ' en Quien Manda',
+                'title'      => 'Impulso a ' . ($metadata['subject'] ?? 'perfil') . ' en Quien Manda',
                 'quantity'   => 1,
                 'unit_price' => $amountClp,
             ]],

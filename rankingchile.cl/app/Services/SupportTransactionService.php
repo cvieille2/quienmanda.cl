@@ -9,6 +9,7 @@ use App\Enums\SupportTransactionType;
 use App\Models\RankingPeriod;
 use App\Models\SupportTransaction;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class SupportTransactionService
 {
@@ -25,20 +26,27 @@ class SupportTransactionService
         array $attributes = [],
     ): SupportTransaction {
         $this->assertAmountWithinLimits($amountClp);
+        $this->periods->ensureActivePeriod(now());
+        $period = $this->periods->activePeriod();
+
+        if (! $period) {
+            throw new \RuntimeException('No existe periodo activo para crear checkout.');
+        }
 
         return SupportTransaction::create(array_merge([
-            'profile_id'            => $profileId,
-            'amount_clp'            => $amountClp,
-            'currency'              => Currency::CLP,
-            'type'                  => SupportTransactionType::Real,
-            'status'                => SupportTransactionStatus::Pending,
-            'payment_gateway'       => PaymentGateway::MercadoPago,
-            'external_reference'    => (string) Str::ulid(),
-            'checkout_created_at'   => now(),
-            'gateway_payer_id'      => $identity->gatewayPayerId,
-            'payer_reference_hash'  => $identity->payerReferenceHash,
-            'payer_email_hash'      => $identity->emailHash,
-            'signed_random_cookie'  => $identity->signedCookie,
+            'ranking_period_id' => $period->id,
+            'profile_id' => $profileId,
+            'amount_clp' => $amountClp,
+            'currency' => Currency::CLP,
+            'type' => SupportTransactionType::Real,
+            'status' => SupportTransactionStatus::Pending,
+            'payment_gateway' => PaymentGateway::MercadoPago,
+            'external_reference' => (string) Str::ulid(),
+            'checkout_created_at' => now(),
+            'gateway_payer_id' => $identity->gatewayPayerId,
+            'payer_reference_hash' => $identity->payerReferenceHash,
+            'payer_email_hash' => $identity->emailHash,
+            'signed_random_cookie' => $identity->signedCookie,
             'payer_age_declared_18' => true,
             'is_payer_identity_resolved' => (bool) $identity->payerReferenceHash,
         ], $attributes));
@@ -52,8 +60,8 @@ class SupportTransactionService
         $max = (int) ($cfg['maximum_support_clp'] ?? PaymentLimitsService::MAX_CLP);
 
         if ($amount < $min || $amount > $max) {
-            throw new \Illuminate\Validation\ValidationException(
-                validator([], [], ['amount_clp' => 'monto fuera de rango (' . $min . '-' . $max . ' CLP)'])
+            throw new ValidationException(
+                validator([], [], ['amount_clp' => 'monto fuera de rango ('.$min.'-'.$max.' CLP)'])
             );
         }
     }

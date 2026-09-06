@@ -9,7 +9,7 @@ class RankingSetting extends Model
     protected $table = 'ranking_settings';
 
     protected $fillable = [
-        'period_type', 'settlement_delay_minutes', 'minimum_support_clp',
+        'scope', 'period_type', 'settlement_delay_minutes', 'minimum_support_clp',
         'maximum_support_clp', 'show_real_amounts', 'show_supporter_count',
         'max_public_positions', 'category_scope', 'category',
         'sharing_enabled', 'community_profiles_enabled', 'promotional_credits_enabled',

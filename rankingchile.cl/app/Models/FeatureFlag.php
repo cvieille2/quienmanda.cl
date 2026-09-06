@@ -30,10 +30,15 @@ class FeatureFlag extends Model
 
     protected static function cacheValue(string $key, mixed $default): mixed
     {
-        return Cache::remember("feature_flag:{$key}", 5, function () use ($key, $default) {
-            $flag = static::where('key', $key)->first();
-            return $flag ? $flag->value : $default;
-        });
+        $flag = static::where('key', $key)->first();
+
+        // Solo se cachean flags EXISTENTES. Un flag inexistente no se cachea para
+        // no congelar el default del caller (el default puede cambiar entre llamadas).
+        if (! $flag) {
+            return $default;
+        }
+
+        return Cache::remember("feature_flag:{$key}", 5, fn () => $flag->value);
     }
 
     // Flags MVP

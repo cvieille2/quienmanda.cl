@@ -20,7 +20,7 @@ class RankingSettingsService
         return $row ?? RankingSetting::create([
             'scope' => self::SCOPE_DEFAULT,
             // resto de columnas -> defaults de la migración 000013
-        ]);
+        ])->fresh();
     }
 
     public function updateDefaults(array $attributes, ?int $adminId = null): RankingSetting

@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Merged: includes provider_order_id and provider_payment_id (originally added via ALTER in 2026_09_06_133032)
 return new class extends Migration
 {
     public function up(): void
@@ -29,6 +30,8 @@ return new class extends Migration
             $table->boolean('payer_age_declared_18')->default(false);
             $table->string('payment_gateway', 16)->default('mercadopago');
             $table->string('provider_transaction_id', 128)->nullable()->unique('uq_tx_provider_transaction_id');
+            $table->string('provider_order_id', 128)->nullable();
+            $table->string('provider_payment_id', 128)->nullable();
             $table->char('external_reference', 26)->nullable()->unique('uq_tx_external_reference');
             $table->string('gateway_status', 32)->nullable();
             $table->dateTime('checkout_created_at')->nullable();
@@ -44,6 +47,8 @@ return new class extends Migration
             $table->index(['profile_id', 'ranking_period_id'], 'idx_tx_profile_period');
             $table->index('payer_reference_hash', 'idx_tx_payer_reference_hash');
             $table->index('fan_email', 'idx_tx_fan_email');
+            $table->index('provider_order_id', 'idx_tx_provider_order_id');
+            $table->index('provider_payment_id', 'idx_tx_provider_payment_id');
         });
     }
 

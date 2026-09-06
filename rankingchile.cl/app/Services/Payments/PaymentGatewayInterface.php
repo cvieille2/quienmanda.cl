@@ -12,17 +12,18 @@ interface PaymentGatewayInterface
     /**
      * Crea una preferencia/checkout de pago y devuelve la URL de redirección y token.
      *
-     * @param int    $amountClp        Monto en CLP (integer, >= 1000)
-     * @param string $externalReference ULID público (idempotencia)
-     * @param string $sessionId        Identificador de sesión (anti-fraude/riesgo)
-     * @param array  $metadata         subject, notification_url, success_url, pending_url, failure_url
+     * @param  int  $amountClp  Monto en CLP (integer, >= 1000)
+     * @param  string  $externalReference  ULID público (idempotencia)
+     * @param  string  $sessionId  Identificador de sesión (anti-fraude/riesgo)
+     * @param  array  $metadata  subject, notification_url, success_url, pending_url, failure_url
      * @return array{url:string, token:string}
      */
     public function create(int $amountClp, string $externalReference, string $sessionId, array $metadata = []): array;
 
     /**
      * Consulta el estado real del pago server-to-server (source of truth).
-     * @return array{status:string, amount:int, transaction_id, approved_at, payer_id, raw}
+     *
+     * @return array{status:string, amount:int, transaction_id:mixed, approved_at:mixed, payer_id:mixed, raw:mixed}
      */
     public function confirm(string $transactionToken): array;
 

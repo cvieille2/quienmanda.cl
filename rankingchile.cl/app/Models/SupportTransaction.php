@@ -19,7 +19,7 @@ class SupportTransaction extends Model
         'supporter_name', 'is_anonymous', 'gateway_payer_id', 'payer_reference_hash',
         'payer_email_hash', 'signed_random_cookie', 'payment_provider_account', 'fan_email',
         'device_risk_signals', 'is_payer_identity_resolved', 'payer_age_declared_18',
-        'payment_gateway', 'provider_transaction_id', 'external_reference', 'gateway_status',
+        'payment_gateway', 'provider_transaction_id', 'provider_order_id', 'provider_payment_id', 'external_reference', 'gateway_status',
         'checkout_created_at', 'provider_approved_at', 'webhook_received_at', 'ranking_qualified_at',
         'disputed_at', 'refunded_at', 'reversed_at',
     ];
