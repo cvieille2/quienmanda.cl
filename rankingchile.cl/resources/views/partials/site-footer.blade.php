@@ -2,6 +2,7 @@
     <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
         <a href="{{ route('home') }}" class="hover:text-gray-600 transition">Inicio</a>
         <a href="{{ route('categories') }}" class="hover:text-gray-600 transition">Categorías</a>
+        <a href="{{ route('entrar.index') }}" class="hover:text-gray-600 transition">Entrar</a>
         <a href="{{ route('rules') }}" class="hover:text-gray-600 transition">Reglas</a>
         <a href="{{ route('legal.terms') }}" class="hover:text-gray-600 transition">Términos y Condiciones</a>
         <a href="{{ route('legal.privacy') }}" class="hover:text-gray-600 transition">Política de Privacidad</a>
