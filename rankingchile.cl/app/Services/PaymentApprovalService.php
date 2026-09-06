@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use App\Enums\GatewayProcessingResult;
+use App\Enums\PaymentGatewayConfirmationStatus;
 use App\Enums\RankingPeriodStatus;
 use App\Enums\SupportTransactionStatus;
+use App\Models\AuditLog;
 use App\Models\PaymentGatewayEvent;
 use App\Models\SupportTransaction;
 use App\Services\Payments\PaymentGatewayInterface;
@@ -19,12 +22,13 @@ class PaymentApprovalService
         private SupportTransactionService $transactions,
         private DeltaRecalculateService $delta,
         private PaymentGatewayInterface $gateway,
+        private HeaderStatsService $headerStats,
     ) {}
 
     public function approve(SupportTransaction $tx, ?PaymentGatewayEvent $gwEvent = null): SupportTransaction
     {
         return DB::transaction(function () use ($tx, $gwEvent) {
-            if ($gwEvent && ($gwEvent->processed_at !== null || $gwEvent->processing_result === 'processed')) {
+            if ($gwEvent && ($gwEvent->processed_at !== null || $gwEvent->processing_result === GatewayProcessingResult::Processed)) {
                 return $tx;
             }
 
@@ -37,22 +41,35 @@ class PaymentApprovalService
             if ($gwEvent?->external_reference && $locked->external_reference
                 && $locked->external_reference !== $gwEvent->external_reference) {
                 audit('payment_mismatch', 'support_transaction', $locked->id, [
-                    'reason'                    => 'external_reference_mismatch',
+                    'reason' => 'external_reference_mismatch',
                     'webhook_external_reference' => $gwEvent->external_reference,
-                    'tx_external_reference'      => $locked->external_reference,
+                    'tx_external_reference' => $locked->external_reference,
                 ]);
 
                 return $locked;
             }
 
-            $conf = $this->gateway->confirm($locked->provider_transaction_id);
+            // BLOCKER-003 (TASK-PROD-001): GET /v1/payments/{id} exige payment_id, NO el id de preferencia.
+            $confirmToken = $locked->provider_payment_id ?: $locked->provider_transaction_id;
+            $conf = $this->gateway->confirm($confirmToken);
+            $confirmationStatus = PaymentGatewayConfirmationStatus::tryFrom((string) ($conf['status'] ?? ''))
+                ?? PaymentGatewayConfirmationStatus::Failed;
+
+            if ($confirmationStatus === PaymentGatewayConfirmationStatus::Pending) {
+                $locked->update([
+                    'gateway_status' => PaymentGatewayConfirmationStatus::Pending->value,
+                ]);
+
+                return $locked;
+            }
+
             if (! $this->gateway->isAuthorized($conf)
                 || (int) $conf['amount'] !== $locked->amount_clp) {
                 $locked->update([
-                    'status'        => SupportTransactionStatus::Failed,
-                    'gateway_status' => $conf['status'] ?? null,
+                    'status' => SupportTransactionStatus::Failed,
+                    'gateway_status' => $confirmationStatus->value,
                 ]);
-                audit(\App\Models\AuditLog::EVT_PAYMENT_FAILED, 'support_transaction', $locked->id, [
+                audit(AuditLog::EVT_PAYMENT_FAILED, 'support_transaction', $locked->id, [
                     'reason' => 'gateway_failure',
                 ]);
 
@@ -64,12 +81,12 @@ class PaymentApprovalService
             $this->transactions->assertAmountWithinLimits($locked->amount_clp, $period);
 
             $locked->update([
-                'status'               => SupportTransactionStatus::Approved,
-                'provider_approved_at'  => $conf['approved_at'] ?? $locked->provider_approved_at ?? now(),
-                'webhook_received_at'   => $locked->webhook_received_at ?? now(),
-                'ranking_qualified_at'  => $qualifiedAt,
-                'ranking_period_id'     => $period->id,
-                'gateway_status'        => 'AUTHORIZED',
+                'status' => SupportTransactionStatus::Approved,
+                'provider_approved_at' => $conf['approved_at'] ?? $locked->provider_approved_at ?? now(),
+                'webhook_received_at' => $locked->webhook_received_at ?? now(),
+                'ranking_qualified_at' => $qualifiedAt,
+                'ranking_period_id' => $period->id,
+                'gateway_status' => PaymentGatewayConfirmationStatus::Approved->value,
             ]);
             $locked->refresh();
 
@@ -78,11 +95,11 @@ class PaymentApprovalService
                 RankingPeriodStatus::Snapshotted,
             ], true);
 
-            audit(\App\Models\AuditLog::EVT_PAYMENT_APPROVED, 'support_transaction', $locked->id, [
+            audit(AuditLog::EVT_PAYMENT_APPROVED, 'support_transaction', $locked->id, [
                 'ranking_qualified_at' => (string) $qualifiedAt,
-                'ranking_period_id'    => $period->id,
-                'period_code'          => $period->code,
-                'period_closed'        => $closed,
+                'ranking_period_id' => $period->id,
+                'period_code' => $period->code,
+                'period_closed' => $closed,
             ]);
 
             if ($closed) {
@@ -92,11 +109,12 @@ class PaymentApprovalService
             $this->shares->generateFor($locked);
             analytics('pago_confirmado', [
                 'transaction_id' => $locked->id,
-                'profile_slug'   => $locked->profile?->slug,
-                'amount_clp'     => $locked->amount_clp,
-                'period_code'    => $period->code,
+                'profile_slug' => $locked->profile?->slug,
+                'amount_clp' => $locked->amount_clp,
+                'period_code' => $period->code,
             ]);
             $this->ranking->invalidateCache();
+            $this->headerStats->invalidate($period);
 
             return $locked;
         });
