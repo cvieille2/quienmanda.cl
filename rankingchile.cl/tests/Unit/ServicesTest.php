@@ -35,6 +35,7 @@ use App\Services\RankingSettingsService;
 use App\Services\ShareService;
 use App\Services\SupportTransactionService;
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\ValidationException;
@@ -754,6 +755,18 @@ class ServicesTest extends \Tests\TestCase
         $period = $svc->periodFor($at);
 
         $this->assertSame($existing->id, $period->id);
+    }
+
+    #[Test]
+    public function ranking_period_service_period_for_accepts_mutable_carbon(): void
+    {
+        $svc = app(RankingPeriodService::class);
+        $at = Carbon::parse('2026-09-03 12:00:00', 'UTC');
+
+        $period = $svc->periodFor($at);
+
+        $this->assertNotNull($period);
+        $this->assertSame(RankingPeriodStatus::Scheduled, $period->status);
     }
 
     #[Test]

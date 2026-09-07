@@ -35,10 +35,15 @@ class ProfileOnboardingController extends Controller
     public function index(Request $request): View
     {
         $positionPricing = $this->projection->projectAvailablePositions();
+        $availablePositions = collect($positionPricing)->pluck('position')->map(fn ($position) => (int) $position);
+        $requestedPosition = (int) $request->query('position', 3);
+        $defaultPosition = $availablePositions->contains($requestedPosition)
+            ? $requestedPosition
+            : (int) ($availablePositions->first() ?? 1);
 
         $prefill = [
             'source' => $request->query('source', ''),
-            'position' => (int) $request->query('position', 3),
+            'position' => $defaultPosition,
             'amount' => (int) $request->query('amount', 0),
             'category' => (string) $request->query('category', ''),
             'region_id' => $request->query('region_id'),

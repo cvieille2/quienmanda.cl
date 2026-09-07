@@ -42,7 +42,7 @@ class RankingPeriodService
      */
     public function periodFor(CarbonInterface $at): RankingPeriod
     {
-        $instant = $at->timezone('UTC');
+        $instant = CarbonImmutable::instance($at)->timezone('UTC');
 
         $existing = RankingPeriod::query()
             ->where('starts_at', '<=', $instant)
@@ -183,7 +183,7 @@ class RankingPeriodService
     {
         $defaults  = $this->settings->defaults();
         $type      = $defaults->period_type ?? RankingPeriodType::Weekly->value;
-        $local     = $at->timezone(self::TZ)->startOfDay()->startOfWeek(CarbonImmutable::MONDAY);
+        $local     = CarbonImmutable::instance($at)->timezone(self::TZ)->startOfDay()->startOfWeek(CarbonImmutable::MONDAY);
 
         if ($type !== RankingPeriodType::Weekly->value) {
             throw new \LogicException(sprintf(

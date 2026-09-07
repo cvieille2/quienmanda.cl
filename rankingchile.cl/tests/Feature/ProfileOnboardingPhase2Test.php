@@ -147,6 +147,22 @@ class ProfileOnboardingPhase2Test extends TestCase
     }
 
     #[Test]
+    public function entrar_route_falls_back_to_an_available_position_when_requested_position_is_missing(): void
+    {
+        $this->createActivePeriod();
+
+        $response = $this->get(route('entrar.index', ['position' => 3]));
+
+        $response->assertOk();
+        $response->assertViewHas('positionPricing', function (array $pricing): bool {
+            return count($pricing) === 1 && $pricing[0]['position'] === 1;
+        });
+        $response->assertViewHas('defaultDraft', function (array $draft): bool {
+            return $draft['position'] === 1;
+        });
+    }
+
+    #[Test]
     public function entrar_route_loads_the_self_service_wizard(): void
     {
         FeatureFlag::create([
