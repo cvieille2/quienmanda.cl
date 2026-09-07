@@ -135,7 +135,7 @@ class RankingPeriodService
      */
     public function closeExpiredAndSettle(?CarbonInterface $now = null): ?RankingPeriod
     {
-        $moment = $now ?? CarbonImmutable::now()->timezone(self::TZ);
+        $moment = CarbonImmutable::instance($now ?? CarbonImmutable::now())->timezone(self::TZ);
 
         // 1) active -> closed_pending_settlement cuando ends_at <= ahora.
         $due = RankingPeriod::query()
@@ -171,6 +171,20 @@ class RankingPeriodService
 
     public function ensureActivePeriod(CarbonInterface $at): void
     {
+        $instant = CarbonImmutable::instance($at)->timezone('UTC');
+        $hasExpiredActive = RankingPeriod::query()
+            ->where('status', RankingPeriodStatus::Active->value)
+            ->where('ends_at', '<=', $instant)
+            ->exists();
+
+        // El rollover puede ocurrir antes de que el cron ejecute el settlement.
+        // Procesar el periodo vencido evita que su estado bloquee la activación del nuevo.
+        if ($hasExpiredActive) {
+            $this->closeExpiredAndSettle($at);
+
+            return;
+        }
+
         $period = $this->periodFor($at);
 
         if ($period->status === RankingPeriodStatus::Scheduled) {

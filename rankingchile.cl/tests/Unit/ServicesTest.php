@@ -770,6 +770,32 @@ class ServicesTest extends \Tests\TestCase
     }
 
     #[Test]
+    public function ranking_period_service_rollover_closes_expired_active_before_activation(): void
+    {
+        RankingPeriod::create([
+            'code' => 'W2026-36-rollover',
+            'period_type' => RankingPeriodType::Weekly,
+            'starts_at' => CarbonImmutable::parse('2026-08-31 03:00:00', 'UTC'),
+            'ends_at' => CarbonImmutable::parse('2026-09-07 03:00:00', 'UTC'),
+            'settlement_delay_minutes' => 5,
+            'status' => RankingPeriodStatus::Active,
+            'configuration' => [],
+        ]);
+
+        $svc = app(RankingPeriodService::class);
+        $svc->ensureActivePeriod(CarbonImmutable::parse('2026-09-07 03:01:00', 'UTC'));
+
+        $this->assertSame(
+            RankingPeriodStatus::ClosedPendingSettlement,
+            RankingPeriod::where('code', 'W2026-36-rollover')->firstOrFail()->status
+        );
+        $this->assertSame(
+            RankingPeriodStatus::Active,
+            RankingPeriod::where('code', 'W2026-37')->firstOrFail()->status
+        );
+    }
+
+    #[Test]
     public function ranking_period_service_transition_throws_on_invalid(): void
     {
         $this->expectException(\LogicException::class);
