@@ -54,7 +54,7 @@ class ProfileOnboardingController extends Controller
                 ['title' => 'Antes / después', 'hint' => 'Revisa el flujo completo.'],
             ],
             'positionPricing' => $positionPricing,
-            'projectCategories' => ProfileCategory::active()->orderBy('sort_order')->orderBy('name')->get(['id', 'name', 'slug']),
+            'projectCategories' => ProfileCategory::active()->orderBy('name')->get(['id', 'name', 'slug']),
             'regions' => Region::query()->orderBy('sort_order')->orderBy('name')->get(['id', 'name', 'slug']),
             'prefill' => $prefill,
             'defaultDraft' => [

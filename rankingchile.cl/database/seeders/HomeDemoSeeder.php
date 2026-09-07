@@ -19,6 +19,7 @@ class HomeDemoSeeder extends Seeder
             FeatureFlagsSeeder::class,
             RankingSettingsSeeder::class,
             InitialPeriodSeeder::class,
+            ProfileCategoriesSeeder::class,
             RegionSeeder::class,
             TestProfilesSeeder::class,
             DemoTransactionsSeeder::class,

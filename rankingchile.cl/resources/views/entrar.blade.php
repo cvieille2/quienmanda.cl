@@ -559,7 +559,7 @@
                 if (!raw) {
                     this.handle = '';
                     if (this.useProfileAsDestination) {
-                        this.destinationUrl = this.profileDestinationUrl();
+                        this.destinationUrl = this.sourceToUrl(raw);
                     }
                     return;
                 }
@@ -576,7 +576,7 @@
                     this.displayName = this.humanizeHandle(candidate);
                 }
                 if (this.useProfileAsDestination) {
-                    this.destinationUrl = this.profileDestinationUrl();
+                    this.destinationUrl = this.sourceToUrl(this.source);
                 }
             },
             defaultDisplayName() {
@@ -603,8 +603,7 @@
                 this.freePublish = true;
             },
             profileDestinationUrl() {
-                const slug = this.handle || config.defaultDraft.handle || 'tu-cuenta';
-                return window.location.origin + '/perfil/' + slug;
+                return this.sourceToUrl(this.source);
             },
             syncDestinationMode() {
                 if (this.useProfileAsDestination) {
