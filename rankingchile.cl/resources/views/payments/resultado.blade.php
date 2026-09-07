@@ -15,7 +15,12 @@
             <h1 class="text-2xl font-black text-[#1B1B18]">¡Impulso confirmado!</h1>
             <p class="mt-2 text-gray-600 text-sm">
                 El ranking ya fue actualizado con tu impulso.
-                <span class="font-bold">{{ $receipt['profile_name'] }}</span> subió 👆
+                <span class="font-bold">{{ $receipt['profile_name'] }}</span>
+                @if ($receipt['final_position'])
+                    quedó en la posición <span class="font-bold">#{{ $receipt['final_position'] }}</span>.
+                @else
+                    subió 👆.
+                @endif
             </p>
 
             @include('payments.receipt', ['receipt' => $receipt])

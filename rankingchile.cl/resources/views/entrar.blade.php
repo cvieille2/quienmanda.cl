@@ -330,7 +330,7 @@
                                     </div>
                                     <div class="min-w-0 flex-1">
                                         <h3 class="truncate text-xl font-black text-[#1B1B18]" x-text="displayName"></h3>
-                                        <p class="text-sm text-gray-500" x-text="freePublish ? 'Publicado gratis' : 'Sube al #' + position + ' por ' + money(selectedAmount)"></p>
+                                        <p class="text-sm text-gray-500" x-text="freePublish ? 'Publicado gratis' : 'Objetivo inicial #' + position + ' por ' + money(selectedAmount)"></p>
                                     </div>
                                 </div>
                                 <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
@@ -339,7 +339,7 @@
                                         <p class="mt-1 font-black" x-text="freePublish ? 'Publicado' : 'Checkout confirmado'"></p>
                                     </div>
                                     <div class="rounded-2xl bg-[#FFF8E1] p-3">
-                                        <p class="text-xs text-[#8A6100]">Posición</p>
+                                        <p class="text-xs text-[#8A6100]">Objetivo inicial</p>
                                         <p class="mt-1 font-black" x-text="freePublish ? 'Visible gratis' : '#' + position"></p>
                                     </div>
                                 </div>
@@ -349,7 +349,7 @@
 
                     <div class="rounded-3xl border border-dashed border-[#F8B803] bg-[#FFFCEB] px-4 py-3 text-sm text-[#5A4300]">
                         <span class="font-bold">Legal:</span>
-                        <span class="ml-1">la posición se confirma cuando el checkout queda aprobado; en modo gratis la publicación entra sin cobro.</span>
+                        <span class="ml-1">el monto inicia una posición estimada; la posición final se calcula al aprobar el checkout. En modo gratis la publicación entra sin cobro.</span>
                     </div>
 
                     <div class="flex flex-col gap-3 sm:flex-row">

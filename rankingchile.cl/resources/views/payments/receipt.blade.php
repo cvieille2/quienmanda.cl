@@ -24,6 +24,12 @@
                 {{ $receipt['profile_name'] }}
             </a>
         </div>
+        @if ($receipt['final_position'])
+            <div class="flex justify-between">
+                <span class="text-gray-500">Posición final</span>
+                <span class="font-black text-[#1B1B18]">#{{ $receipt['final_position'] }}</span>
+            </div>
+        @endif
         <div class="flex justify-between">
             <span class="text-gray-500">Impulsante</span>
             <span class="font-medium">{{ $receipt['supporter_name'] }}</span>

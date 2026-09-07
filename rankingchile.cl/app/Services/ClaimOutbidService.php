@@ -89,6 +89,16 @@ class ClaimOutbidService
     {
         $tx->load('profile', 'rankingPeriod');
 
+        // La posición que se mostró antes del checkout puede cambiar mientras
+        // el usuario paga. El comprobante debe reflejar el ranking confirmado
+        // después de aplicar este movimiento, no la posición objetivo original.
+        $finalPosition = null;
+        if ($tx->ranking_period_id && $tx->profile_id) {
+            $finalEntry = collect($this->ranking->rankingForPeriod($tx->ranking_period_id, false))
+                ->firstWhere('profile_id', $tx->profile_id);
+            $finalPosition = $finalEntry['position'] ?? null;
+        }
+
         $periodCode = $tx->rankingPeriod?->code ?? 'N/A';
         $periodDates = $tx->rankingPeriod
             ? $tx->rankingPeriod->starts_at->timezone('America/Santiago')->format('d/m/Y')
@@ -109,6 +119,7 @@ class ClaimOutbidService
             'amount_formatted' => money_clp($tx->amount_clp),
             'profile_name' => $tx->profile?->display_name ?? 'N/A',
             'profile_slug' => $tx->profile?->slug ?? '',
+            'final_position' => $finalPosition,
             'supporter_name' => $tx->supporter_name ?? 'Impulso anónimo',
             'is_anonymous' => $tx->is_anonymous,
             'period_code' => $periodCode,

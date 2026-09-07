@@ -51,6 +51,10 @@ class LocalMercadoPagoFlowTest extends TestCase
         $this->get(route('payments.return', ['payment_id' => $tx->provider_transaction_id]))
             ->assertRedirect(route('payments.resultado', ['payment_id' => $tx->provider_transaction_id]));
 
+        $this->get(route('payments.resultado', ['payment_id' => $tx->provider_transaction_id]))
+            ->assertOk()
+            ->assertSee('Posición final');
+
         $tx->refresh();
 
         $this->assertEquals(SupportTransactionStatus::Approved, $tx->status);
