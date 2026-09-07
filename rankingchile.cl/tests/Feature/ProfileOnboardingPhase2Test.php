@@ -324,6 +324,26 @@ class ProfileOnboardingPhase2Test extends TestCase
     }
 
     #[Test]
+    public function onboarding_mutations_are_not_available_to_another_session(): void
+    {
+        $submission = ProfileSubmission::create([
+            'display_name' => 'Private draft',
+            'category' => 'General',
+            'source_url' => 'https://private.example.test/profile',
+            'submitted_by_session_id' => 'a-different-session',
+            'status' => ProfileSubmissionStatus::Pending,
+        ]);
+
+        $this->postJson(route('entrar.confirmar', $submission))
+            ->assertNotFound();
+
+        $this->postJson(route('entrar.checkout', $submission), [
+            'amount_clp' => 1000,
+            'age_declared_18' => 1,
+        ])->assertNotFound();
+    }
+
+    #[Test]
     public function onboarding_rejects_ssrf_and_blocks_localhost_private_hosts(): void
     {
         FeatureFlag::create([

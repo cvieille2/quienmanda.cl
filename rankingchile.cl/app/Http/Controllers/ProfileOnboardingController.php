@@ -137,6 +137,8 @@ class ProfileOnboardingController extends Controller
 
     public function confirm(ProfileSubmission $submission)
     {
+        $this->assertSubmissionAccess($submission);
+
         if ($submission->duplicate_profile_id) {
             return $this->duplicateResponse($submission);
         }
@@ -156,6 +158,8 @@ class ProfileOnboardingController extends Controller
 
     public function position(Request $request, ProfileSubmission $submission)
     {
+        $this->assertSubmissionAccess($submission);
+
         if ($submission->duplicate_profile_id) {
             return $this->duplicateResponse($submission);
         }
@@ -180,6 +184,8 @@ class ProfileOnboardingController extends Controller
 
     public function checkout(Request $request, ProfileSubmission $submission)
     {
+        $this->assertSubmissionAccess($submission);
+
         if (! $this->flags->isEnabled(FeatureFlag::KEY_PAYMENTS_ENABLED)) {
             return $request->expectsJson()
                 ? response()->json(['error' => 'checkout_disabled'], 503)
@@ -242,5 +248,14 @@ class ProfileOnboardingController extends Controller
         return request()->expectsJson()
             ? response()->json($payload, 422)
             : back()->withErrors($payload);
+    }
+
+    private function assertSubmissionAccess(ProfileSubmission $submission): void
+    {
+        abort_unless(
+            $submission->submitted_by_session_id
+            && hash_equals($submission->submitted_by_session_id, request()->session()->getId()),
+            404
+        );
     }
 }
