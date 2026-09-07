@@ -34,6 +34,7 @@ class ProfileCreationService
                 'slug' => $this->uniqueSlug($locked->display_name),
                 'category' => $locked->category,
                 'profile_category_id' => $locked->profile_category_id,
+                'region_id' => $locked->region_id,
                 'profile_submission_id' => $locked->id,
                 'source_type' => $locked->source_type,
                 'source_url' => $locked->source_url,
@@ -43,6 +44,7 @@ class ProfileCreationService
                 'type' => ProfileType::Community,
                 'verification_status' => VerificationStatus::Unverified,
                 'is_community_created' => true,
+                'use_profile_as_destination' => $locked->use_profile_as_destination,
             ]);
 
             ProfileLink::query()

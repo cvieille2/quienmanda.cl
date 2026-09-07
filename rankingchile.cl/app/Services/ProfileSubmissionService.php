@@ -24,13 +24,14 @@ class ProfileSubmissionService
     {
         return DB::transaction(function () use ($payload) {
             $source = $this->sourceDetection->detect((string) Arr::get($payload, 'source_url'));
-            $category = $this->resolveCategory((string) Arr::get($payload, 'category'));
+            $category = $this->resolveCategory(Arr::get($payload, 'category'));
             $duplicate = $this->duplicates->detect((string) Arr::get($payload, 'display_name'), $source['normalized_url']);
 
             $submission = ProfileSubmission::create([
                 'display_name' => trim((string) Arr::get($payload, 'display_name')),
                 'category' => $category->name,
                 'profile_category_id' => $category->id,
+                'region_id' => Arr::get($payload, 'region_id') !== null && Arr::get($payload, 'region_id') !== '' ? (int) Arr::get($payload, 'region_id') : null,
                 'source_type' => $source['source_type']->value,
                 'source_url' => $source['original_url'],
                 'normalized_url' => $source['normalized_url'],
@@ -38,6 +39,7 @@ class ProfileSubmissionService
                 'submitted_by_session_id' => Arr::get($payload, 'submitted_by_session_id'),
                 'submitted_email_hash' => $this->hashEmail(Arr::get($payload, 'submitted_email')),
                 'duplicate_profile_id' => $duplicate?->id,
+                'use_profile_as_destination' => (bool) Arr::get($payload, 'use_profile_as_destination', false),
                 'status' => $duplicate ? ProfileSubmissionStatus::Rejected : ProfileSubmissionStatus::Pending,
                 'rejection_reason' => $duplicate ? 'duplicate_profile' : null,
                 'reviewed_at' => $duplicate ? now() : null,
@@ -87,7 +89,7 @@ class ProfileSubmissionService
     private function storeDestinationLink(ProfileSubmission $submission, array $payload): void
     {
         $destinationUrl = trim((string) Arr::get($payload, 'destination_url'));
-        if ($destinationUrl === '') {
+        if ($destinationUrl === '' || (bool) Arr::get($payload, 'use_profile_as_destination', false)) {
             return;
         }
 
@@ -104,11 +106,11 @@ class ProfileSubmissionService
         ]);
     }
 
-    private function resolveCategory(string $categoryName): ProfileCategory
+    private function resolveCategory(mixed $categoryName): ProfileCategory
     {
-        $name = trim($categoryName);
+        $name = trim((string) $categoryName);
         if ($name === '') {
-            throw new \InvalidArgumentException('La categoría es obligatoria.');
+            $name = 'General';
         }
 
         $slug = Str::slug($name);

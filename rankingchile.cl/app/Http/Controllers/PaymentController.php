@@ -17,6 +17,7 @@ use App\Services\PaymentLimitsService;
 use App\Services\Payments\MercadoPagoWebhookSignature;
 use App\Services\Payments\PaymentGatewayInterface;
 use App\Services\RankingPeriodService;
+use App\Services\RankingProjectionService;
 use App\Services\SupportTransactionService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -32,21 +33,47 @@ class PaymentController extends Controller
         private FeatureFlagsService $flags,
         private ModerationService $moderation,
         private ClaimOutbidService $claimOutbid,
+        private RankingProjectionService $projection,
     ) {}
 
     public function start(Request $request)
     {
+        // target_position is the new preferred way; amount_clp is deprecated (kept for backward compatibility).
         $validated = $request->validate([
             'profile_id' => ['required', 'exists:profiles,id'],
-            'amount_clp' => ['required', 'integer', 'min:1'],
+            'target_position' => ['required_without:amount_clp', 'nullable', 'integer', 'min:1'],
+            // @deprecated amount_clp – will be removed once all frontends migrate to target_position.
+            'amount_clp' => ['required_without:target_position', 'nullable', 'integer', 'min:1'],
             'supporter_name' => ['nullable', 'string', 'max:64'],
             'is_anonymous' => ['nullable', 'boolean'],
             'age_declared_18' => ['required', 'accepted'],
+            'terms_accepted' => ['required', 'accepted'],
             'checkout_token' => ['required', 'string', 'min:8'],
         ]);
 
+        $period = $this->periods->activePeriod();
         $profile = Profile::findOrFail((int) $validated['profile_id']);
-        $amount = (int) $validated['amount_clp'];
+
+        // ── Amount resolution ──────────────────────────────────────────────
+        // New flow: derive amount from target_position via projection service.
+        // Legacy flow: trust the frontend-supplied amount_clp.
+        if (! empty($validated['target_position'])) {
+            $projection = $this->projection->projectProfileMove(
+                profileId: (int) $validated['profile_id'],
+                rankingPeriodId: $period?->id,
+                targetPosition: (int) $validated['target_position'],
+            );
+
+            $amount = $projection['required_amount'];
+
+            if ($amount <= 0) {
+                return response()->json(['error' => 'profile_already_at_or_above_target'], 422);
+            }
+        } else {
+            // Legacy path – amount_clp supplied by frontend (deprecated).
+            $amount = (int) $validated['amount_clp'];
+        }
+        // ── End amount resolution ──────────────────────────────────────────
 
         if (! $this->flags->isEnabled('payments_enabled')) {
             return response()->json(['error' => 'checkout_disabled'], 503);
@@ -56,18 +83,25 @@ class PaymentController extends Controller
             return response()->json(['error' => 'profile_not_available'], 422);
         }
 
-        $this->transactions->assertAmountWithinLimits($amount, $this->periods->activePeriod());
+        $this->transactions->assertAmountWithinLimits($amount, $period);
 
         $identity = $this->limits->resolvePayerIdentity($request);
         $this->limits->assertCanCheckout($request, $amount);
 
+        // NOTE: If the ranking changed between page-load and checkout the
+        // server-calculated amount may differ from what the frontend originally
+        // displayed.  Per the spec (price_change_behavior) we use the
+        // authoritative server value; the frontend will reflect the correct
+        // amount in the receipt.
         $tx = $this->transactions->createCheckout(
             $profile->id,
-            $amount,
+            $amount, // always server-authoritative
             $identity,
             [
                 'supporter_name' => $this->sanitizeSupporterName($validated['supporter_name'] ?? null),
                 'is_anonymous' => (bool) $request->boolean('is_anonymous', true),
+                'terms_version' => config('legal.terms.version'),
+                'terms_accepted_at' => now(),
             ]
         );
 

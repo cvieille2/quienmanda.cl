@@ -22,6 +22,7 @@ class SupportTransaction extends Model
         'payment_gateway', 'provider_transaction_id', 'provider_order_id', 'provider_payment_id', 'external_reference', 'gateway_status',
         'checkout_created_at', 'provider_approved_at', 'webhook_received_at', 'ranking_qualified_at',
         'disputed_at', 'refunded_at', 'reversed_at',
+        'terms_version', 'terms_accepted_at',
     ];
 
     protected $casts = [
@@ -40,6 +41,7 @@ class SupportTransaction extends Model
         'disputed_at'                => 'datetime',
         'refunded_at'                => 'datetime',
         'reversed_at'                => 'datetime',
+        'terms_accepted_at'          => 'datetime',
     ];
 
     public const TYPE_REAL        = SupportTransactionType::Real->value;

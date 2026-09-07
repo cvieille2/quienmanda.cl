@@ -21,9 +21,12 @@ use App\Models\OutboundClickEvent;
 use App\Models\Profile;
 use App\Models\ProfileClaim;
 use App\Models\ProfileSubmission;
+use App\Models\Region;
 use App\Models\RankingPeriod;
 use App\Models\SupportTransaction;
 use App\Services\ModerationService;
+use App\Services\OutboundClickService;
+use App\Services\ProfileCreationService;
 use App\Services\RankingService;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -150,6 +153,7 @@ class ProfileOnboardingPhase2Test extends TestCase
         $response = $this->postJson(route('entrar.detectar'), [
             'display_name' => 'Mi Cuenta Nueva',
             'source_url' => 'https://instagram.com/mi-cuenta',
+            'use_profile_as_destination' => true,
         ]);
 
         $response->assertOk()
@@ -162,6 +166,69 @@ class ProfileOnboardingPhase2Test extends TestCase
         $this->assertSame('https://instagram.com/mi-cuenta', $submission->normalized_url);
         $this->assertSame('Instagram · mi-cuenta', $submission->detected_title);
         $this->assertSame('Mi Cuenta Nueva', $submission->display_name);
+    }
+
+    #[Test]
+    public function onboarding_requires_a_destination_url_unless_profile_is_used_as_destination(): void
+    {
+        FeatureFlag::create([
+            'key' => FeatureFlag::KEY_COMMUNITY_SUBMISSION,
+            'value' => true,
+        ]);
+
+        $this->postJson(route('entrar.detectar'), [
+            'display_name' => 'Sin destino',
+            'source_url' => 'https://instagram.com/sin-destino',
+            'use_profile_as_destination' => false,
+        ])->assertStatus(422)->assertJsonValidationErrors(['destination_url']);
+
+        $response = $this->postJson(route('entrar.detectar'), [
+            'display_name' => 'Destino perfil',
+            'source_url' => 'https://instagram.com/destino-perfil',
+            'use_profile_as_destination' => true,
+        ]);
+
+        $response->assertOk();
+        $submission = ProfileSubmission::findOrFail($response->json('submission_id'));
+        $this->assertTrue($submission->use_profile_as_destination);
+        $this->assertCount(1, $submission->links);
+        $this->assertSame('https://instagram.com/destino-perfil', $submission->links->first()->original_url);
+
+        $profile = app(ProfileCreationService::class)->createFromSubmission($submission);
+        $this->assertTrue($profile->use_profile_as_destination);
+        $this->assertSame(route('profile.show', $profile->slug), app(OutboundClickService::class)->resolveDestinationUrl($profile));
+    }
+
+    #[Test]
+    public function onboarding_accepts_region_and_optional_category_selection(): void
+    {
+        FeatureFlag::create([
+            'key' => FeatureFlag::KEY_COMMUNITY_SUBMISSION,
+            'value' => true,
+        ]);
+
+        $region = Region::create([
+            'name' => 'Metropolitana de Santiago',
+            'slug' => 'metropolitana-de-santiago',
+            'sort_order' => 15,
+        ]);
+
+        $response = $this->postJson(route('entrar.detectar'), [
+            'display_name' => 'Proyecto Regional',
+            'source_url' => 'https://instagram.com/proyecto-regional',
+            'destination_url' => 'https://proyecto-regional.cl',
+            'use_profile_as_destination' => false,
+            'region_id' => $region->id,
+        ]);
+
+        $response->assertOk();
+
+        $submission = ProfileSubmission::findOrFail($response->json('submission_id'));
+        $this->assertSame($region->id, $submission->region_id);
+        $this->assertSame('General', $submission->category);
+
+        $profile = app(ProfileCreationService::class)->createFromSubmission($submission);
+        $this->assertSame($region->id, $profile->region_id);
     }
 
     #[Test]
@@ -209,6 +276,7 @@ class ProfileOnboardingPhase2Test extends TestCase
         $response = $this->postJson(route('entrar.detectar'), [
             'display_name' => 'Persona Existente',
             'source_url' => 'https://instagram.com/persona-existente',
+            'use_profile_as_destination' => true,
         ]);
 
         $response->assertOk()
@@ -231,6 +299,7 @@ class ProfileOnboardingPhase2Test extends TestCase
             $response = $this->postJson(route('entrar.detectar'), [
                 'display_name' => 'Intentos SSRF',
                 'source_url' => $blockedUrl,
+                'use_profile_as_destination' => true,
             ]);
 
             $response->assertStatus(422)

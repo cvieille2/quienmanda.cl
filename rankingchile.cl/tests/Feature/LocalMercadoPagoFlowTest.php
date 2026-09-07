@@ -30,6 +30,7 @@ class LocalMercadoPagoFlowTest extends TestCase
             'supporter_name' => 'Tester Local',
             'is_anonymous' => false,
             'age_declared_18' => true,
+            'terms_accepted' => true,
             'checkout_token' => 'checkout-local-token',
             'payer_email' => 'tester-local@example.com',
         ])->assertOk();
@@ -82,6 +83,7 @@ class LocalMercadoPagoFlowTest extends TestCase
             'profile_id' => $profile->id,
             'amount_clp' => 3000,
             'age_declared_18' => true,
+            'terms_accepted' => true,
             'checkout_token' => 'checkout-local-token',
             'payer_email' => 'tester-reject@example.com',
         ])->assertOk();
@@ -115,6 +117,7 @@ class LocalMercadoPagoFlowTest extends TestCase
             'profile_id' => $profile->id,
             'amount_clp' => 3500,
             'age_declared_18' => true,
+            'terms_accepted' => true,
             'checkout_token' => 'checkout-local-token',
             'payer_email' => 'tester-pending@example.com',
         ])->assertOk();
@@ -154,6 +157,7 @@ class LocalMercadoPagoFlowTest extends TestCase
             'profile_id' => $profile->id,
             'amount_clp' => 4000,
             'age_declared_18' => true,
+            'terms_accepted' => true,
             'checkout_token' => 'checkout-local-token',
             'payer_email' => 'tester-idempotent@example.com',
         ])->assertOk();

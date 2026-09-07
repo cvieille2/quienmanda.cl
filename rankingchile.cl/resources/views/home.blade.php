@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', '¿Quién Manda en Chile esta semana?')
+@section('title', ($periodHeadline ?? '¿Quién manda?') . ' | Quién Manda en Chile')
 
 @push('meta')
-    @if ($period && $leader)
-        <meta property="og:title" content="¿QUIÉN MANDA EN CHILE ESTA SEMANA?" />
+    @if ($leader)
+        <meta property="og:title" content="{{ mb_strtoupper($periodHeadline ?? '¿QUIÉN MANDA?') }}" />
         <meta property="og:description" content="El ranking que se decide con plata. 👑 {{ $leader['display_name'] }} lidera con {{ money_clp($leader['total_real_clp']) }}. ¡Impúlsalo para superarlo!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ url('/') }}" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="¿QUIÉN MANDA EN CHILE ESTA SEMANA?" />
+        <meta name="twitter:title" content="{{ mb_strtoupper($periodHeadline ?? '¿QUIÉN MANDA?') }}" />
         <meta name="twitter:description" content="El ranking que se decide con plata. {{ $leader['display_name'] }} manda con {{ money_clp($leader['total_real_clp']) }}. Súperalo con inversión promocional." />
     @endif
 @endpush
@@ -18,20 +18,39 @@
 <div class="min-h-screen" x-data="quienmanda({
     paymentsEnabled: {{ $paymentsEnabled ? 'true' : 'false' }},
     checkoutToken: '{{ $checkoutToken }}',
+    periodLabel: @js($periodLabel),
     limits: { min: {{ $limits['min'] }}, max: {{ $limits['max'] }} },
     ranking: {{ json_encode(array_map(fn($r) => [
         'id' => $r['profile_id'], 'slug' => $r['slug'], 'name' => $r['display_name'],
         'amount' => $r['total_real_clp'], 'rank' => $r['position'],
         'behind' => $r['behind_clp'] ?? 0, 'overtake' => $r['overtake_above_clp'] ?? 0,
         'toTop' => $r['to_number_one_clp'] ?? 0, 'category' => $r['category'],
-    ], $ranking)) }}
+    ], $ranking)) }},
+    viewModels: {{ json_encode(collect($viewModels)->map(fn($vm) => [
+        'profile_id' => $vm->profileId(),
+        'slug' => $vm->slug(),
+        'name' => $vm->displayName(),
+        'total_clp' => $vm->totalRealClp(),
+        'total_formatted' => $vm->totalRealClpFormatted(),
+        'supporter_count' => $vm->supporterCount(),
+        'supporter_text' => $vm->supporterCountPluralized(),
+        'position' => $vm->position(),
+        'is_leader' => $vm->isLeader(),
+        'verification_badge' => $vm->verificationBadge(),
+        'verification_color' => $vm->verificationBadgeColor(),
+        'is_community' => $vm->isCommunityCreated(),
+        'overtake_above_clp' => $vm->overtakeAboveClp(),
+        'to_number_one_clp' => $vm->toNumberOneClp(),
+        'cta_label' => $vm->ctaLabel(),
+        'cta_target' => $vm->ctaTargetPosition(),
+        'cta_required' => $vm->ctaRequiredAmount(),
+        'cta_required_formatted' => $vm->ctaRequiredAmountFormatted(),
+        'has_projection' => $vm->hasProjection(),
+    ])->values()->all()) }}
 })">
 
     @php $activePage = 'home'; @endphp
     @include('partials.site-header')
-
-    {{-- CATEGORY NAV --}}
-    @include('partials.category-nav', ['categories' => $categories, 'activeCategorySlug' => $activeCategorySlug])
 
     {{-- MOBILE: Conversion Hero first --}}
     <div class="md:hidden">
@@ -40,99 +59,174 @@
 
     <main class="mx-auto max-w-6xl px-4 pb-28">
 
-        {{-- DESKTOP: Period label --}}
-        <div class="hidden md:flex items-center justify-between pt-6 pb-2">
-            <div>
-                <h2 class="text-2xl font-extrabold tracking-tight text-[#1B1B18]">Ranking semanal</h2>
-                <p class="text-sm text-gray-500 mt-0.5">
-                    @if($period)
-                        Ciclo {{ $period->code }} · {{ $period->starts_at->timezone('America/Santiago')->format('d/m') }} – {{ $period->ends_at->timezone('America/Santiago')->format('d/m') }}
-                        <span class="text-gray-400">·</span>
-                        <span class="tabular-nums" x-text="countdown"></span>
-                    @else
-                        Sin período activo
-                    @endif
-                </p>
-            </div>
-        </div>
-
         <div class="lg:grid lg:grid-cols-[1fr_400px] lg:gap-8">
 
             {{-- LEFT COLUMN: Ranking --}}
-            <div>
+            <div class="rounded-3xl bg-[#F7F9FC] px-4 py-7 md:px-6 md:py-8">
+                <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-5">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Ranking público</p>
+                        <h2 class="text-2xl font-extrabold tracking-tight text-[#07182D]">{{ $periodHeadline }}</h2>
+                        <p class="mt-1 text-sm text-gray-500">El ranking cambia según el apoyo y la actividad de cada perfil.</p>
+                    </div>
+                    <div class="text-sm font-semibold text-gray-500">
+                        {{ number_format($rankingTotal) }} perfiles
+                    </div>
+                </div>
+
+                @include('partials.ranking-filters', [
+                    'categoryFilters' => $categoryFilters,
+                    'periodFilters' => $periodFilters,
+                ])
+
                 @if (count($ranking) > 0)
-                    <section class="space-y-3">
-                        @foreach ($ranking as $i => $r)
-                            @php
-                                $isLeader = $i === 0;
-                                $isTop3 = $i < 3;
-                            @endphp
-                            @if ($isTop3)
-                                <a href="{{ route('profile.show', $r['slug']) }}"
-                                   class="block rounded-2xl border p-4 transition {{ $isLeader ? 'bg-[#FFF8E1] border-[#F8B803] shadow' : 'bg-white border-gray-200 hover:border-gray-300' }}">
-                                    <div class="flex items-center gap-3">
-                                        <span class="text-xl font-black {{ $isLeader ? 'text-[#F8B803]' : 'text-gray-400' }} w-8 text-center">{{ $r['position'] }}</span>
-                                        <span class="text-white rounded-md px-1.5 text-xs {{ $r['verification_status'] === 'verified' ? 'bg-[#0ea5e9]' : ($r['verification_status'] === 'pending' ? 'bg-orange-500' : 'bg-gray-400') }}">
-                                            {{ $r['verification_status'] === 'verified' ? '✓' : ($r['verification_status'] === 'pending' ? '…' : '') }}
-                                        </span>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="font-bold truncate">{{ $r['display_name'] }}
-                                                @if ($r['is_community_created'])<span class="text-xs text-gray-400">👥</span>@endif
+                    <div class="mt-6 hidden md:block overflow-hidden rounded-2xl border border-gray-200 bg-white">
+                        <table class="min-w-full divide-y divide-gray-100">
+                            <thead class="bg-gray-50 text-left text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
+                                <tr>
+                                    <th class="px-4 py-3 w-16">#</th>
+                                    <th class="px-4 py-3">Perfil</th>
+                                    <th class="px-4 py-3 w-24 text-center">Vistas</th>
+                                    <th class="px-4 py-3 w-24 text-center">Clics</th>
+                                    <th class="px-4 py-3 w-28 text-right">Apoyo</th>
+                                    <th class="px-4 py-3 w-56 text-right">Tu próximo movimiento</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                @foreach ($viewModels as $vm)
+                                    <tr class="transition {{ $vm->isLeader() ? 'bg-[#FFF8D9]' : 'bg-white hover:bg-gray-50' }}">
+                                        <td class="px-4 py-4 align-middle">
+                                            <div class="flex h-10 w-10 items-center justify-center rounded-full {{ $vm->isLeader() ? 'bg-[#FFC21C] text-[#07182D]' : 'bg-[#EEF2F7] text-[#07182D]' }} font-black text-lg">
+                                                {{ $vm->position() }}
                                             </div>
-                                            <div class="text-xs text-gray-500">👥 {{ number_format($r['supporter_count']) }} personas impulsan</div>
-                                        </div>
-                                        <div class="text-right shrink-0">
-                                            <div class="font-black {{ $isLeader ? 'text-[#F53003]' : '' }}">{{ money_clp($r['total_real_clp']) }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3 flex gap-2">
-                                        @if ($isLeader && $paymentsEnabled)
-                                            <button @click.prevent="openCheckout(@js($r['profile_id']))"
-                                                class="flex-1 bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-3 rounded-xl active:scale-[0.98] transition text-sm">
-                                                🛡️ DEFENDER LA CORONA
-                                            </button>
-                                        @elseif (! $isLeader && $paymentsEnabled)
-                                            <button @click.prevent="openCheckout(@js($r['profile_id']))"
-                                                class="flex-1 bg-[#1B1B18] hover:bg-[#2a2a26] text-white font-bold py-3 rounded-xl active:scale-[0.98] transition text-sm">
-                                                @if($r['overtake_above_clp'] > 0)
-                                                    CON ${{ number_format($r['overtake_above_clp']) }} PASA AL #{{ $r['position'] - 1 }}
-                                                @else
-                                                    IMPULSAR
-                                                @endif
-                                            </button>
-                                        @endif
-                                        <a href="{{ route('profile.show', $r['slug']) }}" class="px-4 py-3 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 transition">Ver</a>
-                                    </div>
-                                </a>
-                            @else
-                                <a href="{{ route('profile.show', $r['slug']) }}"
-                                   class="flex items-center gap-3 bg-white rounded-xl border border-gray-200 px-4 py-3 hover:border-gray-300 transition">
-                                    <span class="font-black text-gray-400 w-6 text-center">{{ $r['position'] }}</span>
-                                    <span class="rounded-full px-1.5 text-[10px] text-white {{ $r['verification_status'] === 'verified' ? 'bg-[#0ea5e9]' : ($r['verification_status'] === 'pending' ? 'bg-orange-500' : 'bg-gray-300') }}">
-                                        {{ $r['verification_status'] === 'verified' ? '✓' : ($r['verification_status'] === 'pending' ? '…' : '') }}
-                                    </span>
-                                    <div class="flex-1 font-medium truncate">{{ $r['display_name'] }}</div>
-                                    @if ($paymentsEnabled)
-                                        <button @click.prevent="openCheckout(@js($r['profile_id']))"
-                                            class="text-xs font-bold text-[#F53003] shrink-0">
-                                            @if($r['overtake_above_clp'] > 0)
-                                                CON ${{ number_format($r['overtake_above_clp']) }} → #{{ $r['position'] - 1 }}
+                                        </td>
+                                        <td class="px-4 py-4 align-middle">
+                                            <a href="{{ route('profile.show', $vm->slug()) }}" class="flex items-center gap-3 group">
+                                                <div class="h-12 w-12 overflow-hidden rounded-full bg-[#EEF2F7] flex items-center justify-center text-sm font-black text-[#07182D] shrink-0">
+                                                    @if ($vm->profileImageUrl())
+                                                        <img src="{{ $vm->profileImageUrl() }}" alt="{{ $vm->displayName() }}" class="h-full w-full object-cover">
+                                                    @else
+                                                        {{ mb_strtoupper(mb_substr($vm->displayName(), 0, 1)) }}
+                                                    @endif
+                                                </div>
+                                                <div class="min-w-0">
+                                                    <div class="flex items-center gap-2">
+                                                        <span class="font-black text-[15px] text-[#172033] group-hover:text-[#07182D]">{{ $vm->displayName() }}</span>
+                                                        @if ($vm->isLeader())
+                                                            <span class="rounded-full bg-[#07182D] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white">Corona</span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="mt-0.5 text-xs text-[#788597]">
+                                                        @if ($vm->category())
+                                                            {{ $vm->category() }} ·
+                                                        @endif
+                                                        {{ number_format($vm->profileViewsCount()) }} vistas · {{ number_format($vm->destinationClicksCount()) }} clics
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="px-4 py-4 text-center text-sm font-semibold text-[#172033] align-middle">{{ number_format($vm->profileViewsCount()) }}</td>
+                                        <td class="px-4 py-4 text-center text-sm font-semibold text-[#172033] align-middle">{{ number_format($vm->destinationClicksCount()) }}</td>
+                                        <td class="px-4 py-4 text-right align-middle">
+                                            <div class="text-lg font-black text-[#07182D]">{{ $vm->totalRealClpFormatted() }}</div>
+                                            <div class="text-xs text-[#788597]">Apoyo total</div>
+                                        </td>
+                                        <td class="px-4 py-4 text-right align-middle">
+                                            @if ($paymentsEnabled)
+                                                <button @click.prevent="openCheckout(@js($vm->profileId()))"
+                                                    class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-black transition {{ $vm->isLeader() ? 'bg-[#F5303E] text-white hover:bg-[#d82a35]' : 'bg-[#07182D] text-white hover:bg-[#0d2748]' }}">
+                                                    {{ $vm->ctaLabel() }}
+                                                </button>
                                             @else
-                                                IMPULSAR
+                                                <a href="{{ route('profile.show', $vm->slug()) }}"
+                                                   class="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-black text-[#07182D] hover:border-gray-300 hover:bg-gray-50 transition">
+                                                    Ver perfil
+                                                </a>
                                             @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6 space-y-3 md:hidden">
+                        @foreach ($viewModels as $vm)
+                            <article class="rounded-[14px] border border-[#E4EAF1] bg-white p-4 {{ $vm->isLeader() ? 'bg-[#FFF9E2]' : '' }}">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-full {{ $vm->isLeader() ? 'bg-[#FFC21C] text-[#07182D]' : 'bg-[#EEF2F7] text-[#07182D]' }} font-black text-lg shrink-0">
+                                        {{ $vm->position() }}
+                                    </div>
+                                    <a href="{{ route('profile.show', $vm->slug()) }}" class="flex-1 min-w-0 flex items-center gap-3">
+                                        <div class="h-12 w-12 overflow-hidden rounded-full bg-[#EEF2F7] flex items-center justify-center text-sm font-black text-[#07182D] shrink-0">
+                                            @if ($vm->profileImageUrl())
+                                                <img src="{{ $vm->profileImageUrl() }}" alt="{{ $vm->displayName() }}" class="h-full w-full object-cover">
+                                            @else
+                                                {{ mb_strtoupper(mb_substr($vm->displayName(), 0, 1)) }}
+                                            @endif
+                                        </div>
+                                        <div class="min-w-0">
+                                            <div class="flex items-center gap-2">
+                                                <span class="truncate font-black text-[15px] text-[#172033]">{{ $vm->displayName() }}</span>
+                                                @if ($vm->isLeader())
+                                                    <span class="rounded-full bg-[#07182D] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white">Corona</span>
+                                                @endif
+                                            </div>
+                                            <div class="mt-0.5 text-xs text-[#788597]">
+                                                @if ($vm->category())
+                                                    {{ $vm->category() }} ·
+                                                @endif
+                                                {{ number_format($vm->profileViewsCount()) }} vistas · {{ number_format($vm->destinationClicksCount()) }} clics
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="mt-3 flex items-center justify-between gap-3">
+                                    <div>
+                                        <div class="text-lg font-black text-[#07182D]">{{ $vm->totalRealClpFormatted() }}</div>
+                                        <div class="text-xs text-[#788597]">Apoyo total</div>
+                                    </div>
+                                    @if ($paymentsEnabled)
+                                        <button @click.prevent="openCheckout(@js($vm->profileId()))"
+                                            class="rounded-xl px-4 py-2.5 text-sm font-black transition {{ $vm->isLeader() ? 'bg-[#F5303E] text-white' : 'bg-[#07182D] text-white' }}">
+                                            {{ $vm->ctaLabel() }}
                                         </button>
+                                    @else
+                                        <a href="{{ route('profile.show', $vm->slug()) }}"
+                                           class="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-black text-[#07182D]">
+                                            Ver perfil
+                                        </a>
                                     @endif
-                                    <span class="font-bold tabular-nums text-sm shrink-0">{{ money_clp($r['total_real_clp']) }}</span>
-                                </a>
-                            @endif
+                                </div>
+                            </article>
                         @endforeach
-                    </section>
+                    </div>
+
+                    @if($hasMoreProfiles && $loadMoreUrl)
+                        <div class="mt-5 text-center">
+                            <a href="{{ $loadMoreUrl }}" class="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-black text-[#07182D] hover:border-gray-300 hover:bg-gray-50 transition">
+                                Ver más perfiles
+                            </a>
+                        </div>
+                    @endif
                 @else
-                    <section class="text-center py-10 text-gray-500">
-                        <div class="text-4xl mb-3">🗓️</div>
-                        <p class="font-bold text-lg text-gray-700">La semana acaba de empezar</p>
-                        <p class="text-sm mt-1">El primer movimiento puede cambiar todo el ranking.</p>
-                    </section>
+                    @if ($currentCategory)
+                        <section class="mt-6 rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-10 text-center text-gray-500">
+                            <div class="text-4xl mb-3">🗂️</div>
+                            <p class="font-bold text-lg text-gray-700">Todavía no hay perfiles en esta categoría</p>
+                            <p class="text-sm mt-1">Puedes explorar otras categorías o volver al ranking general.</p>
+                            <div class="mt-4">
+                                <a href="{{ route('home') }}" class="inline-flex items-center justify-center rounded-xl bg-[#07182D] px-5 py-3 text-sm font-black text-white">Ver todos</a>
+                            </div>
+                        </section>
+                    @else
+                        <section class="mt-6 rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-10 text-center text-gray-500">
+                            <div class="text-4xl mb-3">🗓️</div>
+                            <p class="font-bold text-lg text-gray-700">Sé el primero en moverlo</p>
+                            <p class="text-sm mt-1">Todavía nadie ha impulsado este ranking.</p>
+                        </section>
+                    @endif
                 @endif
             </div>
 
@@ -142,16 +236,15 @@
                     @include('partials.conversion-hero', ['positionPricing' => $positionPricing])
 
                     {{-- How it works --}}
-                    <div class="mt-6 bg-[#1B1B18] text-white rounded-2xl p-5">
+                    <div id="como-funciona" class="mt-6 bg-[#1B1B18] text-white rounded-2xl p-5">
                         <h3 class="font-extrabold text-base mb-3">⚖️ Así funciona</h3>
                         <ol class="space-y-2 text-sm">
                             <li class="flex gap-2"><span class="font-black text-[#F8B803]">1.</span> Elige a tu favorito</li>
-                            <li class="flex gap-2"><span class="font-black text-[#F8B803]">2.</span> Entra y paga desde $1.000</li>
+                            <li class="flex gap-2"><span class="font-black text-[#F8B803]">2.</span> Entra y paga desde {{ money_clp($limits['min']) }}</li>
                             <li class="flex gap-2"><span class="font-black text-[#F8B803]">3.</span> Sube de puesto en el ranking</li>
                             <li class="flex gap-2"><span class="font-black text-[#F8B803]">4.</span> ¿Le quitas la corona? Compártelo 👑</li>
                         </ol>
                         <div class="mt-3 pt-3 border-t border-white/10 text-xs text-white/60 space-y-1">
-                            <p>· Cierre semanal: dom 23:59</p>
                             <p>· Cada CLP cuenta</p>
                         </div>
                     </div>
@@ -167,11 +260,11 @@
         </div>
 
         {{-- MOBILE: How it works (below fold) --}}
-        <section class="mt-10 md:hidden bg-[#1B1B18] text-white rounded-3xl p-6">
+        <section id="como-funciona" class="mt-10 md:hidden bg-[#1B1B18] text-white rounded-3xl p-6">
             <h3 class="text-xl font-extrabold mb-4">⚖️ Así funciona</h3>
             <ol class="space-y-3 text-sm">
                 <li class="flex gap-3"><span class="font-black text-[#F8B803]">1.</span> Elige a tu favorito</li>
-                <li class="flex gap-3"><span class="font-black text-[#F8B803]">2.</span> Entra y paga desde $1.000</li>
+                <li class="flex gap-3"><span class="font-black text-[#F8B803]">2.</span> Entra y paga desde {{ money_clp($limits['min']) }}</li>
                 <li class="flex gap-3"><span class="font-black text-[#F8B803]">3.</span> Sube de puesto en el ranking</li>
                 <li class="flex gap-3"><span class="font-black text-[#F8B803]">4.</span> ¿Le quitas la corona? Compártelo 👑</li>
             </ol>
@@ -222,35 +315,30 @@
         return {
             ...config,
             showFaq: false,
-            periodEnds: 0,
-            countdown: '',
-            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false },
+            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [], confirmed: false },
             receiptData: { periodCode: '', reference: '' },
-            fm: { email: '', name: '', age18: false },
+            fm: { email: '', name: '', age18: false, termsAccepted: false },
             submitting: false,
             error: null,
-            init() {
-                const end = {{ $period ? $period->ends_at->timestamp * 1000 : 'Date.now()' }};
-                let rem = Math.max(0, end - Date.now());
-                const tick = () => {
-                    rem = Math.max(0, rem - 1000);
-                    if (rem <= 0) { this.countdown = '¡RESET!'; return; }
-                    const s = Math.floor(rem / 1000);
-                    const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600),
-                          m = Math.floor((s % 3600) / 60), sec = s % 60;
-                    this.countdown = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(sec).padStart(2,'0')}s`;
-                };
-                tick(); setInterval(tick, 1000);
-            },
+            init() {},
             openCheckout(id) {
                 const p = this.ranking.find(r => r.id === id) || {};
+                const vm = this.viewModels.find(v => v.profile_id === id) || {};
                 const min = this.limits.min;
                 const needTop = p.toTop || min;
                 const suggested = (needTop > 0 && needTop <= this.limits.max) ? needTop : min;
                 this.modal = { open: true, step: 1, confirmed: false,
-                    profile: { id, slug: p.slug || '', name: p.name || '', rank: p.rank || null, amount: p.amount || 0, toTop: p.toTop || min },
+                    profile: {
+                        id, slug: p.slug || '', name: p.name || '', rank: p.rank || null,
+                        amount: p.amount || 0, toTop: p.toTop || min,
+                        projected_rank: vm.cta_target || null,
+                        projected_required: vm.cta_required || 0,
+                        projected_required_formatted: vm.cta_required_formatted || '$0',
+                        projected_to_top: vm.to_number_one_clp || min,
+                        has_projection: vm.has_projection || false,
+                    },
                     amount: suggested, quickAmounts: [min, min * 2, min * 5] };
-                this.fm = { email: '', name: '', age18: false }; this.error = null;
+                this.fm = { email: '', name: '', age18: false, termsAccepted: false }; this.error = null;
             },
             setQuick(val) { this.modal.amount = val; },
             get suggestedAmount() {
@@ -259,24 +347,6 @@
                 return (need > 0 && need <= this.limits.max) ? need : this.limits.min;
             },
             moneyDisplay(v) { return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL'); },
-            get projectedToTop() {
-                if (!this.modal.profile) return this.limits.min;
-                const need = this.modal.profile.toTop;
-                if (need > 0 && need <= this.limits.max) return need;
-                return this.limits.max;
-            },
-            get projection() {
-                const p = this.modal.profile;
-                if (!p || !this.modal.amount) return { rank: p ? p.rank : null, tied: false };
-                const target = p.amount + this.modal.amount;
-                let race = 0;
-                for (let i = 0; i < this.ranking.length; i++) {
-                    if (this.ranking[i].amount >= target) race++;
-                }
-                const rank = race + 1;
-                const tied = race > 0 && this.ranking[race - 1].amount === target;
-                return { rank, tied };
-            },
             goPay() {
                 if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
                 if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }
@@ -287,15 +357,16 @@
                 const email = this.fm.email.trim();
                 if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { this.error = 'Ingresa un email válido.'; return; }
                 if (!this.fm.age18) { this.error = 'Debes declarar que eres mayor de 18 años.'; return; }
+                if (!this.fm.termsAccepted) { this.error = 'Debes aceptar los Términos y Condiciones.'; return; }
                 this.submitting = true; this.error = null; this.modal.confirmed = false;
                 try {
                     const res = await fetch('/api/pagos', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content },
                         body: JSON.stringify({
-                            profile_id: this.modal.profile.id, amount_clp: this.modal.amount,
+                            profile_id: this.modal.profile.id, target_position: this.modal.profile.rank || 1,
                             supporter_name: this.fm.name.trim() || null, is_anonymous: true,
-                            age_declared_18: '1', checkout_token: this.checkoutToken, payer_email: email,
+                            age_declared_18: '1', terms_accepted: '1', checkout_token: this.checkoutToken, payer_email: email,
                         }),
                     });
                     const data = await res.json();

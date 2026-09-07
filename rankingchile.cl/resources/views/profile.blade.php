@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', $profile->display_name . ' está #' . ($rank ?? '-') . ' en ¿Quién Manda? 👑')
+@section('title', $profile->display_name . ' está #' . ($viewModel?->position() ?? $rank ?? '-') . ' en ¿Quién Manda? 👑')
 
 @push('meta')
-    <meta property="og:title" content="{{ $profile->display_name }} está #{{ $rank }} en ¿Quién Manda? 👑" />
-    <meta property="og:description" content="Faltan {{ money_clp($entry['overtake_above_clp'] ?? 1000) }} para que {{ $profile->display_name }} siga escalando. Impúlsalo y supéralo." />
+    <meta property="og:title" content="{{ $profile->display_name }} está #{{ $viewModel?->position() ?? $rank ?? '-' }} en ¿Quién Manda? 👑" />
+    <meta property="og:description" content="Faltan {{ money_clp($viewModel?->overtakeAboveClp() ?? $entry['overtake_above_clp'] ?? 1000) }} para que {{ $profile->display_name }} siga escalando. Impúlsalo y supéralo." />
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ $profile->display_name }} está #{{ $rank }} en ¿Quién Manda?" />
+    <meta name="twitter:title" content="{{ $profile->display_name }} está #{{ $viewModel?->position() ?? $rank ?? '-' }} en ¿Quién Manda?" />
     <meta name="twitter:description" content="El ranking que se decide con plata. Impulsa a {{ $profile->display_name }}." />
 @endpush
 
@@ -17,6 +17,8 @@
     paymentsEnabled: {{ $paymentsEnabled ? 'true' : 'false' }},
     checkoutToken: '{{ $checkoutToken }}',
     limits: { min: {{ $limits['min'] }}, max: {{ $limits['max'] }} },
+    checkoutPayload: {{ json_encode($viewModel?->checkoutPayload()) }},
+    checkoutProjection: {{ json_encode($projection) }},
     ranking: {{ json_encode(array_map(fn($r) => [
         'id' => $r['profile_id'], 'slug' => $r['slug'], 'name' => $r['display_name'],
         'amount' => $r['total_real_clp'], 'rank' => $r['position'], 'toTop' => $r['to_number_one_clp'] ?? 0,
@@ -41,26 +43,28 @@
 
             <div class="mt-3">
                 <div class="mt-2 flex items-center justify-center gap-2">
-                    <span class="font-black text-gray-400">#{{ $rank ?? '-' }}</span>
+                    <span class="font-black text-gray-400">#{{ $viewModel?->position() ?? $rank ?? '-' }}</span>
                     <h1 class="text-2xl font-extrabold">{{ $profile->display_name }}</h1>
-                    @if ($profile->verification_status->value === 'verified')
-                        <span title="Verificado" class="rounded-full bg-[#0ea5e9] text-white text-xs px-1.5 py-0.5">✓</span>
-                    @elseif ($profile->verification_status->value === 'pending')
-                        <span title="Verificación pendiente" class="rounded-full bg-orange-500 text-white text-xs px-1.5 py-0.5">…</span>
+                    @if ($viewModel && $viewModel->verificationBadge())
+                        <span
+                            title="{{ $viewModel->verificationStatus() === 'verified' ? 'Verificado' : 'Verificación pendiente' }}"
+                            class="rounded-full {{ $viewModel->verificationBadgeColor() }} text-white text-xs px-1.5 py-0.5">
+                            {{ $viewModel->verificationBadge() }}
+                        </span>
                     @endif
                 </div>
-                @if ($profile->is_community_created)
+                @if ($viewModel ? $viewModel->isCommunityCreated() : $profile->is_community_created)
                     <p class="text-xs text-gray-400 mt-1">👥 Perfil de la Comunidad / No Oficial ⚖️</p>
                 @endif
                 <div class="mt-3 text-3xl font-black text-[#1B1B18]">
-                    {{ money_clp($entry['total_real_clp'] ?? 0) }}
+                    {{ $viewModel?->totalRealClpFormatted() ?? money_clp($entry['total_real_clp'] ?? 0) }}
                 </div>
-                <div class="text-xs text-gray-500">esta semana</div>
+                <div class="text-xs text-gray-500">{{ $periodRemainingText ?? 'esta semana' }}</div>
             </div>
 
             @if ($entry)
                 <div class="mt-4 text-sm text-gray-600">
-                    👥 {{ number_format($entry['supporter_count']) }} personas impulsan a {{ $profile->display_name }} esta semana
+                    👥 {{ $viewModel?->supporterCountPluralized() ?? number_format($entry['supporter_count']) . ' personas impulsan' }} a {{ $profile->display_name }} {{ $periodRemainingText ?? 'esta semana' }}
                     <span class="text-gray-400 text-xs">(distintas y validadas)</span>
                 </div>
             @endif
@@ -71,8 +75,8 @@
                     class="mt-6 w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl active:scale-[0.98] transition">
                     👑 IMPULSAR A {{ strtoupper($profile->display_name) }}
                 </button>
-                @if ($entry && $entry['overtake_above_clp'] > 0)
-                    <p class="mt-2 text-xs text-gray-500">para superar al puesto de arriba · <span class="font-bold text-[#F53003]">🔥 faltan {{ money_clp($entry['overtake_above_clp']) }}</span></p>
+                @if ($entry && ($viewModel?->overtakeAboveClp() ?? $entry['overtake_above_clp'] ?? 0) > 0)
+                    <p class="mt-2 text-xs text-gray-500">para superar al puesto de arriba · <span class="font-bold text-[#F53003]">🔥 faltan {{ money_clp($viewModel?->overtakeAboveClp() ?? $entry['overtake_above_clp'] ?? 0) }}</span></p>
                 @endif
             @else
                 <div class="mt-6 w-full bg-white/10 border border-gray-200 text-gray-500 font-semibold py-4 rounded-2xl">💤 Pagos desactivados</div>
@@ -106,13 +110,19 @@
 
     {{-- STICKY CTA --}}
     @if ($paymentsEnabled && $entry)
+        @php
+            $stickyAmount = $projection['required_amount']
+                ?? $viewModel?->toNumberOneClp()
+                ?? $viewModel?->overtakeAboveClp()
+                ?? 1000;
+        @endphp
         <div class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-gray-200 shadow-[0_-8px_24px_rgba(0,0,0,0.08)] px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             <div class="mx-auto max-w-2xl">
                 <p class="mb-2 text-center text-[10px] font-bold uppercase tracking-[0.24em] text-gray-500">Acción inmediata</p>
                 <button
                     @click="openCheckout(@js($profile->id))"
                     class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black text-base sm:text-lg py-5 rounded-2xl shadow-xl active:scale-[0.98] transition">
-                    👑 IMPULSAR · {{ money_clp($entry['to_number_one_clp'] ?: ($entry['overtake_above_clp'] ?: 1000)) }}
+                    👑 IMPULSAR · {{ money_clp($stickyAmount) }}
                 </button>
             </div>
         </div>
@@ -128,8 +138,8 @@
         return {
             ...config,
             countdown: '',
-            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [1000, 2000, 5000], confirmed: false }, receiptData: { periodCode: '', reference: '' },
-            fm: { email: '', name: '', age18: false },
+            modal: { open: false, step: 1, profile: null, amount: 0, quickAmounts: [], confirmed: false }, receiptData: { periodCode: '', reference: '' },
+            fm: { email: '', name: '', age18: false, termsAccepted: false },
             submitting: false,
             error: null,
             init() {
@@ -146,36 +156,29 @@
                 tick(); setInterval(tick, 1000);
             },
             moneyDisplay(v) { return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL'); },
-            get projectedToTop() {
-                if (!this.modal.profile) return this.limits.min;
-                const need = this.modal.profile.toTop;
-                if (need > 0 && need <= this.limits.max) return need;
-                return this.limits.max;
-            },
-            get projection() {
-                const p = this.modal.profile;
-                if (!p || !this.modal.amount) return { rank: p ? p.rank : null, tied: false };
-                const target = p.amount + this.modal.amount;
-                let race = 0;
-                for (let i = 0; i < this.ranking.length; i++) {
-                    if (this.ranking[i].amount >= target) race++;
-                }
-                const rank = race + 1;
-                const tied = race > 0 && this.ranking[race - 1].amount === target;
-                return { rank, tied };
-            },
             async copyShare(url) {
                 try { await navigator.clipboard.writeText(url); } catch (e) {}
             },
             openCheckout(id) {
                 const p = this.ranking.find(r => r.id === id) || {};
                 const min = this.limits.min;
+                const proj = this.checkoutProjection;
+                const hasProjection = proj && proj.required_amount > 0;
                 const needTop = p.toTop || min;
-                const suggested = (needTop > 0 && needTop <= this.limits.max) ? needTop : min;
+                const suggested = hasProjection
+                    ? proj.required_amount
+                    : ((needTop > 0 && needTop <= this.limits.max) ? needTop : min);
                 this.modal = { open: true, step: 1, confirmed: false,
-                    profile: { id, slug: p.slug || '', name: p.name || '', rank: p.rank || null, amount: p.amount || 0, toTop: p.toTop || min },
+                    profile: {
+                        id, slug: p.slug || '', name: p.name || '', rank: p.rank || null,
+                        amount: p.amount || 0, toTop: p.toTop || min,
+                        has_projection: hasProjection,
+                        projected_rank: hasProjection ? (proj.target_position || null) : null,
+                        projected_to_top: hasProjection ? proj.required_amount : min,
+                        cta_required: hasProjection ? proj.required_amount : 0,
+                    },
                     amount: suggested, quickAmounts: [min, min * 2, min * 5] };
-                this.fm = { email: '', name: '', age18: false }; this.error = null;
+                this.fm = { email: '', name: '', age18: false, termsAccepted: false }; this.error = null;
             },
             setCustomAmount(ev) { const v = parseInt(ev.target.value) || 0; this.modal.amount = Math.max(0, v); this.setQuick(null); },
             setQuick(val) { this.modal.amount = val; },
@@ -194,15 +197,16 @@
                 const email = this.fm.email.trim();
                 if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { this.error = 'Ingresa un email válido.'; return; }
                 if (!this.fm.age18) { this.error = 'Debes declarar que eres mayor de 18 años.'; return; }
+                if (!this.fm.termsAccepted) { this.error = 'Debes aceptar los Términos y Condiciones.'; return; }
                 this.submitting = true; this.error = null; this.modal.confirmed = false;
                 try {
                     const res = await fetch('/api/pagos', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content },
                         body: JSON.stringify({
-                            profile_id: this.modal.profile.id, amount_clp: this.modal.amount,
+                            profile_id: this.modal.profile.id, target_position: this.modal.profile.rank || 1,
                             supporter_name: this.fm.name.trim() || null, is_anonymous: true,
-                            age_declared_18: '1', checkout_token: this.checkoutToken, payer_email: email,
+                            age_declared_18: '1', terms_accepted: '1', checkout_token: this.checkoutToken, payer_email: email,
                         }),
                     });
                     const data = await res.json();

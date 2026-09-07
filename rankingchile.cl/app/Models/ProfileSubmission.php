@@ -15,11 +15,13 @@ class ProfileSubmission extends Model
         'display_name',
         'category',
         'profile_category_id',
+        'region_id',
         'profile_id',
         'source_type',
         'source_url',
         'normalized_url',
         'detected_title',
+        'use_profile_as_destination',
         'profile_image_url',
         'featured_media_url',
         'submitted_by_session_id',
@@ -34,6 +36,8 @@ class ProfileSubmission extends Model
     protected $casts = [
         'status' => ProfileSubmissionStatus::class,
         'reviewed_at' => 'datetime',
+        'region_id' => 'integer',
+        'use_profile_as_destination' => 'boolean',
     ];
 
     public const STATUS_PENDING = ProfileSubmissionStatus::Pending->value;
@@ -43,6 +47,11 @@ class ProfileSubmission extends Model
     public function profileCategory(): BelongsTo
     {
         return $this->belongsTo(ProfileCategory::class, 'profile_category_id');
+    }
+
+    public function region(): BelongsTo
+    {
+        return $this->belongsTo(Region::class, 'region_id');
     }
 
     public function profile(): BelongsTo

@@ -42,7 +42,7 @@
                     <div class="mt-3 grid grid-cols-2 gap-3 text-sm">
                         <div class="rounded-2xl bg-black/20 p-3">
                             <p class="text-white/50 text-xs">Paso activo</p>
-                            <p class="mt-1 text-2xl font-black text-[#F8B803]" x-text="step"></p>
+                            <p class="mt-1 text-2xl font-black text-[#F8B803]" x-text="stepDisplay"></p>
                         </div>
                         <div class="rounded-2xl bg-black/20 p-3">
                             <p class="text-white/50 text-xs">Modo</p>
@@ -64,23 +64,23 @@
                 <section x-show="step === 1" x-cloak class="space-y-4">
                     <div>
                         <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 1</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Pega URL o handle</h2>
-                        <p class="mt-2 text-sm text-gray-600">Tomamos solo el origen público para armar tu perfil. No pedimos contraseña ni acceso privado.</p>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 1/5 · Pega tu perfil</h2>
+                        <p class="mt-2 text-sm text-gray-600">El resto lo sacamos nosotros.</p>
                     </div>
 
                     <label class="block">
-                        <span class="mb-2 block text-sm font-bold text-[#1B1B18]">URL pública o @handle</span>
+                        <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Pega tu perfil</span>
                         <input
                             type="text"
                             x-model="source"
                             @input="syncFromSource()"
                             class="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 text-base outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10"
-                            placeholder="https://instagram.com/tu-cuenta o @tu-cuenta"
+                            placeholder="youtube.com/@tu · x · tiktok · tudominio.cl"
                         >
                     </label>
 
                     <div class="grid gap-3 sm:grid-cols-3">
-                        <button type="button" @click="fillSource('https://instagram.com/tu-cuenta')" class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-left text-sm font-semibold transition hover:border-[#F8B803]">
+                        <button type="button" @click="fillSource('https://instagram.com/@tu')" class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-left text-sm font-semibold transition hover:border-[#F8B803]">
                             Instagram
                             <span class="mt-1 block text-xs font-normal text-gray-500">Perfil público</span>
                         </button>
@@ -102,9 +102,7 @@
                     </div>
 
                     <div class="flex flex-col gap-3 sm:flex-row">
-                        <button type="button" @click="go(2)" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02]">
-                            Guardar origen y seguir
-                        </button>
+                        <button type="button" @click="go(2)" :disabled="!isSourceValid" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-black text-white transition" :class="isSourceValid ? 'bg-[#F53003] hover:bg-[#c22a02]' : 'cursor-not-allowed bg-gray-300'" x-text="isSourceValid ? 'Siguiente paso' : 'Completa el perfil'"></button>
                         <p class="text-xs leading-5 text-gray-500 sm:max-w-md">Legal: usamos un origen visible y público. El contenido privado no entra al flujo.</p>
                     </div>
                 </section>
@@ -112,24 +110,60 @@
                 <section x-show="step === 2" x-cloak class="space-y-4">
                     <div>
                         <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 2</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Preview editable</h2>
-                        <p class="mt-2 text-sm text-gray-600">Ajusta el texto antes de publicar. Lo que ves aquí es lo que se mostrará en la ficha.</p>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 2/5 · Tu proyecto</h2>
+                        <p class="mt-2 text-sm text-gray-600">Completa tu proyecto. Categoría y región son opcionales.</p>
                     </div>
 
                     <div class="grid gap-4 md:grid-cols-2">
                         <div class="space-y-3">
                             <label class="block">
-                                <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Nombre visible</span>
-                                <input x-model="displayName" type="text" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10">
+                                <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Nombre del proyecto</span>
+                                <input x-model="displayName" type="text" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="Tu proyecto">
                             </label>
                             <label class="block">
-                                <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Bajada corta</span>
-                                <input x-model="summary" type="text" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10">
+                                <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Descripción</span>
+                                <textarea x-model="summary" rows="4" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="Cuenta en una frase qué hace tu proyecto"></textarea>
+                            </label>
+                            <label class="block">
+                                <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Categoría (opcional)</span>
+                                <select x-model="category" class="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10">
+                                    <option value="">Sin categoría</option>
+                                    @foreach ($projectCategories as $categoryOption)
+                                        <option value="{{ $categoryOption->name }}">{{ $categoryOption->displayName() }}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+                            <label class="block">
+                                <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Región de Chile (opcional)</span>
+                                <select x-model="regionId" class="w-full rounded-2xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10">
+                                    <option value="">Sin región</option>
+                                    @foreach ($regions as $region)
+                                        <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                    @endforeach
+                                </select>
                             </label>
                             <label class="block">
                                 <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Imagen/Avatar URL</span>
                                 <input x-model="avatarUrl" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://...">
                             </label>
+                            <div class="grid gap-3 sm:grid-cols-2">
+                                <label class="block">
+                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Instagram</span>
+                                    <input x-model="socialInstagram" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://instagram.com/tu...">
+                                </label>
+                                <label class="block">
+                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">TikTok</span>
+                                    <input x-model="socialTikTok" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://tiktok.com/@tu...">
+                                </label>
+                                <label class="block">
+                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">X</span>
+                                    <input x-model="socialX" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://x.com/tu...">
+                                </label>
+                                <label class="block">
+                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Sitio web</span>
+                                    <input x-model="socialWebsite" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://tu-dominio.cl">
+                                </label>
+                            </div>
                         </div>
 
                         <div class="rounded-3xl border border-gray-200 bg-[#1B1B18] p-4 text-white">
@@ -162,6 +196,15 @@
                                     <p class="mt-1 break-all font-bold" x-text="destinationUrl || 'Pendiente'"></p>
                                 </div>
                             </div>
+                            <div class="mt-3 rounded-2xl bg-white/5 p-3 text-xs text-white/70">
+                                <p class="font-bold text-white/90">Redes principales</p>
+                                <div class="mt-2 flex flex-wrap gap-2">
+                                    <template x-if="socialInstagram"><span class="rounded-full bg-white/10 px-3 py-1" x-text="'IG · ' + socialInstagram"></span></template>
+                                    <template x-if="socialTikTok"><span class="rounded-full bg-white/10 px-3 py-1" x-text="'TT · ' + socialTikTok"></span></template>
+                                    <template x-if="socialX"><span class="rounded-full bg-white/10 px-3 py-1" x-text="'X · ' + socialX"></span></template>
+                                    <template x-if="socialWebsite"><span class="rounded-full bg-white/10 px-3 py-1" x-text="'WEB · ' + socialWebsite"></span></template>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -178,27 +221,57 @@
                 <section x-show="step === 3" x-cloak class="space-y-4">
                     <div>
                         <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 3</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">destination_url</h2>
-                        <p class="mt-2 text-sm text-gray-600">Este es el destino final del botón. Debe ser una URL pública y válida.</p>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 3/5 · Destino de tráfico</h2>
+                        <p class="mt-2 text-sm text-gray-600">Este es el destino final del botón. Es obligatorio: escribe una URL pública válida o marca usar perfil como destino.</p>
                     </div>
 
                     <label class="block">
-                        <span class="mb-2 block text-sm font-bold text-[#1B1B18]">URL de destino</span>
-                        <input
-                            x-model="destinationUrl"
-                            type="url"
-                            class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10"
-                            placeholder="https://tusitio.cl/landing"
-                        >
+                        <div class="mb-2 flex items-center justify-between gap-3">
+                            <span class="block text-sm font-bold text-[#1B1B18]">URL de destino</span>
+                            <label class="inline-flex items-center gap-2 text-xs font-bold text-gray-600">
+                                <input type="checkbox" x-model="useProfileAsDestination" @change="toggleProfileDestination()" class="h-4 w-4 rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                Usar perfil como destino
+                            </label>
+                        </div>
+                        <input x-model="destinationUrl" @input.debounce.600ms="queueMetaPreview()" :disabled="useProfileAsDestination" placeholder="https://tu-landing.cl" class="w-full rounded-[14px] border border-line bg-white px-[18px] py-3.5 font-mono text-sm text-ink outline-none transition-colors focus:border-accent disabled:cursor-not-allowed disabled:bg-gray-100" name="destination" value="" type="url" :required="!useProfileAsDestination">
                     </label>
 
                     <div class="rounded-2xl border border-dashed border-[#F8B803] bg-[#FFFCEB] px-4 py-3 text-sm text-[#5A4300]">
                         <span class="font-bold">Chequeo:</span>
-                        <span class="ml-1" x-text="isValidDestination ? 'URL válida para avanzar.' : 'Agrega una URL pública completa para continuar.'"></span>
+                        <span class="ml-1" x-text="useProfileAsDestination ? 'Ruta del perfil cargada.' : (isValidDestination ? 'URL válida para avanzar.' : 'Agrega una URL pública completa para continuar.')"></span>
+                    </div>
+
+                    <div x-show="!useProfileAsDestination && metaPreview.loading" x-cloak class="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-500">
+                        Revisando metadata...
+                    </div>
+
+                    <div x-show="!useProfileAsDestination && (metaPreview.title || metaPreview.description)" x-cloak class="rounded-3xl border border-gray-200 bg-white p-4 shadow-sm">
+                        <div class="flex items-center justify-between gap-3">
+                            <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-gray-400">Vista previa SEO</p>
+                            <template x-if="metaPreview.has_good_paint">
+                                <span class="inline-flex items-center gap-2 rounded-full bg-[#FFF8E1] px-3 py-1 text-xs font-black text-[#7A5600]">
+                                    <span aria-hidden="true">🎟️</span>
+                                    <span x-text="metaPreview.badge_label || 'Esto tiene buena pinta'"></span>
+                                </span>
+                            </template>
+                        </div>
+                        <div class="mt-3 space-y-2">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-[0.18em] text-gray-400">Meta title</span>
+                                <span class="ml-2 font-semibold text-[#1B1B18]" x-text="metaPreview.title || '—'"></span>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-[0.18em] text-gray-400">Meta description</span>
+                                <span class="ml-2 text-sm text-gray-600" x-text="metaPreview.description || '—'"></span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex flex-col gap-3 sm:flex-row">
-                        <button type="button" :disabled="!isValidDestination" @click="go(4)" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-black text-white transition" :class="isValidDestination ? 'bg-[#F53003] hover:bg-[#c22a02]' : 'cursor-not-allowed bg-gray-300'">
+                        <button type="button" @click="go(2)" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">
+                            Volver a tu proyecto
+                        </button>
+                        <button type="button" :disabled="!canContinueFromDestination" @click="go(4)" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-black text-white transition" :class="canContinueFromDestination ? 'bg-[#F53003] hover:bg-[#c22a02]' : 'cursor-not-allowed bg-gray-300'">
                             Seguir a posición y costo
                         </button>
                         <p class="text-xs leading-5 text-gray-500 sm:max-w-md">Legal: el destino final debe ser accesible y coherente con lo publicado.</p>
@@ -208,7 +281,7 @@
                 <section x-show="step === 4" x-cloak class="space-y-4">
                     <div>
                         <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 4</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Posición, costo y CTA</h2>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 4/5 · Posición, costo y CTA</h2>
                         <p class="mt-2 text-sm text-gray-600">El CTA cambia según la posición seleccionada. También puedes activar <strong>PUBLICAR GRATIS</strong>.</p>
                     </div>
 
@@ -252,14 +325,15 @@
                                 </div>
                                 <div class="flex items-center justify-between gap-3">
                                     <dt class="font-medium">Destino</dt>
-                                    <dd class="max-w-[10rem] truncate font-black" x-text="destinationUrl"></dd>
+                                    <dd class="max-w-[10rem] truncate font-black" x-text="useProfileAsDestination ? destinationUrl : destinationUrl"></dd>
                                 </div>
                             </dl>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-3 sm:flex-row">
-                        <button type="button" @click="go(5)" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02]" x-text="ctaLabel"></button>
+                        <button type="button" @click="back()" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">Retroceder</button>
+                        <button type="button" @click="go(5)" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02]" x-text="'Paso 5/5'"></button>
                         <button type="button" @click="go(3)" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">
                             Ajustar destino
                         </button>
@@ -288,7 +362,7 @@
                                 <p class="mt-2 text-sm text-white/70" x-text="summary"></p>
                                 <div class="mt-4 rounded-2xl bg-white/5 px-3 py-2 text-sm text-white/80">
                                     <p class="font-semibold">Destino</p>
-                                    <p class="break-all text-white/60" x-text="destinationUrl"></p>
+                                    <p class="break-all text-white/60" x-text="useProfileAsDestination ? destinationUrl : destinationUrl"></p>
                                 </div>
                             </div>
                         </article>
@@ -328,7 +402,7 @@
                     </div>
 
                     <div class="flex flex-col gap-3 sm:flex-row">
-                        <button type="button" @click="submitDraft()" :disabled="submitting" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02]" x-text="submitting ? 'Enviando...' : (freePublish ? 'PUBLICAR GRATIS' : ctaLabel)"></button>
+                        <button type="button" @click="submitDraft()" :disabled="submitting || !canContinueFromDestination" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02] disabled:cursor-not-allowed disabled:bg-gray-300" x-text="submitting ? 'Enviando...' : (freePublish ? 'PUBLICAR GRATIS' : ctaLabel)"></button>
                         <button type="button" @click="copyPayload()" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">
                             Copiar resumen
                         </button>
@@ -358,7 +432,7 @@
                     </div>
                     <div class="rounded-2xl bg-[#FFF8E1] p-4">
                         <p class="text-xs text-[#8A6100]">Destino</p>
-                        <p class="mt-1 break-all font-bold text-[#1B1B18]" x-text="destinationUrl"></p>
+                        <p class="mt-1 break-all font-bold text-[#1B1B18]" x-text="useProfileAsDestination ? destinationUrl : destinationUrl"></p>
                     </div>
                     <div class="rounded-2xl bg-[#FFF8E1] p-4">
                         <p class="text-xs text-[#8A6100]">CTA</p>
@@ -410,16 +484,27 @@
             displayName: config.defaultDraft.display_name,
             summary: config.defaultDraft.summary,
             destinationUrl: config.defaultDraft.destination_url,
+            useProfileAsDestination: config.defaultDraft.use_profile_as_destination ?? false,
             avatarUrl: config.defaultDraft.avatar_url,
+            socialInstagram: '',
+            socialTikTok: '',
+            socialX: '',
+            socialWebsite: '',
+            metaPreview: { loading: false, title: '', description: '', has_good_paint: false, badge_label: null },
+            metaPreviewTimer: null,
             position: config.defaultDraft.position,
             freePublish: config.defaultDraft.free_publish,
+            category: config.defaultDraft.category || '',
+            regionId: config.defaultDraft.region_id || '',
             submitted: false,
             submitting: false,
             errorMessage: null,
             copied: false,
             positionPricing: config.positionPricing,
             legalMicrocopy: config.legalMicrocopy,
-            get pricingMap() {
+            get stepDisplay() {
+                return `${this.step}/${this.maxStep}`;
+            },            get pricingMap() {
                 return this.positionPricing.reduce((carry, item) => {
                     carry[item.position] = item.amount;
                     return carry;
@@ -440,6 +525,9 @@
                 }
                 return this.source.includes('@') ? 'Handle detectado' : 'URL pública detectada';
             },
+            get isSourceValid() {
+                return Boolean(this.source && this.source.trim().length > 0 && this.handle && this.handle.trim().length > 0);
+            },
             get avatarFallback() {
                 return this.displayName ? this.displayName.slice(0, 1).toUpperCase() : 'Q';
             },
@@ -447,14 +535,21 @@
                 return this.freePublish ? 'GRATIS' : `#${this.position}`;
             },
             get isValidDestination() {
+                if (this.useProfileAsDestination) {
+                    return true;
+                }
                 try {
                     return Boolean(this.destinationUrl) && Boolean(new URL(this.destinationUrl));
                 } catch (e) {
                     return false;
                 }
             },
+            get canContinueFromDestination() {
+                return this.useProfileAsDestination || this.isValidDestination;
+            },
             init() {
                 this.syncFromSource();
+                this.syncDestinationMode();
             },
             money(value) {
                 return '$' + Number(value || 0).toLocaleString('es-CL');
@@ -463,6 +558,9 @@
                 const raw = (this.source || '').trim();
                 if (!raw) {
                     this.handle = '';
+                    if (this.useProfileAsDestination) {
+                        this.destinationUrl = this.profileDestinationUrl();
+                    }
                     return;
                 }
                 const withoutProtocol = raw.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
@@ -476,6 +574,9 @@
                 this.handle = candidate;
                 if (!this.displayName || this.displayName === this.defaultDisplayName()) {
                     this.displayName = this.humanizeHandle(candidate);
+                }
+                if (this.useProfileAsDestination) {
+                    this.destinationUrl = this.profileDestinationUrl();
                 }
             },
             defaultDisplayName() {
@@ -501,14 +602,73 @@
             setFreeMode() {
                 this.freePublish = true;
             },
+            profileDestinationUrl() {
+                const slug = this.handle || config.defaultDraft.handle || 'tu-cuenta';
+                return window.location.origin + '/perfil/' + slug;
+            },
+            syncDestinationMode() {
+                if (this.useProfileAsDestination) {
+                    this.destinationUrl = this.profileDestinationUrl();
+                } else if (!this.destinationUrl || this.destinationUrl.includes('/perfil/')) {
+                    this.destinationUrl = '';
+                }
+            },
+            toggleProfileDestination() {
+                this.syncDestinationMode();
+                this.queueMetaPreview();
+            },
             setPaidMode() {
                 this.freePublish = false;
                 if (!this.position) {
                     this.position = config.defaultDraft.position;
                 }
             },
+            queueMetaPreview() {
+                if (this.metaPreviewTimer) {
+                    window.clearTimeout(this.metaPreviewTimer);
+                }
+                this.metaPreviewTimer = window.setTimeout(() => this.loadMetaPreview(), 600);
+            },
+            async loadMetaPreview() {
+                if (this.useProfileAsDestination) {
+                    this.metaPreview = { loading: false, title: '', description: '', has_good_paint: false, badge_label: null };
+                    return;
+                }
+                if (!this.isValidDestination) {
+                    this.metaPreview = { loading: false, title: '', description: '', has_good_paint: false, badge_label: null };
+                    return;
+                }
+
+                this.metaPreview.loading = true;
+                try {
+                    const res = await fetch('/api/meta-preview', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({ url: this.destinationUrl }),
+                    });
+                    const data = await res.json();
+                    if (!res.ok) {
+                        throw new Error(data.message || 'No pudimos leer la metadata.');
+                    }
+                    this.metaPreview = {
+                        loading: false,
+                        title: data.title || '',
+                        description: data.description || '',
+                        has_good_paint: Boolean(data.has_good_paint),
+                        badge_label: data.badge_label || null,
+                    };
+                } catch (error) {
+                    this.metaPreview = { loading: false, title: '', description: '', has_good_paint: false, badge_label: null };
+                }
+            },
             go(step) {
-                if (step === 4 && !this.isValidDestination) {
+                if (step > this.step + 1 || step < this.step - 1) {
+                    return;
+                }
+                if (step > 1 && !this.isSourceValid) {
+                    return;
+                }
+                if (step === 4 && !this.canContinueFromDestination) {
                     return;
                 }
                 this.step = Math.min(Math.max(step, 1), this.maxStep);
@@ -520,13 +680,24 @@
                 this.go(this.step - 1);
             },
             payload() {
+                const links = [
+                    { label: 'Instagram', url: this.socialInstagram },
+                    { label: 'TikTok', url: this.socialTikTok },
+                    { label: 'X', url: this.socialX },
+                    { label: 'Sitio web', url: this.socialWebsite },
+                ].filter((link) => link.url && link.url.trim());
+
                 return {
                     source: this.source,
                     handle: this.handle,
                     display_name: this.displayName,
                     summary: this.summary,
+                    category: this.category || null,
+                    region_id: this.regionId || null,
                     destination_url: this.destinationUrl,
+                    use_profile_as_destination: this.useProfileAsDestination,
                     avatar_url: this.avatarUrl,
+                    links,
                     position: this.freePublish ? null : this.position,
                     amount_clp: this.selectedAmount,
                     free_publish: this.freePublish,
@@ -561,9 +732,11 @@
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '' },
                         body: JSON.stringify({
                             display_name: this.displayName,
-                            category: 'General',
+                            category: this.category || null,
+                            region_id: this.regionId || null,
                             source_url: this.sourceToUrl(this.source),
-                            destination_url: this.destinationUrl || this.sourceToUrl(this.source),
+                            destination_url: this.destinationUrl,
+                            use_profile_as_destination: this.useProfileAsDestination,
                         }),
                     });
                     const detected = await detect.json();

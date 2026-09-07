@@ -21,9 +21,16 @@ class Profile extends Model
     protected $fillable = [
         'public_id',
         'display_name',
+        'project_description',
+        'instagram_url',
+        'tiktok_url',
+        'x_url',
+        'website_url',
+        'use_profile_as_destination',
         'slug',
         'category',
         'profile_category_id',
+        'region_id',
         'profile_submission_id',
         'source_type',
         'source_url',
@@ -42,6 +49,8 @@ class Profile extends Model
         'type' => ProfileType::class,
         'status' => ProfileStatus::class,
         'verification_status' => VerificationStatus::class,
+        'region_id' => 'integer',
+        'use_profile_as_destination' => 'boolean',
     ];
 
     public const STATUS_PENDING_REVIEW = ProfileStatus::PendingReview->value;
@@ -87,6 +96,11 @@ class Profile extends Model
     public function profileCategory(): BelongsTo
     {
         return $this->belongsTo(ProfileCategory::class, 'profile_category_id');
+    }
+
+    public function region(): BelongsTo
+    {
+        return $this->belongsTo(Region::class, 'region_id');
     }
 
     public function submission(): BelongsTo

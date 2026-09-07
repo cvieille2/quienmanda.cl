@@ -2,12 +2,15 @@
     $positionPricing = $positionPricing ?? [];
     $topAmount = $leader['total_real_clp'] ?? 0;
     $hasActivity = $topAmount > 0;
+    $heroProjection = $heroProjection ?? $positionPricing[0] ?? null;
+    $limits = $limits ?? ['min' => 1000, 'max' => 1000000];
+    $periodLabel = $periodLabel ?? 'Semana';
 @endphp
 <section class="bg-gradient-to-b from-[#FFFDF7] to-white py-10 sm:py-14" x-data="conversionHero()">
     <div class="mx-auto max-w-2xl px-4 text-center">
 
         {{-- Eyebrow --}}
-        <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400">ESTA SEMANA</p>
+        <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400">{{ $periodLabel }}</p>
 
         {{-- Headline --}}
         <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight text-[#1B1B18]">
@@ -16,8 +19,10 @@
 
         {{-- Dynamic Subheadline --}}
         <p class="mt-3 text-lg sm:text-xl font-bold text-gray-500">
-            @if($hasActivity)
-                Sube al #1 por <span class="text-[#F53003]">${{ number_format($topAmount + 1000) }}</span>
+            @if($heroProjection)
+                Sube al #{{ $heroProjection['position'] }} por <span class="text-[#F53003]">${{ number_format($heroProjection['amount']) }}</span>
+            @elseif($hasActivity)
+                Sube al #1 por <span class="text-[#F53003]">${{ number_format($topAmount + ($limits['min'] ?? 1000)) }}</span>
             @else
                 Sé el primero en mover el ranking
             @endif
@@ -25,15 +30,10 @@
 
         {{-- Source Input --}}
         <div class="mt-8 max-w-lg mx-auto">
-            <div class="relative">
-                <input type="text" x-model="sourceInput"
-                       placeholder="Pega tu perfil, canal, web o proyecto"
-                       class="w-full border-2 border-gray-200 focus:border-[#F53003] rounded-2xl px-5 py-4 text-base font-medium placeholder:text-gray-400 outline-none transition"
-                       @keydown.enter="goToEntrar()" />
-                <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-gray-400 text-xs">
-                    <span>youtube.com/@...</span>
-                </div>
-            </div>
+            <input type="text" x-model="sourceInput"
+                   placeholder="Pega tu perfil, canal, web o proyecto"
+                   class="w-full border-2 border-gray-200 focus:border-[#F53003] rounded-2xl px-5 py-4 text-base font-medium placeholder:text-gray-400 outline-none transition"
+                   @keydown.enter="goToEntrar()" />
             <p class="mt-2 text-xs text-gray-400">youtube.com/@usuario · instagram.com/user · misitio.cl</p>
         </div>
 
@@ -80,11 +80,11 @@
 function conversionHero() {
     return {
         sourceInput: '',
-        selectedPosition: 1,
-        selectedAmount: {{ $positionPricing[0]['amount'] ?? 1000 }},
+        selectedPosition: {{ $heroProjection['position'] ?? 1 }},
+        selectedAmount: {{ $heroProjection['amount'] ?? $limits['min'] ?? 0 }},
         get ctaLabel() {
-            if (this.selectedPosition === 1) return 'SUBIR AL #1 POR $' + Number(this.selectedAmount).toLocaleString('es-CL');
-            return 'SUBIR AL #' + this.selectedPosition + ' POR $' + Number(this.selectedAmount).toLocaleString('es-CL');
+            const formatted = Number(this.selectedAmount).toLocaleString('es-CL');
+            return 'SUBIR AL #' + this.selectedPosition + ' POR $' + formatted;
         },
         selectPosition(pos, amount) {
             this.selectedPosition = pos;

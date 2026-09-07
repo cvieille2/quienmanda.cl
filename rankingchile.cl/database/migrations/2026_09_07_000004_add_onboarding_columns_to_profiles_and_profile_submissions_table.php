@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('source_url', 500)->nullable()->after('source_type');
             $table->string('onboarding_normalized_url', 500)->nullable()->after('source_url');
             $table->string('onboarding_detected_title', 160)->nullable()->after('onboarding_normalized_url');
+            $table->boolean('use_profile_as_destination')->default(false)->after('onboarding_detected_title');
             $table->index(['profile_category_id', 'status'], 'idx_profiles_category_status');
             $table->index(['profile_submission_id'], 'idx_profiles_submission_id');
         });
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('source_url', 500)->nullable()->after('source_type');
             $table->string('normalized_url', 500)->nullable()->after('source_url');
             $table->string('detected_title', 160)->nullable()->after('normalized_url');
+            $table->boolean('use_profile_as_destination')->default(false)->after('detected_title');
             $table->foreignId('duplicate_profile_id')->nullable()->after('detected_title')->constrained('profiles')->nullOnDelete();
             $table->text('rejection_reason')->nullable()->change();
             $table->index('profile_id', 'idx_submissions_profile_id');
@@ -38,6 +40,7 @@ return new class extends Migration
     {
         Schema::table('profile_submissions', function (Blueprint $table) {
             $table->dropConstrainedForeignId('duplicate_profile_id');
+            $table->dropColumn('use_profile_as_destination');
             $table->dropConstrainedForeignId('profile_id');
             $table->dropConstrainedForeignId('profile_category_id');
             $table->dropIndex('idx_submissions_profile_id');
@@ -47,6 +50,7 @@ return new class extends Migration
 
         Schema::table('profiles', function (Blueprint $table) {
             $table->dropConstrainedForeignId('profile_submission_id');
+            $table->dropColumn('use_profile_as_destination');
             $table->dropConstrainedForeignId('profile_category_id');
             $table->dropIndex('idx_profiles_category_status');
             $table->dropIndex('idx_profiles_submission_id');

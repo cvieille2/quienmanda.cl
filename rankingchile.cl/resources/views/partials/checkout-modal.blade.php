@@ -58,18 +58,18 @@
                 Mínimo <span x-text="moneyDisplay(limits.min)"></span> · Máximo <span x-text="moneyDisplay(limits.max)"></span>
             </p>
 
-            {{-- Proyección de posición --}}
-            <div x-show="modal.amount >= limits.min && modal.amount <= limits.max" class="mt-3">
+            {{-- Proyección de posición (server-computed) --}}
+            <div x-show="modal.amount >= limits.min && modal.amount <= limits.max && modal.profile.has_projection" class="mt-3">
                 <div class="flex items-center justify-between text-xs text-gray-500 rounded-xl bg-gray-50 border border-gray-200 px-3 py-2">
-                    <span>Con <span class="font-bold" x-text="moneyDisplay(modal.amount)"></span> quedaría en</span>
-                    <span class="font-black text-lg" :class="projection.rank === 1 ? 'text-[#F8B803]' : 'text-[#1B1B18]'">
-                        #<span x-text="projection.rank"></span>
-                        <span class="text-xs font-normal text-gray-500" x-show="projection.tied" x-text="'(empata en el Nº' + (projection.rank - 1) + ')'"></span>
+                    <span>Con <span class="font-bold" x-text="moneyDisplay(modal.profile.cta_required || modal.amount)"></span> quedaría en</span>
+                    <span class="font-black text-lg" :class="modal.profile.projected_rank === 1 ? 'text-[#F8B803]' : 'text-[#1B1B18]'">
+                        #<span x-text="modal.profile.projected_rank"></span>
                     </span>
                 </div>
-                <button @click="setQuick(projectedToTop)" x-show="projection.rank > 1 && projectedToTop <= limits.max"
+                <button @click="setQuick(modal.profile.projected_to_top)"
+                    x-show="modal.profile.projected_rank > 1 && modal.profile.projected_to_top <= limits.max"
                     class="mt-2 w-full text-[#F53003] text-xs font-bold underline underline-offset-2">
-                    ⬆️ Sube al #1 con <span x-text="moneyDisplay(projectedToTop)"></span> (dale, más!)
+                    ⬆️ Sube al #1 con <span x-text="moneyDisplay(modal.profile.projected_to_top)"></span> (dale, más!)
                 </button>
             </div>
 
@@ -123,7 +123,7 @@
                 </div>
                 <div class="flex justify-between">
                     <span>Proyección</span>
-                    <span class="font-bold">#<span x-text="projection.rank"></span></span>
+                    <span class="font-bold">#<span x-text="modal.profile.projected_rank || modal.profile.rank"></span></span>
                 </div>
             </div>
 
@@ -136,13 +136,18 @@
                 <span class="text-sm">Soy mayor de 18 años</span>
             </label>
 
+            <label class="mt-3 flex items-start gap-2 cursor-pointer">
+                <input type="checkbox" x-model="fm.termsAccepted" class="mt-0.5">
+                <span class="text-sm">Acepto los <a href="/terminos" target="_blank" class="text-[#F53003] underline">Términos y Condiciones</a> y la <a href="/privacidad" target="_blank" class="text-[#F53003] underline">Política de Privacidad</a></span>
+            </label>
+
             <p class="mt-3 text-xs text-gray-400 leading-relaxed">
                 Antes de pagar puedes revisar <a href="/reglas" target="_blank" class="text-[#F53003] underline">cómo se calculan las posiciones</a> y qué ocurre si otro perfil te supera.
             </p>
 
             <div x-show="error" class="mt-3 text-sm text-[#F53003]" x-text="error"></div>
 
-            <button @click="submitPayment()" :disabled="submitting"
+            <button @click="submitPayment()" :disabled="submitting || !fm.termsAccepted"
                 class="mt-5 w-full bg-[#009EE3] hover:bg-[#007ab3] disabled:bg-gray-300 disabled:text-gray-500 text-white font-black py-5 rounded-2xl shadow-xl active:scale-[0.98] transition flex items-center justify-center gap-2">
                 <span x-show="!submitting">PAGAR Y APLICAR IMPULSO 💳</span>
                 <span x-show="submitting" class="inline-block">⏳ Confirmando...</span>

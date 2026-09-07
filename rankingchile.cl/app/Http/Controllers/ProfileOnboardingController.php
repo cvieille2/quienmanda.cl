@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Enums\ProfileSubmissionStatus;
 use App\Enums\SupportTransactionStatus;
 use App\Models\FeatureFlag;
+use App\Models\ProfileCategory;
 use App\Models\ProfileSubmission;
+use App\Models\Region;
 use App\Services\FeatureFlagsService;
 use App\Services\PaymentLimitsService;
 use App\Services\Payments\PaymentGatewayInterface;
@@ -15,6 +17,7 @@ use App\Services\RankingProjectionService;
 use App\Services\SupportTransactionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class ProfileOnboardingController extends Controller
@@ -37,27 +40,34 @@ class ProfileOnboardingController extends Controller
             'source' => $request->query('source', ''),
             'position' => (int) $request->query('position', 3),
             'amount' => (int) $request->query('amount', 0),
+            'category' => (string) $request->query('category', ''),
+            'region_id' => $request->query('region_id'),
         ];
 
         return view('entrar', [
             'paymentsEnabled' => $this->flags->isEnabled(FeatureFlag::KEY_PAYMENTS_ENABLED),
             'wizardSteps' => [
-                ['title' => 'URL o handle', 'hint' => 'Pega un origen público.'],
-                ['title' => 'Preview editable', 'hint' => 'Ajusta cómo se verá.'],
-                ['title' => 'Destino', 'hint' => 'Define el botón final.'],
+                ['title' => 'Pega tu perfil', 'hint' => 'El resto lo sacamos nosotros.'],
+                ['title' => 'Tu proyecto', 'hint' => 'Nombre, descripción y redes.'],
+                ['title' => 'Destino de tráfico', 'hint' => 'Obligatorio — o usa tu perfil como destino.'],
                 ['title' => 'Posición y costo', 'hint' => 'Elige subir o publicar gratis.'],
                 ['title' => 'Antes / después', 'hint' => 'Revisa el flujo completo.'],
             ],
             'positionPricing' => $positionPricing,
+            'projectCategories' => ProfileCategory::active()->orderBy('sort_order')->orderBy('name')->get(['id', 'name', 'slug']),
+            'regions' => Region::query()->orderBy('sort_order')->orderBy('name')->get(['id', 'name', 'slug']),
             'prefill' => $prefill,
             'defaultDraft' => [
-                'source' => 'https://instagram.com/tu-cuenta',
+                'source' => '',
                 'handle' => 'tu-cuenta',
-                'display_name' => 'Tu cuenta',
-                'summary' => 'Haz visible tu perfil dentro del ranking.',
-                'destination_url' => 'https://tusitio.cl',
+                'display_name' => '',
+                'summary' => '',
+                'destination_url' => '',
+                'use_profile_as_destination' => false,
                 'avatar_url' => '',
-                'position' => 3,
+                'position' => $prefill['position'],
+                'category' => $prefill['category'],
+                'region_id' => $prefill['region_id'],
                 'free_publish' => false,
             ],
             'legalMicrocopy' => [
@@ -75,8 +85,10 @@ class ProfileOnboardingController extends Controller
         $data = $request->validate([
             'display_name' => ['required', 'string', 'max:120'],
             'category' => ['nullable', 'string', 'max:60'],
+            'region_id' => ['nullable', 'integer', Rule::exists('regions', 'id')],
             'source_url' => ['required', 'string', 'max:500'],
-            'destination_url' => ['nullable', 'string', 'max:500'],
+            'use_profile_as_destination' => ['nullable', 'boolean'],
+            'destination_url' => ['nullable', 'string', 'max:500', Rule::requiredIf(fn () => ! $request->boolean('use_profile_as_destination'))],
             'submitted_email' => ['nullable', 'email', 'max:191'],
             'links' => ['nullable', 'array'],
             'links.*.url' => ['nullable', 'string', 'max:500'],

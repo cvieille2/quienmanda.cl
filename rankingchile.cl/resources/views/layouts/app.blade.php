@@ -7,6 +7,7 @@
     <title>@yield('title', config('app.name'))</title>
 
     @stack('meta')
+    @stack('schema')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @fonts

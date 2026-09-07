@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             FeatureFlagsSeeder::class,
             RankingSettingsSeeder::class,
-            InitialPeriodSeeder::class,
-            ProfileCategoriesSeeder::class,
+            InitialPeriodSeeder::class,            RegionSeeder::class,
             TestProfilesSeeder::class,
         ]);
     }

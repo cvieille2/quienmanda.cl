@@ -18,6 +18,10 @@ class OutboundClickService
 
     public function resolveDestinationUrl(Profile $profile): ?string
     {
+        if ($profile->use_profile_as_destination) {
+            return route('profile.show', $profile->slug);
+        }
+
         $link = $profile->links()
             ->where('link_type', ProfileLinkType::Destination->value)
             ->orderByDesc('is_primary')
@@ -67,6 +71,6 @@ class OutboundClickService
     public function isTrackable(Profile $profile): bool
     {
         return $profile->status === ProfileStatus::Active
-            && $this->resolveDestinationUrl($profile) !== null;
+            && ($profile->use_profile_as_destination || $this->resolveDestinationUrl($profile) !== null);
     }
 }

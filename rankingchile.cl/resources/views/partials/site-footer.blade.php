@@ -8,9 +8,13 @@
         <a href="{{ route('legal.privacy') }}" class="hover:text-gray-600 transition">Política de Privacidad</a>
         <a href="mailto:{{ config('legal.contact.email') }}" class="hover:text-gray-600 transition">Contacto</a>
     </div>
-    <p class="mt-3">⏳ Cierre semanal: domingo 23:59 (America/Santiago)</p>
+    <p class="mt-3">⏳ @if(isset($period) && $period)
+        Cierra {{ $period->ends_at->timezone('America/Santiago')->format('l') }} {{ $period->ends_at->timezone('America/Santiago')->format('H:mm') }}
+    @else
+        Cierre semanal: domingo 23:59
+    @endif</p>
     @isset($period)
-        <p class="mt-1">Ciclo {{ $period->code }} · {{ $period->starts_at->timezone('America/Santiago')->format('d/m') }} – {{ $period->ends_at->timezone('America/Santiago')->format('d/m') }}</p>
+        <p class="mt-1">{{ $period->starts_at->timezone('America/Santiago')->format('d/m') }} – {{ $period->ends_at->timezone('America/Santiago')->format('d/m') }}</p>
     @endisset
     <p class="mt-2 text-[10px] text-gray-300">© {{ date('Y') }} quienmanda.cl — Plataforma independiente, no afiliada a los perfiles listados.</p>
 </footer>
