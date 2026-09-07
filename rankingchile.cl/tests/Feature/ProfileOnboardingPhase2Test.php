@@ -324,6 +324,31 @@ class ProfileOnboardingPhase2Test extends TestCase
     }
 
     #[Test]
+    public function duplicate_detection_returns_rejected_status_for_the_frontend_to_stop_before_checkout(): void
+    {
+        FeatureFlag::create([
+            'key' => FeatureFlag::KEY_COMMUNITY_SUBMISSION,
+            'value' => true,
+        ]);
+
+        $profile = $this->createProfile('Duplicado UI');
+        $profile->links()->create([
+            'link_type' => 'social',
+            'original_url' => 'https://tiktok.com/@duplicado-ui',
+            'normalized_url' => 'https://tiktok.com/@duplicado-ui',
+            'host' => 'tiktok.com',
+            'is_primary' => true,
+            'sort_order' => 0,
+        ]);
+
+        $this->postJson(route('entrar.detectar'), [
+            'display_name' => 'Duplicado UI',
+            'source_url' => 'https://tiktok.com/@duplicado-ui',
+            'use_profile_as_destination' => true,
+        ])->assertOk()->assertJsonPath('status', ProfileSubmissionStatus::Rejected->value);
+    }
+
+    #[Test]
     public function onboarding_mutations_are_not_available_to_another_session(): void
     {
         $submission = ProfileSubmission::create([

@@ -696,6 +696,12 @@
                         return;
                     }
 
+                    if (detected.status === 'rejected' || detected.error === 'duplicate_profile') {
+                        this.errorMessage = 'Este perfil ya está en el ranking. Ábrelo desde el ranking para ver su posición y apoyarlo.';
+                        this.submitted = false;
+                        return;
+                    }
+
                     if (this.freePublish) {
                         const confirm = await fetch('/entrar/' + detected.submission_id + '/confirmar', {
                             method: 'POST',
