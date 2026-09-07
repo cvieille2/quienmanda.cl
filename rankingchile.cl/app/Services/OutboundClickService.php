@@ -29,7 +29,7 @@ class OutboundClickService
             ->first();
 
         if ($link) {
-            return $link->original_url;
+            return $this->safeExternalDestination($link->original_url);
         }
 
         $website = $profile->links()
@@ -39,10 +39,19 @@ class OutboundClickService
             ->first();
 
         if ($website) {
-            return $website->original_url;
+            return $this->safeExternalDestination($website->original_url);
         }
 
         return null;
+    }
+
+    private function safeExternalDestination(string $url): ?string
+    {
+        try {
+            return $this->normalizer->normalize($url);
+        } catch (\Throwable) {
+            return null;
+        }
     }
 
     public function recordClick(

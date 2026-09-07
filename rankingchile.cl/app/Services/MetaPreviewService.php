@@ -20,6 +20,9 @@ class MetaPreviewService
 
         try {
             $response = Http::timeout(5)
+                // No seguir redirects: el host de destino debe ser el mismo que validamos.
+                // Esto evita que un sitio público redirija el servidor hacia localhost/private IP.
+                ->withOptions(['allow_redirects' => false])
                 ->accept('text/html,application/xhtml+xml')
                 ->withHeaders([
                     'User-Agent' => 'QuienMandaMetaPreview/1.0',

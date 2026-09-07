@@ -409,7 +409,7 @@ class ProfileOnboardingPhase2Test extends TestCase
 
         $response = $this->get(route('outbound.click', $profile->slug).'?src=ranking&utm_source=home&utm_medium=card&utm_campaign=w26');
 
-        $response->assertRedirect('https://campana.cl');
+        $response->assertRedirect('https://campana.cl/');
 
         $event = OutboundClickEvent::firstOrFail();
         $this->assertSame($profile->id, $event->profile_id);
