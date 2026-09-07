@@ -29,6 +29,11 @@ class ProfileViewTrackingTest extends TestCase
         $response = $this->get('/perfil/perfil-visto');
 
         $response->assertOk();
+        $this->assertMatchesRegularExpression(
+            '/x-data="quienmanda\(\{.*\}\)">/s',
+            $response->getContent(),
+            'El componente de checkout del perfil debe recibir un objeto Alpine válido.',
+        );
         $this->assertSame(1, DB::table('profile_view_events')->where('profile_id', $profileId)->count());
     }
 }

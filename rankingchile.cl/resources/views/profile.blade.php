@@ -31,7 +31,7 @@
         'id' => $r['profile_id'], 'slug' => $r['slug'], 'name' => $r['display_name'],
         'amount' => $r['total_real_clp'], 'rank' => $r['position'], 'toTop' => $r['to_number_one_clp'] ?? 0,
     ], $ranking)) }}
-)">
+})">
 
     @php $activePage = 'profile'; @endphp
     @section('headerExtra')

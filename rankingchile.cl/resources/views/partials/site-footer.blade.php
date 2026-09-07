@@ -9,7 +9,7 @@
         <a href="mailto:{{ config('legal.contact.email') }}" class="hover:text-gray-600 transition">Contacto</a>
     </div>
     <p class="mt-3">⏳ @if(isset($period) && $period)
-        Cierra {{ $period->ends_at->timezone('America/Santiago')->format('l') }} {{ $period->ends_at->timezone('America/Santiago')->format('H:mm') }}
+        Cierra {{ $period->ends_at->timezone('America/Santiago')->translatedFormat('l') }} {{ $period->ends_at->timezone('America/Santiago')->format('H:mm') }}
     @else
         Cierre semanal: domingo 23:59
     @endif</p>
