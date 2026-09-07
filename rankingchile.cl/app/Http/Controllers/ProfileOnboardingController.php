@@ -47,18 +47,17 @@ class ProfileOnboardingController extends Controller
         return view('entrar', [
             'paymentsEnabled' => $this->flags->isEnabled(FeatureFlag::KEY_PAYMENTS_ENABLED),
             'wizardSteps' => [
-                ['title' => 'Pega tu perfil', 'hint' => 'El resto lo sacamos nosotros.'],
-                ['title' => 'Tu proyecto', 'hint' => 'Nombre, descripción y redes.'],
+                ['title' => 'Tu perfil y proyecto', 'hint' => 'Pega tu perfil y completa lo básico.'],
                 ['title' => 'Destino de tráfico', 'hint' => 'Obligatorio — o usa tu perfil como destino.'],
                 ['title' => 'Posición y costo', 'hint' => 'Elige subir o publicar gratis.'],
-                ['title' => 'Antes / después', 'hint' => 'Revisa el flujo completo.'],
+                ['title' => 'Preview y confirmación', 'hint' => 'Revisa y envía.'],
             ],
             'positionPricing' => $positionPricing,
             'projectCategories' => ProfileCategory::active()->orderBy('name')->get(['id', 'name', 'slug']),
             'regions' => Region::query()->orderBy('sort_order')->orderBy('name')->get(['id', 'name', 'slug']),
             'prefill' => $prefill,
             'defaultDraft' => [
-                'source' => '',
+                'source' => $prefill['source'],
                 'handle' => 'tu-cuenta',
                 'display_name' => '',
                 'summary' => '',

@@ -127,6 +127,26 @@ class ProfileOnboardingPhase2Test extends TestCase
     }
 
     #[Test]
+    public function entrar_route_prefills_source_from_query_string(): void
+    {
+        FeatureFlag::create([
+            'key' => FeatureFlag::KEY_COMMUNITY_SUBMISSION,
+            'value' => true,
+        ]);
+
+        $response = $this->get(route('entrar.index', [
+            'source' => 'https://visitandopuntaarenas.cl',
+            'position' => 1,
+            'amount' => 1000,
+        ]));
+
+        $response->assertOk();
+        $response->assertViewHas('defaultDraft', function (array $draft): bool {
+            return $draft['source'] === 'https://visitandopuntaarenas.cl';
+        });
+    }
+
+    #[Test]
     public function entrar_route_loads_the_self_service_wizard(): void
     {
         FeatureFlag::create([

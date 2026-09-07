@@ -3,7 +3,7 @@
 @section('title', 'Entrar — onboarding self-service | Quién Manda')
 
 @push('meta')
-    <meta name="description" content="Onboarding self-service de Quién Manda: pega una URL o handle, edita el preview, define el destino y publica gratis o sube al puesto elegido." />
+    <meta name="description" content="Onboarding self-service de Quién Manda: pega tu perfil, define el destino y publica gratis o sube al puesto elegido." />
 @endpush
 
 @section('body')
@@ -25,13 +25,13 @@
                         <span class="text-sm">👑</span>
                         Onboarding self-service
                     </div>
-                    <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Entrar, editar y publicar en 5 pasos.</h1>
+                    <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Entrar, editar y publicar en 4 pasos.</h1>
                     <p class="mt-3 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
                         Pega una URL o handle, ajusta el preview, define el destino y decide si quieres <span class="font-semibold text-white">PUBLICAR GRATIS</span> o <span class="font-semibold text-white">SUBIR AL #</span> con una inversión visible dentro del ranking.
                     </p>
                     <div class="mt-5 flex flex-wrap gap-2 text-xs">
                         <span class="rounded-full bg-white/10 px-3 py-1 font-medium text-white/80">Mobile-first</span>
-                        <span class="rounded-full bg-white/10 px-3 py-1 font-medium text-white/80">Máximo 5 pasos</span>
+                        <span class="rounded-full bg-white/10 px-3 py-1 font-medium text-white/80">Máximo 4 pasos</span>
                         <span class="rounded-full bg-white/10 px-3 py-1 font-medium text-white/80">Sin registro bloqueante</span>
                         <span class="rounded-full bg-white/10 px-3 py-1 font-medium text-white/80">Visibilidad competitiva</span>
                     </div>
@@ -64,8 +64,8 @@
                 <section x-show="step === 1" x-cloak class="space-y-4">
                     <div>
                         <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 1</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 1/5 · Pega tu perfil</h2>
-                        <p class="mt-2 text-sm text-gray-600">El resto lo sacamos nosotros.</p>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 1/4 · Tu perfil y proyecto</h2>
+                        <p class="mt-2 text-sm text-gray-600">Pega tu perfil y completa lo básico.</p>
                     </div>
 
                     <label class="block">
@@ -79,21 +79,6 @@
                         >
                     </label>
 
-                    <div class="grid gap-3 sm:grid-cols-3">
-                        <button type="button" @click="fillSource('https://instagram.com/@tu')" class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-left text-sm font-semibold transition hover:border-[#F8B803]">
-                            Instagram
-                            <span class="mt-1 block text-xs font-normal text-gray-500">Perfil público</span>
-                        </button>
-                        <button type="button" @click="fillSource('@tu-handle')" class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-left text-sm font-semibold transition hover:border-[#F8B803]">
-                            Handle
-                            <span class="mt-1 block text-xs font-normal text-gray-500">Directo y corto</span>
-                        </button>
-                        <button type="button" @click="fillSource('https://www.tusitio.cl')" class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-left text-sm font-semibold transition hover:border-[#F8B803]">
-                            Sitio web
-                            <span class="mt-1 block text-xs font-normal text-gray-500">Landing pública</span>
-                        </button>
-                    </div>
-
                     <div class="rounded-2xl bg-[#FFF8E1] px-4 py-3 text-sm text-[#5A4300]">
                         <span class="font-bold">Detectado:</span>
                         <span class="ml-1 font-semibold" x-text="sourceHint"></span>
@@ -106,13 +91,6 @@
                         <p class="text-xs leading-5 text-gray-500 sm:max-w-md">Legal: usamos un origen visible y público. El contenido privado no entra al flujo.</p>
                     </div>
                 </section>
-
-                <section x-show="step === 2" x-cloak class="space-y-4">
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 2</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 2/5 · Tu proyecto</h2>
-                        <p class="mt-2 text-sm text-gray-600">Completa tu proyecto. Categoría y región son opcionales.</p>
-                    </div>
 
                     <div class="grid gap-4 md:grid-cols-2">
                         <div class="space-y-3">
@@ -146,24 +124,6 @@
                                 <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Imagen/Avatar URL</span>
                                 <input x-model="avatarUrl" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://...">
                             </label>
-                            <div class="grid gap-3 sm:grid-cols-2">
-                                <label class="block">
-                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Instagram</span>
-                                    <input x-model="socialInstagram" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://instagram.com/tu...">
-                                </label>
-                                <label class="block">
-                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">TikTok</span>
-                                    <input x-model="socialTikTok" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://tiktok.com/@tu...">
-                                </label>
-                                <label class="block">
-                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">X</span>
-                                    <input x-model="socialX" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://x.com/tu...">
-                                </label>
-                                <label class="block">
-                                    <span class="mb-2 block text-sm font-bold text-[#1B1B18]">Sitio web</span>
-                                    <input x-model="socialWebsite" type="url" class="w-full rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#F53003] focus:ring-4 focus:ring-[#F53003]/10" placeholder="https://tu-dominio.cl">
-                                </label>
-                            </div>
                         </div>
 
                         <div class="rounded-3xl border border-gray-200 bg-[#1B1B18] p-4 text-white">
@@ -193,7 +153,7 @@
                                 </div>
                                 <div class="rounded-2xl bg-white/5 p-3">
                                     <p class="text-white/50 text-xs">Salida</p>
-                                    <p class="mt-1 break-all font-bold" x-text="destinationUrl || 'Pendiente'"></p>
+                                    <p class="mt-1 break-all font-bold" x-text="source || 'Pendiente'"></p>
                                 </div>
                             </div>
                             <div class="mt-3 rounded-2xl bg-white/5 p-3 text-xs text-white/70">
@@ -207,21 +167,12 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="flex flex-col gap-3 sm:flex-row">
-                        <button type="button" @click="go(3)" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02]">
-                            Confirmar preview y seguir
-                        </button>
-                        <button type="button" @click="go(1)" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">
-                            Volver al origen
-                        </button>
-                    </div>
                 </section>
 
-                <section x-show="step === 3" x-cloak class="space-y-4">
+                <section x-show="step === 2" x-cloak class="space-y-4">
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 3</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 3/5 · Destino de tráfico</h2>
+                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 2</p>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 2/4 · Destino de tráfico</h2>
                         <p class="mt-2 text-sm text-gray-600">Este es el destino final del botón. Es obligatorio: escribe una URL pública válida o marca usar perfil como destino.</p>
                     </div>
 
@@ -268,20 +219,20 @@
                     </div>
 
                     <div class="flex flex-col gap-3 sm:flex-row">
-                        <button type="button" @click="go(2)" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">
-                            Volver a tu proyecto
+                        <button type="button" @click="go(1)" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">
+                            Volver al perfil
                         </button>
-                        <button type="button" :disabled="!canContinueFromDestination" @click="go(4)" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-black text-white transition" :class="canContinueFromDestination ? 'bg-[#F53003] hover:bg-[#c22a02]' : 'cursor-not-allowed bg-gray-300'">
+                        <button type="button" :disabled="!canContinueFromDestination" @click="go(3)" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 font-black text-white transition" :class="canContinueFromDestination ? 'bg-[#F53003] hover:bg-[#c22a02]' : 'cursor-not-allowed bg-gray-300'">
                             Seguir a posición y costo
                         </button>
                         <p class="text-xs leading-5 text-gray-500 sm:max-w-md">Legal: el destino final debe ser accesible y coherente con lo publicado.</p>
                     </div>
                 </section>
 
-                <section x-show="step === 4" x-cloak class="space-y-4">
+                <section x-show="step === 3" x-cloak class="space-y-4">
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 4</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 4/5 · Posición, costo y CTA</h2>
+                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 3</p>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 3/4 · Posición, costo y CTA</h2>
                         <p class="mt-2 text-sm text-gray-600">El CTA cambia según la posición seleccionada. También puedes activar <strong>PUBLICAR GRATIS</strong>.</p>
                     </div>
 
@@ -333,18 +284,18 @@
 
                     <div class="flex flex-col gap-3 sm:flex-row">
                         <button type="button" @click="back()" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">Retroceder</button>
-                        <button type="button" @click="go(5)" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02]" x-text="'Paso 5/5'"></button>
+                        <button type="button" @click="go(4)" class="inline-flex items-center justify-center rounded-2xl bg-[#F53003] px-5 py-3 font-black text-white transition hover:bg-[#c22a02]" x-text="'Paso 4/4'"></button>
                         <button type="button" @click="go(3)" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 px-5 py-3 font-bold text-[#1B1B18] transition hover:bg-gray-50">
                             Ajustar destino
                         </button>
                     </div>
                 </section>
 
-                <section x-show="step === 5" x-cloak class="space-y-4">
+                <section x-show="step === 4" x-cloak class="space-y-4">
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 5</p>
-                        <h2 class="mt-1 text-2xl font-black tracking-tight">Preview before / after checkout</h2>
-                        <p class="mt-2 text-sm text-gray-600">Compara cómo se ve antes de confirmar y cómo quedará después de publicar o pagar.</p>
+                        <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 4</p>
+                        <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 4/4 · Preview y confirmación</h2>
+                        <p class="mt-2 text-sm text-gray-600">Revisa el resultado y confirma el envío.</p>
                     </div>
 
                     <div class="grid gap-4 md:grid-cols-2">
@@ -667,7 +618,7 @@
                 if (step > 1 && !this.isSourceValid) {
                     return;
                 }
-                if (step === 4 && !this.canContinueFromDestination) {
+                if (step === 3 && !this.canContinueFromDestination) {
                     return;
                 }
                 this.step = Math.min(Math.max(step, 1), this.maxStep);
