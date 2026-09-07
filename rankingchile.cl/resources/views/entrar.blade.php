@@ -23,11 +23,11 @@
                 <div>
                     <div class="inline-flex items-center gap-2 rounded-full border border-[#F8B803]/30 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#F8B803]">
                         <span class="text-sm">👑</span>
-                        Onboarding self-service
+                        Entra en 60 segundos · sin cuenta
                     </div>
-                    <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Entrar, editar y publicar en 4 pasos.</h1>
+                    <h1 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Pega tu perfil. El resto lo completamos contigo.</h1>
                     <p class="mt-3 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
-                        Pega una URL o handle, ajusta el preview, define el destino y decide si quieres <span class="font-semibold text-white">PUBLICAR GRATIS</span> o <span class="font-semibold text-white">SUBIR AL #</span> con una inversión visible dentro del ranking.
+                        Pega una URL o handle, revisa tu tarjeta y decide si quieres <span class="font-semibold text-white">PUBLICAR GRATIS</span> o <span class="font-semibold text-white">SUBIR AL #</span> con una inversión visible dentro del ranking.
                     </p>
                     <div class="mt-5 flex flex-wrap gap-2 text-xs">
                         <span class="rounded-full bg-white/10 px-3 py-1 font-medium text-white/80">Mobile-first</span>
@@ -173,12 +173,12 @@
                     <div>
                         <p class="text-xs font-bold uppercase tracking-[0.24em] text-gray-400">Paso 2</p>
                         <h2 class="mt-1 text-2xl font-black tracking-tight">Paso 2/4 · Destino de tráfico</h2>
-                        <p class="mt-2 text-sm text-gray-600">Este es el destino final del botón. Es obligatorio: escribe una URL pública válida o marca usar perfil como destino.</p>
+                        <p class="mt-2 text-sm text-gray-600">Este es el destino final del botón. Es opcional: si no lo cambias, los clics irán a tu perfil.</p>
                     </div>
 
                     <label class="block">
                         <div class="mb-2 flex items-center justify-between gap-3">
-                            <span class="block text-sm font-bold text-[#1B1B18]">URL de destino</span>
+                            <span class="block text-sm font-bold text-[#1B1B18]">URL de destino <span class="font-normal text-gray-500">(opcional)</span></span>
                             <label class="inline-flex items-center gap-2 text-xs font-bold text-gray-600">
                                 <input type="checkbox" x-model="useProfileAsDestination" @change="toggleProfileDestination()" class="h-4 w-4 rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
                                 Usar perfil como destino

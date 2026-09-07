@@ -52,8 +52,8 @@ class ProfileOnboardingController extends Controller
         return view('entrar', [
             'paymentsEnabled' => $this->flags->isEnabled(FeatureFlag::KEY_PAYMENTS_ENABLED),
             'wizardSteps' => [
-                ['title' => 'Tu perfil y proyecto', 'hint' => 'Pega tu perfil y completa lo básico.'],
-                ['title' => 'Destino de tráfico', 'hint' => 'Obligatorio — o usa tu perfil como destino.'],
+                ['title' => 'Tu perfil y proyecto', 'hint' => 'Pega tu perfil — completamos lo demás.'],
+                ['title' => 'Destino de tráfico', 'hint' => 'Opcional — usamos tu perfil si no cambias el destino.'],
                 ['title' => 'Posición y costo', 'hint' => 'Elige subir o publicar gratis.'],
                 ['title' => 'Preview y confirmación', 'hint' => 'Revisa y envía.'],
             ],
@@ -67,7 +67,7 @@ class ProfileOnboardingController extends Controller
                 'display_name' => '',
                 'summary' => '',
                 'destination_url' => '',
-                'use_profile_as_destination' => false,
+                'use_profile_as_destination' => true,
                 'avatar_url' => '',
                 'position' => $prefill['position'],
                 'category' => $prefill['category'],
