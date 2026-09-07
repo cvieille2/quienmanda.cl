@@ -94,20 +94,31 @@ class RankingProjectionService
                 continue;
             }
 
-            $requiredAmount = max(
-                RankingService::MIN_INCREMENT_CLP,
-                ($rows[0]['total_real_clp'] - $entry['total_real_clp']) + RankingService::MIN_INCREMENT_CLP,
-            );
+            $currentPosition = (int) $entry['position'];
+            $targetPosition = max(1, $currentPosition - 1);
+            $targetEntry = $currentPosition === 1
+                ? ($rows[1] ?? null)
+                : ($rows[$targetPosition - 1] ?? null);
+
+            // En la home la acción principal es concreta: superar al perfil
+            // inmediatamente superior. El #1 puede defenderse superando al
+            // #2 (o con el mínimo si está solo).
+            $requiredAmount = $targetEntry
+                ? max(
+                    RankingService::MIN_INCREMENT_CLP,
+                    ($targetEntry['total_real_clp'] - $entry['total_real_clp']) + RankingService::MIN_INCREMENT_CLP,
+                )
+                : RankingService::MIN_INCREMENT_CLP;
 
             $results[$profileId] = [
                 'profile_id' => $profileId,
-                'target_position' => 1,
+                'target_position' => $targetPosition,
                 'required_amount' => $requiredAmount,
-                'current_position' => $entry['position'],
+                'current_position' => $currentPosition,
                 'current_total_clp' => $entry['total_real_clp'],
-                'projected_position' => 1,
+                'projected_position' => $targetPosition,
                 'projected_total_clp' => $entry['total_real_clp'] + $requiredAmount,
-                'cta_label' => $entry['position'] === 1 ? 'DEFENDER LA CORONA' : 'SUBIR AL #1',
+                'cta_label' => $currentPosition === 1 ? 'DEFENDER LA CORONA' : "ROBAR EL #{$targetPosition}",
             ];
         }
 
@@ -399,27 +410,24 @@ class RankingProjectionService
             $currentPosition = $entry['position'];
             $currentTotal = $entry['total_real_clp'];
 
-            // Ya está en el #1
-            if ($currentPosition === 1) {
-                $results[$profileId] = [
-                    'target_position' => 1,
-                    'required_amount' => 0,
-                    'cta_label' => 'Ya estás en el #1.',
-                ];
-                continue;
-            }
-
-            // El mejor movimiento siempre es alcanzar el #1
-            $topEntry = $rows[0];
+            $targetPosition = max(1, $currentPosition - 1);
+            $targetEntry = $currentPosition === 1
+                ? ($rows[1] ?? null)
+                : ($rows[$targetPosition - 1] ?? null);
             $requiredAmount = max(
                 $minIncrement,
-                ($topEntry['total_real_clp'] - $currentTotal) + $minIncrement,
+                (($targetEntry['total_real_clp'] ?? 0) - $currentTotal) + $minIncrement,
             );
 
             $results[$profileId] = [
-                'target_position' => 1,
+                'profile_id' => $profileId,
                 'required_amount' => $requiredAmount,
-                'cta_label' => "Llevar a {$entry['display_name']} al #1",
+                'current_position' => $currentPosition,
+                'current_total_clp' => $currentTotal,
+                'projected_position' => $targetPosition,
+                'projected_total_clp' => $currentTotal + $requiredAmount,
+                'target_position' => $targetPosition,
+                'cta_label' => $currentPosition === 1 ? 'DEFENDER LA CORONA' : "ROBAR EL #{$targetPosition}",
             ];
         }
 

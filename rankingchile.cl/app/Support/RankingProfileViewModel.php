@@ -292,13 +292,17 @@ class RankingProfileViewModel
      * Label del CTA según contexto.
      *
      * - Líder: "DEFENDER LA CORONA" (propietario) / "IMPULSAR AL #1" (público)
-     * - No líder con proyección: "SUBIR AL #{target} · {amount}"
+     * - No líder con proyección: "ROBAR EL #{target} · {amount}"
      * - No líder sin proyección: "IMPULSAR"
      */
     public function ctaLabel(): string
     {
         if ($this->isLeader()) {
-            return 'DEFENDER LA CORONA';
+            $amount = $this->ctaRequiredAmountFormatted();
+
+            return $amount === self::CLP_SYMBOL . '0'
+                ? 'DEFENDER LA CORONA'
+                : "DEFENDER LA CORONA · {$amount}";
         }
 
         if ($this->projection !== null) {
@@ -306,7 +310,7 @@ class RankingProfileViewModel
             $amount = $this->ctaRequiredAmountFormatted();
 
             if ($target !== null && $amount !== self::CLP_SYMBOL . '0') {
-                return "SUBIR AL #{$target} · {$amount}";
+                return "ROBAR EL #{$target} · {$amount}";
             }
         }
 
@@ -432,12 +436,14 @@ class RankingProfileViewModel
 
         // Indexar proyecciones y snapshots por profile_id para acceso O(1)
         $projectionsByKey = [];
-        foreach ($projections as $proj) {
-            $pid = $proj['profile_id'] ?? $proj['current_position'] ?? null;
-            // Las proyecciones de RankingProjectionService no traen profile_id,
-            // se asocian externamente. Si vienen indexadas por profile_id, usar tal cual.
-            if (isset($proj['profile_id'])) {
-                $projectionsByKey[$proj['profile_id']] = $proj;
+        foreach ($projections as $key => $proj) {
+            // Algunas proyecciones incluyen profile_id y otras llegan
+            // indexadas por ese id. Soportar ambos formatos evita perder el
+            // CTA competitivo en las páginas de categoría.
+            $profileId = $proj['profile_id'] ?? (is_int($key) || ctype_digit((string) $key) ? (int) $key : null);
+            if ($profileId !== null) {
+                $proj['profile_id'] = $profileId;
+                $projectionsByKey[$profileId] = $proj;
             }
         }
 

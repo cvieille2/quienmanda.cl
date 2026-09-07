@@ -430,20 +430,28 @@
                 const vm = this.viewModels.find(v => v.profile_id === id) || {};
                 const p = this.ranking.find(r => r.id === id) || {};
                 const min = this.limits.min;
+                const required = vm.cta_required || 0;
                 const needTop = p.toTop || min;
-                const suggested = (needTop > 0 && needTop <= this.limits.max) ? needTop : min;
+                const suggested = required > 0
+                    ? required
+                    : ((needTop > 0 && needTop <= this.limits.max) ? needTop : min);
                 this.modal = { open: true, step: 1, confirmed: false,
-                    profile: { id, slug: vm.slug || p.slug || '', name: vm.name || p.name || '', rank: vm.position || p.rank || null, amount: vm.total_clp || p.amount || 0, toTop: p.toTop || min },
+                    profile: { id, slug: vm.slug || p.slug || '', name: vm.name || p.name || '', rank: vm.position || p.rank || null, amount: vm.total_clp || p.amount || 0, toTop: p.toTop || min, target_position: vm.cta_target || ((vm.position || p.rank) > 1 ? (vm.position || p.rank) - 1 : 1), required_amount: required, projected_rank: vm.cta_target || null, projected_to_top: p.toTop || min, cta_required: required },
                     amount: suggested, quickAmounts: [min, min * 2, min * 5] };
                 this.fm = { email: '', name: '', age18: false, termsAccepted: false }; this.error = null;
             },
             setQuick(val) { this.modal.amount = val; },
             get suggestedAmount() {
                 if (!this.modal.profile) return this.limits.min;
-                const need = this.modal.profile.toTop;
+                const need = this.modal.profile.required_amount || this.modal.profile.toTop;
                 return (need > 0 && need <= this.limits.max) ? need : this.limits.min;
             },
             moneyDisplay(v) { return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL'); },
+            projectedRankForModal() {
+                if (!this.modal.profile) return null;
+                const projectedTotal = Number(this.modal.profile.amount || 0) + Number(this.modal.amount || 0);
+                return 1 + this.ranking.filter((row) => row.id !== this.modal.profile.id && Number(row.amount || 0) >= projectedTotal).length;
+            },
             goPay() {
                 if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
                 if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }
@@ -460,7 +468,7 @@
                     const res = await fetch('/api/pagos', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content },
-                        body: JSON.stringify({ profile_id: this.modal.profile.id, target_position: this.modal.profile.rank || 1, supporter_name: this.fm.name.trim() || null, is_anonymous: true, age_declared_18: '1', terms_accepted: '1', checkout_token: this.checkoutToken, payer_email: email }),
+                        body: JSON.stringify({ profile_id: this.modal.profile.id, amount_clp: this.modal.amount, supporter_name: this.fm.name.trim() || null, is_anonymous: true, age_declared_18: '1', terms_accepted: '1', checkout_token: this.checkoutToken, payer_email: email }),
                     });
                     const data = await res.json();
                     if (!res.ok) throw new Error(data.message || 'Error al procesar.');

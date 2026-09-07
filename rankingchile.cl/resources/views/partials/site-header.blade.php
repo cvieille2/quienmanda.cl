@@ -2,6 +2,7 @@
     $searchProfiles = collect($headerSearchProfiles ?? [])->values()->all();
     $isHome = request()->routeIs('home');
     $isCategories = request()->routeIs('categories*', 'category.show*');
+    $isProfiles = request()->routeIs('profile.*');
     $user = auth()->user();
 @endphp
 
@@ -26,6 +27,10 @@
             <a href="{{ route('categories') }}" aria-current="{{ $isCategories ? 'page' : 'false' }}" class="relative rounded-xl px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-[#FFC21C]">
                 Categorías
                 <span @class(['absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#FFC21C]', 'opacity-100' => $isCategories, 'opacity-0' => ! $isCategories])></span>
+            </a>
+            <a href="{{ route('profile.directory') }}" aria-current="{{ $isProfiles ? 'page' : 'false' }}" class="relative rounded-xl px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-[#FFC21C]">
+                Perfiles
+                <span @class(['absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#FFC21C]', 'opacity-100' => $isProfiles, 'opacity-0' => ! $isProfiles])></span>
             </a>
         </nav>
 
@@ -97,6 +102,7 @@
             <nav aria-label="Navegación principal" class="mt-6 space-y-2">
                 <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Ranking</a>
                 <a href="{{ route('categories') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Categorías</a>
+                <a href="{{ route('profile.directory') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Perfiles</a>
                 <button type="button" @click="openSearch(); closePanels()" class="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/90 hover:bg-white/5">Buscar</button>
             </nav>
 

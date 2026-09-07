@@ -7,6 +7,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentStatusController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileDirectoryController;
 use App\Http\Controllers\OutboundClickController;
 use App\Http\Controllers\ProfileOnboardingController;
 use App\Http\Controllers\RulesController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\TermsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/perfil/', ProfileDirectoryController::class)->name('profile.directory');
 Route::get('/perfil/{slug}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/login', fn () => view('auth.placeholder', ['title' => 'Iniciar sesión', 'description' => 'Por ahora puedes explorar el ranking o sumarte.']))->name('login');
 Route::get('/registro', fn () => view('auth.placeholder', ['title' => 'Súmate', 'description' => 'Crea tu presencia en Quién Manda y empieza a competir.']))->name('register');

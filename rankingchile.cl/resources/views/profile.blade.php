@@ -7,12 +7,20 @@
     <meta property="og:description" content="Faltan {{ money_clp($viewModel?->overtakeAboveClp() ?? $entry['overtake_above_clp'] ?? 1000) }} para que {{ $profile->display_name }} siga escalando. Impúlsalo y supéralo." />
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="{{ url()->current() }}" />
+    <link rel="canonical" href="{{ url()->current() }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ $profile->display_name }} está #{{ $viewModel?->position() ?? $rank ?? '-' }} en ¿Quién Manda?" />
     <meta name="twitter:description" content="El ranking que se decide con plata. Impulsa a {{ $profile->display_name }}." />
 @endpush
 
 @section('body')
+@php
+    $currentRank = (int) ($viewModel?->position() ?? $rank ?? 0);
+    $actionAmount = (int) ($projection['required_amount'] ?? $viewModel?->overtakeAboveClp() ?? 1000);
+    $actionLabel = $currentRank === 1
+        ? '🛡️ DEFENDER LA CORONA'
+        : '⚔️ ROBAR EL #' . max(1, $currentRank - 1);
+@endphp
 <div class="min-h-screen" x-data="quienmanda({
     paymentsEnabled: {{ $paymentsEnabled ? 'true' : 'false' }},
     checkoutToken: '{{ $checkoutToken }}',
@@ -73,13 +81,20 @@
                 <button
                     @click="openCheckout(@js($profile->id))"
                     class="mt-6 w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black py-4 rounded-2xl active:scale-[0.98] transition">
-                    👑 IMPULSAR A {{ strtoupper($profile->display_name) }}
+                    {{ $actionLabel }} · {{ money_clp($actionAmount) }}
                 </button>
                 @if ($entry && ($viewModel?->overtakeAboveClp() ?? $entry['overtake_above_clp'] ?? 0) > 0)
                     <p class="mt-2 text-xs text-gray-500">para superar al puesto de arriba · <span class="font-bold text-[#F53003]">🔥 faltan {{ money_clp($viewModel?->overtakeAboveClp() ?? $entry['overtake_above_clp'] ?? 0) }}</span></p>
                 @endif
             @else
                 <div class="mt-6 w-full bg-white/10 border border-gray-200 text-gray-500 font-semibold py-4 rounded-2xl">💤 Pagos desactivados</div>
+            @endif
+
+            @if ($profile->source_url && ! $profile->use_profile_as_destination)
+                <a href="{{ $profile->source_url }}" target="_blank" rel="noopener noreferrer"
+                   class="mt-3 inline-flex items-center justify-center text-sm font-bold text-[#07182D] underline underline-offset-2">
+                    Visitar perfil original ↗
+                </a>
             @endif
 
             {{-- MODULE community_organizer --}}
@@ -122,7 +137,7 @@
                 <button
                     @click="openCheckout(@js($profile->id))"
                     class="w-full bg-[#F53003] hover:bg-[#c22a02] text-white font-black text-base sm:text-lg py-5 rounded-2xl shadow-xl active:scale-[0.98] transition">
-                    👑 IMPULSAR · {{ money_clp($stickyAmount) }}
+                    {{ $actionLabel }} · {{ money_clp($stickyAmount) }}
                 </button>
             </div>
         </div>
@@ -156,6 +171,11 @@
                 tick(); setInterval(tick, 1000);
             },
             moneyDisplay(v) { return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL'); },
+            projectedRankForModal() {
+                if (!this.modal.profile) return null;
+                const projectedTotal = Number(this.modal.profile.amount || 0) + Number(this.modal.amount || 0);
+                return 1 + this.ranking.filter((row) => row.id !== this.modal.profile.id && Number(row.amount || 0) >= projectedTotal).length;
+            },
             async copyShare(url) {
                 try { await navigator.clipboard.writeText(url); } catch (e) {}
             },
@@ -172,6 +192,8 @@
                     profile: {
                         id, slug: p.slug || '', name: p.name || '', rank: p.rank || null,
                         amount: p.amount || 0, toTop: p.toTop || min,
+                        target_position: hasProjection ? (proj.target_position || 1) : (p.rank || 1),
+                        required_amount: hasProjection ? proj.required_amount : 0,
                         has_projection: hasProjection,
                         projected_rank: hasProjection ? (proj.target_position || null) : null,
                         projected_to_top: hasProjection ? proj.required_amount : min,
@@ -184,7 +206,7 @@
             setQuick(val) { this.modal.amount = val; },
             get suggestedAmount() {
                 if (!this.modal.profile) return this.limits.min;
-                const need = this.modal.profile.toTop;
+                const need = this.modal.profile.required_amount || this.modal.profile.toTop;
                 return (need > 0 && need <= this.limits.max) ? need : this.limits.min;
             },
             goPay() {
@@ -204,7 +226,7 @@
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content },
                         body: JSON.stringify({
-                            profile_id: this.modal.profile.id, target_position: this.modal.profile.rank || 1,
+                            profile_id: this.modal.profile.id, amount_clp: this.modal.amount,
                             supporter_name: this.fm.name.trim() || null, is_anonymous: true,
                             age_declared_18: '1', terms_accepted: '1', checkout_token: this.checkoutToken, payer_email: email,
                         }),

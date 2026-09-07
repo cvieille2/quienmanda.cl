@@ -51,21 +51,26 @@
                 <button @click="setQuick(suggestedAmount)" x-show="suggestedAmount > 0 && !modal.quickAmounts.includes(suggestedAmount)"
                     class="flex-1 py-2 rounded-xl text-sm font-bold border-2 transition"
                     :class="modal.amount === suggestedAmount ? 'border-[#F53003] bg-[#F53003]/10 text-[#F53003]' : 'border-gray-200 text-gray-600 hover:border-gray-300'">
-                    🎯 #1
+                    <span x-show="modal.profile.rank > 1">🎯 #<span x-text="modal.profile.target_position"></span></span>
+                    <span x-show="modal.profile.rank === 1">🛡️ Defender</span>
                 </button>
             </div>
             <p class="mt-2 text-xs text-gray-400">
                 Mínimo <span x-text="moneyDisplay(limits.min)"></span> · Máximo <span x-text="moneyDisplay(limits.max)"></span>
             </p>
 
-            {{-- Proyección de posición (server-computed) --}}
-            <div x-show="modal.amount >= limits.min && modal.amount <= limits.max && modal.profile.has_projection" class="mt-3">
+            {{-- Proyección de posición: se recalcula con cada monto --}}
+            <div x-show="modal.amount >= limits.min && modal.amount <= limits.max && modal.profile" class="mt-3">
                 <div class="flex items-center justify-between text-xs text-gray-500 rounded-xl bg-gray-50 border border-gray-200 px-3 py-2">
-                    <span>Con <span class="font-bold" x-text="moneyDisplay(modal.profile.cta_required || modal.amount)"></span> quedaría en</span>
-                    <span class="font-black text-lg" :class="modal.profile.projected_rank === 1 ? 'text-[#F8B803]' : 'text-[#1B1B18]'">
-                        #<span x-text="modal.profile.projected_rank"></span>
+                    <span>Con <span class="font-bold" x-text="moneyDisplay(modal.amount)"></span> quedarías en</span>
+                    <span class="font-black text-lg" :class="projectedRankForModal() === 1 ? 'text-[#F8B803]' : 'text-[#1B1B18]'">
+                        #<span x-text="projectedRankForModal()"></span>
                     </span>
                 </div>
+                <p class="mt-1 text-[11px] text-gray-400">Total del perfil después de tu impulso: <span class="font-bold" x-text="moneyDisplay((modal.profile.amount || 0) + Number(modal.amount || 0))"></span></p>
+                <p x-show="modal.profile.required_amount > 0 && Number(modal.amount) !== Number(modal.profile.required_amount)" class="mt-1 text-[11px] text-gray-500">
+                    Para la pelea sugerida por esta fila: <span class="font-bold" x-text="moneyDisplay(modal.profile.required_amount)"></span> → #<span x-text="modal.profile.target_position"></span>.
+                </p>
                 <button @click="setQuick(modal.profile.projected_to_top)"
                     x-show="modal.profile.projected_rank > 1 && modal.profile.projected_to_top <= limits.max"
                     class="mt-2 w-full text-[#F53003] text-xs font-bold underline underline-offset-2">
@@ -91,7 +96,7 @@
             {{-- CTA --}}
             <button @click="goPay()" :disabled="!modal.amount"
                 class="mt-5 w-full bg-[#F53003] disabled:bg-gray-300 disabled:text-gray-500 hover:bg-[#c22a02] text-white font-black py-5 rounded-2xl shadow-xl active:scale-[0.98] transition"
-                x-text="(modal.profile.rank === 1 ? '🛡️ DEFENDER LA CORONA · ' : '⭐ IMPULSAR AHORA · ') + moneyDisplay(modal.amount)"></button>
+                x-text="(modal.profile.rank === 1 ? '🛡️ DEFENDER LA CORONA · ' : '⚔️ ROBAR EL #' + (modal.profile.target_position || (modal.profile.rank - 1)) + ' · ') + moneyDisplay(modal.amount)"></button>
             <p class="mt-3 text-center text-xs text-gray-400">Pago seguro vía Mercado Pago. Recibirás comprobante.</p>
         </div>
 

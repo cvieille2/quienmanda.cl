@@ -329,12 +329,17 @@
                 const p = this.ranking.find(r => r.id === id) || {};
                 const vm = this.viewModels.find(v => v.profile_id === id) || {};
                 const min = this.limits.min;
+                const required = vm.cta_required || 0;
                 const needTop = p.toTop || min;
-                const suggested = (needTop > 0 && needTop <= this.limits.max) ? needTop : min;
+                const suggested = required > 0
+                    ? required
+                    : ((needTop > 0 && needTop <= this.limits.max) ? needTop : min);
                 this.modal = { open: true, step: 1, confirmed: false,
                     profile: {
                         id, slug: p.slug || '', name: p.name || '', rank: p.rank || null,
                         amount: p.amount || 0, toTop: p.toTop || min,
+                        target_position: vm.cta_target || (p.rank > 1 ? p.rank - 1 : 1),
+                        required_amount: required,
                         projected_rank: vm.cta_target || null,
                         projected_required: vm.cta_required || 0,
                         projected_required_formatted: vm.cta_required_formatted || '$0',
@@ -347,10 +352,15 @@
             setQuick(val) { this.modal.amount = val; },
             get suggestedAmount() {
                 if (!this.modal.profile) return this.limits.min;
-                const need = this.modal.profile.toTop;
+                const need = this.modal.profile.required_amount || this.modal.profile.toTop;
                 return (need > 0 && need <= this.limits.max) ? need : this.limits.min;
             },
             moneyDisplay(v) { return v == null ? '$0' : '$' + Number(v).toLocaleString('es-CL'); },
+            projectedRankForModal() {
+                if (!this.modal.profile) return null;
+                const projectedTotal = Number(this.modal.profile.amount || 0) + Number(this.modal.amount || 0);
+                return 1 + this.ranking.filter((row) => row.id !== this.modal.profile.id && Number(row.amount || 0) >= projectedTotal).length;
+            },
             goPay() {
                 if (!this.modal.amount) this.modal.amount = this.suggestedAmount;
                 if (this.modal.amount < this.limits.min) { this.error = `El mínimo es ${this.moneyDisplay(this.limits.min)}.`; return; }
@@ -368,7 +378,7 @@
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content },
                         body: JSON.stringify({
-                            profile_id: this.modal.profile.id, target_position: this.modal.profile.rank || 1,
+                            profile_id: this.modal.profile.id, amount_clp: this.modal.amount,
                             supporter_name: this.fm.name.trim() || null, is_anonymous: true,
                             age_declared_18: '1', terms_accepted: '1', checkout_token: this.checkoutToken, payer_email: email,
                         }),
