@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             FeatureFlagsSeeder::class,
             RankingSettingsSeeder::class,
             InitialPeriodSeeder::class,
+            ProfileCategoriesSeeder::class,
             TestProfilesSeeder::class,
         ]);
     }

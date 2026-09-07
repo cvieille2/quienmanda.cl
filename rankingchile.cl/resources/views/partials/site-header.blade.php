@@ -1,106 +1,224 @@
 @php
-    $headerStats = $headerStats ?? ['active_profiles' => 0, 'period_amount' => 0, 'outbound_clicks' => 0];
-    $formatAmount = fn(int $v) => $v >= 1_000_000 ? '$' . number_format($v / 1_000_000, 1) . 'M' : ($v >= 1_000 ? '$' . number_format($v / 1_000) . 'k' : '$' . number_format($v));
+    $searchProfiles = collect($headerSearchProfiles ?? [])->values()->all();
+    $isHome = request()->routeIs('home');
+    $isCategories = request()->routeIs('categories*', 'category.show*');
+    $isHowItWorks = $isHome && request()->getRequestUri() === '/#como-funciona';
+    $user = auth()->user();
 @endphp
-<header class="sticky top-0 z-40 bg-[#FFFDF7] border-b border-gray-200" x-data="{ mobileOpen: false }">
-    {{-- Desktop --}}
-    <div class="mx-auto max-w-6xl px-4 hidden md:flex items-center justify-between gap-4" style="height:72px">
+
+<header
+    class="sticky top-0 z-[1000] border-b border-white/8 bg-[#07182D] text-white shadow-[0_4px_18px_rgba(0,0,0,0.10)]"
+    x-data="headerShell(@js($searchProfiles))"
+    @keydown.escape.window="closePanels()"
+>
+    <div class="mx-auto flex h-[64px] max-w-[1280px] items-center justify-between gap-3 px-4 sm:px-6 lg:h-[72px] lg:px-6">
         {{-- Brand --}}
-        <a href="{{ route('home') }}" class="flex items-center gap-2 font-extrabold tracking-tight shrink-0 text-[#1B1B18]">
-            <span class="text-xl">👑</span>
-            <span class="text-lg">QUIÉN MANDA</span>
+        <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-2 font-extrabold tracking-tight text-white">
+            <span aria-hidden="true" class="inline-flex h-8 w-8 items-center justify-center rounded-full text-[#FFC21C]">👑</span>
+            <span class="text-[19px] font-black lg:text-[22px]">Quién Manda</span>
         </a>
 
-        {{-- Live Stats Pill --}}
-        @if($headerStats['active_profiles'] > 0 || $headerStats['period_amount'] > 0)
-        <div class="flex items-center gap-3 bg-white border border-gray-200 rounded-full px-4 py-1.5 text-xs font-medium text-gray-600 shrink-0">
-            @if($headerStats['active_profiles'] > 0)
-            <span class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                <span>{{ number_format($headerStats['active_profiles']) }} compitiendo</span>
-            </span>
-            @endif
-            @if($headerStats['period_amount'] > 0)
-            <span class="text-gray-300">|</span>
-            <span>{{ $formatAmount($headerStats['period_amount']) }} esta semana</span>
-            @endif
-            @if($headerStats['outbound_clicks'] > 0)
-            <span class="text-gray-300">|</span>
-            <span>{{ number_format($headerStats['outbound_clicks']) }} clics enviados</span>
-            @endif
-        </div>
-        @endif
-
-        {{-- Navigation --}}
-        <nav class="flex items-center gap-1 text-sm font-semibold ml-auto">
-            <a href="{{ route('home') }}"
-               class="px-3 py-1.5 rounded-lg transition {{ ($activePage ?? '') === 'home' ? 'text-[#F53003] bg-[#F53003]/5' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' }}">
+        {{-- Desktop navigation --}}
+        <nav aria-label="Navegación principal" class="hidden items-center gap-1 lg:flex">
+            <a href="{{ route('home') }}" aria-current="{{ $isHome ? 'page' : 'false' }}" class="relative rounded-xl px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-[#FFC21C]">
                 Ranking
+                <span @class(['absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#FFC21C]', 'opacity-100' => $isHome, 'opacity-0' => ! $isHome])></span>
             </a>
-            <a href="{{ route('categories') }}"
-               class="px-3 py-1.5 rounded-lg transition {{ ($activePage ?? '') === 'categories' ? 'text-[#F53003] bg-[#F53003]/5' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' }}">
+            <a href="{{ route('categories') }}" aria-current="{{ $isCategories ? 'page' : 'false' }}" class="relative rounded-xl px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-[#FFC21C]">
                 Categorías
+                <span @class(['absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#FFC21C]', 'opacity-100' => $isCategories, 'opacity-0' => ! $isCategories])></span>
             </a>
-            <a href="{{ route('rules') }}"
-               class="px-3 py-1.5 rounded-lg transition {{ ($activePage ?? '') === 'rules' ? 'text-[#F53003] bg-[#F53003]/5' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50' }}">
-                Reglas
+            <a href="{{ route('home') }}#como-funciona" aria-current="{{ $isHowItWorks ? 'page' : 'false' }}" class="relative rounded-xl px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-[#FFC21C]">
+                Cómo funciona
+                <span @class(['absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#FFC21C]', 'opacity-100' => $isHowItWorks, 'opacity-0' => ! $isHowItWorks])></span>
             </a>
         </nav>
 
-        {{-- Primary CTA --}}
-        <a href="{{ route('entrar.index') }}"
-           class="shrink-0 bg-[#1B1B18] hover:bg-[#2a2a26] text-white text-sm font-black px-5 py-2.5 rounded-xl transition active:scale-[0.97]">
-            ENTRAR Y SUBIR
-        </a>
-    </div>
+        {{-- Desktop search + account actions --}}
+        <div class="hidden items-center gap-2 lg:flex">
+            <button type="button" @click="openSearch()" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:border-[#FFC21C] hover:text-[#FFC21C]" aria-label="Buscar perfiles">
+                <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/>
+                </svg>
+            </button>
 
-    {{-- Mobile --}}
-    <div class="flex md:hidden items-center justify-between px-4" style="height:62px">
-        <a href="{{ route('home') }}" class="flex items-center gap-1.5 font-extrabold text-[#1B1B18]">
-            <span class="text-lg">👑</span>
-            <span class="text-base">QUIÉN MANDA</span>
-        </a>
-        <div class="flex items-center gap-2">
-            <a href="{{ route('entrar.index') }}"
-               class="bg-[#1B1B18] text-white text-xs font-black px-3 py-2 rounded-lg">
-                ENTRAR
-            </a>
-            <button @click="mobileOpen = !mobileOpen" class="p-2 text-gray-600" aria-label="Menú">
-                <svg x-show="!mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                <svg x-show="mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            @guest
+                <a href="{{ route('login') }}" class="rounded-xl px-3 py-2 text-sm font-semibold text-white/90 transition hover:text-[#FFC21C]">
+                    Iniciar sesión
+                </a>
+                <a href="{{ route('entrar.index') }}" class="rounded-xl bg-[#FFC21C] px-5 py-3 text-sm font-black text-[#07182D] transition hover:brightness-95 hover:-translate-y-px">
+                    Súmate
+                </a>
+            @else
+                <div class="relative" x-data="{ open: false }" @click.away="open = false">
+                    <button type="button" @click="open = !open" class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-bold text-white transition hover:border-[#FFC21C]">
+                        <span class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FFC21C] text-sm font-black text-[#07182D]" aria-hidden="true">{{ mb_substr($user->name ?? 'U', 0, 1) }}</span>
+                        <span class="max-w-[10rem] truncate">{{ $user->name ?? 'Mi cuenta' }}</span>
+                    </button>
+
+                    <div x-show="open" x-cloak x-transition class="absolute right-0 mt-2 w-56 overflow-hidden rounded-2xl border border-white/10 bg-[#0B203A] shadow-2xl">
+                        <a href="/mi-perfil" class="block px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Mi perfil</a>
+                        <a href="/mis-perfiles" class="block px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Mis perfiles</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="block w-full px-4 py-3 text-left text-sm font-semibold text-white/90 hover:bg-white/5">Cerrar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            @endguest
+        </div>
+
+        {{-- Mobile actions --}}
+        <div class="flex items-center gap-1 lg:hidden">
+            <button type="button" @click="openSearch()" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white" aria-label="Buscar perfiles">
+                <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/>
+                </svg>
+            </button>
+            <button type="button" @click="mobileOpen = !mobileOpen" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white" aria-label="Abrir menú" :aria-expanded="mobileOpen.toString()">
+                <svg x-show="!mobileOpen" aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg x-show="mobileOpen" aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
             </button>
         </div>
     </div>
 
-    {{-- Mobile Stats Strip --}}
-    @if($headerStats['active_profiles'] > 0 || $headerStats['period_amount'] > 0)
-    <div class="md:hidden flex items-center justify-center gap-3 bg-white border-t border-gray-100 px-4 py-1.5 text-[11px] font-medium text-gray-500">
-        @if($headerStats['active_profiles'] > 0)
-        <span class="flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-            {{ number_format($headerStats['active_profiles']) }} compitiendo
-        </span>
-        @endif
-        @if($headerStats['period_amount'] > 0)
-        <span>{{ $formatAmount($headerStats['period_amount']) }} esta semana</span>
-        @endif
-    </div>
-    @endif
+    {{-- Mobile drawer --}}
+    <div x-show="mobileOpen" x-cloak class="fixed inset-0 z-[1001] lg:hidden">
+        <div class="absolute inset-0 bg-black/50" @click="closePanels()"></div>
+        <aside x-ref="mobileDrawer" class="absolute right-0 top-0 h-full w-[min(88vw,360px)] bg-[#07182D] px-4 py-5 shadow-2xl" @keydown.tab.prevent="trapFocus($event, 'mobileDrawer')">
+            <div class="flex items-center justify-between">
+                <span class="text-sm font-black uppercase tracking-[0.22em] text-[#FFC21C]">Menú</span>
+                <button type="button" @click="closePanels()" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white" aria-label="Cerrar menú">
+                    <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
 
-    {{-- Mobile Drawer --}}
-    <div x-show="mobileOpen" x-cloak
-         x-transition:enter="transition ease-out duration-200"
-         x-transition:enter-start="opacity-0 -translate-y-2"
-         x-transition:enter-end="opacity-100 translate-y-0"
-         x-transition:leave="transition ease-in duration-150"
-         x-transition:leave-start="opacity-100 translate-y-0"
-         x-transition:leave-end="opacity-0 -translate-y-2"
-         class="md:hidden bg-white border-t border-gray-100 shadow-lg px-4 py-4 space-y-1"
-         @click.away="mobileOpen = false">
-        <a href="{{ route('home') }}" class="block px-3 py-2.5 rounded-lg text-sm font-semibold {{ ($activePage ?? '') === 'home' ? 'text-[#F53003] bg-[#F53003]/5' : 'text-gray-700 hover:bg-gray-50' }}">Ranking</a>
-        <a href="{{ route('categories') }}" class="block px-3 py-2.5 rounded-lg text-sm font-semibold {{ ($activePage ?? '') === 'categories' ? 'text-[#F53003] bg-[#F53003]/5' : 'text-gray-700 hover:bg-gray-50' }}">Categorías</a>
-        <a href="{{ route('rules') }}" class="block px-3 py-2.5 rounded-lg text-sm font-semibold {{ ($activePage ?? '') === 'rules' ? 'text-[#F53003] bg-[#F53003]/5' : 'text-gray-700 hover:bg-gray-50' }}">Reglas</a>
-        <div class="border-t border-gray-100 my-2"></div>
-        <a href="{{ route('entrar.index') }}" class="block px-3 py-2.5 rounded-lg text-sm font-black text-white bg-[#1B1B18] text-center">ENTRAR Y SUBIR</a>
+            <nav aria-label="Navegación principal" class="mt-6 space-y-2">
+                <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Ranking</a>
+                <a href="{{ route('categories') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Categorías</a>
+                <a href="{{ route('home') }}#como-funciona" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Cómo funciona</a>
+                <button type="button" @click="openSearch(); closePanels()" class="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/90 hover:bg-white/5">Buscar</button>
+            </nav>
+
+            <div class="mt-6 border-t border-white/10 pt-4">
+                @guest
+                    <a href="{{ route('login') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Iniciar sesión</a>
+                    <a href="{{ route('entrar.index') }}" class="mt-2 block rounded-2xl bg-[#FFC21C] px-4 py-3 text-center text-sm font-black text-[#07182D]">Súmate</a>
+                @else
+                    <p class="px-4 text-xs font-bold uppercase tracking-[0.22em] text-white/50">Cuenta</p>
+                    <div class="mt-2 space-y-1">
+                        <a href="/mi-perfil" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Mi perfil</a>
+                        <a href="/mis-perfiles" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Mis perfiles</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/90 hover:bg-white/5">Cerrar sesión</button>
+                        </form>
+                    </div>
+                @endguest
+            </div>
+        </aside>
+    </div>
+
+    {{-- Search overlay --}}
+    <div x-show="searchOpen" x-cloak class="fixed inset-0 z-[1002]" aria-modal="true" role="dialog">
+        <div class="absolute inset-0 bg-black/55" @click="closePanels()"></div>
+        <div class="absolute inset-x-4 top-16 mx-auto max-w-2xl rounded-3xl border border-white/10 bg-[#07182D] p-4 shadow-2xl sm:top-20 sm:p-5" x-ref="searchPanel" @keydown.tab.prevent="trapFocus($event, 'searchPanel')">
+            <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/5 text-[#FFC21C]" aria-hidden="true">🔎</div>
+                <div class="flex-1">
+                    <input
+                        x-ref="searchInput"
+                        x-model="searchQuery"
+                        type="search"
+                        placeholder="Buscar perfil..."
+                        class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none placeholder:text-white/40 focus:border-[#FFC21C]"
+                        @keydown.enter.prevent="goFirstResult()"
+                    />
+                    <p class="mt-1 text-xs text-white/45">Escribe un nombre y navega con teclado.</p>
+                </div>
+                <button type="button" @click="closePanels()" class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white" aria-label="Cerrar búsqueda">✕</button>
+            </div>
+
+            <div class="mt-4 max-h-[50vh] overflow-auto space-y-2 pr-1">
+                <template x-if="filteredProfiles.length">
+                    <template x-for="profile in filteredProfiles" :key="profile.slug">
+                        <button type="button" @click="goToProfile(profile.slug)" class="flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-left hover:border-[#FFC21C]">
+                            <span>
+                                <span class="block font-semibold text-white" x-text="profile.name"></span>
+                                <span class="block text-xs text-white/45" x-text="profile.category || 'Perfil'"></span>
+                            </span>
+                            <span class="text-[#FFC21C]" aria-hidden="true">→</span>
+                        </button>
+                    </template>
+                </template>
+                <div x-show="!filteredProfiles.length" class="rounded-2xl border border-dashed border-white/10 px-4 py-6 text-center text-sm text-white/55">
+                    No hay resultados.
+                </div>
+            </div>
+        </div>
     </div>
 </header>
+
+@push('scripts')
+<script>
+function headerShell(searchProfiles) {
+    return {
+        mobileOpen: false,
+        searchOpen: false,
+        searchQuery: '',
+        searchProfiles: searchProfiles || [],
+        get filteredProfiles() {
+            const q = this.searchQuery.trim().toLowerCase();
+            if (!q) return this.searchProfiles.slice(0, 8);
+            return this.searchProfiles.filter((profile) => {
+                return [profile.name, profile.slug, profile.category]
+                    .filter(Boolean)
+                    .some((field) => String(field).toLowerCase().includes(q));
+            }).slice(0, 8);
+        },
+        openSearch() {
+            this.searchOpen = true;
+            this.mobileOpen = false;
+            this.$nextTick(() => {
+                this.$refs.searchInput?.focus();
+            });
+        },
+        closePanels() {
+            this.mobileOpen = false;
+            this.searchOpen = false;
+            this.searchQuery = '';
+        },
+        goToProfile(slug) {
+            window.location.href = `/perfil/${slug}`;
+        },
+        goFirstResult() {
+            const first = this.filteredProfiles[0];
+            if (first) this.goToProfile(first.slug);
+        },
+        trapFocus(event, refName) {
+            const root = this.$refs[refName];
+            if (!root) return;
+            const focusable = Array.from(root.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])'));
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+                return;
+            }
+            if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        },
+    };
+}
+</script>
+@endpush

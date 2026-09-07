@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/perfil/{slug}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/login', fn () => view('auth.placeholder', ['title' => 'Iniciar sesión', 'description' => 'Por ahora puedes explorar el ranking o sumarte.']))->name('login');
+Route::get('/registro', fn () => view('auth.placeholder', ['title' => 'Súmate', 'description' => 'Crea tu presencia en Quién Manda y empieza a competir.']))->name('register');
+Route::post('/logout', function () { auth()->logout(); request()->session()->invalidate(); request()->session()->regenerateToken(); return redirect()->route('home'); })->name('logout');
 
 Route::get('/clic/{profile:slug}', [OutboundClickController::class, 'track'])->name('outbound.click');
 
@@ -44,4 +47,10 @@ Route::get('/terminos', TermsController::class)->name('legal.terms');
 Route::get('/privacidad', PrivacyController::class)->name('legal.privacy');
 Route::get('/reglas', RulesController::class)->name('rules');
 
-Route::get('/categorias/{slug}', \App\Http\Controllers\CategoryShowController::class)->name('category.show');
+// Category mini-home (canonical)
+Route::get('/categoria/{slug}', [\App\Http\Controllers\CategoryShowController::class, 'show'])->name('category.show');
+
+// Legacy /categorias/{slug} → 301 to canonical
+Route::get('/categorias/{slug}', [\App\Http\Controllers\CategoryShowController::class, 'legacy'])
+    ->where('slug', '[a-z0-9-]+')
+    ->name('category.show.legacy');
