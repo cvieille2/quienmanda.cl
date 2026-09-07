@@ -54,7 +54,7 @@
 
     {{-- MOBILE: Conversion Hero first --}}
     <div class="md:hidden">
-        @include('partials.conversion-hero', ['positionPricing' => $positionPricing])
+        @include('partials.conversion-hero', ['positionPricing' => $positionPricing, 'heroProjection' => $heroProjection, 'heroState' => $heroState, 'limits' => $limits, 'periodLabel' => $periodLabel])
     </div>
 
     <main class="mx-auto max-w-6xl px-4 pb-28">
@@ -70,7 +70,11 @@
                         <p class="mt-1 text-sm text-gray-500">El ranking cambia según el apoyo y la actividad de cada perfil.</p>
                     </div>
                     <div class="text-sm font-semibold text-gray-500">
-                        {{ number_format($rankingTotal) }} perfiles
+                        @if ($hasCompetitiveActivity)
+                            {{ number_format($rankingTotal) }} perfiles
+                        @else
+                            Nadie compite todavía
+                        @endif
                     </div>
                 </div>
 
@@ -222,9 +226,9 @@
                         </section>
                     @else
                         <section class="mt-6 rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-10 text-center text-gray-500">
-                            <div class="text-4xl mb-3">🗓️</div>
-                            <p class="font-bold text-lg text-gray-700">Sé el primero en moverlo</p>
-                            <p class="text-sm mt-1">Todavía nadie ha impulsado este ranking.</p>
+                            <div class="text-4xl mb-3">👑</div>
+                            <p class="font-bold text-lg text-gray-700">EL #1 ESTÁ LIBRE</p>
+                            <p class="text-sm mt-1">Ocúpalo antes que otro.</p>
                         </section>
                     @endif
                 @endif
@@ -233,7 +237,7 @@
             {{-- RIGHT COLUMN: Conversion Hero (desktop) --}}
             <div class="hidden lg:block">
                 <div class="sticky top-20">
-                    @include('partials.conversion-hero', ['positionPricing' => $positionPricing])
+                    @include('partials.conversion-hero', ['positionPricing' => $positionPricing, 'heroProjection' => $heroProjection, 'heroState' => $heroState, 'limits' => $limits, 'periodLabel' => $periodLabel])
 
                     {{-- How it works --}}
                     <div id="como-funciona" class="mt-6 bg-[#1B1B18] text-white rounded-2xl p-5">

@@ -1,10 +1,16 @@
 @php
     $positionPricing = $positionPricing ?? [];
-    $topAmount = $leader['total_real_clp'] ?? 0;
-    $hasActivity = $topAmount > 0;
-    $heroProjection = $heroProjection ?? $positionPricing[0] ?? null;
+    $heroProjection = $heroProjection ?? collect($positionPricing)->firstWhere('position', 1) ?? ($positionPricing[0] ?? null);
+    $heroState = $heroState ?? [
+        'mode' => 'empty',
+        'headline' => '¿QUIERES MANDAR?',
+        'subheadline' => 'Sube al #1 por tu impulso.',
+        'ctaLabel' => 'TOMAR EL #1',
+    ];
     $limits = $limits ?? ['min' => 1000, 'max' => 1000000];
     $periodLabel = $periodLabel ?? 'Semana';
+    $heroAmount = $heroProjection['amount'] ?? ($limits['min'] ?? 0);
+    $heroPosition = $heroProjection['position'] ?? 1;
 @endphp
 <section class="bg-gradient-to-b from-[#FFFDF7] to-white py-10 sm:py-14" x-data="conversionHero()">
     <div class="mx-auto max-w-2xl px-4 text-center">
@@ -14,18 +20,15 @@
 
         {{-- Headline --}}
         <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight text-[#1B1B18]">
-            ¿QUIERES MANDAR?
+            {{ $heroState['headline'] }}
         </h1>
 
         {{-- Dynamic Subheadline --}}
         <p class="mt-3 text-lg sm:text-xl font-bold text-gray-500">
-            @if($heroProjection)
-                Sube al #{{ $heroProjection['position'] }} por <span class="text-[#F53003]">${{ number_format($heroProjection['amount']) }}</span>
-            @elseif($hasActivity)
-                Sube al #1 por <span class="text-[#F53003]">${{ number_format($topAmount + ($limits['min'] ?? 1000)) }}</span>
-            @else
-                Sé el primero en mover el ranking
-            @endif
+            {{ $heroState['subheadline'] }}
+        </p>
+        <p class="mt-2 text-sm font-black text-[#F53003]">
+            {{ money_clp($heroAmount) }}
         </p>
 
         {{-- Source Input --}}
@@ -63,7 +66,7 @@
         <div class="mt-8 max-w-lg mx-auto">
             <button @click="goToEntrar()"
                     class="w-full bg-[#1B1B18] hover:bg-[#2a2a26] text-white font-black text-lg py-5 rounded-2xl shadow-xl active:scale-[0.98] transition">
-                <span x-text="ctaLabel"></span>
+                <span x-text="ctaLabel">{{ $heroState['ctaLabel'] }}</span>
             </button>
         </div>
 
@@ -80,9 +83,14 @@
 function conversionHero() {
     return {
         sourceInput: '',
-        selectedPosition: {{ $heroProjection['position'] ?? 1 }},
-        selectedAmount: {{ $heroProjection['amount'] ?? $limits['min'] ?? 0 }},
+        selectedPosition: {{ $heroPosition }},
+        selectedAmount: {{ $heroAmount }},
+        heroMode: @js($heroState['mode']),
         get ctaLabel() {
+            if (this.selectedPosition === 1) {
+                return this.heroMode === 'active' ? 'ROBAR EL #1' : 'TOMAR EL #1';
+            }
+
             const formatted = Number(this.selectedAmount).toLocaleString('es-CL');
             return 'SUBIR AL #' + this.selectedPosition + ' POR $' + formatted;
         },

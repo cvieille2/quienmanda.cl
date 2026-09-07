@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Carbon\CarbonImmutable;
 use App\Enums\ProfileStatus;
+use App\Services\PaymentLimitsService;
 use App\Enums\SupportTransactionStatus;
 use App\Enums\SupportTransactionType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -244,7 +245,12 @@ class HomePagePhase2Test extends TestCase
     {
         $response = $this->get('/');
         $response->assertOk();
-        $response->assertSee('Sé el primero en moverlo');
+        $response->assertSee('EL #1 ESTÁ LIBRE');
+        $response->assertSee('Ocúpalo antes que otro.');
+        $response->assertSee('TOMAR EL #1');
+        $response->assertSee(money_clp(PaymentLimitsService::MIN_CLP));
+        $response->assertDontSee('Todavía nadie ha impulsado este ranking');
+        $response->assertDontSee('Sé el primero en moverlo');
     }
 
     public function test_home_ranking_shows_position_aware_copy(): void
@@ -260,7 +266,10 @@ class HomePagePhase2Test extends TestCase
 
         $response = $this->get('/');
         $response->assertOk();
-        $response->assertSee('DEFENDER LA CORONA');
+        $response->assertSee('ALGUIEN YA MANDA');
+        $response->assertSee('¿VAS A DEJARLO ARRIBA?');
+        $response->assertSee('ROBAR EL #1');
+        $response->assertSee(money_clp(10000 + PaymentLimitsService::MIN_CLP));
         $response->assertSee('Líder');
         $response->assertSee('Retador');
     }

@@ -48,12 +48,26 @@ class HomeController extends Controller
             ->get();
 
         $positionPricing = $this->projection->projectAvailablePositionsForContext($context);
+        $hasCompetitiveActivity = count($rankings) > 0;
 
         $profileIds = array_column($rankings, 'profile_id');
         $projections = $this->projection->projectMovesForProfilesForContext($profileIds, $context);
 
         $viewModels = RankingProfileViewModel::collection($rankings, $projections);
-        $heroProjection = $positionPricing[0] ?? null;
+        $heroProjection = collect($positionPricing)->firstWhere('position', 1) ?? ($positionPricing[0] ?? null);
+        $heroState = $hasCompetitiveActivity
+            ? [
+                'mode' => 'active',
+                'headline' => 'ALGUIEN YA MANDA',
+                'subheadline' => '¿VAS A DEJARLO ARRIBA?',
+                'ctaLabel' => 'ROBAR EL #1',
+            ]
+            : [
+                'mode' => 'empty',
+                'headline' => 'EL #1 ESTÁ LIBRE',
+                'subheadline' => 'Ocúpalo antes que otro.',
+                'ctaLabel' => 'TOMAR EL #1',
+            ];
 
         $periodHeadline = $selectedCategory
             ? $this->headlineForCategory($selectedCategory->displayName(), $period)
@@ -112,6 +126,7 @@ class HomeController extends Controller
             'periodStatsLabel'     => $period->statsLabel(),
             'ranking'              => $rankings,
             'rankingTotal'         => $totalProfiles,
+            'hasCompetitiveActivity' => $hasCompetitiveActivity,
             'limit'                => $limit,
             'hasMoreProfiles'      => $totalProfiles > $limit,
             'nextLimit'            => min($limit + 20, $totalProfiles),
@@ -133,6 +148,7 @@ class HomeController extends Controller
             'positionPricing'      => $positionPricing,
             'viewModels'           => $viewModels,
             'heroProjection'       => $heroProjection,
+            'heroState'            => $heroState,
         ]);
     }
 
