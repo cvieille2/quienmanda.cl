@@ -2,7 +2,6 @@
     $searchProfiles = collect($headerSearchProfiles ?? [])->values()->all();
     $isHome = request()->routeIs('home');
     $isCategories = request()->routeIs('categories*', 'category.show*');
-    $isHowItWorks = $isHome && request()->getRequestUri() === '/#como-funciona';
     $user = auth()->user();
 @endphp
 
@@ -27,10 +26,6 @@
             <a href="{{ route('categories') }}" aria-current="{{ $isCategories ? 'page' : 'false' }}" class="relative rounded-xl px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-[#FFC21C]">
                 Categorías
                 <span @class(['absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#FFC21C]', 'opacity-100' => $isCategories, 'opacity-0' => ! $isCategories])></span>
-            </a>
-            <a href="{{ route('home') }}#como-funciona" aria-current="{{ $isHowItWorks ? 'page' : 'false' }}" class="relative rounded-xl px-3 py-2 text-sm font-semibold text-white/85 transition hover:text-[#FFC21C]">
-                Cómo funciona
-                <span @class(['absolute inset-x-3 -bottom-1 h-0.5 rounded-full bg-[#FFC21C]', 'opacity-100' => $isHowItWorks, 'opacity-0' => ! $isHowItWorks])></span>
             </a>
         </nav>
 
@@ -102,7 +97,6 @@
             <nav aria-label="Navegación principal" class="mt-6 space-y-2">
                 <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Ranking</a>
                 <a href="{{ route('categories') }}" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Categorías</a>
-                <a href="{{ route('home') }}#como-funciona" class="block rounded-2xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/5">Cómo funciona</a>
                 <button type="button" @click="openSearch(); closePanels()" class="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/90 hover:bg-white/5">Buscar</button>
             </nav>
 
