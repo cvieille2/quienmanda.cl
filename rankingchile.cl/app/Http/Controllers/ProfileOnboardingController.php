@@ -126,6 +126,8 @@ class ProfileOnboardingController extends Controller
 
     public function show(ProfileSubmission $submission): View
     {
+        $this->assertSubmissionAccess($submission);
+
         $submission->loadMissing(['profileCategory', 'links', 'profile', 'duplicateProfile']);
 
         return view('entrar.show', [

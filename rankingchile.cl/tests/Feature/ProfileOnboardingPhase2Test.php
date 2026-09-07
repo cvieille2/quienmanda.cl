@@ -337,6 +337,9 @@ class ProfileOnboardingPhase2Test extends TestCase
         $this->postJson(route('entrar.confirmar', $submission))
             ->assertNotFound();
 
+        $this->get(route('entrar.show', $submission))
+            ->assertNotFound();
+
         $this->postJson(route('entrar.checkout', $submission), [
             'amount_clp' => 1000,
             'age_declared_18' => 1,
