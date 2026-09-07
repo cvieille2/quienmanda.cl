@@ -21,6 +21,7 @@ class PaymentApprovalService
         private ShareService $shares,
         private SupportTransactionService $transactions,
         private DeltaRecalculateService $delta,
+        private RankingMovementService $movements,
         private PaymentGatewayInterface $gateway,
         private HeaderStatsService $headerStats,
     ) {}
@@ -79,6 +80,7 @@ class PaymentApprovalService
             $qualifiedAt = $this->resolveQualifiedAt($locked, $conf);
             $period = $this->periods->periodFor($qualifiedAt);
             $this->transactions->assertAmountWithinLimits($locked->amount_clp, $period);
+            $rankingBefore = $this->ranking->rankingForPeriod($period->id, false);
 
             $locked->update([
                 'status' => SupportTransactionStatus::Approved,
@@ -89,6 +91,7 @@ class PaymentApprovalService
                 'gateway_status' => PaymentGatewayConfirmationStatus::Approved->value,
             ]);
             $locked->refresh();
+            $this->movements->recordForApprovedTransaction($locked, $rankingBefore);
 
             $closed = in_array($period->status, [
                 RankingPeriodStatus::Closed,

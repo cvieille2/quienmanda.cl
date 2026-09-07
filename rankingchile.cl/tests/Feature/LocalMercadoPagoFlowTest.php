@@ -6,6 +6,7 @@ use App\Enums\GatewayProcessingResult;
 use App\Enums\SupportTransactionStatus;
 use App\Models\PaymentGatewayEvent;
 use App\Models\Profile;
+use App\Models\RankingMovement;
 use App\Models\ShareEvent;
 use App\Models\SupportTransaction;
 use App\Services\Payments\LocalMercadoPagoGateway;
@@ -71,6 +72,49 @@ class LocalMercadoPagoFlowTest extends TestCase
 
         $this->assertNotNull($row);
         $this->assertSame(2000, $row['total_real_clp']);
+        $this->assertDatabaseHas('ranking_movements', [
+            'support_transaction_id' => $tx->id,
+            'position_before' => 3,
+            'position_after' => 1,
+            'total_before_clp' => 0,
+            'total_after_clp' => 2000,
+        ]);
+    }
+
+    public function test_five_approved_payments_are_ranked_by_accumulated_amount_and_recorded(): void
+    {
+        $this->configureLocalGateway();
+        $this->seed(DatabaseSeeder::class);
+        $profiles = collect(range(1, 5))->map(fn (int $i) => Profile::create([
+            'display_name' => "E2E Caso $i",
+            'slug' => "e2e-caso-$i",
+            'category' => 'General',
+            'status' => 'active',
+            'type' => 'community',
+            'verification_status' => 'unverified',
+            'is_community_created' => true,
+        ]));
+
+        foreach ($profiles as $index => $profile) {
+            $amount = ($index + 1) * 1000;
+            $checkout = $this->postJson('/api/pagos', [
+                'profile_id' => $profile->id,
+                'amount_clp' => $amount,
+                'age_declared_18' => true,
+                'terms_accepted' => true,
+                'checkout_token' => "five-case-$index",
+            ])->assertOk();
+            $tx = SupportTransaction::where('external_reference', $checkout->json('external_reference'))->firstOrFail();
+            $this->post(route('local.mercadopago.approve', ['token' => $tx->provider_transaction_id]))->assertRedirect();
+        }
+
+        $ranking = $this->getJson('/api/ranking/current')->assertOk()->json('ranking');
+        $actual = collect($ranking)->filter(fn (array $row) => str_starts_with($row['slug'], 'e2e-caso-'))
+            ->sortBy('position')->pluck('slug')->values()->all();
+
+        $this->assertSame(['e2e-caso-5', 'e2e-caso-4', 'e2e-caso-3', 'e2e-caso-2', 'e2e-caso-1'], $actual);
+        $this->assertSame(5, RankingMovement::count());
+        $this->assertSame(5, RankingMovement::query()->whereNotNull('position_before')->count());
     }
 
     public function test_local_checkout_reject_fails_transaction_without_ranking_or_share(): void
